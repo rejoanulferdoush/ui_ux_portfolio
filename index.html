@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rejoanul Ferdoush — UI/UX Designer &amp; Creative Developer</title>
+<meta name="description" content="Portfolio of Rejoanul Ferdoush, a UI/UX designer and front-end developer with 7 years of experience crafting clean, purposeful digital products.">
+<link rel="icon" type="image/png" href="assets/mine2.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=40">
+</head>
+<body>
+
+<!-- Preloader -->
+<div class="preloader" id="preloader">
+  <div class="preloader__stage" id="preloaderStage">
+    <div class="preloader__glow"></div>
+    <img src="img/mine.svg" alt="" class="preloader__avatar">
+  </div>
+  <span class="preloader__label">Loading portfolio</span>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container header__inner">
+    <a href="#top" class="logo">
+      <img src="assets/mine2.png" alt="Rejoanul Ferdoush" class="logo__mark">
+      <span class="logo__text">Rejoanul Ferdoush<em>UI/UX Engineer</em></span>
+    </a>
+  </div>
+</header>
+
+<!-- Pinned actions: stay fixed on scroll and above the off-canvas nav -->
+<div class="header__actions">
+  <a href="resume.pdf" target="_blank" rel="noopener" class="nav__cta">Resume <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H14a1 1 0 0 1-1-1V3.5zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h4v2H8V9z"/></svg></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+
+<div class="nav-backdrop" id="navBackdrop"></div>
+<nav class="nav" id="mainNav">
+  <a href="#work"><span class="nav__index">01</span>Work</a>
+  <a href="#approach"><span class="nav__index">02</span>Approach</a>
+  <a href="#expertise"><span class="nav__index">03</span>Expertise</a>
+  <a href="#experience"><span class="nav__index">04</span>Experience</a>
+  <a href="#journal"><span class="nav__index">05</span>Journal</a>
+  <a href="#contact"><span class="nav__index">06</span>Contact</a>
+</nav>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <span class="deco deco--sm deco--a" style="top:15%; left:1.5%;" data-speed="24" aria-hidden="true"><img src="img/4.svg" alt="" decoding="async"></span>
+    <span class="deco deco--sm deco--c deco--hide-mobile" style="top:44%; right:1.5%;" data-speed="34" aria-hidden="true"><img src="img/3.svg" alt="" decoding="async"></span>
+    <span class="deco deco--md deco--b deco--hide-mobile" style="bottom:2%; left:4%; --deco-opacity:.12;" data-speed="18" aria-hidden="true"><img src="img/8.svg" alt="" decoding="async"></span>
+
+    <div class="hero__ticker reveal">
+      <div class="hero__ticker-track">
+        <span>UI Design</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>UX Research</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>Wireframing</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>Prototyping</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>Design Systems</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>Interaction Design</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>Usability Testing</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>Accessibility</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>HTML5, CSS3 &amp; TailwindCSS</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>Design to Code</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>UI Design</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>UX Research</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>Wireframing</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>Prototyping</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>Design Systems</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>Interaction Design</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>Usability Testing</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>Accessibility</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>HTML5, CSS3 &amp; TailwindCSS</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+        <span>Design to Code</span><svg class="hero__ticker-star" viewBox="0 0 512 512" fill="currentColor"><path d="m256 16c-10.7 220.5-19.5 229.3-240 240 220.5 10.7 229.3 19.5 240 240 10.7-220.5 19.5-229.3 240-240-220.5-10.7-229.3-19.5-240-240z"/></svg>
+      </div>
+    </div>
+
+    <div class="hero__frame reveal">
+      <div class="hero__stage">
+        <h2 class="hero__sr-title">UI/UX Engineer — Rejoanul Ferdoush</h2>
+
+        <div class="hero__flank hero__flank--left">
+          <p class="hero__intro hero__intro--who">Hi, I’m Rejoanul Ferdoush</p>
+          <span class="hero__title-word" aria-hidden="true">UI/UX</span>
+        </div>
+
+        <div class="hero__portrait-wrap" id="heroPortraitWrap">
+          <div class="hero__portrait">
+            <img src="img/mine.svg" alt="Portrait of Rejoanul Ferdoush">
+            <span class="hero__pill"><span class="hero__pill-dot"></span>Available to collaborate</span>
+            <span class="hero__hi" title="Say hi!">
+              <span class="hero__hi-icon"><img src="icon/hand.svg" alt=""></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="hero__flank hero__flank--right">
+          <span class="hero__title-word" aria-hidden="true">Engineer</span>
+          <p class="hero__intro hero__intro--value">I design the best user experience for <span class="hero__intro-accent">people.</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container hero__bottom reveal">
+      <p class="hero__descr">
+        With <span class="hero__descr-accent">7+ years</span> of experience turning
+        rough ideas into polished, working interfaces.
+      </p>
+
+      <div class="hero__bottom-actions">
+        <ul class="hero__socials">
+          <li><i class='bx bx-plus'></i><a href="https://www.behance.net/rejoanulferdoush" target="_blank">Behance</a></li>
+          <li><i class='bx bx-plus'></i><a href="https://www.linkedin.com/in/rejoanulferdoush/" target="_blank">LinkedIn</a></li>
+        </ul>
+
+        <a href="#work" class="hero__scroll">
+          <span class="hero__scroll-icon"><i class='bx bx-down-arrow-alt'></i></span>
+          Scroll for more
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Work -->
+  <section class="section work-warp" id="work">
+    <div class="work-warp__video-wrap" aria-hidden="true">
+      <video class="work-warp__video" muted loop playsinline preload="none">
+        <source src="video/hyperspace-tunnel.mp4" type="video/mp4">
+      </video>
+      <div class="work-warp__scrim"></div>
+    </div>
+    <span class="deco deco--md deco--c deco--hide-mobile" style="top:13%; right:1.5%; --deco-opacity:.12;" data-speed="30" aria-hidden="true"><img src="img/6.svg" alt="" loading="lazy" decoding="async"></span>
+    <span class="deco deco--sm deco--a" style="bottom:8%; left:2%; --deco-opacity:.13;" data-speed="20" aria-hidden="true"><img src="img/2.svg" alt="" loading="lazy" decoding="async"></span>
+    <div class="container">
+      <div class="section__head work-warp__head reveal">
+        <div class="work-warp__head-lead">
+          <span class="section__eyebrow">Selected work</span>
+          <h2 class="section__title">Featured<br>projects</h2>
+          <p class="section__descr">A handful of recent case studies spanning product design, branding and front-end builds.</p>
+        </div>
+        <a href="#" class="work-warp__all">
+          See all projects
+          <span class="work-warp__all-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <div class="work-grid reveal">
+        <a href="#" class="work-card work-card--a" style="--c1:#34c77b;--c2:#1a8f5a">
+          <div class="work-card__media">
+            <img class="work-card__img" src="projects/smart_home_safety-card.webp" alt="SAFE — AI-powered smart home security app showing room monitoring and a gas-leak alert" loading="lazy" decoding="async" style="--pos:70% 45%">
+            <div class="work-card__topline">
+              <span>Mobile app · Home security</span>
+              <span class="work-card__year">2025</span>
+            </div>
+            <span class="work-card__cta">
+              View case study
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__body-main">
+              <h3>SAFE — Home Security App</h3>
+              <p class="work-card__result">AI monitoring with instant gas, intrusion &amp; camera alerts</p>
+            </div>
+            <ul class="work-card__tags">
+              <li>iOS</li><li>IoT</li><li>Real-time alerts</li>
+            </ul>
+          </div>
+        </a>
+        <a href="#" class="work-card work-card--b" style="--c1:#1e4fd6;--c2:#14328f">
+          <div class="work-card__media">
+            <img class="work-card__img" src="projects/prime_bank_digital_token-card.webp" alt="Prime Bank Digital Token app showing a generated queue token and remote branch check-in" loading="lazy" decoding="async" style="--pos:center">
+            <div class="work-card__topline">
+              <span>Product design · FinTech</span>
+              <span class="work-card__year">2025</span>
+            </div>
+            <span class="work-card__cta">
+              View case study
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__body-main">
+              <h3>Prime Bank Digital Token</h3>
+              <p class="work-card__result">Join the branch queue remotely and check in by QR</p>
+            </div>
+            <ul class="work-card__tags">
+              <li>Mobile app</li><li>QR service</li><li>Queue system</li>
+            </ul>
+          </div>
+        </a>
+        <a href="#" class="work-card work-card--a" style="--c1:#2b3a55;--c2:#141c2b">
+          <div class="work-card__media">
+            <img class="work-card__img" src="projects/nms-card.webp" alt="NMS network monitoring dashboard showing device health, uptime and a real-time network traffic flow diagram" loading="lazy" decoding="async" style="--pos:50% 38%">
+            <div class="work-card__topline">
+              <span>Web app · Infrastructure</span>
+              <span class="work-card__year">2025</span>
+            </div>
+            <span class="work-card__cta">
+              View case study
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__body-main">
+              <h3>NMS — Network Monitoring System</h3>
+              <p class="work-card__result">Real-time device topology and 99.9% uptime tracking</p>
+            </div>
+            <ul class="work-card__tags">
+              <li class="is-award">★ IT Expo 2025</li><li>Dashboard</li><li>Data viz</li>
+            </ul>
+          </div>
+        </a>
+        <a href="#" class="work-card work-card--b" style="--c1:#f08a3c;--c2:#d9641f">
+          <div class="work-card__media">
+            <img class="work-card__img" src="projects/dcim-card.webp" alt="DCIM data center infrastructure dashboard showing power, temperature, UPS status and a power-flow distribution diagram" loading="lazy" decoding="async" style="--pos:50% 42%">
+            <div class="work-card__topline">
+              <span>Web app · Data center</span>
+              <span class="work-card__year">2025</span>
+            </div>
+            <span class="work-card__cta">
+              View case study
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__body-main">
+              <h3>DCIM — Data Center Infrastructure</h3>
+              <p class="work-card__result">Live power-flow, PUE and capacity across the facility</p>
+            </div>
+            <ul class="work-card__tags">
+              <li class="is-award">★ IT Expo 2025</li><li>Dashboard</li><li>Analytics</li>
+            </ul>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section class="section" id="approach">
+    <span class="deco deco--md deco--a" style="top:6%; left:-2.5%;" data-speed="26" aria-hidden="true"><img src="img/1.svg" alt="" loading="lazy" decoding="async"></span>
+    <span class="deco deco--sm deco--b deco--hide-mobile" style="bottom:9%; right:2%;" data-speed="34" aria-hidden="true"><img src="img/4.svg" alt="" loading="lazy" decoding="async"></span>
+    <div class="container">
+      <div class="section__head section__head--center reveal">
+        <span class="section__eyebrow">My process</span>
+        <h2 class="section__title">Approach and<br><span class="section__title-accent">philosophy</span></h2>
+        <p class="section__descr">Four principles that guide every project, from the first sketch to the last deploy.</p>
+      </div>
+
+      <div class="approach-list">
+        <div class="approach-item reveal">
+          <span class="approach-item__num">01</span>
+          <div class="approach-item__head">
+            <span class="approach-item__icon"><img src="assets/h70_appr-01.webp" alt=""></span>
+            <h3>Start with the problem, not the pixels</h3>
+          </div>
+          <p>Every engagement begins with research and constraints — screens come later, once the problem is actually understood.</p>
+        </div>
+        <div class="approach-item reveal">
+          <span class="approach-item__num">02</span>
+          <div class="approach-item__head">
+            <span class="approach-item__icon"><img src="assets/h70_appr-04.webp" alt=""></span>
+            <h3>Design in systems, not screens</h3>
+          </div>
+          <p>Reusable components and clear tokens keep products consistent as they grow, and make handoff to engineering painless.</p>
+        </div>
+        <div class="approach-item reveal">
+          <span class="approach-item__num">03</span>
+          <div class="approach-item__head">
+            <span class="approach-item__icon"><img src="assets/h70_appr-05.webp" alt=""></span>
+            <h3>Ship, measure, refine</h3>
+          </div>
+          <p>A shipped v1 that gets real feedback beats a perfect mockup that never leaves Figma.</p>
+        </div>
+        <div class="approach-item reveal">
+          <span class="approach-item__num">04</span>
+          <div class="approach-item__head">
+            <span class="approach-item__icon"><img src="assets/h70_appr-03.webp" alt=""></span>
+            <h3>Code is part of the design</h3>
+          </div>
+          <p>Building the front-end myself means the details — motion, spacing, performance — survive all the way to production.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stack -->
+  <section class="section">
+    <span class="deco deco--md deco--c deco--hide-mobile" style="top:4%; right:-3.5%; --deco-opacity:.12;" data-speed="28" aria-hidden="true"><img src="img/5.svg" alt="" loading="lazy" decoding="async"></span>
+    <span class="deco deco--sm deco--a" style="bottom:12%; left:0%;" data-speed="22" aria-hidden="true"><img src="img/3.svg" alt="" loading="lazy" decoding="async"></span>
+    <div class="container">
+      <div class="section__head reveal">
+        <h2 class="section__title">Tools &amp;<br>technologies</h2>
+        <p class="section__descr">The tools I actually reach for — from pixel-perfect design to shipping and scaling in production.</p>
+      </div>
+      <div class="stack-tier stack-tier--expert reveal">
+        <div class="stack-tier__head">
+          <h3 class="stack-tier__label">Core expertise</h3>
+          <span class="stack-tier__count">10</span>
+        </div>
+        <p class="stack-tier__sub">The tools I could use with my eyes closed.</p>
+        <div class="stack-grid">
+          <div class="stack-item"><img src="icon/figma.svg" alt="Figma"><span>Figma</span></div>
+          <div class="stack-item"><img src="icon/sketch.svg" alt="Sketch"><span>Sketch</span></div>
+          <div class="stack-item"><img src="icon/xd.svg" alt="Adobe XD"><span>Adobe XD</span></div>
+          <div class="stack-item"><img src="icon/miro.svg" alt="Miro"><span>Miro</span></div>
+          <div class="stack-item"><img src="icon/photoshop.svg" alt="Photoshop"><span>Photoshop</span></div>
+          <div class="stack-item"><img src="icon/illustrator.svg" alt="Illustrator"><span>Illustrator</span></div>
+          <div class="stack-item"><img src="icon/html-5.svg" alt="HTML5"><span>HTML5</span></div>
+          <div class="stack-item"><img src="icon/css-3.svg" alt="CSS3"><span>CSS3</span></div>
+          <div class="stack-item"><img src="icon/tailwindcss.svg" alt="Tailwind CSS"><span>Tailwind CSS</span></div>
+          <div class="stack-item"><img src="icon/bootstrap-4.svg" alt="Bootstrap"><span>Bootstrap</span></div>
+        </div>
+      </div>
+
+      <div class="stack-tier stack-tier--comfortable reveal">
+        <div class="stack-tier__head">
+          <h3 class="stack-tier__label">Comfortable with</h3>
+          <span class="stack-tier__count">6</span>
+        </div>
+        <p class="stack-tier__sub">Solid ground — I ship with these, no hesitation.</p>
+        <div class="stack-grid">
+          <div class="stack-item"><img src="icon/java-script.svg" alt="JavaScript"><span>JavaScript</span></div>
+          <div class="stack-item"><img src="icon/react.svg" alt="React"><span>React</span></div>
+          <div class="stack-item"><img src="icon/spline.svg" alt="Spline"><span>Spline</span></div>
+          <div class="stack-item"><img src="icon/blender.svg" alt="Blender"><span>Blender</span></div>
+          <div class="stack-item"><img src="icon/wordpress-tile.svg" alt="WordPress"><span>WordPress</span></div>
+          <div class="stack-item"><img src="icon/shopify.svg" alt="Shopify"><span>Shopify</span></div>
+        </div>
+      </div>
+
+      <div class="stack-tier stack-tier--ai reveal">
+        <div class="stack-tier__head">
+          <h3 class="stack-tier__label">AI tools</h3>
+          <span class="stack-tier__count">9</span>
+        </div>
+        <p class="stack-tier__sub">My daily co-pilots for research, writing and code.</p>
+        <div class="stack-grid">
+          <div class="stack-item"><img src="icon/openai.svg" alt="ChatGPT"><span>ChatGPT</span></div>
+          <div class="stack-item"><img src="icon/perplexity.svg" alt="Perplexity"><span>Perplexity</span></div>
+          <div class="stack-item"><img src="icon/claude.svg" alt="Claude"><span>Claude</span></div>
+          <div class="stack-item"><img src="icon/cursor.svg" alt="Cursor"><span>Cursor</span></div>
+          <div class="stack-item"><img src="icon/codex.svg" alt="Codex"><span>Codex</span></div>
+          <div class="stack-item"><img src="icon/notion.svg" alt="Notion"><span>Notion</span></div>
+          <div class="stack-item"><img src="icon/midjourney.svg" alt="Midjourney"><span>Midjourney</span></div>
+          <div class="stack-item"><img src="icon/adobe-firefly.svg" alt="Adobe Firefly"><span>Adobe Firefly</span></div>
+          <div class="stack-item"><img src="icon/v0.svg" alt="v0"><span>v0</span></div>
+        </div>
+      </div>
+
+      <div class="stack-tier stack-tier--ux reveal">
+        <div class="stack-tier__head">
+          <h3 class="stack-tier__label">UX research &amp; testing tools</h3>
+          <span class="stack-tier__count">4</span>
+        </div>
+        <p class="stack-tier__sub">How I turn user behaviour into decisions.</p>
+        <div class="stack-grid">
+          <div class="stack-item"><img src="icon/maze.svg" alt="Maze"><span>Maze</span></div>
+          <div class="stack-item"><img src="icon/dovetail.svg" alt="Dovetail"><span>Dovetail</span></div>
+          <div class="stack-item"><img src="icon/hotjar.svg" alt="Hotjar"><span>Hotjar</span></div>
+          <div class="stack-item"><img src="icon/zapier.svg" alt="Zapier"><span>Zapier</span></div>
+        </div>
+      </div>
+
+      <div class="stack-tier stack-tier--devops reveal">
+        <div class="stack-tier__head">
+          <h3 class="stack-tier__label">DevOps &amp; CI/CD tools</h3>
+          <span class="stack-tier__count">7</span>
+        </div>
+        <p class="stack-tier__sub">Where design meets deployment.</p>
+        <div class="stack-grid">
+          <div class="stack-item"><img src="icon/azure-devops.svg" alt="Azure DevOps"><span>Azure DevOps</span></div>
+          <div class="stack-item"><img src="icon/jira.svg" alt="Jira"><span>Jira</span></div>
+          <div class="stack-item"><img src="icon/github.svg" alt="GitHub"><span>GitHub</span></div>
+          <div class="stack-item"><img src="icon/gitlab.svg" alt="GitLab"><span>GitLab</span></div>
+          <div class="stack-item"><img src="icon/bitbucket.svg" alt="Bitbucket"><span>Bitbucket</span></div>
+          <div class="stack-item"><img src="icon/jmeter.svg" alt="JMeter"><span>JMeter</span></div>
+          <div class="stack-item"><img src="icon/postman.svg" alt="Postman"><span>Postman</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section experience-section" id="experience">
+    <span class="deco deco--md deco--b deco--hide-mobile" style="top:18%; right:-3%; --deco-opacity:.13;" data-speed="30" aria-hidden="true"><img src="img/8.svg" alt="" loading="lazy" decoding="async"></span>
+    <span class="deco deco--sm deco--c" style="bottom:10%; left:1.5%;" data-speed="24" aria-hidden="true"><img src="img/4.svg" alt="" loading="lazy" decoding="async"></span>
+    <div class="container experience">
+      <div class="experience__head reveal">
+        <span class="section__eyebrow">04 — Career</span>
+        <h2 class="section__title">Experience</h2>
+        <p class="experience__intro">Flagship products shipped across complex, high-stakes domains — from POS and kiosk systems to enterprise CRM/ERP platforms and fintech banking solutions.</p>
+
+        <dl class="experience__stats">
+          <div class="experience__stat experience__stat--plus">
+            <dt class="experience__stat-num" data-count="7">0</dt>
+            <dd>years designing &amp; shipping</dd>
+          </div>
+          <div class="experience__stat experience__stat--plus">
+            <dt class="experience__stat-num" data-count="20">0</dt>
+            <dd>products in production</dd>
+          </div>
+          <div class="experience__stat">
+            <dt class="experience__stat-num" data-count="6">0</dt>
+            <dd>companies · 3 countries</dd>
+          </div>
+        </dl>
+
+        <div class="experience__domains-wrap">
+          <span class="experience__domains-label">Domains shipped in</span>
+          <ul class="experience__domains">
+            <li>CRM</li>
+            <li>ERP</li>
+            <li>Kiosk</li>
+            <li>KDS</li>
+            <li>CDS</li>
+            <li>POS</li>
+            <li>eCommerce</li>
+            <li>EdTech</li>
+            <li>FinTech</li>
+            <li>SaaS</li>
+          </ul>
+        </div>
+
+        <p class="experience__status"><span class="experience__status-dot" aria-hidden="true"></span>Open to select new work</p>
+      </div>
+
+      <div class="experience__list">
+        <div class="experience-item reveal">
+          <div class="experience-item__top">
+            <div class="experience-item__title">
+              <h3>UI/UX Engineer</h3>
+              <p class="experience-item__meta">at <span>ADN DigiNet Limited</span> · Mohakhali, Dhaka</p>
+            </div>
+            <span class="experience-item__date">Nov 2021 — Jul 2026 <em>· 4 yrs 9 mos</em></span>
+          </div>
+          <p class="experience-item__descr">Owning end-to-end product design for web and app products — wireframes, user flows and shared design systems — while working closely with engineering through implementation.</p>
+          <ul class="experience-item__tags">
+            <li>Product Strategy</li>
+            <li>Design Systems</li>
+            <li>Cross-functional Leadership</li>
+          </ul>
+        </div>
+
+        <div class="experience-item reveal">
+          <div class="experience-item__top">
+            <div class="experience-item__title">
+              <h3>UI/UX Engineer, Part-time</h3>
+              <p class="experience-item__meta">at <span>SE Plus Global</span> · Remote, Thailand-based</p>
+            </div>
+            <span class="experience-item__date">Oct 2024 — Dec 2025 <em>· 1 yr 2 mos</em></span>
+          </div>
+          <p class="experience-item__descr">Designed user-focused UI/UX for POS web and app products, turning Figma, XD and Sketch files into responsive, pixel-perfect builds with React.</p>
+          <ul class="experience-item__tags">
+            <li>POS Systems</li>
+            <li>React</li>
+            <li>Design-to-Code</li>
+          </ul>
+        </div>
+
+        <div class="experience-item reveal">
+          <div class="experience-item__top">
+            <div class="experience-item__title">
+              <h3>UI/UX Engineer</h3>
+              <p class="experience-item__meta">at <span>Streaming Plug</span> · Remote, Florida, USA</p>
+            </div>
+            <span class="experience-item__date">Jan 2021 — Jan 2022 <em>· 1 yr</em></span>
+          </div>
+          <p class="experience-item__descr">Created user-centered designs from research and feedback — wireframes, prototypes and mockups — while resolving UX and responsiveness issues.</p>
+          <ul class="experience-item__tags">
+            <li>User Research</li>
+            <li>Prototyping</li>
+          </ul>
+        </div>
+
+        <div class="experience-item reveal">
+          <div class="experience-item__top">
+            <div class="experience-item__title">
+              <h3>System Analyst</h3>
+              <p class="experience-item__meta">at <span>Sam Solutions</span> · Mirpur DOHS, Dhaka</p>
+            </div>
+            <span class="experience-item__date">Feb 2020 — Jan 2021 <em>· 1 yr</em></span>
+          </div>
+          <p class="experience-item__descr">Gathered requirements and specifications for new systems, validated results through testing, and handled Linux server administration.</p>
+          <ul class="experience-item__tags">
+            <li>Requirements Analysis</li>
+            <li>Systems</li>
+          </ul>
+        </div>
+
+        <div class="experience-item reveal">
+          <div class="experience-item__top">
+            <div class="experience-item__title">
+              <h3>Product Designer</h3>
+              <p class="experience-item__meta">at <span>Future Track IT</span> · Mirpur, Dhaka</p>
+            </div>
+            <span class="experience-item__date">Jan 2018 — Mar 2019 <em>· 1 yr 2 mos</em></span>
+          </div>
+          <p class="experience-item__descr">Built wireframes, user flows and high-fidelity UI from business requirements, contributing to shared design systems.</p>
+          <ul class="experience-item__tags">
+            <li>Wireframing</li>
+            <li>Design Systems</li>
+          </ul>
+        </div>
+
+        <div class="experience-item reveal">
+          <div class="experience-item__top">
+            <div class="experience-item__title">
+              <h3>Data Analyst, Map Data Manager &amp; Virtual Assistant</h3>
+              <p class="experience-item__meta">at <span>DailyTask24, MapQuest &amp; The ASPIRE Group</span></p>
+            </div>
+            <span class="experience-item__date">2015 — 2017 <em>· 2 yrs</em></span>
+          </div>
+          <p class="experience-item__descr">Web scraping and CRM operations at DailyTask24, map data verification at MapQuest, and virtual assistance for The ASPIRE Group.</p>
+          <ul class="experience-item__tags">
+            <li>Data Ops</li>
+            <li>CRM</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section" id="education">
+    <span class="deco deco--lg deco--a deco--hide-mobile" style="top:8%; right:-8%; --deco-opacity:.055;" data-speed="16" aria-hidden="true"><img src="img/7.svg" alt="" loading="lazy" decoding="async"></span>
+    <span class="deco deco--sm deco--b" style="bottom:14%; left:1%;" data-speed="30" aria-hidden="true"><img src="img/3.svg" alt="" loading="lazy" decoding="async"></span>
+    <div class="container education">
+      <div class="education__head reveal">
+        <span class="education__icon"><i class='bx bxs-graduation'></i></span>
+        <h2 class="section__title">Education</h2>
+        <span class="education__underline"></span>
+        <p class="education__intro">My academic background has equipped me with the foundation and mindset to solve real-world problems through design and technology.</p>
+      </div>
+
+      <div class="education__list">
+        <div class="education-card reveal">
+          <div class="education-card__top">
+            <span class="education-card__icon"><i class='bx bxs-bank'></i></span>
+            <div class="education-card__title">
+              <span class="education-card__tag">Education</span>
+              <h3 class="education-card__school">University of Development Alternative (UODA)</h3>
+              <p class="education-card__degree">B.Sc. in Computer Science &amp; Engineering</p>
+            </div>
+          </div>
+
+          <div class="education-card__details">
+            <div class="education-card__detail">
+              <span class="education-card__detail-icon"><i class='bx bx-book-open'></i></span>
+              <div>
+                <span class="education-card__detail-label">Field of Study</span>
+                <span class="education-card__detail-value">— Computer Science &amp; Engineering</span>
+              </div>
+            </div>
+            <div class="education-card__detail">
+              <span class="education-card__detail-icon"><i class='bx bx-map-pin'></i></span>
+              <div>
+                <span class="education-card__detail-label">Location</span>
+                <span class="education-card__detail-value">Dhaka, Bangladesh</span>
+              </div>
+            </div>
+            <div class="education-card__detail">
+              <span class="education-card__detail-icon"><i class='bx bxs-graduation'></i></span>
+              <div>
+                <span class="education-card__detail-label">Qualification</span>
+                <span class="education-card__detail-value">— Bachelor's Degree</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="education-quote reveal">
+          <span class="education-quote__mark">&ldquo;</span>
+          <div>
+            <p class="education-quote__text">Education is not the learning of facts, but the training of the mind to think.</p>
+            <span class="education-quote__author">— Albert Einstein</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact">
+    <span class="deco deco--md deco--a deco--hide-mobile" style="top:12%; left:-3%; --deco-opacity:.13;" data-speed="26" aria-hidden="true"><img src="img/6.svg" alt="" loading="lazy" decoding="async"></span>
+    <span class="deco deco--sm deco--c" style="bottom:16%; right:2%;" data-speed="32" aria-hidden="true"><img src="img/2.svg" alt="" loading="lazy" decoding="async"></span>
+    <div class="container contact__inner reveal">
+      <h2 class="contact__title">Open to new<br>opportunities</h2>
+      <p class="contact__lede">Currently open to full-time UI/UX roles and select freelance collaborations.</p>
+
+      <div class="contact__email-game" id="emailGame" aria-live="polite">
+        <button type="button" class="contact__email-btn" id="emailRevealBtn">
+          <i class='bx bxs-envelope'></i> Reveal my email
+        </button>
+      </div>
+      <p class="contact__email-hint">psst — it dodges the first couple of clicks</p>
+
+      <div class="contact__socials">
+        <a href="#" aria-label="Behance"><i class='bx bxl-behance'></i></a>
+        <a href="#" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+        <a href="#" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <span class="deco deco--sm deco--b deco--hide-mobile" style="top:-40%; right:4%; --deco-opacity:.1;" data-speed="18" aria-hidden="true"><img src="img/1.svg" alt="" loading="lazy" decoding="async"></span>
+  <div class="container footer__inner">
+    <a href="#top" class="logo">
+      <span class="logo__mark">RF</span>
+      <span class="logo__text">Rejoanul Ferdoush<em>Product Designer</em></span>
+    </a>
+    <p class="footer__copy">© <span id="year"></span> Rejoanul Ferdoush. All rights reserved.</p>
+    <a href="#top" class="btn-to-top" aria-label="Back to top"><i class='bx bx-up-arrow-alt'></i></a>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
