@@ -253,21 +253,79 @@ img.logo__mark{
   position:fixed; top:0; right:0; height:100vh; width:min(420px, 88vw); z-index:110;
   background: var(--surface); border-left:1px dashed var(--border);
   display:flex; flex-direction:column; justify-content:center;
-  padding: 60px 48px;
+  padding: clamp(20px, 7vh, 60px) 48px;
+  overflow:hidden;
   transform: translateX(100%);
   transition: transform .45s cubic-bezier(.22,.68,.36,1);
 }
 .nav.is-open{ transform: translateX(0); }
 .nav a{
   display:flex; align-items:baseline; gap:14px;
-  font-family: var(--ff-head); font-size: clamp(20px,3vw,28px); font-weight:600;
-  color: var(--text);
-  padding: 16px 0; border-bottom:1px dashed var(--border);
+  font-family: var(--ff-head); font-size: clamp(18px, 2.3vh, 26px); font-weight:600;
+  line-height:1.15; color: var(--text);
+  padding: clamp(7px, 2vh, 18px) 0; border-bottom:1px dashed var(--border);
 }
 .nav a:last-of-type{ border-bottom:none; }
 .nav a:hover{ color: var(--accent); }
 .nav__index{
   font-family: var(--ff-mono); font-size:12px; font-weight:400; color: var(--accent);
+}
+
+/* --- Off-canvas nav: social / "elsewhere" block --- */
+.nav__elsewhere{
+  margin-top: clamp(12px, 2.4vh, 26px); padding-top: clamp(12px, 2vh, 20px);
+  border-top: 1px dashed var(--border);
+  display:flex; flex-direction:column;
+}
+.nav__elsewhere-label{
+  font-family: var(--ff-mono); font-size:11px; letter-spacing:.08em;
+  color: var(--text-soft); margin-bottom: clamp(2px, .6vh, 6px);
+  opacity:0; transform: translateX(18px);
+  transition: opacity .5s ease, transform .5s cubic-bezier(.22,.68,.36,1);
+}
+.nav a.nav__social{
+  position:relative;
+  display:flex; align-items:center; gap:14px;
+  margin: 0 -14px; padding: clamp(8px, 1.5vh, 13px) 14px;
+  border-bottom: none;
+  color: var(--text);
+  opacity:0; transform: translateX(18px);
+  transition: opacity .5s ease, transform .5s cubic-bezier(.22,.68,.36,1), color .25s ease;
+}
+.nav__social::before{
+  content:""; position:absolute; inset:0; z-index:0;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  transform: scaleX(0); transform-origin: left center;
+  transition: transform .4s cubic-bezier(.22,.68,.36,1);
+}
+.nav a.nav__social:hover::before{ transform: scaleX(1); }
+.nav__social > *{ position:relative; z-index:1; }
+.nav__social-txt{ display:flex; flex-direction:column; line-height:1.15; }
+.nav__social-name{
+  font-family: var(--ff-head); font-size: clamp(17px, 2.1vh, 23px); font-weight:600;
+}
+.nav__social-handle{
+  font-family: var(--ff-mono); font-size:11px; color: var(--text-soft);
+  max-height:0; opacity:0; transform: translateY(3px);
+  transition: max-height .3s ease, opacity .3s ease, transform .3s ease;
+}
+.nav__social-arrow{
+  margin-left:auto; color: var(--accent);
+  transform: translate(-5px,5px); opacity:.4;
+  transition: transform .35s cubic-bezier(.22,.68,.36,1), opacity .35s ease;
+}
+.nav a.nav__social:hover{ color: var(--accent); }
+.nav__social:hover .nav__social-handle{ max-height:20px; opacity:1; transform: translateY(0); }
+.nav__social:hover .nav__social-arrow{ transform: translate(0,0); opacity:1; }
+
+.nav.is-open .nav__elsewhere-label{ opacity:1; transform:none; transition-delay:.32s; }
+.nav.is-open .nav__social:nth-child(2){ opacity:1; transform:none; transition-delay:.4s; }
+.nav.is-open .nav__social:nth-child(3){ opacity:1; transform:none; transition-delay:.48s; }
+
+@media (prefers-reduced-motion: reduce){
+  .nav__elsewhere-label, .nav__social, .nav__social-arrow,
+  .nav__social-handle, .nav__social::before{ transition:none; }
 }
 
 /* ===== Hero ===== */
@@ -1459,8 +1517,9 @@ img.logo__mark{
 
 /* ===== Responsive ===== */
 @media (max-width: 980px){
-  .nav{ width:min(360px,86vw); padding: 48px 32px; }
-  .nav a{ font-size: clamp(18px,4vw,22px); }
+  .nav{ width:min(360px,86vw); padding: clamp(24px, 6vh, 48px) 32px; }
+  .nav a{ font-size: clamp(17px, 2.2vh, 22px); }
+  .nav__social-name{ font-size: clamp(16px, 2vh, 21px); }
 
   /* Unwrap the split title — stack everything through the middle */
   .hero__stage{ display:flex; flex-direction:column; align-items:center; width:auto; }
