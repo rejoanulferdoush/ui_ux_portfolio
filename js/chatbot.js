@@ -412,7 +412,7 @@
       patterns: ['adn', 'diginet', 'adn diginet', 'current job', 'current company', 'where do you work now', 'latest job'],
       answer:
         '<p><strong>ADN DigiNet Limited</strong> — Mohakhali, Dhaka · <strong>UI/UX Engineer</strong> (Nov 2021 – Jul 2026).</p>' +
-        '<p>I own <strong>end-to-end product design for web and app products</strong>: discovery and requirements, wireframes and user flows, high-fidelity UI, and shared <strong>design systems</strong> — then I stay with engineering through implementation to keep the build on-spec. I also help set product direction across CRM, ERP, POS, kiosk and FinTech products.</p>' +
+        '<p>I own <strong>end-to-end product design for web and app products</strong>: discovery and requirements, wireframes and user flows, high-fidelity UI, and shared <strong>design systems</strong> — then I stay with engineering through implementation to keep the build on-spec. I also help set product direction across ERP, CRM, HRMS, POS, KDS/CDS, kiosk and FinTech products.</p>' +
         '<p>Focus: Product Strategy · Design Systems · Cross-functional Leadership.</p>',
       chips: [
         { label: 'Full timeline', q: 'tell me about your experience' },
@@ -473,14 +473,234 @@
         { label: 'Your education', q: 'tell me about your education' }
       ]
     },
+    /* ---- Domain expertise ---- */
+    {
+      id: 'dom-erp',
+      patterns: ['erp', 'enterprise resource planning', 'erp system', 'erp platform', 'resource planning'],
+      answer:
+        '<p>Yes — <strong>ERP</strong> is one of my core domains. I\'ve designed and front-end-built <strong>enterprise resource planning</strong> modules end to end: inventory &amp; procurement, finance and invoicing, sales orders, manufacturing / BOM, reporting and role-based admin.</p>' +
+        '<p>The hard part of ERP is <strong>density without chaos</strong> — I lean on a strict design system, smart data tables (bulk actions, inline edit, saved views, column control), predictable form patterns, and permission-aware screens so each role only sees what it needs.</p>',
+      chips: [
+        { label: 'CRM work?', q: 'have you worked on CRM' },
+        { label: 'Complex enterprise UX', q: 'how do you design complex enterprise software' },
+        { label: 'Design systems', q: 'tell me about design systems' }
+      ]
+    },
+    {
+      id: 'dom-crm',
+      patterns: ['crm', 'customer relationship management', 'crm system', 'crm platform', 'sales pipeline', 'lead management'],
+      answer:
+        '<p><strong>CRM</strong> — a domain I\'ve shipped in repeatedly, and where my career actually started (CRM operations, 2015–2017). I\'ve designed <strong>contact and account management, sales pipelines &amp; deal stages, activity timelines, lead scoring, task / email workflows and analytics dashboards</strong>.</p>' +
+        '<p>Focus: a fast <strong>global search</strong>, drag-and-drop pipeline boards, quick-add everywhere, and dashboards that answer &ldquo;what needs my attention today&rdquo; instead of just showing charts.</p>',
+      chips: [
+        { label: 'ERP work?', q: 'have you worked on ERP' },
+        { label: 'HRMS work?', q: 'have you worked on HRMS' },
+        { label: 'Dashboards', q: 'do you design dashboards' }
+      ]
+    },
+    {
+      id: 'dom-hrms',
+      patterns: ['hrms', 'hris', 'hr system', 'human resource', 'human resources', 'payroll', 'attendance', 'leave management', 'employee management', 'onboarding'],
+      answer:
+        '<p><strong>HRMS / HRIS</strong> — yes. I\'ve designed <strong>employee directories &amp; profiles, attendance and shift tracking, leave requests and approval flows, payroll views, onboarding checklists, performance reviews and org charts</strong>.</p>' +
+        '<p>HR software runs from a power admin to a first-day employee, so I design <strong>two experiences in one</strong>: a dense console for HR, and a simple self-service portal for staff — with approval flows that are obvious at a glance.</p>',
+      chips: [
+        { label: 'CRM work?', q: 'have you worked on CRM' },
+        { label: 'Enterprise UX', q: 'how do you design complex enterprise software' },
+        { label: 'Your experience', q: 'tell me about your experience' }
+      ]
+    },
+    {
+      id: 'dom-pos',
+      patterns: ['pos', 'point of sale', 'point-of-sale', 'pos system', 'pos app', 'retail pos', 'restaurant pos', 'billing screen', 'checkout screen', 'cashier'],
+      answer:
+        '<p><strong>POS</strong> is a strong area — I designed and front-end-built <strong>POS web and app products at SE Plus Global</strong>, plus more at ADN DigiNet.</p>' +
+        '<p>POS UX is about <strong>speed under pressure</strong>: large touch targets, a cart that never hides, one- or two-tap item entry, fast modifiers and combos, split / merge bills, offline-tolerant flows, and a checkout a new cashier can run on day one. Hardware counts too — receipt printers, cash drawers, scanners, card terminals.</p>',
+      chips: [
+        { label: 'What is a KDS?', q: 'what is a KDS' },
+        { label: 'What is a CDS?', q: 'what is a CDS' },
+        { label: 'Kiosk work?', q: 'have you designed a kiosk' }
+      ]
+    },
+    {
+      id: 'dom-kds',
+      patterns: ['kds', 'kitchen display', 'kitchen display system', 'kitchen screen', 'order display', 'expo screen', 'ticket rail', 'bump bar'],
+      answer:
+        '<p><strong>KDS — Kitchen Display System.</strong> The kitchen screen that replaces paper tickets: orders route to the right station with <strong>prep timers, colour-coded urgency, course firing, bump / recall and all-day item counts</strong>.</p>' +
+        '<p>I design KDS to be readable from across a hot, busy kitchen — <strong>huge type, high contrast, no tiny controls</strong>, driven by a bump bar or a few big touch zones. It pairs with the POS and CDS as one connected system.</p>',
+      chips: [
+        { label: 'What is a CDS?', q: 'what is a CDS' },
+        { label: 'POS work?', q: 'have you worked on POS' },
+        { label: 'Kiosk work?', q: 'have you designed a kiosk' }
+      ]
+    },
+    {
+      id: 'dom-cds',
+      patterns: ['cds', 'customer display', 'customer display system', 'customer facing display', 'second screen', 'pole display', 'order confirmation screen'],
+      answer:
+        '<p><strong>CDS — Customer Display System.</strong> The customer-facing screen at the counter: it mirrors the cart live as the cashier rings items, showing <strong>line items, discounts, tax and totals</strong>, then payment status, loyalty prompts and a thank-you / feedback QR.</p>' +
+        '<p>I design CDS to <strong>build trust and cut disputes</strong> — the customer sees exactly what\'s being charged, in clean large type, with room for promos or branding between transactions.</p>',
+      chips: [
+        { label: 'What is a KDS?', q: 'what is a KDS' },
+        { label: 'POS work?', q: 'have you worked on POS' },
+        { label: 'Kiosk work?', q: 'have you designed a kiosk' }
+      ]
+    },
+    {
+      id: 'dom-kiosk',
+      patterns: ['kiosk', 'self service', 'self-service', 'self ordering', 'self-order', 'self checkout', 'self-checkout', 'ordering kiosk', 'touchscreen kiosk', 'unattended'],
+      answer:
+        '<p><strong>Kiosk / self-service</strong> — yes, shipped as a flagship domain: self-order and self-checkout kiosks for retail and restaurants.</p>' +
+        '<p>Kiosks have their own rules — <strong>no keyboard, no help desk</strong>. Big obvious steps, a persistent progress and cart, forgiving touch targets, generous timeouts with an &ldquo;are you still there?&rdquo; reset, real accessibility (reachable height, screen-reader / high-contrast mode), attract-loop screens, and a flow a first-timer finishes without instructions.</p>',
+      chips: [
+        { label: 'POS work?', q: 'have you worked on POS' },
+        { label: 'What is a KDS?', q: 'what is a KDS' },
+        { label: 'Accessibility', q: 'do you do accessibility' }
+      ]
+    },
+    {
+      id: 'dom-saas',
+      patterns: ['saas', 'saas product', 'saas platform', 'b2b saas', 'subscription product', 'web app product', 'multi tenant', 'multi-tenant'],
+      answer:
+        '<p><strong>SaaS products</strong> — a big part of my work: multi-tenant B2B web apps from first screen to scale.</p>' +
+        '<p>I cover the whole SaaS surface: <strong>onboarding and empty states, role &amp; permission models, billing and plan limits, settings, in-app notifications, dashboards and reporting</strong> — plus the design system that keeps it coherent as it grows. I design it <em>and</em> build the React front-end, so it ships as drawn.</p>',
+      chips: [
+        { label: 'Design systems', q: 'tell me about design systems' },
+        { label: 'How good are you at React?', q: 'how good are you at react' },
+        { label: 'Your projects', q: 'show me your work' }
+      ]
+    },
+    {
+      id: 'dom-website',
+      patterns: ['website', 'websites', 'web design', 'landing page', 'landing pages', 'marketing site', 'marketing website', 'company website', 'corporate website', 'web page', 'webpage', 'design a website', 'build a website', 'portfolio site'],
+      answer:
+        '<p>Absolutely — <strong>website design and build</strong> is bread and butter: marketing and corporate sites, landing pages, product sites and portfolios.</p>' +
+        '<p>End to end: <strong>UX and IA, visual design, responsive layout, motion, SEO-friendly semantic markup, and the front-end build</strong> in HTML5 / CSS3 / Tailwind / React — or WordPress / Shopify when a CMS or store fits. This very site is a hand-built example: no template, custom motion, even the chat window.</p>',
+      chips: [
+        { label: 'Do you write code?', q: 'do you write code' },
+        { label: 'WordPress / Shopify?', q: 'do you use wordpress' },
+        { label: 'Your projects', q: 'show me your work' }
+      ]
+    },
+    {
+      id: 'enterprise-ux',
+      patterns: ['complex enterprise software', 'complex software', 'enterprise ux', 'enterprise software', 'data dense', 'data-dense', 'admin panel', 'admin panels', 'admin dashboard', 'back office', 'back-office', 'internal tools', 'internal tool', 'b2b'],
+      answer:
+        '<p>Designing <strong>dense, complex enterprise software</strong> is my sweet spot — ERP, CRM, HRMS, POS and monitoring tools like NMS and DCIM.</p>' +
+        '<p>How I keep complexity usable:</p>' +
+        '<ul>' +
+        '<li><strong>Systemise everything</strong> — one component library, strict tokens, repeatable table &amp; form patterns</li>' +
+        '<li><strong>Progressive disclosure</strong> — defaults up front, power in drawers and advanced views</li>' +
+        '<li><strong>Role-aware UI</strong> — the screen adapts to permissions instead of greying half of it out</li>' +
+        '<li><strong>Real data early</strong> — design with worst-case volumes, long strings and empty states, not lorem ipsum</li>' +
+        '<li><strong>Keyboard &amp; bulk actions</strong> — people who live in this software all day need speed</li>' +
+        '</ul>',
+      chips: [
+        { label: 'Design systems', q: 'tell me about design systems' },
+        { label: 'Dashboards', q: 'do you design dashboards' },
+        { label: 'Which domains?', q: 'what domains have you worked in' }
+      ]
+    },
+
+    /* ---- UI/UX craft ---- */
+    {
+      id: 'accessibility',
+      patterns: ['accessibility', 'a11y', 'wcag', 'accessible', 'screen reader', 'screen readers', 'contrast ratio', 'aria', 'keyboard navigation', 'inclusive design'],
+      answer:
+        '<p>Accessibility is built in, not bolted on. I work to <strong>WCAG 2.1 AA</strong>: semantic HTML, full <strong>keyboard operability</strong> with visible focus, correct <strong>ARIA</strong> only where needed, <strong>4.5:1</strong> text contrast, reduced-motion support, and real labels and error text on every form — tested with an actual screen reader.</p>' +
+        '<p>For kiosks I also handle reachable touch height plus high-contrast and text-scaling modes.</p>',
+      chips: [
+        { label: 'Responsive design', q: 'do you do responsive design' },
+        { label: 'Your approach', q: 'what is your approach' }
+      ]
+    },
+    {
+      id: 'responsive',
+      patterns: ['responsive', 'responsive design', 'mobile first', 'mobile-first', 'breakpoints', 'adaptive', 'mobile web', 'cross device', 'cross-device', 'fluid layout'],
+      answer:
+        '<p>Yes — every build is <strong>responsive and usually mobile-first</strong>: fluid grids and type, sensible breakpoints, touch-friendly targets, and layouts that <em>reflow</em> rather than just shrink. I test on real devices, not only the browser resizer — I cleared a whole backlog of responsiveness issues at Streaming Plug.</p>',
+      chips: [
+        { label: 'Accessibility', q: 'do you do accessibility' },
+        { label: 'Do you write code?', q: 'do you write code' }
+      ]
+    },
+    {
+      id: 'wireframing',
+      patterns: ['wireframe', 'wireframes', 'wireframing', 'low fidelity', 'low-fidelity', 'lo fi', 'sketching', 'paper prototype', 'blueprint'],
+      answer:
+        '<p><strong>Wireframing</strong> is where I lock structure and flow before visuals — low-fidelity layouts, content priority and navigation, reviewed fast and cheap so we change the plan on paper, not in production. I\'ve built wireframes from business requirements at Future Track IT, Streaming Plug and ADN DigiNet.</p>',
+      chips: [
+        { label: 'Prototyping', q: 'do you build prototypes' },
+        { label: 'Information architecture', q: 'do you do information architecture' }
+      ]
+    },
+    {
+      id: 'prototyping',
+      patterns: ['prototype', 'prototypes', 'prototyping', 'interactive prototype', 'clickable prototype', 'high fidelity', 'high-fidelity', 'figma prototype', 'proof of concept'],
+      answer:
+        '<p>I build <strong>interactive prototypes</strong> in Figma — real flows, states and transitions — for stakeholder sign-off and for <strong>usability testing in Maze</strong> before a line of production code. When a concept needs to genuinely feel real, I prototype it in <strong>code</strong> instead.</p>',
+      chips: [
+        { label: 'Usability testing', q: 'how do you do ux research' },
+        { label: 'Wireframing', q: 'tell me about wireframing' }
+      ]
+    },
+    {
+      id: 'interaction-design',
+      patterns: ['interaction design', 'motion design', 'micro interaction', 'micro-interaction', 'microinteractions', 'animation', 'animations', 'transitions', 'ux motion', 'ixd'],
+      answer:
+        '<p><strong>Interaction &amp; motion design</strong> — I treat motion as feedback, not decoration: transitions that show where things came from, loading and skeleton states, meaningful micro-interactions, and easing that feels responsive. Because I build the front-end, that motion survives to production instead of dying in handoff — and it always respects reduced-motion preferences.</p>',
+      chips: [
+        { label: 'Do you write code?', q: 'do you write code' },
+        { label: 'Design systems', q: 'tell me about design systems' }
+      ]
+    },
+    {
+      id: 'information-architecture',
+      patterns: ['information architecture', 'ia', 'navigation design', 'site map', 'sitemap', 'card sorting', 'taxonomy', 'content structure', 'menu structure', 'findability'],
+      answer:
+        '<p><strong>Information architecture</strong> — structuring content and navigation so people find things without thinking: card sorting and tree testing, clear taxonomy and labels, sitemaps and user flows mapped in Miro, and navigation patterns that scale. Critical in ERP / CRM where there are hundreds of screens.</p>',
+      chips: [
+        { label: 'Wireframing', q: 'tell me about wireframing' },
+        { label: 'Enterprise UX', q: 'how do you design complex enterprise software' }
+      ]
+    },
+    {
+      id: 'handoff',
+      patterns: ['handoff', 'hand off', 'hand-off', 'developer handoff', 'design handoff', 'redlines', 'dev handoff', 'design to development', 'spec sheet'],
+      answer:
+        '<p><strong>Handoff</strong> is barely a step for me because I\'m on both sides of it. Figma files with proper components, variants, auto-layout and named tokens; documented states, spacing and behaviour; and since I write the front-end I can hand off to <em>myself</em> or pair closely with the dev team and review the build against the design.</p>',
+      chips: [
+        { label: 'Design systems', q: 'tell me about design systems' },
+        { label: 'Do you write code?', q: 'do you write code' }
+      ]
+    },
+    {
+      id: 'usability-heuristics',
+      patterns: ['heuristic', 'heuristics', 'heuristic evaluation', 'ux audit', 'ux review', 'nielsen', 'ux principles', 'design critique', 'usability review'],
+      answer:
+        '<p>I run <strong>heuristic evaluations and UX audits</strong> against known principles — visibility of system status, match to the real world, user control and undo, consistency, error prevention, recognition over recall, and clear help / error messaging. A fast way to catch the obvious problems before spending research budget on them.</p>',
+      chips: [
+        { label: 'UX research', q: 'how do you do ux research' },
+        { label: 'Accessibility', q: 'do you do accessibility' }
+      ]
+    },
     {
       id: 'domains',
-      patterns: ['domain', 'domains', 'industry', 'industries', 'sectors', 'what fields', 'crm', 'erp', 'kiosk', 'kds', 'cds', 'pos', 'point of sale', 'ecommerce', 'e commerce', 'edtech', 'saas'],
+      patterns: ['domain', 'domains', 'industry', 'industries', 'sectors', 'sector', 'verticals', 'what fields', 'what industries', 'types of product', 'kinds of product', 'what products', 'ecommerce', 'e commerce', 'edtech'],
       answer:
-        '<p>Flagship products shipped across high-stakes domains: <strong>CRM, ERP, Kiosk, KDS, CDS, POS, eCommerce, EdTech, FinTech and SaaS</strong> — from POS and kiosk systems to enterprise CRM/ERP platforms and fintech banking solutions.</p>',
+        '<p>Flagship products shipped across high-stakes domains:</p>' +
+        '<ul>' +
+        '<li><strong>Enterprise:</strong> ERP, CRM, HRMS</li>' +
+        '<li><strong>Retail &amp; hospitality:</strong> POS, KDS (kitchen display), CDS (customer display), self-service Kiosk</li>' +
+        '<li><strong>Products:</strong> SaaS / B2B web apps, eCommerce, EdTech, websites &amp; landing pages</li>' +
+        '<li><strong>FinTech:</strong> digital banking &amp; branch-queue solutions</li>' +
+        '<li><strong>Infrastructure:</strong> network &amp; data-center monitoring (NMS, DCIM)</li>' +
+        '</ul>' +
+        '<p>Ask about any one — e.g. &ldquo;have you worked on POS?&rdquo; or &ldquo;what is a KDS?&rdquo;</p>',
       chips: [
-        { label: 'FinTech project', q: 'tell me about prime bank digital token' },
-        { label: 'Experience timeline', q: 'tell me about your experience' }
+        { label: 'POS / KDS / CDS', q: 'have you worked on POS' },
+        { label: 'ERP / CRM / HRMS', q: 'have you worked on ERP' },
+        { label: 'SaaS & websites', q: 'have you designed saas products' }
       ]
     },
 
@@ -502,11 +722,12 @@
       id: 'skills',
       patterns: ['skills', 'skillset', 'expertise', 'good at', 'specialize', 'specialise', 'strength', 'strengths', 'what can you do', 'services', 'speciality', 'specialty', 'what are you good at'],
       answer:
-        '<p>Core skills: <strong>UI design, UX research, wireframing, prototyping, design systems, interaction design, usability testing and accessibility</strong> — plus <strong>front-end (HTML5, CSS3, Tailwind, React)</strong> and design-to-code handoff.</p>',
+        '<p>Core skills: <strong>UI design, UX research, information architecture, wireframing, prototyping, design systems, interaction &amp; motion design, usability testing and accessibility (WCAG AA)</strong> — plus <strong>front-end (HTML5, CSS3, Tailwind, React)</strong> and design-to-code handoff.</p>' +
+        '<p>Applied across <strong>ERP, CRM, HRMS, POS, KDS, CDS, Kiosk, SaaS, FinTech, eCommerce and websites</strong> — mostly dense, complex software.</p>',
       chips: [
+        { label: 'Which domains?', q: 'what domains have you worked in' },
         { label: 'Design systems', q: 'tell me about design systems' },
-        { label: 'UX research', q: 'how do you do ux research' },
-        { label: 'Your approach', q: 'what is your approach' }
+        { label: 'UX research', q: 'how do you do ux research' }
       ]
     },
     {
@@ -619,7 +840,7 @@
     },
     {
       test: /(what can i ask|what should i ask|what do you know|what can you tell|show options|show menu|give me suggestions|list topics|help me)/i,
-      reply: '<p>You can ask me about:</p><ul><li>His <strong>projects</strong> — SAFE, Prime Bank Token, NMS, DCIM</li><li><strong>Experience</strong> and what he did at each company</li><li>His <strong>design approach</strong> and philosophy</li><li>Any <strong>tool</strong> in his stack — e.g. &ldquo;what do you use Zapier / Maze / Jira / JMeter for?&rdquo;</li><li><strong>Education</strong>, <strong>skills</strong>, <strong>design systems</strong></li><li><strong>Hiring</strong>, email, phone and social links</li></ul>',
+      reply: '<p>You can ask me about:</p><ul><li>His <strong>projects</strong> — SAFE, Prime Bank Token, NMS, DCIM</li><li><strong>Domains</strong> — ERP, CRM, HRMS, POS, KDS, CDS, Kiosk, SaaS, websites</li><li><strong>Experience</strong> and what he did at each company</li><li>His <strong>design approach</strong>, and UI/UX craft — accessibility, responsive, wireframing, prototyping, design systems, IA, motion</li><li>Any <strong>tool</strong> in his stack — e.g. &ldquo;what do you use Zapier / Maze / Jira / JMeter for?&rdquo;</li><li><strong>Education</strong>, <strong>skills</strong>, <strong>hiring</strong>, email, phone and social links</li></ul>',
       chips: defaultChips
     },
     {
@@ -637,11 +858,11 @@
   function defaultChips() {
     return [
       { label: 'Show me your projects', q: 'show me your work' },
+      { label: 'Domains & industries', q: 'what domains have you worked in' },
       { label: 'Your experience', q: 'tell me about your experience' },
       { label: 'Tools & tech', q: 'what tools do you use' },
       { label: 'Your design approach', q: 'what is your approach' },
-      { label: 'Hire / contact', q: 'are you available for hire' },
-      { label: 'Your education', q: 'tell me about your education' }
+      { label: 'Hire / contact', q: 'are you available for hire' }
     ];
   }
 
