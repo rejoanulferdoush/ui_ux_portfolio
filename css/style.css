@@ -1253,18 +1253,96 @@ img.logo__mark{
 }
 .contact__socials a:hover{ background: var(--text); color: var(--bg); border-color: var(--text); transform: translateY(-3px); }
 
-/* ===== Footer ===== */
-.site-footer{ border-top:1px solid var(--border); padding: 32px 0; }
-.footer__inner{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
-.footer__copy{ color: var(--text-soft); font-size:14px; }
-.btn-to-top{
-  width:52px; height:52px; border-radius:50%; border:2px solid var(--border);
-  display:flex; align-items:center; justify-content:center; font-size:20px;
-  background: rgba(127,127,127,0.08);
-  backdrop-filter: blur(6px);
-  transition: transform .3s ease, border-color .3s ease;
+/* ===== Footer =====
+   A proper sign-off, not a thin bar: a "seal" sig on the left (real avatar in a
+   spinning dashed ring, name wordmark with the surname in accent), a meta column
+   on the right, and a giant Oswald wordmark bleeding off both edges as a baseline
+   — the same faint-oversized-type motif used by the Education quote mark. */
+.site-footer{ border-top:1px dashed var(--border); padding: 56px 0 0; overflow:hidden; }
+.footer__inner{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:28px 32px;
+  flex-wrap:wrap; padding-bottom: 44px;
 }
-.btn-to-top:hover{ transform: scale(1.06); border-color: var(--accent); }
+
+/* --- Left: the signature --- */
+.footer__sig{ display:flex; align-items:center; gap:18px; }
+.footer__avatar{
+  position:relative; flex-shrink:0;
+  width:60px; height:60px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+}
+.footer__avatar img{
+  width:52px; height:52px; border-radius:50%;
+  background:#DCDBD6; object-fit:contain;
+  transition: transform .4s cubic-bezier(.22,.68,.36,1);
+}
+.footer__avatar-ring{
+  position:absolute; inset:0; border-radius:50%;
+  border:1px dashed color-mix(in srgb, var(--accent) 55%, var(--border));
+  animation: seal-spin 14s linear infinite;
+}
+.footer__sig:hover .footer__avatar img{ transform: scale(1.06) rotate(-4deg); }
+.footer__sig:hover .footer__avatar-ring{ animation-duration: 4s; border-color: var(--accent); }
+
+.footer__wordmark{ display:flex; flex-direction:column; gap:6px; line-height:1; }
+.footer__name{
+  font-family:"Oswald", var(--ff-head); font-weight:600; text-transform:uppercase;
+  font-size: clamp(1.25rem, 2.4vw, 1.7rem); letter-spacing:.02em; color: var(--text);
+}
+.footer__name em{ font-style:normal; color: var(--accent); }
+.footer__role{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family: var(--ff-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color: var(--text-soft);
+}
+.footer__role i{ font-size:6px; color: var(--accent); }
+
+/* --- Right: meta + back-to-top --- */
+.footer__meta{ display:flex; flex-direction:column; align-items:flex-end; gap:16px; }
+.footer__copy{ color: var(--text-soft); font-size:13px; letter-spacing:-.01em; }
+.btn-to-top{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:8px 8px 8px 18px; border-radius: var(--radius-pill);
+  border:1px dashed var(--border); color: var(--text-soft);
+  font-family: var(--ff-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  background: rgba(127,127,127,0.06);
+  backdrop-filter: blur(6px);
+  transition: color .3s ease, border-color .3s ease, background .3s ease;
+}
+.btn-to-top i{
+  display:flex; align-items:center; justify-content:center;
+  width:30px; height:30px; border-radius:50%; font-size:18px;
+  background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent);
+  transition: transform .3s ease, background .3s ease, color .3s ease;
+}
+.btn-to-top:hover{ color: var(--text); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.btn-to-top:hover i{ transform: translateY(-3px); background: var(--accent); color:#161616; }
+.btn-to-top:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+
+/* --- Baseline wordmark: giant outlined name bleeding off both edges --- */
+.footer__baseline{
+  display:flex; position:relative; overflow:hidden;
+  width:max-content;
+  border-top:1px dashed var(--border);
+  padding: 12px 0 max(8px, env(safe-area-inset-bottom));
+  font-family:"Oswald", var(--ff-head); font-weight:700; text-transform:uppercase;
+  font-size: clamp(2.6rem, 13.5vw, 9rem); line-height:1.06; letter-spacing:.01em;
+  white-space:nowrap;
+  color: transparent; -webkit-text-stroke:1px color-mix(in srgb, var(--text) 16%, transparent);
+  transition: -webkit-text-stroke-color .4s ease;
+}
+.footer__baseline span{ display:flex; align-items:center; padding: 0 .2em; }
+.footer__baseline span::after{
+  content:"\2217"; margin: 0 .32em; -webkit-text-stroke:0;
+  color: color-mix(in srgb, var(--accent) 45%, transparent); font-size:.5em;
+}
+.footer__baseline:hover{ -webkit-text-stroke-color: color-mix(in srgb, var(--accent) 55%, transparent); }
+
+@media (prefers-reduced-motion: no-preference){
+  .footer__baseline{ animation: footer-drift 30s linear infinite; }
+  .footer__baseline:hover{ animation-play-state: paused; }
+  @keyframes footer-drift{ to{ transform: translateX(-50%); } }
+}
 
 /* ===== Decorative shapes =====
    Scattered 3D rock / crystal renders (img/1–8.svg) drifting behind the content.
@@ -1381,4 +1459,9 @@ img.logo__mark{
   .education__list{ padding-left:24px; }
   .education-card::after{ left:-24px; }
   .education__list::after{ left:4px; }
+
+  .footer__inner{ flex-direction:column; align-items:center; text-align:center; gap:28px; }
+  .footer__sig{ flex-direction:column; text-align:center; gap:14px; }
+  .footer__wordmark{ align-items:center; }
+  .footer__meta{ align-items:center; }
 }
