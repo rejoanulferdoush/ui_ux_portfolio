@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=49">
+<link rel="stylesheet" href="css/style.css?v=51">
 </head>
 <body>
 
@@ -35,7 +35,7 @@
 
 <!-- Pinned actions: stay fixed on scroll and above the off-canvas nav -->
 <div class="header__actions">
-  <a href="resume.pdf" target="_blank" rel="noopener" class="nav__cta">Resume <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H14a1 1 0 0 1-1-1V3.5zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h4v2H8V9z"/></svg></a>
+  <a href="https://drive.google.com/file/d/1JJXKkSYM4AgdVSk-zB2cIQozw0DpkMTV/view?usp=sharing" target="_blank" rel="noopener" class="nav__cta">Resume <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H14a1 1 0 0 1-1-1V3.5zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h4v2H8V9z"/></svg></a>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
     <span></span><span></span><span></span>
   </button>
@@ -45,9 +45,9 @@
 <nav class="nav" id="mainNav">
   <a href="#work"><span class="nav__index">01</span>Work</a>
   <a href="#approach"><span class="nav__index">02</span>Approach</a>
-  <a href="#expertise"><span class="nav__index">03</span>Expertise</a>
+  <a href="#stack"><span class="nav__index">03</span>Stack</a>
   <a href="#experience"><span class="nav__index">04</span>Experience</a>
-  <a href="#journal"><span class="nav__index">05</span>Journal</a>
+  <a href="#education"><span class="nav__index">05</span>Education</a>
   <a href="#contact"><span class="nav__index">06</span>Contact</a>
 </nav>
 
@@ -97,9 +97,9 @@
           <div class="hero__portrait">
             <img src="img/mine.svg" alt="Portrait of Rejoanul Ferdoush">
             <span class="hero__pill"><span class="hero__pill-dot"></span>Available to collaborate</span>
-            <span class="hero__hi" title="Say hi!">
+            <a href="#contact" class="hero__hi" title="Say hi!" aria-label="Say hi — jump to contact">
               <span class="hero__hi-icon"><img src="icon/hand.svg" alt=""></span>
-            </span>
+            </a>
           </div>
         </div>
 
@@ -297,7 +297,7 @@
   </section>
 
   <!-- Stack -->
-  <section class="section">
+  <section class="section" id="stack">
     <span class="deco deco--md deco--c deco--hide-mobile" style="top:4%; right:-3.5%; --deco-opacity:.12;" data-speed="28" aria-hidden="true"><img src="img/5.svg" alt="" loading="lazy" decoding="async"></span>
     <span class="deco deco--sm deco--a" style="bottom:12%; left:0%;" data-speed="22" aria-hidden="true"><img src="img/3.svg" alt="" loading="lazy" decoding="async"></span>
     <div class="container">

@@ -173,13 +173,26 @@ img.logo__mark{
   display:flex; align-items:center; gap:14px;
   padding:0; border-radius: var(--radius-pill);
   border:1px solid transparent;
-  transition: top .3s ease, padding .3s ease, background .3s ease, border-color .3s ease;
+  transition: top .35s ease, padding .35s ease, background .35s ease,
+              border-color .35s ease, box-shadow .35s ease;
 }
 .header__actions.is-scrolled{
   top:14px; padding:6px;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: blur(10px);
-  border-color: var(--border);
+  /* Frosted capsule: lean on the blur, not on opacity, so it reads as glass
+     over the page rather than a solid black slab. A faint vertical tint plus a
+     top highlight gives the pill some dimension. */
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--bg) 46%, transparent),
+      color-mix(in srgb, var(--bg) 66%, transparent));
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+  border-color: color-mix(in srgb, var(--text) 16%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.09),
+    inset 0 -1px 0 rgba(0,0,0,.30),
+    0 10px 34px -12px rgba(0,0,0,.55),
+    0 0 0 1px color-mix(in srgb, var(--accent) 8%, transparent);
 }
 .nav__cta{
   display:inline-flex; align-items:center; gap:6px;
@@ -190,12 +203,39 @@ img.logo__mark{
 .nav__cta:hover{ opacity:.85; }
 
 .nav-toggle{
+  position:relative;
   width:44px; height:44px; border-radius:50%; border:1px dashed var(--border);
   background:none; cursor:pointer;
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
   flex-shrink:0;
+  transition: border-color .3s ease, background .3s ease;
 }
-.nav-toggle span{ width:16px; height:2px; background: var(--text); transition: transform .3s ease, opacity .3s ease; }
+/* Dashed ring echoes the rotating logo seal — parked when idle, spins on hover */
+.nav-toggle::before{
+  content:""; position:absolute; inset:-4px;
+  border:1px dashed transparent; border-radius:50%;
+  transition: border-color .3s ease;
+}
+.nav-toggle:hover{
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+.nav-toggle:hover::before{
+  border-color: color-mix(in srgb, var(--accent) 28%, transparent);
+  animation: seal-spin 9s linear infinite;
+}
+/* Staggered widths at rest read as "drawn", not a default hamburger; they
+   even out and pick up the accent on hover, then fold into the X when open. */
+.nav-toggle span{
+  width:18px; height:2px; border-radius:2px; background: var(--text);
+  transition: transform .35s cubic-bezier(.22,.68,.36,1),
+              opacity .3s ease, width .3s ease, background .3s ease;
+}
+.nav-toggle span:nth-child(2){ width:11px; }
+.nav-toggle span:nth-child(3){ width:15px; }
+.nav-toggle:hover span{ width:18px; background: var(--accent); }
+.nav-toggle.is-active{ border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+.nav-toggle.is-active span{ width:18px; background: var(--accent); }
 .nav-toggle.is-active span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
 .nav-toggle.is-active span:nth-child(2){ opacity:0; }
 .nav-toggle.is-active span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
@@ -335,6 +375,14 @@ img.logo__mark{
   background: var(--accent);
   box-shadow: 0 18px 40px rgba(0,0,0,.4);
   overflow:hidden;
+  cursor:pointer;
+  transition: transform .35s cubic-bezier(.22,.68,.36,1), box-shadow .35s ease;
+}
+.hero__hi:hover,
+.hero__hi:focus-visible{
+  transform: scale(1.06) rotate(-4deg);
+  box-shadow: 0 22px 52px rgba(0,0,0,.45),
+              0 0 0 6px color-mix(in srgb, var(--accent) 22%, transparent);
 }
 .hero__hi-icon{
   position:absolute; inset:0;
