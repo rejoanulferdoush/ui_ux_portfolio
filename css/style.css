@@ -23,7 +23,13 @@
 }
 
 *,*::before,*::after{ box-sizing: border-box; }
-html{ scroll-behavior: smooth; }
+/* Clip horizontal overflow at the root: the .deco shapes are deliberately
+   positioned to bleed past the page edges (right:-8%, left:-3%, …). Clipping on
+   <body> alone is not enough — the viewport takes its overflow from <html> — so
+   the page stayed ~115px wider than the viewport and every .container rendered
+   shifted left with a gap on the right. `clip` (not `hidden`) avoids creating a
+   scroll container, so position:sticky keeps working. */
+html{ scroll-behavior: smooth; overflow-x: clip; }
 body{
   margin:0;
   background: var(--bg);
@@ -33,7 +39,7 @@ body{
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   transition: background .4s ease, color .4s ease;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 /* ===== Grain overlay ===== */
 body::before {
@@ -697,7 +703,7 @@ img.logo__mark{
   background: color-mix(in srgb, white 3%, var(--bg));
 }
 .experience{
-  display:grid; grid-template-columns: minmax(180px, 260px) 1fr;
+  display:grid; grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
   gap: clamp(48px, 8vw, 100px);
   align-items:start;
 }
