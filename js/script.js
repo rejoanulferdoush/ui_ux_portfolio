@@ -56,6 +56,26 @@ document.addEventListener('DOMContentLoaded', () => {
     hero.addEventListener('mouseleave', () => { tiltX = 0; tiltY = 0; queueRender(); });
   }
 
+  /* Header identity: type the role line out like a terminal prompt, cycling roles */
+  const roleEl = document.querySelector('.logo__role-text');
+  if (roleEl) {
+    const roles = (roleEl.dataset.roles || '')
+      .split('|').map(s => s.trim()).filter(Boolean);
+    if (roles.length > 1 && !reduceMotion) {
+      let ri = 0, ci = roles[0].length, deleting = true;
+      const tick = () => {
+        const word = roles[ri];
+        ci += deleting ? -1 : 1;
+        roleEl.textContent = word.slice(0, ci);
+        let delay = deleting ? 45 : 95;
+        if (!deleting && ci === word.length) { deleting = true; delay = 1800; }
+        else if (deleting && ci === 0) { deleting = false; ri = (ri + 1) % roles.length; delay = 380; }
+        setTimeout(tick, delay);
+      };
+      setTimeout(tick, 2400);
+    }
+  }
+
   /* Featured Work: scroll-driven "wormhole" intensity.
      Bell curve (0 → 1 → 0) mapped to the section's pass through the viewport, so the
      effect builds as the visitor scrolls into the projects, peaks while centered, and
