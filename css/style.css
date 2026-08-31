@@ -1110,35 +1110,140 @@ img.logo__mark{
   font-family: var(--ff-mono); font-size:12px; letter-spacing:.05em; text-transform:uppercase; color: var(--text-soft);
 }
 
-/* ===== Contact ===== */
-.contact{ text-align:center; }
+/* ===== Contact =====
+   Set apart from Education with one calm, neutral hairline that fades out at the
+   page edges — plus a barely-there darkening at the very top so the panel has a
+   soft "lid". No accent, no glow: the "Get in touch" eyebrow does the louder
+   signalling. */
+.contact{
+  text-align:center;
+  position:relative;
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--bg-soft) 60%, transparent), transparent 22%);
+}
+.contact::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:1px;
+  background: linear-gradient(90deg, transparent, var(--border) 25%, var(--border) 75%, transparent);
+}
 .contact__title{ font-size: clamp(2rem,5vw,3.4rem); margin-bottom:16px; letter-spacing:-0.02em; }
-.contact__lede{ color: var(--text-soft); font-size:16px; margin: 0 auto 40px; max-width:44ch; }
+.contact__lede{ color: var(--text-soft); font-size:16px; margin: 0 auto 40px; max-width:46ch; }
 
 .contact__email-game{
   position:relative;
-  display:flex; align-items:center; justify-content:center;
-  width: min(360px, 92vw);
-  height: 90px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
+  width: min(440px, 92vw);
+  min-height: 96px;
   margin: 0 auto 12px;
 }
 .contact__email-btn{
-  position:absolute; top:0; left:0;
+  position:relative; isolation:isolate; overflow:hidden;
   display:inline-flex; align-items:center; gap:10px;
+  min-width: 232px; justify-content:center;
   font-family: var(--ff-head); font-size: clamp(1rem,2.2vw,1.3rem); font-weight:600;
   color: var(--accent);
-  background:none; cursor:pointer;
-  border: 2px dashed color-mix(in srgb, var(--accent) 50%, transparent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  cursor:pointer;
+  border: 2px dashed color-mix(in srgb, var(--accent) 45%, transparent);
   border-radius: var(--radius-pill);
-  padding: 14px 26px;
+  padding: 14px 28px;
   white-space:nowrap;
-  transition: transform .3s cubic-bezier(.22,.68,.36,1), border-color .3s ease, background .3s ease;
+  transition: border-color .3s ease, background .3s ease, transform .25s cubic-bezier(.22,.68,.36,1), box-shadow .3s ease;
 }
-.contact__email-btn:hover{ border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
-.contact__email-hint{ color: var(--text-soft); font-size:13px; margin-bottom:32px; }
+.contact__email-btn i{ font-size:1.1em; transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
+.contact__email-btn:hover{
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px -12px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+.contact__email-btn:hover i{ transform: rotate(-8deg) scale(1.08); }
+.contact__email-btn:active{ transform: translateY(0) scale(.97); }
+.contact__email-btn:focus-visible{ outline: 2px solid var(--accent); outline-offset: 4px; }
+
+/* Cursor-tracking glow living behind the label */
+.contact__email-btn-glow{
+  position:absolute; inset:-2px; z-index:-1; border-radius:inherit; pointer-events:none;
+  background: radial-gradient(90px 90px at var(--gx,50%) var(--gy,50%), color-mix(in srgb, var(--accent) 42%, transparent), transparent 70%);
+  opacity:0; transition: opacity .3s ease;
+}
+.contact__email-btn:hover .contact__email-btn-glow{ opacity:1; }
+
+.contact__email-btn.is-jolt{ animation: email-jolt .42s cubic-bezier(.36,.07,.19,.97); }
+@keyframes email-jolt{
+  10%,90%{ transform: translateX(-2px) rotate(-1deg); }
+  20%,80%{ transform: translateX(4px) rotate(1.5deg); }
+  30%,50%,70%{ transform: translateX(-7px) rotate(-2deg); }
+  40%,60%{ transform: translateX(7px) rotate(2deg); }
+}
+.contact__email-btn.is-cracked{
+  border-style:solid; border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  transform: scale(1.04);
+}
+
+/* Three progress pips */
+.contact__email-progress{ display:flex; gap:10px; }
+.contact__email-progress span{
+  width:9px; height:9px; border-radius:50%;
+  border:1.5px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  background:transparent;
+  transition: background .35s ease, transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease;
+}
+.contact__email-progress span.is-on{
+  background: var(--accent); transform: scale(1.35);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+/* Reveal spark burst */
+.contact__spark{
+  position:absolute; left:50%; top:32px; width:6px; height:6px; border-radius:50%;
+  background: var(--accent); pointer-events:none;
+  animation: email-spark var(--sd,600ms) ease-out forwards;
+}
+@keyframes email-spark{
+  0%{ transform: translate(-50%,-50%) scale(1); opacity:1; }
+  100%{ transform: translate(calc(-50% + var(--sx)), calc(-50% + var(--sy))) scale(0); opacity:0; }
+}
+
+.contact__email-hint{ color: var(--text-soft); font-size:13px; margin-bottom:32px; transition: color .3s ease; }
+.contact__email-game.is-revealed .contact__email{ animation: email-pop .5s cubic-bezier(.34,1.56,.64,1) both; }
 .contact__email{
-  font-family: var(--ff-head); font-size: clamp(1.4rem,3vw,2rem); font-weight:600; color: var(--accent);
+  font-family: var(--ff-head); font-size: clamp(0.95rem,4.3vw,1.7rem); font-weight:600; color: var(--accent);
   display:inline-block; border-bottom: 2px solid currentColor; padding-bottom:4px;
+  white-space:nowrap; max-width:100%;
+}
+.contact__phone{
+  display:inline-flex; align-items:center; gap:7px;
+  font-family: var(--ff-mono); font-size:13px; letter-spacing:.02em; color: var(--text-soft);
+  transition: color .25s ease;
+}
+.contact__phone i{ font-size:15px; color: var(--accent); }
+.contact__phone:hover{ color: var(--text); }
+.contact__email-game.is-revealed .contact__phone{ animation: email-pop .5s .06s cubic-bezier(.34,1.56,.64,1) both; }
+@keyframes email-pop{
+  0%{ transform: scale(.6); opacity:0; }
+  100%{ transform: scale(1); opacity:1; }
+}
+.contact__email-copy{
+  display:inline-flex; align-items:center; gap:7px;
+  font-family: var(--ff-mono); font-size:12px; letter-spacing:.04em; text-transform:uppercase;
+  color: var(--text-soft); background:transparent; cursor:pointer;
+  border:1px solid var(--border); border-radius: var(--radius-pill);
+  padding: 8px 16px;
+  transition: color .25s ease, border-color .25s ease, background .25s ease, transform .15s ease;
+}
+.contact__email-copy:hover{ color: var(--text); border-color: color-mix(in srgb, var(--accent) 55%, transparent); }
+.contact__email-copy:active{ transform: scale(.95); }
+.contact__email-copy.is-done{ color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.contact__email-game.is-revealed{ animation: email-fadein .4s ease both; }
+@keyframes email-fadein{ from{ opacity:0; transform: translateY(6px); } to{ opacity:1; transform:none; } }
+
+@media (prefers-reduced-motion: reduce){
+  .contact__email-btn.is-jolt{ animation: none; }
+  .contact__email-btn.is-jolt{ outline: 2px solid var(--accent); outline-offset: 3px; }
+  .contact__spark{ display:none; }
+  .contact__email-game.is-revealed .contact__email,
+  .contact__email-game.is-revealed .contact__phone,
+  .contact__email-game.is-revealed{ animation: none; }
 }
 .contact__socials{ display:flex; justify-content:center; gap:18px; font-size:22px; }
 .contact__socials a{

@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=43">
+<link rel="stylesheet" href="css/style.css?v=47">
 </head>
 <body>
 
@@ -604,20 +604,26 @@
     <span class="deco deco--md deco--a deco--hide-mobile" style="top:12%; left:-3%; --deco-opacity:.13;" data-speed="26" aria-hidden="true"><img src="img/6.svg" alt="" loading="lazy" decoding="async"></span>
     <span class="deco deco--sm deco--c" style="bottom:16%; right:2%;" data-speed="32" aria-hidden="true"><img src="img/2.svg" alt="" loading="lazy" decoding="async"></span>
     <div class="container contact__inner reveal">
-      <h2 class="contact__title">Open to new<br>opportunities</h2>
-      <p class="contact__lede">Currently open to full-time UI/UX roles and select freelance collaborations.</p>
+      <span class="section__eyebrow">Get in touch</span>
+      <h2 class="contact__title">Your next designer is<br>three clicks away</h2>
+      <p class="contact__lede">Available for full-time UI/UX roles and a couple of freelance slots for this quarter. Crack the button open and let's talk.</p>
 
       <div class="contact__email-game" id="emailGame" aria-live="polite">
-        <button type="button" class="contact__email-btn" id="emailRevealBtn">
-          <i class='bx bxs-envelope'></i> Reveal my email
+        <button type="button" class="contact__email-btn" id="emailRevealBtn" aria-describedby="emailHint">
+          <span class="contact__email-btn-glow" aria-hidden="true"></span>
+          <i class='bx bxs-lock-alt' id="emailRevealIcon"></i>
+          <span class="contact__email-btn-label" id="emailRevealLabel">Unlock my email</span>
         </button>
+        <div class="contact__email-progress" id="emailProgress" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
       </div>
-      <p class="contact__email-hint">psst — it dodges the first couple of clicks</p>
+      <p class="contact__email-hint" id="emailHint">psst — it stays put, but it takes three clicks to crack open</p>
 
       <div class="contact__socials">
-        <a href="#" aria-label="Behance"><i class='bx bxl-behance'></i></a>
-        <a href="#" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
-        <a href="#" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+        <a href="https://www.behance.net/rejoanulferdoush" target="_blank" aria-label="Behance"><i class='bx bxl-behance'></i></a>
+        <a href="https://www.linkedin.com/in/rejoanulferdoush/" target="_blank" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+        <a href="https://github.com/rejoanulferdoush" target="_blank" aria-label="GitHub"><i class='bx bxl-github'></i></a>
       </div>
     </div>
   </section>

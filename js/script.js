@@ -161,48 +161,119 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.6 });
   counters.forEach(el => counterObserver.observe(el));
 
-  /* Contact: "catch me" email reveal.
+  /* Contact: the email "vault".
      The real address never sits in the page source — it's assembled here on the
-     fly, only once the button has been "caught". Doubles as a small anti-scraping
+     fly, and only once the button has been cracked open with three clicks. The
+     button never moves: each click lands a satisfying jolt in place, fills one of
+     three progress pips, and swaps the label. Doubles as a small anti-scraping
      measure and a bit of personality instead of a flat mailto link. */
   const emailGame = document.getElementById('emailGame');
   const emailBtn = document.getElementById('emailRevealBtn');
   if (emailGame && emailBtn) {
     const email = ['rejoanulferdoush', 'gmail.com'].join('@');
-    const dodgeMessages = ['Nice try!', 'Almost!', 'So close!'];
-    const maxDodges = 2;
-    let dodges = 0;
+    const phoneRaw = '+8801627647942';
+    const phonePretty = '+880 1627-647942';
+    const label = document.getElementById('emailRevealLabel');
+    const icon = document.getElementById('emailRevealIcon');
+    const hint = document.getElementById('emailHint');
+    const pips = Array.from(document.querySelectorAll('#emailProgress span'));
+    const steps = [
+      { label: 'Almost…',   icon: 'bxs-lock-alt' },
+      { label: 'One more…',  icon: 'bxs-lock-open-alt' },
+    ];
+    const maxClicks = 3;
+    let clicks = 0;
+    let done = false;
 
-    const placeRandomly = () => {
-      const bounds = emailGame.getBoundingClientRect();
-      const btnRect = emailBtn.getBoundingClientRect();
-      const maxX = Math.max(bounds.width - btnRect.width, 0);
-      const maxY = Math.max(bounds.height - btnRect.height, 0);
-      emailBtn.style.transform = `translate(${Math.random() * maxX}px, ${Math.random() * maxY}px)`;
+    if (!reduceMotion) {
+      emailBtn.addEventListener('pointermove', (e) => {
+        const r = emailBtn.getBoundingClientRect();
+        emailBtn.style.setProperty('--gx', `${((e.clientX - r.left) / r.width) * 100}%`);
+        emailBtn.style.setProperty('--gy', `${((e.clientY - r.top) / r.height) * 100}%`);
+      });
+    }
+
+    const jolt = () => {
+      emailBtn.classList.remove('is-jolt');
+      void emailBtn.offsetWidth; // restart the animation
+      emailBtn.classList.add('is-jolt');
     };
-    const centerButton = () => {
-      const bounds = emailGame.getBoundingClientRect();
-      const btnRect = emailBtn.getBoundingClientRect();
-      emailBtn.style.transform = `translate(${(bounds.width - btnRect.width) / 2}px, ${(bounds.height - btnRect.height) / 2}px)`;
+
+    const sparkle = () => {
+      if (reduceMotion) return;
+      for (let i = 0; i < 14; i += 1) {
+        const dot = document.createElement('span');
+        dot.className = 'contact__spark';
+        const angle = (Math.PI * 2 * i) / 14 + Math.random() * 0.4;
+        const dist = 46 + Math.random() * 60;
+        dot.style.setProperty('--sx', `${Math.cos(angle) * dist}px`);
+        dot.style.setProperty('--sy', `${Math.sin(angle) * dist}px`);
+        dot.style.setProperty('--sd', `${420 + Math.random() * 360}ms`);
+        emailGame.appendChild(dot);
+        dot.addEventListener('animationend', () => dot.remove());
+      }
     };
-    centerButton();
 
     const revealEmail = () => {
-      emailGame.innerHTML = '';
-      const link = document.createElement('a');
-      link.href = `mailto:${email}`;
-      link.className = 'contact__email';
-      link.textContent = email;
-      emailGame.appendChild(link);
-      const hint = document.querySelector('.contact__email-hint');
-      if (hint) hint.textContent = 'Got it — say hello!';
+      done = true;
+      sparkle();
+      emailBtn.classList.add('is-cracked');
+      window.setTimeout(() => {
+        emailGame.innerHTML = '';
+        const link = document.createElement('a');
+        link.href = `mailto:${email}`;
+        link.className = 'contact__email';
+        link.textContent = email;
+
+        const copy = document.createElement('button');
+        copy.type = 'button';
+        copy.className = 'contact__email-copy';
+        copy.innerHTML = "<i class='bx bx-copy'></i><span>Copy email</span>";
+        copy.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(email);
+            copy.classList.add('is-done');
+            copy.innerHTML = "<i class='bx bx-check'></i><span>Copied</span>";
+            window.setTimeout(() => {
+              copy.classList.remove('is-done');
+              copy.innerHTML = "<i class='bx bx-copy'></i><span>Copy email</span>";
+            }, 2000);
+          } catch (err) {
+            copy.querySelector('span').textContent = 'Press Ctrl+C';
+          }
+        });
+
+        const phone = document.createElement('a');
+        phone.href = `tel:${phoneRaw}`;
+        phone.className = 'contact__phone';
+        phone.innerHTML = `<i class='bx bx-phone'></i>${phonePretty}`;
+
+        emailGame.appendChild(link);
+        emailGame.appendChild(phone);
+        emailGame.appendChild(copy);
+        requestAnimationFrame(() => emailGame.classList.add('is-revealed'));
+        if (hint) hint.textContent = "the vault's open — email or call, I reply fast.";
+      }, reduceMotion ? 0 : 480);
     };
 
     emailBtn.addEventListener('click', () => {
-      dodges += 1;
-      if (dodges > maxDodges) { revealEmail(); return; }
-      emailBtn.innerHTML = `<i class='bx bxs-envelope'></i> ${dodgeMessages[(dodges - 1) % dodgeMessages.length]}`;
-      placeRandomly();
+      if (done) return;
+      clicks += 1;
+      jolt();
+      if (pips[clicks - 1]) pips[clicks - 1].classList.add('is-on');
+
+      if (clicks >= maxClicks) {
+        if (label) label.textContent = 'Unlocked!';
+        if (icon) icon.className = 'bx bxs-lock-open-alt';
+        revealEmail();
+        return;
+      }
+
+      const step = steps[clicks - 1];
+      if (step) {
+        if (label) label.textContent = step.label;
+        if (icon) icon.className = `bx ${step.icon}`;
+      }
     });
   }
 
