@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prime Bank Digital Token · Case study — Rejoanul Ferdoush</title>
+<meta name="description" content="Case study: designing Prime Bank's Digital Token — a white-label queue product that moves your place in a branch line onto your phone. A four-step check-in, a live token, and the unglamorous screens that make a bank trust it.">
+<link rel="icon" type="image/png" href="assets/mine2.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=70">
+<link rel="stylesheet" href="css/prime-bank.css?v=2">
+</head>
+<body>
+
+<!-- Preloader -->
+<div class="preloader" id="preloader">
+  <div class="preloader__shapes" aria-hidden="true">
+    <span class="preloader__shape preloader__shape--1" style="top:12%; left:9%;"><img src="img/2.svg" alt="" decoding="async"></span>
+    <span class="preloader__shape preloader__shape--2" style="top:18%; right:11%;"><img src="img/6.svg" alt="" decoding="async"></span>
+    <span class="preloader__shape preloader__shape--3" style="bottom:16%; left:13%;"><img src="img/4.svg" alt="" decoding="async"></span>
+    <span class="preloader__shape preloader__shape--4" style="bottom:12%; right:9%;"><img src="img/3.svg" alt="" decoding="async"></span>
+    <span class="preloader__shape preloader__shape--5" style="top:46%; left:4%;"><img src="img/8.svg" alt="" decoding="async"></span>
+    <span class="preloader__shape preloader__shape--6" style="top:52%; right:5%;"><img src="img/5.svg" alt="" decoding="async"></span>
+  </div>
+  <div class="preloader__stage" id="preloaderStage">
+    <div class="preloader__glow"></div>
+    <img src="img/mine.svg" alt="" class="preloader__avatar">
+  </div>
+  <span class="preloader__label">Now serving — case study</span>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container header__inner">
+    <a href="index.html" class="logo">
+      <span class="logo__badge">
+        <img src="assets/mine2.png" alt="Rejoanul Ferdoush" class="logo__mark">
+        <span class="logo__status" title="Available for work"><span class="logo__status-dot" aria-hidden="true"></span></span>
+      </span>
+      <span class="logo__text">
+        <span class="logo__name">Rejoanul<br class="logo__name-break"> Ferdoush</span>
+        <span class="logo__role" aria-label="UI/UX Engineer">
+          <span class="logo__role-sigil" aria-hidden="true">~/</span><em class="logo__role-text" aria-hidden="true" data-roles="Case Study|Prime Bank · Digital Token|Queue product design|Design-to-Product">Case Study</em><span class="logo__caret" aria-hidden="true"></span>
+        </span>
+      </span>
+    </a>
+  </div>
+</header>
+
+<!-- Pinned actions -->
+<div class="header__actions">
+  <a href="https://drive.google.com/file/d/1JJXKkSYM4AgdVSk-zB2cIQozw0DpkMTV/view?usp=sharing" target="_blank" rel="noopener" class="nav__cta">Resume <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H14a1 1 0 0 1-1-1V3.5zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h4v2H8V9z"/></svg></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+
+<div class="nav-backdrop" id="navBackdrop"></div>
+<nav class="nav" id="mainNav">
+  <a href="#problem"><span class="nav__index">01</span>The wait</a>
+  <a href="#idea"><span class="nav__index">02</span>The reframe</a>
+  <a href="#checkin"><span class="nav__index">03</span>Four-step check-in</a>
+  <a href="#ticket"><span class="nav__index">04</span>The digital token</a>
+  <a href="#arrive"><span class="nav__index">05</span>Show on arrival</a>
+  <a href="#manage"><span class="nav__index">06</span>Trust screens</a>
+  <a href="#whitelabel"><span class="nav__index">07</span>One product, many banks</a>
+  <a href="#gallery"><span class="nav__index">08</span>Every screen</a>
+  <a href="#outcome"><span class="nav__index">09</span>Outcome</a>
+
+  <a href="projects.html" class="nav__home">
+    <svg class="nav__home-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H5M12 19l-7-7 7-7"/></svg>
+    Back to all projects
+  </a>
+  <a href="https://drive.google.com/file/d/1JJXKkSYM4AgdVSk-zB2cIQozw0DpkMTV/view?usp=sharing" target="_blank" rel="noopener" class="nav__resume">Resume <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H14a1 1 0 0 1-1-1V3.5zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h4v2H8V9z"/></svg></a>
+</nav>
+
+<!-- Side progress rail -->
+<nav class="pb-rail" id="pbRail" aria-label="Section progress">
+  <a href="#overview" data-label="Overview" class="is-active"></a>
+  <a href="#problem" data-label="The wait"></a>
+  <a href="#idea" data-label="The reframe"></a>
+  <a href="#checkin" data-label="Check-in"></a>
+  <a href="#ticket" data-label="The token"></a>
+  <a href="#arrive" data-label="On arrival"></a>
+  <a href="#manage" data-label="Trust screens"></a>
+  <a href="#whitelabel" data-label="Many banks"></a>
+  <a href="#gallery" data-label="Every screen"></a>
+  <a href="#outcome" data-label="Outcome"></a>
+</nav>
+
+<main class="pb" id="top">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="pb-hero" id="overview">
+    <div class="pb-hero__glow" aria-hidden="true"></div>
+    <span class="deco deco--md deco--c deco--hide-mobile" style="top:14%; right:2%; --deco-opacity:.10;" data-speed="30" aria-hidden="true"><img src="img/6.svg" alt="" decoding="async"></span>
+    <span class="deco deco--sm deco--a deco--hide-mobile" style="bottom:12%; left:2%; --deco-opacity:.12;" data-speed="22" aria-hidden="true"><img src="img/2.svg" alt="" decoding="async"></span>
+
+    <div class="container">
+      <div class="pb-hero__nav">
+        <a href="projects.html" class="pb-back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M12 19l-7-7 7-7"/></svg>
+          Back to all projects
+        </a>
+        <span class="pb-here">You&rsquo;re reading <b>a case study</b></span>
+      </div>
+
+      <div class="pb-hero__inner">
+        <div class="pb-hero__lede">
+          <span class="pb-kicker">Case study &mdash; FinTech &middot; queue product &middot; 2025</span>
+          <h1 class="pb-hero__title">Your place in line,<br><em>off the wall and onto your phone</em>.</h1>
+          <p class="pb-hero__sub">Prime Bank branches ran on paper tokens and a plastic chair. Digital Token lets a customer pick a branch, check in from the pavement in four taps, and walk in holding a live token &mdash; the same product a second bank runs under its own name.</p>
+
+          <dl class="pb-hero__meta">
+            <div><dt>Role</dt><dd>Product &amp; UI/UX design, design system</dd></div>
+            <div><dt>Platform</dt><dd>Responsive web app &middot; installable</dd></div>
+            <div><dt>Scope</dt><dd>30 screens &middot; white-label</dd></div>
+            <div><dt>Year</dt><dd>2025</dd></div>
+          </dl>
+
+          <a href="#checkin" class="pb-hero__try">
+            Take the check-in for a spin
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+        </div>
+
+        <div class="pb-hero__stage">
+          <!-- split-flap "now serving" board -->
+          <div class="pb-board" id="pbBoard" aria-label="Live branch display">
+            <div class="pb-board__row">
+              <span class="pb-board__label">Now serving</span>
+              <span class="pb-flap" data-flap="A-045" aria-live="polite">A-045</span>
+            </div>
+            <div class="pb-board__row pb-board__row--you">
+              <span class="pb-board__label">Your token</span>
+              <span class="pb-flap pb-flap--you" data-flap="A-074">A-074</span>
+            </div>
+            <div class="pb-board__foot">
+              <span id="pbAhead">29 ahead of you</span>
+              <button type="button" class="pb-board__adv" id="pbAdvance">Advance the queue &rarr;</button>
+            </div>
+          </div>
+
+          <div class="pb-phone">
+            <span class="pb-phone__halo" aria-hidden="true"></span>
+            <span class="pb-phone__notch" aria-hidden="true"></span>
+            <div class="pb-phone__screen">
+              <img src="projects/prime_bank_digital_token/token_generated_successfully.png" alt="Prime Bank Digital Token — token A-074 generated, 5 people ahead, notifications sent by SMS and email">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PROBLEM ============================ -->
+  <section class="pb-section" id="problem">
+    <div class="container">
+      <div class="pb-split">
+        <div>
+          <span class="pb-kicker">01 &mdash; The problem</span>
+          <h2 class="pb-h2">A number on a paper slip, and <em>nothing else to go on</em></h2>
+        </div>
+        <div class="pb-prose">
+          <p>Walk into a busy Prime Bank branch and the ritual is fixed: find the dispenser, tear a token, sit down, and watch a wall display you can barely read from the back row. You don&rsquo;t know how long it&rsquo;ll be, you can&rsquo;t step out for chai without gambling your place, and if you picked the wrong counter you find out at the front of the line.</p>
+          <p>The brief was a customer-facing product that keeps the fairness of a numbered queue but <strong>moves the waiting off the branch floor</strong> &mdash; and it had to look and feel like something a bank would put its name on, usable by someone standing on the street with one bar of signal.</p>
+          <p class="pb-pullquote">The token was never the problem. The <span>dead time around it</span> was.</p>
+        </div>
+      </div>
+
+      <!-- paper-receipt styled friction list -->
+      <div class="pb-receipt reveal">
+        <div class="pb-receipt__head">
+          <span>PRIME BANK &mdash; BANANI</span>
+          <span>THE OLD WAY</span>
+        </div>
+        <ul class="pb-receipt__list">
+          <li>
+            <span class="pb-receipt__n">01</span>
+            <div>
+              <h3>Blind wait</h3>
+              <p>The slip says <b>A&nbsp;238</b>. It doesn&rsquo;t say how many are ahead, how fast the counter is moving, or whether it&rsquo;s twenty minutes or ninety.</p>
+            </div>
+          </li>
+          <li>
+            <span class="pb-receipt__n">02</span>
+            <div>
+              <h3>Chained to the chair</h3>
+              <p>Leave the room and you risk missing your call. So people arrive early and burn an hour they can&rsquo;t get back.</p>
+            </div>
+          </li>
+          <li>
+            <span class="pb-receipt__n">03</span>
+            <div>
+              <h3>Wrong queue, found out late</h3>
+              <p>Deposit, loan, remittance and account opening are different desks. Pick wrong and the wait resets at the front.</p>
+            </div>
+          </li>
+          <li>
+            <span class="pb-receipt__n">04</span>
+            <div>
+              <h3>No memory of you</h3>
+              <p>The branch has no way to text you, tell you it&rsquo;s nearly your turn, or ask how the visit went once you leave.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="pb-receipt__tear" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ IDEA ============================ -->
+  <section class="pb-section" id="idea">
+    <div class="container">
+      <span class="pb-kicker">02 &mdash; The reframe</span>
+      <h2 class="pb-h2">Same queue. <em>The seat is now your phone.</em></h2>
+      <p class="pb-lead">One idea carries the whole product: a token is just a promise that you&rsquo;ll be served in order. That promise doesn&rsquo;t need a building to live in. Four rules kept it honest.</p>
+
+      <ol class="pb-rules reveal">
+        <li class="pb-rule">
+          <span class="pb-rule__no">01</span>
+          <h3>Bank-grade on first glance</h3>
+          <p>Deep Prime Bank blue, real spacing, no playful gimmicks. A customer has to believe this is the bank talking before they&rsquo;ll hand over a phone number.</p>
+          <span class="pb-rule__break"><span>Breaks when</span> it looks like a third-party app bolted on.</span>
+        </li>
+        <li class="pb-rule">
+          <span class="pb-rule__no">02</span>
+          <h3>Usable on the pavement</h3>
+          <p>Big targets, one decision per screen, a visible step counter, plain verbs. Designed for one thumb, bright sun and a slow connection.</p>
+          <span class="pb-rule__break"><span>Breaks when</span> a screen asks for two things at once.</span>
+        </li>
+        <li class="pb-rule">
+          <span class="pb-rule__no">03</span>
+          <h3>The branch keeps its word</h3>
+          <p>Live &ldquo;now serving&rdquo;, people ahead, an honest ETA, and an SMS before your turn. The number means something because the status is real-time.</p>
+          <span class="pb-rule__break"><span>Breaks when</span> the app and the counter disagree.</span>
+        </li>
+        <li class="pb-rule">
+          <span class="pb-rule__no">04</span>
+          <h3>One product, any bank</h3>
+          <p>Brand name, logo, colour and copy are theme values, not baked-in art. The same build already runs for a second bank under a different name.</p>
+          <span class="pb-rule__break"><span>Breaks when</span> a client needs a fork to rebrand.</span>
+        </li>
+      </ol>
+
+      <div class="pb-beforeafter reveal">
+        <div class="pb-ba pb-ba--before">
+          <span class="pb-ba__tag">Before</span>
+          <p>Arrive &rarr; tear paper &rarr; sit &rarr; guess &rarr; hope you&rsquo;re at the right desk</p>
+        </div>
+        <div class="pb-ba__arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+        <div class="pb-ba pb-ba--after">
+          <span class="pb-ba__tag">After</span>
+          <p>Pick branch &rarr; four taps &rarr; live token on your phone &rarr; SMS before your turn &rarr; walk to the right counter</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CHECK-IN (interactive) ============================ -->
+  <section class="pb-section" id="checkin">
+    <div class="container">
+      <span class="pb-kicker">03 &mdash; The flow, playable</span>
+      <h2 class="pb-h2">Four taps from the street to a <em>token in hand</em></h2>
+      <p class="pb-lead">Branch &rarr; who it&rsquo;s for &rarr; which service &rarr; how to reach you. A phone OTP sits between steps to prove the number is real, and nothing technical ever surfaces. Run it yourself &mdash; it&rsquo;s the real flow, no data leaves the page.</p>
+
+      <div class="pb-demo reveal">
+        <!-- interactive wizard -->
+        <div class="pb-wizard" id="pbWizard">
+          <div class="pb-wizard__top">
+            <span class="pb-wizard__step" id="pbStepLabel">Step 1 of 4</span>
+            <span class="pb-wizard__pct" id="pbPct">25% complete</span>
+          </div>
+          <div class="pb-wizard__bar" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i></div>
+
+          <div class="pb-wizard__stage">
+            <!-- step 1 -->
+            <div class="pb-wstep is-live" data-step="1">
+              <h3>Choose your branch</h3>
+              <p class="pb-wstep__hint">Sorted by how far you are and how the queue looks right now.</p>
+              <div class="pb-choices" data-group="branch">
+                <button type="button" data-value="Baridhara" data-eta="5" data-dist="2.3 km">Baridhara<small>2.3 km &middot; ~5 min wait</small></button>
+                <button type="button" data-value="Banani" data-eta="6" data-dist="2.8 km">Banani<small>2.8 km &middot; ~6 min wait</small></button>
+                <button type="button" data-value="Gulshan" data-eta="8" data-dist="3.1 km">Gulshan<small>3.1 km &middot; ~8 min wait</small></button>
+                <button type="button" data-value="Dhanmondi" data-eta="12" data-dist="4.5 km">Dhanmondi<small>4.5 km &middot; ~12 min wait</small></button>
+                <button type="button" data-value="Uttara" data-eta="15" data-dist="8.2 km">Uttara<small>8.2 km &middot; ~15 min wait</small></button>
+              </div>
+            </div>
+
+            <!-- step 2 -->
+            <div class="pb-wstep" data-step="2">
+              <h3>Who are you checking in for?</h3>
+              <p class="pb-wstep__hint">A <b>bearer</b> is someone helping another person &mdash; an elderly parent, say. It changes what the counter needs to see.</p>
+              <div class="pb-choices pb-choices--wide" data-group="visitor">
+                <button type="button" data-value="Customer"><i class="bx bx-user"></i>Customer<small>Checking in for yourself</small></button>
+                <button type="button" data-value="Bearer"><i class="bx bx-group"></i>Bearer<small>Helping someone else</small></button>
+              </div>
+            </div>
+
+            <!-- step 3 -->
+            <div class="pb-wstep" data-step="3">
+              <h3>What service do you need?</h3>
+              <p class="pb-wstep__hint">This routes you to the right desk &mdash; so the wait you see is the wait you&rsquo;ll actually get.</p>
+              <div class="pb-choices pb-choices--grid" data-group="service">
+                <button type="button" data-value="Deposit"><i class="bx bx-wallet"></i>Deposit</button>
+                <button type="button" data-value="Loan"><i class="bx bx-briefcase"></i>Loan</button>
+                <button type="button" data-value="Foreign Remittance"><i class="bx bx-globe"></i>Remittance</button>
+                <button type="button" data-value="FDR"><i class="bx bx-shield"></i>FDR</button>
+                <button type="button" data-value="Account Opening"><i class="bx bx-user-plus"></i>Account Opening</button>
+                <button type="button" data-value="Customer Services"><i class="bx bx-headphone"></i>Customer Services</button>
+              </div>
+            </div>
+
+            <!-- step 4 -->
+            <div class="pb-wstep" data-step="4">
+              <h3>How should the branch reach you?</h3>
+              <p class="pb-wstep__hint">One number, one name. The branch texts this line when you&rsquo;re three people out. Nothing here is stored &mdash; type anything.</p>
+              <label class="pb-field">
+                <span>Mobile number</span>
+                <input type="tel" id="pbPhone" placeholder="+880 1XXX XXXXXX" autocomplete="off" inputmode="tel">
+              </label>
+              <label class="pb-field">
+                <span>Full name</span>
+                <input type="text" id="pbName" placeholder="Your name" autocomplete="off">
+              </label>
+              <button type="button" class="pb-wizard__go" id="pbGenerate">
+                Generate my token
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="pb-wizard__nav">
+            <button type="button" class="pb-wizard__back" id="pbBack" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+              Back
+            </button>
+            <span class="pb-wizard__crumbs" id="pbCrumbs"></span>
+          </div>
+
+          <!-- generated ticket -->
+          <div class="pb-ticket" id="pbTicket" hidden>
+            <div class="pb-ticket__stub">
+              <span class="pb-ticket__ok"><i class="bx bx-check"></i> Token generated</span>
+              <span class="pb-ticket__branch" id="pbTkBranch">Baridhara Branch &middot; Deposit</span>
+              <span class="pb-ticket__label">Your token number</span>
+              <span class="pb-flap pb-flap--big" id="pbTkNum" data-flap="A-074">A-074</span>
+              <div class="pb-ticket__meta">
+                <div><b id="pbTkAhead">5</b><span>people ahead</span></div>
+                <div><b id="pbTkEta">~24 min</b><span>estimated wait</span></div>
+                <div><b>SMS + Email</b><span>you&rsquo;ll be notified</span></div>
+              </div>
+              <span class="pb-ticket__name" id="pbTkName">&mdash;</span>
+            </div>
+            <div class="pb-ticket__perf" aria-hidden="true"></div>
+            <div class="pb-ticket__foot">
+              <p>That&rsquo;s the whole thing. Now you can put the phone away and come back when it buzzes.</p>
+              <button type="button" class="pb-ticket__reset" id="pbReset"><i class="bx bx-revision"></i> Run it again</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- real screens beside it -->
+        <div class="pb-demo__proof">
+          <span class="pb-eyebrow">The real screens</span>
+          <div class="pb-proofstrip" id="pbProofStrip">
+            <figure class="pb-shot" data-full="projects/prime_bank_digital_token/first_screen-2.png" data-cap="Branch picker — distance and live wait side by side">
+              <img src="projects/prime_bank_digital_token/first_screen-2.png" alt="Branch selection with a searchable dropdown listing branches by distance and wait time" loading="lazy">
+              <figcaption>1 &middot; Branch</figcaption>
+            </figure>
+            <figure class="pb-shot" data-full="projects/prime_bank_digital_token/2nd_steps-1.png" data-cap="Customer or bearer — one tap, then it advances itself">
+              <img src="projects/prime_bank_digital_token/2nd_steps-1.png" alt="Step 2 of 4 — choosing Customer, checking in for yourself" loading="lazy">
+              <figcaption>2 &middot; Who for</figcaption>
+            </figure>
+            <figure class="pb-shot" data-full="projects/prime_bank_digital_token/3rd_steps.png" data-cap="Service list — the visitor-type chip stays pinned as context">
+              <img src="projects/prime_bank_digital_token/3rd_steps.png" alt="Step 3 of 4 — a list of banking services to route to the right desk" loading="lazy">
+              <figcaption>3 &middot; Service</figcaption>
+            </figure>
+            <figure class="pb-shot" data-full="projects/prime_bank_digital_token/otp_verification.png" data-cap="Phone OTP — six digits, big field, branch and service carried through">
+              <img src="projects/prime_bank_digital_token/otp_verification.png" alt="Verify your phone — six-digit OTP entry with a resend countdown" loading="lazy">
+              <figcaption>&middot; Verify</figcaption>
+            </figure>
+            <figure class="pb-shot" data-full="projects/prime_bank_digital_token/4th_steps-1.png" data-cap="Contact — everything chosen so far shown as chips above the fields">
+              <img src="projects/prime_bank_digital_token/4th_steps-1.png" alt="Step 4 of 4 — mobile number and full name, with Customer and Deposit chips" loading="lazy">
+              <figcaption>4 &middot; Contact</figcaption>
+            </figure>
+            <figure class="pb-shot" data-full="projects/prime_bank_digital_token/token_generated_successfully.png" data-cap="Token A-074 — number, now serving, people ahead, notifications sent">
+              <img src="projects/prime_bank_digital_token/token_generated_successfully.png" alt="Token generated successfully — A-074 with queue status and notification channels" loading="lazy">
+              <figcaption>&check; Token</figcaption>
+            </figure>
+          </div>
+          <p class="pb-demo__note">Drag the strip &middot; tap any screen to open it full-size.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ TICKET ANATOMY ============================ -->
+  <section class="pb-section" id="ticket">
+    <div class="container">
+      <div class="pb-split">
+        <div>
+          <span class="pb-kicker">04 &mdash; The digital token</span>
+          <h2 class="pb-h2">One screen that has to <em>replace the whole waiting room</em></h2>
+        </div>
+        <div class="pb-prose">
+          <p>Once the token exists, this is the only screen a customer needs. It answers the three questions the paper slip couldn&rsquo;t: <strong>what&rsquo;s my number, how many are ahead, and when should I start walking.</strong></p>
+          <p>The big number is set in mono so it reads like a real dispenser ticket. &ldquo;Now serving&rdquo; sits right under it for instant subtraction. Notifications are spelled out &mdash; SMS <em>and</em> email &mdash; so the customer trusts they can look away.</p>
+        </div>
+      </div>
+
+      <div class="pb-anatomy reveal">
+        <div class="pb-anatomy__media">
+          <div class="pb-shot" data-full="projects/prime_bank_digital_token/token_generated_successfully.png" data-cap="Digital token — the only screen you need after check-in">
+            <img src="projects/prime_bank_digital_token/token_generated_successfully.png" alt="The full digital token screen with token number, now serving, queue status and notification details" loading="lazy">
+          </div>
+        </div>
+        <ul class="pb-anatomy__notes">
+          <li><b>Token number</b>Mono, oversized, prefixed by service class (A / W / L) so counters and customers read the same code.</li>
+          <li><b>Now serving</b>Pulled live from the branch display &mdash; the one figure that turns a number into a wait.</li>
+          <li><b>People ahead</b>A plain count, not a percentage. &ldquo;5&rdquo; is something you can feel.</li>
+          <li><b>Notifications sent to</b>Both channels shown with the actual address, so &ldquo;we&rsquo;ll tell you&rdquo; is believable.</li>
+          <li><b>Stay in the area</b>A soft line, not a warning &mdash; it sets the expectation without nagging.</li>
+        </ul>
+      </div>
+
+      <!-- interactive: people ahead -> notification state -->
+      <div class="pb-nudge reveal">
+        <div>
+          <span class="pb-eyebrow">Try it &mdash; slide the queue</span>
+          <div class="pb-nudge__read"><span id="pbNudgeN">9</span><small> ahead</small></div>
+          <div class="pb-nudge__state" id="pbNudgeState">Relax</div>
+          <p class="pb-nudge__note" id="pbNudgeNote">Plenty of time. We&rsquo;ll send the first SMS when three people are ahead of you &mdash; until then the app can sit in your pocket.</p>
+          <input type="range" class="pb-range" id="pbNudgeRange" min="0" max="20" value="9" aria-label="People ahead of you in the queue">
+          <div class="pb-range__scale"><span>0 &middot; your turn</span><span>3 &middot; head over</span><span>20</span></div>
+          <div class="pb-queueviz" id="pbQueueViz" aria-hidden="true"></div>
+        </div>
+        <div class="pb-nudge__phone">
+          <div class="pb-shot" data-full="projects/prime_bank_digital_token/dashboard_after_login.png" data-cap="Active token on the dashboard — estimated wait and a See More drawer">
+            <img src="projects/prime_bank_digital_token/dashboard_after_login.png" alt="Dashboard showing an active token A-317 with estimated wait and quick actions" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ ARRIVE / DASHBOARD ============================ -->
+  <section class="pb-section" id="arrive">
+    <div class="container">
+      <span class="pb-kicker">05 &mdash; Show this on arrival</span>
+      <h2 class="pb-h2">The dashboard does <em>double duty</em></h2>
+      <p class="pb-lead">Before check-in it&rsquo;s a landing page. After check-in it&rsquo;s a pass you hold up at the door. Same screen, different temperature &mdash; and under it, a live board anyone can pull open.</p>
+
+      <div class="pb-feature">
+        <div class="pb-feature__media">
+          <div class="pb-shot" data-full="projects/prime_bank_digital_token/dashboard_before_login.png" data-cap="Dashboard before check-in — a calm three-step invitation">
+            <img src="projects/prime_bank_digital_token/dashboard_before_login.png" alt="Dashboard before check-in with a Create New Token call to action" loading="lazy">
+          </div>
+          <div class="pb-shot" data-full="projects/prime_bank_digital_token/dashboard_after_login.png" data-cap="Dashboard after check-in — token, estimated wait, Cancel and Share">
+            <img src="projects/prime_bank_digital_token/dashboard_after_login.png" alt="Dashboard after check-in with the active token expanded to show service, branch and distance" loading="lazy">
+          </div>
+        </div>
+        <div>
+          <h3>&ldquo;You&rsquo;re all set&rdquo; is the whole message</h3>
+          <p>The post-check-in state leads with a checkmark and the token, then folds the detail &mdash; service, branch, distance &mdash; behind <em>See More</em>. Share and Download sit right there because staff sometimes ask for a screenshot.</p>
+          <ul>
+            <li>Guest and checked-in states share layout, so nothing jumps when the token appears.</li>
+            <li>A <b>Cancel Token</b> button is always visible &mdash; never buried &mdash; but styled quiet, not alarming.</li>
+            <li>Below the fold: branch welcome, Prime Care contact, opening hours, and curated bank stories so the page isn&rsquo;t dead while you wait.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pb-feature pb-feature--flip">
+        <div class="pb-feature__media">
+          <div class="pb-shot" data-full="projects/prime_bank_digital_token/dashboard_before_login-1.png" data-cap="Serving Now — Token / Counter / Serving views with live updates">
+            <img src="projects/prime_bank_digital_token/dashboard_before_login-1.png" alt="Serving Now sheet showing next tokens for windows and lounges with a Live Updates badge" loading="lazy">
+          </div>
+        </div>
+        <div>
+          <h3>A live board, one swipe away</h3>
+          <p>Pull up <b>Serving Now</b> and you get the branch display in your hand &mdash; current token, next tokens per counter, split between <em>Window</em> and <em>Lounge</em>, with a green <em>Live Updates</em> pill so you know it&rsquo;s ticking.</p>
+          <ul>
+            <li>Three tabs &mdash; Token, Counter, Serving &mdash; for the three ways people ask &ldquo;where are we?&rdquo;</li>
+            <li>Empty state is honest: &ldquo;No tokens are being served right now.&rdquo;</li>
+            <li>Queue Status footer carries the running count: <b>4 in queue</b>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- content the wait leans on -->
+      <div class="pb-strip-block reveal">
+        <div class="pb-strip-block__head">
+          <span class="pb-eyebrow">While you wait</span>
+          <p>The branch fills the idle minutes with its own content &mdash; service explainers and CSR stories, not filler.</p>
+        </div>
+        <div class="pb-strip" id="pbWaitStrip">
+          <figure class="pb-shot" data-full="projects/prime_bank_digital_token/service_detail_screen_job_holder.png" data-cap="Service explainer — requirements toggle between Job Holder and Business Owner">
+            <img src="projects/prime_bank_digital_token/service_detail_screen_job_holder.png" alt="Credit card requirements explainer with a Job Holder / Business Owner toggle and a checklist" loading="lazy">
+            <figcaption><b>Service explainer</b>Requirements re-compute when you switch who you are.</figcaption>
+          </figure>
+          <figure class="pb-shot" data-full="projects/prime_bank_digital_token/service_detail_screen_business_man.png" data-cap="Same explainer, Business Owner path — different checklist">
+            <img src="projects/prime_bank_digital_token/service_detail_screen_business_man.png" alt="The same explainer with Business Owner selected, showing trade licence and transaction requirements" loading="lazy">
+            <figcaption><b>Same screen, other path</b>Trade licence, yearly turnover &mdash; the list rewrites itself.</figcaption>
+          </figure>
+          <figure class="pb-shot" data-full="projects/prime_bank_digital_token/post_detail_screen.png" data-cap="CSR story — Quick Facts card, then a Continue Reading fold">
+            <img src="projects/prime_bank_digital_token/post_detail_screen.png" alt="A CSR article about Prime Bank Eye Hospital with a Quick Facts card" loading="lazy">
+            <figcaption><b>Bank story</b>Quick-facts card up top, long read folded so it never wall-of-texts.</figcaption>
+          </figure>
+          <figure class="pb-shot" data-full="projects/prime_bank_digital_token/post_detail_screen-1.png" data-cap="CSR story expanded — related initiatives at the end">
+            <img src="projects/prime_bank_digital_token/post_detail_screen-1.png" alt="The CSR article expanded with full mission text and related initiatives" loading="lazy">
+            <figcaption><b>Expanded</b>Contact block and related stories keep the thread going.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ MANAGE / TRUST SCREENS ============================ -->
+  <section class="pb-section" id="manage">
+    <div class="container">
+      <div class="pb-split">
+        <div>
+          <span class="pb-kicker">06 &mdash; The unglamorous half</span>
+          <h2 class="pb-h2">The screens that make a bank <em>sign off on it</em></h2>
+        </div>
+        <div class="pb-prose">
+          <p>Anyone can design the happy path. What earns trust is the edge: cancelling cleanly, capping abuse, answering questions in-place, and closing the loop with feedback. These are the screens that got the most revisions.</p>
+        </div>
+      </div>
+
+      <div class="pb-tabs" id="pbTabs">
+        <div class="pb-tabs__bar" role="tablist" aria-label="Trust screens">
+          <button class="pb-tab is-on" role="tab" aria-selected="true" data-panel="pb-p-cancel">Cancel a token</button>
+          <button class="pb-tab" role="tab" aria-selected="false" data-panel="pb-p-help">Help center</button>
+          <button class="pb-tab" role="tab" aria-selected="false" data-panel="pb-p-feedback">Feedback</button>
+          <button class="pb-tab" role="tab" aria-selected="false" data-panel="pb-p-contact">Message the branch</button>
+        </div>
+
+        <div class="pb-tabs__panel is-on" id="pb-p-cancel" role="tabpanel">
+          <div class="pb-shot" data-full="projects/prime_bank_digital_token/dashboard_cancel_token_screen_with_selection.png" data-cap="Cancel Token — reason required, Keep Token is the safe default">
+            <img src="projects/prime_bank_digital_token/dashboard_cancel_token_screen_with_selection.png" alt="Cancel Token sheet with reason radio options and a red Confirm Cancellation button" loading="lazy">
+          </div>
+          <div>
+            <span class="pb-tabs__tag pb-tabs__tag--danger">Cancel</span>
+            <h3>Give up your place on purpose</h3>
+            <p>A red header signals weight without panic. The reason list (<em>changed my plans, wait too long, wrong service, other</em>) feeds the branch real data on why people leave. <b>Keep Token</b> is the low-friction way out; <b>Confirm Cancellation</b> is the one that costs you your spot, and it&rsquo;s coloured like it.</p>
+          </div>
+        </div>
+
+        <div class="pb-tabs__panel" id="pb-p-help" role="tabpanel" hidden>
+          <div class="pb-shot" data-full="projects/prime_bank_digital_token/faq_open-screen.png" data-cap="Help Center — searchable, one answer open, Contact support at the foot">
+            <img src="projects/prime_bank_digital_token/faq_open-screen.png" alt="Help Center bottom sheet with an expanded FAQ answer about holding one token per branch" loading="lazy">
+          </div>
+          <div>
+            <span class="pb-tabs__tag">Help</span>
+            <h3>Answers where the question happens</h3>
+            <p>A bottom sheet over the dashboard &mdash; never a new page &mdash; with search and single-open accordions. It also quietly does policy work: &ldquo;<em>each customer can hold one active token per branch to keep the queue fair.</em>&rdquo; The one-token rule is explained here instead of thrown as an error later.</p>
+          </div>
+        </div>
+
+        <div class="pb-tabs__panel" id="pb-p-feedback" role="tabpanel" hidden>
+          <div class="pb-shot" data-full="projects/prime_bank_digital_token/feedback%2012.png" data-cap="Rate your experience — five faces, live label, optional note">
+            <img src="projects/prime_bank_digital_token/feedback%2012.png" alt="Rate your experience sheet with an Excellent rating selected and a Submit Rating button" loading="lazy">
+          </div>
+          <div>
+            <span class="pb-tabs__tag pb-tabs__tag--good">Feedback</span>
+            <h3>Close the loop before they leave</h3>
+            <p>Five emoji, each with a word that appears the moment you tap &mdash; <em>Poor, Fair, Average, Good, Excellent</em>. The note is optional, <b>Skip for Now</b> is always there, and Submit only lights up once a face is chosen. Low effort on purpose: a rating you&rsquo;ll actually give beats a survey you won&rsquo;t.</p>
+          </div>
+        </div>
+
+        <div class="pb-tabs__panel" id="pb-p-contact" role="tabpanel" hidden>
+          <div class="pb-shot" data-full="projects/prime_bank_digital_token/contact_modal-1.png" data-cap="Send us a message — category, body, and branch / token / customer auto-attached">
+            <img src="projects/prime_bank_digital_token/contact_modal-1.png" alt="Send us a message sheet with a category dropdown and context chips for branch, token and customer" loading="lazy">
+          </div>
+          <div>
+            <span class="pb-tabs__tag">Contact</span>
+            <h3>A message that already knows the context</h3>
+            <p>Category dropdown, a body field with a character count, and three chips the customer never fills in &mdash; <b>Branch</b>, <b>Token</b>, <b>Customer</b> &mdash; attached automatically so the branch team isn&rsquo;t playing twenty questions. This shot is the same product running as <b>City Trust Bank</b>, which brings us to&hellip;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ WHITE-LABEL ============================ -->
+  <section class="pb-section" id="whitelabel">
+    <div class="container">
+      <span class="pb-kicker">07 &mdash; One product, many banks</span>
+      <h2 class="pb-h2">Built as a <em>theme, not a one-off</em></h2>
+      <p class="pb-lead">Every brand-specific value &mdash; name, mark, primary colour, support label, even the copy on the door &mdash; is a config value. Flip it and the whole product becomes a different bank. Try the switch.</p>
+
+      <div class="pb-wl reveal" id="pbWL" data-brand="prime">
+        <div class="pb-wl__toggle" role="group" aria-label="Preview the product for a different bank">
+          <button type="button" data-brand="prime" class="is-on">Prime Bank</button>
+          <button type="button" data-brand="city">City Trust Bank</button>
+        </div>
+
+        <div class="pb-wl__grid">
+          <div class="pb-wl__device">
+            <div class="pb-wl__topbar">
+              <span class="pb-wl__mark" aria-hidden="true"></span>
+              <span class="pb-wl__brand">
+                <b id="pbWLName">Prime Bank</b>
+                <i id="pbWLSub">Token Management</i>
+              </span>
+            </div>
+            <div class="pb-wl__screen">
+              <span class="pb-wl__pin" aria-hidden="true"><i class="bx bxs-map"></i></span>
+              <span class="pb-wl__ready">Ready when you are</span>
+              <strong>You&rsquo;re all set!</strong>
+              <span class="pb-wl__cta" id="pbWLCta">+ Create New Token</span>
+              <span class="pb-wl__care">Prime Care &middot; <span id="pbWLCare">16207</span></span>
+            </div>
+          </div>
+
+          <ul class="pb-wl__list">
+            <li><b>What changes</b>Brand name, logo mark, primary &amp; gradient colours, support line, branch list, welcome copy.</li>
+            <li><b>What doesn&rsquo;t</b>Every flow, component, state and accessibility decision &mdash; one codebase, one design system.</li>
+            <li><b>Why it matters</b>A new bank is an onboarding config and a colour, not a design and build project.</li>
+            <li><b>Proof</b>The Help, Feedback and Message screens in this case study were captured from the <em>City Trust Bank</em> instance &mdash; same pixels, different name.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ GALLERY ============================ -->
+  <section class="pb-section" id="gallery">
+    <div class="container">
+      <span class="pb-kicker">Every screen</span>
+      <h2 class="pb-h2">The full set</h2>
+      <p class="pb-lead">Check-in, verification, the token, both dashboard states, the live board, and every sheet that hangs off them. Click any to open it.</p>
+
+      <div class="pb-gallery">
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/first_screen.png" data-cap="Join the queue — branch picker, empty"><img src="projects/prime_bank_digital_token/first_screen.png" alt="Join the queue remotely landing screen" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/first_screen-1.png" data-cap="Join the queue — branch selected"><img src="projects/prime_bank_digital_token/first_screen-1.png" alt="Branch selected showing Baridhara Branch with a wait estimate" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/first_screen-2.png" data-cap="Branch dropdown open"><img src="projects/prime_bank_digital_token/first_screen-2.png" alt="Open branch dropdown listing five branches by distance and wait" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/2nd_steps.png" data-cap="Step 2 — who for, nothing chosen"><img src="projects/prime_bank_digital_token/2nd_steps.png" alt="Step 2 of 4 with Customer and Bearer options unselected" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/2nd_steps-1.png" data-cap="Step 2 — Customer selected"><img src="projects/prime_bank_digital_token/2nd_steps-1.png" alt="Step 2 of 4 with Customer selected" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/3rd_steps.png" data-cap="Step 3 — service list"><img src="projects/prime_bank_digital_token/3rd_steps.png" alt="Step 3 of 4 service selection list" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/otp_verification.png" data-cap="Verify phone — OTP entry"><img src="projects/prime_bank_digital_token/otp_verification.png" alt="Verify your phone OTP screen" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/otp_verification-1.png" data-cap="Verify phone — alternate state"><img src="projects/prime_bank_digital_token/otp_verification-1.png" alt="OTP verification screen, second state" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/4th_steps.png" data-cap="Step 4 — contact, empty"><img src="projects/prime_bank_digital_token/4th_steps.png" alt="Step 4 of 4 contact information, empty fields" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/4th_steps-1.png" data-cap="Step 4 — contact, filled"><img src="projects/prime_bank_digital_token/4th_steps-1.png" alt="Step 4 of 4 contact information with name filled in" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/token_generated_successfully.png" data-cap="Token generated — A-074"><img src="projects/prime_bank_digital_token/token_generated_successfully.png" alt="Token generated successfully screen" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/dashboard_before_login.png" data-cap="Dashboard — before check-in"><img src="projects/prime_bank_digital_token/dashboard_before_login.png" alt="Dashboard before check-in" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/dashboard_before_login-1.png" data-cap="Serving Now board"><img src="projects/prime_bank_digital_token/dashboard_before_login-1.png" alt="Serving Now board with next tokens" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/dashboard_after_login.png" data-cap="Dashboard — active token, expanded"><img src="projects/prime_bank_digital_token/dashboard_after_login.png" alt="Dashboard with active token expanded" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/dashboard_after_login-1.png" data-cap="Dashboard — active token, collapsed"><img src="projects/prime_bank_digital_token/dashboard_after_login-1.png" alt="Dashboard with active token collapsed" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/dashboard_storage_display.png" data-cap="Serving Now — token view"><img src="projects/prime_bank_digital_token/dashboard_storage_display.png" alt="Serving Now token view" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/dashboard_cancel_token_screen.png" data-cap="Cancel Token — no reason chosen"><img src="projects/prime_bank_digital_token/dashboard_cancel_token_screen.png" alt="Cancel Token sheet with no reason selected" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/dashboard_cancel_token_screen_with_selection.png" data-cap="Cancel Token — reason chosen"><img src="projects/prime_bank_digital_token/dashboard_cancel_token_screen_with_selection.png" alt="Cancel Token sheet with a reason selected" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/faq-screen.png" data-cap="Help Center — all collapsed"><img src="projects/prime_bank_digital_token/faq-screen.png" alt="Help Center with all questions collapsed" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/faq_open-screen.png" data-cap="Help Center — one answer open"><img src="projects/prime_bank_digital_token/faq_open-screen.png" alt="Help Center with one answer expanded" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/feedback%207.png" data-cap="Feedback — nothing chosen yet"><img src="projects/prime_bank_digital_token/feedback%207.png" alt="Rate your experience with no rating selected" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/feedback%2010.png" data-cap="Feedback — Average"><img src="projects/prime_bank_digital_token/feedback%2010.png" alt="Rate your experience with Average selected" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/feedback%2012.png" data-cap="Feedback — Excellent"><img src="projects/prime_bank_digital_token/feedback%2012.png" alt="Rate your experience with Excellent selected" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/contact_modal.png" data-cap="Send us a message — empty"><img src="projects/prime_bank_digital_token/contact_modal.png" alt="Send us a message sheet, empty" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/contact_modal_open_dropdown.png" data-cap="Send us a message — category open"><img src="projects/prime_bank_digital_token/contact_modal_open_dropdown.png" alt="Send us a message with the category dropdown open" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/contact_modal-1.png" data-cap="Send us a message — filled"><img src="projects/prime_bank_digital_token/contact_modal-1.png" alt="Send us a message with a category and body filled in" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/service_detail_screen_job_holder.png" data-cap="Service explainer — Job Holder"><img src="projects/prime_bank_digital_token/service_detail_screen_job_holder.png" alt="Service explainer, Job Holder path" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/service_detail_screen_business_man.png" data-cap="Service explainer — Business Owner"><img src="projects/prime_bank_digital_token/service_detail_screen_business_man.png" alt="Service explainer, Business Owner path" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/post_detail_screen.png" data-cap="Bank story — folded"><img src="projects/prime_bank_digital_token/post_detail_screen.png" alt="CSR bank story, folded" loading="lazy"></div>
+        <div class="pb-shot" data-full="projects/prime_bank_digital_token/post_detail_screen-1.png" data-cap="Bank story — expanded"><img src="projects/prime_bank_digital_token/post_detail_screen-1.png" alt="CSR bank story, expanded" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ OUTCOME ============================ -->
+  <section class="pb-section" id="outcome">
+    <div class="container">
+      <div class="pb-outcome">
+        <div>
+          <span class="pb-kicker">Where it landed</span>
+          <h2 class="pb-h2">A platform, not a <em>bank app</em></h2>
+          <p class="pb-lead">Digital Token shipped as one responsive product with a themable brand layer, a four-step check-in that a first-timer clears without help, and a token screen that stands in for the whole waiting room.</p>
+        </div>
+        <ul class="pb-outcome__list">
+          <li><i class="bx bxs-check-circle"></i><span><strong>The wait left the building.</strong> Customers hold a live number, get an SMS before their turn, and spend the wait wherever they want.</span></li>
+          <li><i class="bx bxs-check-circle"></i><span><strong>Right desk, first time.</strong> Service routing at check-in means the ETA you see is the ETA you get.</span></li>
+          <li><i class="bx bxs-check-circle"></i><span><strong>Bank-ready trust screens.</strong> Clean cancellation, a one-token fairness rule, in-context help and closed-loop feedback.</span></li>
+          <li><i class="bx bxs-check-circle"></i><span><strong>Resold without a redesign.</strong> A second bank runs the identical build under its own brand from config alone.</span></li>
+        </ul>
+      </div>
+
+      <div class="pb-prose reveal" style="margin-top:clamp(48px,8vw,90px);max-width:64ch;">
+        <span class="pb-eyebrow">What I&rsquo;d push further</span>
+        <p style="margin-top:16px;">Next: a live map pin so the branch knows roughly how far out you are and can pace the call, plus a &ldquo;running late&rdquo; tap that moves you a few slots instead of forcing a cancel &mdash; keeping the queue fair without punishing traffic.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CTA ============================ -->
+  <div class="pb-cta">
+    <div class="container">
+      <h2>Want the walkthrough?</h2>
+      <p>Happy to screen-share the flows, the design-system file, and how the white-label theming is wired.</p>
+      <div class="pb-cta__row">
+        <a href="index.html#contact" class="pb-btn pb-btn--primary">
+          Start a conversation
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="projects.html" class="pb-btn pb-btn--ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M12 19l-7-7 7-7"/></svg>
+          Back to all projects
+        </a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <span class="deco deco--sm deco--b deco--hide-mobile" style="top:14%; right:5%; --deco-opacity:.1;" data-speed="18" aria-hidden="true"><img src="img/1.svg" alt="" loading="lazy" decoding="async"></span>
+  <div class="container footer__inner">
+    <a href="#top" class="footer__sig" aria-label="Rejoanul Ferdoush — back to top">
+      <span class="footer__avatar">
+        <img src="assets/mine2.png" alt="Rejoanul Ferdoush" loading="lazy" decoding="async">
+        <span class="footer__avatar-ring" aria-hidden="true"></span>
+      </span>
+      <span class="footer__wordmark">
+        <span class="footer__name">Rejoanul <em>Ferdoush</em></span>
+        <span class="footer__role"><i class='bx bxs-circle' aria-hidden="true"></i> UI/UX Engineer — Dhaka, BD</span>
+      </span>
+    </a>
+
+    <div class="footer__meta">
+      <p class="footer__copy">© <span id="year">2026</span> — hand-built, no templates.</p>
+      <a href="#top" class="btn-to-top" aria-label="Back to top">
+        <span class="btn-to-top__label">Back to top</span>
+        <i class='bx bx-up-arrow-alt' aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+
+  <a href="#top" class="footer__baseline" aria-hidden="true" tabindex="-1">
+    <span>Rejoanul Ferdoush</span>
+    <span>Rejoanul Ferdoush</span>
+    <span>Rejoanul Ferdoush</span>
+    <span>Rejoanul Ferdoush</span>
+  </a>
+</footer>
+
+<!-- Lightbox -->
+<div class="pb-lb" id="pbLb" aria-hidden="true">
+  <button class="pb-lb__close" id="pbLbClose" aria-label="Close">&times;</button>
+  <button class="pb-lb__nav pb-lb__nav--prev" id="pbLbPrev" aria-label="Previous">&#8249;</button>
+  <button class="pb-lb__nav pb-lb__nav--next" id="pbLbNext" aria-label="Next">&#8250;</button>
+  <img id="pbLbImg" src="" alt="">
+  <span class="pb-lb__cap" id="pbLbCap"></span>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+<script src="js/script.js?v=3"></script>
+<script src="js/prime-bank.js?v=2"></script>
+</body>
+</html>
