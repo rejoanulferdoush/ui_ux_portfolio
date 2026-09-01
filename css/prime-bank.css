@@ -141,7 +141,46 @@
 .pb-hero__try svg{ width:16px; height:16px; animation:pb-bob 1.8s ease-in-out infinite; }
 @keyframes pb-bob{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(4px) } }
 
-.pb-hero__stage{ position:relative; justify-self:center; width:min(360px,80vw); }
+.pb-hero__stage{
+  position:relative; justify-self:center;
+  width:min(392px,84vw);
+  display:grid; grid-template-columns:1fr;
+}
+
+/* the same token, two places — captioned cards joined by a seam */
+.pb-stagecard{ margin:0; position:relative; }
+.pb-stagecard__tag{
+  display:flex; align-items:center; gap:8px;
+  font-family:var(--ff-mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--text-soft); margin:0 0 10px 2px;
+}
+.pb-stagecard__tag::before{
+  content:""; width:16px; height:1px;
+  background:color-mix(in srgb, var(--pb-brand) 60%, transparent);
+}
+.pb-stagecard--wall{ z-index:2; transform:rotate(-1.5deg); transform-origin:left center; }
+.pb-stagecard--hand{
+  z-index:1; justify-self:end; width:min(214px,60%);
+  transform:rotate(3deg); transform-origin:right center;
+}
+.pb-stagecard--hand .pb-stagecard__tag{ justify-content:flex-end; margin:0 4px 10px 0; }
+.pb-stagecard--hand .pb-stagecard__tag::before{ order:2; }
+
+.pb-stageseam{
+  display:flex; align-items:center; gap:10px;
+  padding:15px 4px 13px;
+}
+.pb-stageseam__line{
+  flex:1; height:1px;
+  background:repeating-linear-gradient(90deg,
+    color-mix(in srgb, var(--pb-brand) 55%, transparent) 0 5px, transparent 5px 10px);
+}
+.pb-stageseam__chip{
+  flex-shrink:0; font-family:var(--ff-mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--pb-brand); padding:5px 11px; border-radius:var(--radius-pill);
+  border:1px solid color-mix(in srgb, var(--pb-brand) 35%, var(--pb-line));
+  background:color-mix(in srgb, var(--pb-brand) 10%, transparent);
+}
 
 /* split-flap board */
 .pb-board{
@@ -186,11 +225,10 @@
 
 /* hero phone */
 .pb-phone{
-  position:relative; margin:-42px auto 0; width:min(240px,62vw);
-  border-radius:40px; background:#0a0a0b; padding:9px;
+  position:relative; margin:0; width:100%;
+  border-radius:38px; background:#0a0a0b; padding:8px;
   border:1px solid rgba(255,255,255,.13);
-  box-shadow:0 40px 90px -22px rgba(0,0,0,.8);
-  transform:rotate(3deg);
+  box-shadow:0 34px 80px -24px rgba(0,0,0,.8);
 }
 .pb-phone__screen{ position:relative; border-radius:31px; overflow:hidden; aspect-ratio:1179/2400; background:#0c2a63; }
 .pb-phone__screen img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; }
@@ -674,6 +712,10 @@ figure.pb-shot::after{ top:8px; bottom:auto; }
 }
 @media (max-width:560px){
   .pb-flap{ font-size:18px; }
+  .pb-hero__stage{ width:min(340px,90vw); }
+  .pb-stagecard--wall,.pb-stagecard--hand{ transform:none; }
+  .pb-stagecard--hand{ justify-self:center; width:min(220px,74%); }
+  .pb-stagecard--hand .pb-stagecard__tag{ justify-content:center; margin:0 0 10px; }
   .pb-choices--grid{ grid-template-columns:repeat(2,1fr); }
   .pb-proofstrip figure{ flex-basis:112px; }
   .pb-strip figure{ flex-basis:160px; }

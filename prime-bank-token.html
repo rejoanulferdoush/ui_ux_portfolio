@@ -110,7 +110,7 @@
 
       <div class="pb-hero__inner">
         <div class="pb-hero__lede">
-          <span class="pb-kicker">Case study &mdash; FinTech &middot; queue product &middot; 2025</span>
+          <span class="pb-kicker">Case study &mdash; FinTech &middot; queue product</span>
           <h1 class="pb-hero__title">Your place in line,<br><em>off the wall and onto your phone</em>.</h1>
           <p class="pb-hero__sub">Prime Bank branches ran on paper tokens and a plastic chair. Digital Token lets a customer pick a branch, check in from the pavement in four taps, and walk in holding a live token &mdash; the same product a second bank runs under its own name.</p>
 
@@ -118,7 +118,6 @@
             <div><dt>Role</dt><dd>Product &amp; UI/UX design, design system</dd></div>
             <div><dt>Platform</dt><dd>Responsive web app &middot; installable</dd></div>
             <div><dt>Scope</dt><dd>30 screens &middot; white-label</dd></div>
-            <div><dt>Year</dt><dd>2025</dd></div>
           </dl>
 
           <a href="#checkin" class="pb-hero__try">
@@ -128,29 +127,41 @@
         </div>
 
         <div class="pb-hero__stage">
-          <!-- split-flap "now serving" board -->
-          <div class="pb-board" id="pbBoard" aria-label="Live branch display">
-            <div class="pb-board__row">
-              <span class="pb-board__label">Now serving</span>
-              <span class="pb-flap" data-flap="A-045" aria-live="polite">A-045</span>
+          <!-- the same token, two places -->
+          <figure class="pb-stagecard pb-stagecard--wall">
+            <figcaption class="pb-stagecard__tag">On the branch wall</figcaption>
+            <div class="pb-board" id="pbBoard" aria-label="Live branch display">
+              <div class="pb-board__row">
+                <span class="pb-board__label">Now serving</span>
+                <span class="pb-flap" data-flap="A-045" aria-live="polite">A-045</span>
+              </div>
+              <div class="pb-board__row pb-board__row--you">
+                <span class="pb-board__label">Your token</span>
+                <span class="pb-flap pb-flap--you" data-flap="A-074">A-074</span>
+              </div>
+              <div class="pb-board__foot">
+                <span id="pbAhead">29 ahead of you</span>
+                <button type="button" class="pb-board__adv" id="pbAdvance">Advance the queue &rarr;</button>
+              </div>
             </div>
-            <div class="pb-board__row pb-board__row--you">
-              <span class="pb-board__label">Your token</span>
-              <span class="pb-flap pb-flap--you" data-flap="A-074">A-074</span>
-            </div>
-            <div class="pb-board__foot">
-              <span id="pbAhead">29 ahead of you</span>
-              <button type="button" class="pb-board__adv" id="pbAdvance">Advance the queue &rarr;</button>
-            </div>
+          </figure>
+
+          <div class="pb-stageseam" aria-hidden="true">
+            <span class="pb-stageseam__line"></span>
+            <span class="pb-stageseam__chip">A-074 &middot; same token</span>
+            <span class="pb-stageseam__line"></span>
           </div>
 
-          <div class="pb-phone">
-            <span class="pb-phone__halo" aria-hidden="true"></span>
-            <span class="pb-phone__notch" aria-hidden="true"></span>
-            <div class="pb-phone__screen">
-              <img src="projects/prime_bank_digital_token/token_generated_successfully.png" alt="Prime Bank Digital Token — token A-074 generated, 5 people ahead, notifications sent by SMS and email">
+          <figure class="pb-stagecard pb-stagecard--hand">
+            <figcaption class="pb-stagecard__tag">In your hand</figcaption>
+            <div class="pb-phone">
+              <span class="pb-phone__halo" aria-hidden="true"></span>
+              <span class="pb-phone__notch" aria-hidden="true"></span>
+              <div class="pb-phone__screen">
+                <img src="projects/prime_bank_digital_token/token_generated_successfully.png" alt="Prime Bank Digital Token — token A-074 generated, 5 people ahead, notifications sent by SMS and email">
+              </div>
             </div>
-          </div>
+          </figure>
         </div>
       </div>
     </div>
