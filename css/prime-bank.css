@@ -884,10 +884,80 @@ figure.pb-shot::after{ top:8px; bottom:auto; }
    OUTCOME + CTA
    ============================================================ */
 .pb-outcome{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,64px); align-items:start; }
-.pb-outcome__list{ display:flex; flex-direction:column; gap:16px; }
-.pb-outcome__list li{ display:flex; gap:12px; font-size:14.5px; line-height:1.7; color:var(--text-soft); }
-.pb-outcome__list i{ color:var(--pb-serve); font-size:20px; flex-shrink:0; }
-.pb-outcome__list strong{ color:var(--text); }
+
+/* ---------- outcome — "the results ticket" ----------
+   A-074, the number the reader followed all page, comes back as a
+   printed receipt: what actually shipped — stamped, filed, done. */
+.pb-landed{
+  position:relative; align-self:start;
+  background:var(--pb-panel);
+  border:1px solid var(--pb-line);
+  border-radius:16px;
+  box-shadow:0 34px 70px -34px rgba(0,0,0,.65);
+}
+.pb-landed__stub{
+  position:relative;
+  background:var(--pb-paper); color:var(--pb-paper-ink);
+  border-radius:16px 16px 0 0;
+  padding:22px 24px 20px;
+}
+.pb-landed__brand{ display:block; font-family:var(--ff-head); font-weight:600; font-size:15px; letter-spacing:-.01em; }
+.pb-landed__meta{ margin-top:10px; display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; }
+.pb-landed__no{ font-family:var(--ff-mono); font-size:13px; letter-spacing:.08em; }
+.pb-landed__where{ font-family:var(--ff-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:rgba(28,35,48,.55); }
+.pb-landed__stamp{
+  position:absolute; right:16px; top:16px;
+  font-family:var(--ff-head); font-weight:700; font-size:clamp(15px,3.4vw,20px);
+  letter-spacing:.14em; text-transform:uppercase; color:#0a7d3c;
+  border:2.5px solid #0a7d3c; border-radius:7px; padding:4px 12px;
+  transform:rotate(-9deg); opacity:.82;
+}
+/* perforation tear line */
+.pb-landed__perf{
+  height:0;
+  border-top:2px dashed var(--pb-line);
+}
+
+.pb-landed__lines{ padding:6px 24px; }
+.pb-landed__lines li{
+  display:grid; grid-template-columns:76px 1fr; gap:16px; align-items:baseline;
+  padding:15px 0; border-bottom:1px dashed var(--pb-line);
+  font-size:13.5px; line-height:1.62; color:var(--text-soft);
+}
+.pb-landed__lines li:last-child{ border-bottom:0; }
+.pb-landed__k{
+  font-family:var(--ff-mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--pb-brand);
+}
+.pb-landed__v strong{ color:var(--text); font-weight:600; }
+
+.pb-landed__code{
+  display:flex; align-items:center; justify-content:space-between; gap:18px;
+  padding:16px 24px 20px; border-top:1px dashed var(--pb-line);
+}
+.pb-landed__bars{
+  height:32px; flex:1; max-width:190px;
+  background:repeating-linear-gradient(90deg,
+    var(--text) 0 2px, transparent 2px 5px,
+    var(--text) 5px 6px, transparent 6px 11px);
+  opacity:.45;
+}
+.pb-landed__sig{
+  font-family:var(--ff-mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--text-soft); text-align:right;
+}
+
+/* print-in on reveal: card rises, lines drop in one by one, stamp thuds down */
+.pb-landed.reveal .pb-landed__lines li{ opacity:0; transform:translateY(6px); }
+.pb-landed.reveal.in-view .pb-landed__lines li{ animation:pb-landed-line .42s ease forwards; }
+.pb-landed.reveal.in-view .pb-landed__lines li:nth-child(1){ animation-delay:.16s; }
+.pb-landed.reveal.in-view .pb-landed__lines li:nth-child(2){ animation-delay:.26s; }
+.pb-landed.reveal.in-view .pb-landed__lines li:nth-child(3){ animation-delay:.36s; }
+.pb-landed.reveal.in-view .pb-landed__lines li:nth-child(4){ animation-delay:.46s; }
+@keyframes pb-landed-line{ to{ opacity:1; transform:none; } }
+.pb-landed.reveal .pb-landed__stamp{ opacity:0; transform:rotate(-9deg) scale(1.45); }
+.pb-landed.reveal.in-view .pb-landed__stamp{ animation:pb-landed-stamp .32s cubic-bezier(.3,1.5,.5,1) .6s forwards; }
+@keyframes pb-landed-stamp{ to{ opacity:.82; transform:rotate(-9deg) scale(1); } }
 
 .pb-cta{ border-top:1px solid var(--pb-line); padding:clamp(64px,10vw,120px) 0; text-align:center; background:radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--pb-brand) 12%, transparent), transparent 60%); }
 .pb-cta h2{ font-family:var(--ff-head); font-size:clamp(28px,4vw,44px); }
@@ -957,6 +1027,7 @@ figure.pb-shot::after{ top:8px; bottom:auto; }
   .pb-life__cell{ border-right:0; border-bottom:1px solid var(--pb-line); }
   .pb-life__cell:last-child{ border-bottom:0; }
   .pb-outcome{ grid-template-columns:1fr; }
+  .pb-landed{ max-width:480px; }
 }
 @media (max-width:560px){
   .pb-flap{ font-size:18px; }
@@ -977,6 +1048,8 @@ figure.pb-shot::after{ top:8px; bottom:auto; }
     margin-top:12px; padding-top:12px; border-top:1px dashed var(--pb-line);
   }
   .pb-rulerow__action{ order:-1; }
+  .pb-landed__lines li{ grid-template-columns:1fr; gap:5px; }
+  .pb-landed__stamp{ font-size:14px; padding:3px 9px; }
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -988,4 +1061,6 @@ figure.pb-shot::after{ top:8px; bottom:auto; }
   .pb-life__dot,.pb-life__prog{ transition:none; }
   .pb-integrity__title::before{ animation:none; }
   .pb-rulerow.is-shake{ animation:none; }
+  .pb-landed.reveal .pb-landed__lines li{ opacity:1; transform:none; animation:none; }
+  .pb-landed.reveal .pb-landed__stamp{ opacity:.82; transform:rotate(-9deg); animation:none; }
 }
