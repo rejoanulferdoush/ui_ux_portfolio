@@ -624,7 +624,7 @@
 .pb-proofstrip::-webkit-scrollbar,.pb-strip::-webkit-scrollbar{ height:6px; }
 .pb-proofstrip::-webkit-scrollbar-thumb,.pb-strip::-webkit-scrollbar-thumb{ background:var(--pb-line); border-radius:3px; }
 .pb-proofstrip.is-dragging,.pb-strip.is-dragging{ cursor:grabbing; scroll-snap-type:none; }
-.pb-proofstrip figure{ flex:0 0 132px; scroll-snap-align:start; margin:0; }
+.pb-proofstrip figure{ flex:0 0 200px; scroll-snap-align:start; margin:0; }
 .pb-proofstrip figcaption{ font-family:var(--ff-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-soft); margin-top:8px; }
 .pb-demo__note{ font-family:var(--ff-mono); font-size:11px; color:var(--text-soft); }
 
@@ -1129,7 +1129,7 @@ figure.pb-shot::after{ top:8px; bottom:auto; }
   .pb-stagecard--hand{ justify-self:center; width:min(220px,74%); }
   .pb-stagecard--hand .pb-stagecard__tag{ justify-content:center; margin:0 0 10px; }
   .pb-choices--grid{ grid-template-columns:repeat(2,1fr); }
-  .pb-proofstrip figure{ flex-basis:112px; }
+  .pb-proofstrip figure{ flex-basis:150px; }
   .pb-strip figure{ flex-basis:160px; }
   .pb-voices__head{ gap:12px; }
   .pb-voices__mark{ font-size:46px; }
