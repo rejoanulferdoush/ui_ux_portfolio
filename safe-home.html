@@ -140,21 +140,44 @@
   <section class="cs-section" style="padding-top:0;">
     <div class="container">
       <div class="cs-facts reveal">
-        <div class="cs-facts__cell">
-          <div class="cs-facts__num"><span class="cs-stat__num" data-count="3">3</span></div>
-          <div class="cs-facts__label">alert tiers — Safe, Warning, Emergency — each with its own colour, sound and urgency</div>
+        <div class="cs-facts__bar" aria-hidden="true">
+          <span class="cs-facts__led"></span>
+          <span class="cs-facts__sys">SAFE OS · system armed</span>
+          <span class="cs-facts__meta">12 devices · all active</span>
         </div>
-        <div class="cs-facts__cell">
-          <div class="cs-facts__num"><span class="cs-stat__num" data-count="5">5</span> types</div>
-          <div class="cs-facts__label">gas, fire, temperature, air quality and IP cameras, unified under one device model</div>
-        </div>
-        <div class="cs-facts__cell">
-          <div class="cs-facts__num">~2s</div>
-          <div class="cs-facts__label">from a sensor crossing its threshold to a full-screen alert on the phone</div>
-        </div>
-        <div class="cs-facts__cell">
-          <div class="cs-facts__num">2 langs</div>
-          <div class="cs-facts__label">Bangla &amp; English, plus an Elder Mode with larger type and simpler screens</div>
+
+        <div class="cs-facts__grid">
+          <div class="cs-facts__cell">
+            <div class="cs-facts__viz cs-facts__viz--tiers" aria-hidden="true">
+              <span data-tone="safe"></span><span data-tone="warn"></span><span data-tone="danger"></span>
+            </div>
+            <div class="cs-facts__num"><span class="cs-stat__num" data-count="3">3</span><small>tiers</small></div>
+            <div class="cs-facts__label">Safe, Warning, Emergency — each with its own colour, sound and urgency</div>
+          </div>
+
+          <div class="cs-facts__cell">
+            <div class="cs-facts__viz cs-facts__viz--types" aria-hidden="true">
+              <i class="bx bxs-gas-pump"></i><i class="bx bxs-flame"></i><i class="bx bxs-thermometer"></i><i class="bx bx-wind"></i><i class="bx bxs-cctv"></i>
+            </div>
+            <div class="cs-facts__num"><span class="cs-stat__num" data-count="5">5</span><small>types</small></div>
+            <div class="cs-facts__label">Gas, fire, temperature, air quality and IP cameras — one device model</div>
+          </div>
+
+          <div class="cs-facts__cell">
+            <div class="cs-facts__viz cs-facts__viz--speed" aria-hidden="true">
+              <span class="cs-facts__track"><b></b></span>
+            </div>
+            <div class="cs-facts__num">~2<small>seconds</small></div>
+            <div class="cs-facts__label">From a sensor crossing its threshold to a full-screen alert on the phone</div>
+          </div>
+
+          <div class="cs-facts__cell">
+            <div class="cs-facts__viz cs-facts__viz--lang" aria-hidden="true">
+              <span>বাংলা</span><span>EN</span><span class="cs-facts__elder">Elder</span>
+            </div>
+            <div class="cs-facts__num">2<small>languages</small></div>
+            <div class="cs-facts__label">Bangla &amp; English, plus an Elder Mode with larger type and simpler screens</div>
+          </div>
         </div>
       </div>
     </div>
@@ -175,23 +198,45 @@
         </div>
       </div>
 
-      <div class="cs-painlist reveal" style="margin-top:clamp(40px,6vw,64px);">
-        <div class="cs-pain">
-          <i class="bx bxs-error"></i>
-          <div><b>Fragmented devices</b><p>Gas, fire and camera hardware each shipped with a separate, inconsistent app — or a physical buzzer with no app at all.</p></div>
+      <div class="cs-scene reveal">
+        <div class="cs-scene__head">
+          <span class="cs-eyebrow">One kitchen gas leak · the old setup</span>
+          <p>Four moments where the old kit goes quiet.</p>
         </div>
-        <div class="cs-pain">
-          <i class="bx bxs-bell-off"></i>
-          <div><b>All-or-nothing alerts</b><p>A detector is either silent or screaming. There was no "worth a glance" in between, so people learned to ignore it.</p></div>
-        </div>
-        <div class="cs-pain">
-          <i class="bx bxs-user-x"></i>
-          <div><b>Nobody else finds out</b><p>If the person holding the phone misses the alert, the chain stops. No automatic SMS, no call, no fire-service fallback.</p></div>
-        </div>
-        <div class="cs-pain">
-          <i class="bx bxs-been-here"></i>
-          <div><b>"Which room? How bad?"</b><p>Even when an alert landed, it rarely said where the danger was or what a panicking person should physically do.</p></div>
-        </div>
+        <ol class="cs-scene__track">
+          <li class="cs-beat">
+            <span class="cs-beat__time">02:11</span>
+            <div class="cs-beat__body">
+              <h3>Three apps, three verdicts</h3>
+              <p>The gas detector, the camera and the smart plug each ship their own app — or no app at all, just a buzzer on the wall. None of them check what the others are seeing.</p>
+              <span class="cs-beat__tag">Fragmented devices</span>
+            </div>
+          </li>
+          <li class="cs-beat">
+            <span class="cs-beat__time">02:14</span>
+            <div class="cs-beat__body">
+              <h3>Silent, then deafening</h3>
+              <p>A detector has two states: nothing, or a scream. There's no "worth a glance" in between — and a scream from two rooms away just sounds like the fridge, so it gets tuned out.</p>
+              <span class="cs-beat__tag">All-or-nothing alerts</span>
+            </div>
+          </li>
+          <li class="cs-beat">
+            <span class="cs-beat__time">02:20</span>
+            <div class="cs-beat__body">
+              <h3>The alert has nowhere to go</h3>
+              <p>The phone is face-down on mute. No automatic SMS to the room upstairs, no call, no fire-service fallback. If this one phone misses it, the chain ends here.</p>
+              <span class="cs-beat__tag">Nobody else finds out</span>
+            </div>
+          </li>
+          <li class="cs-beat">
+            <span class="cs-beat__time">02:26</span>
+            <div class="cs-beat__body">
+              <h3>“Which room? How bad?”</h3>
+              <p>Someone finally wakes to the noise. The box won't say where the gas is, how close to dangerous it's drifting, or whether to crack a window or get everyone out.</p>
+              <span class="cs-beat__tag">No context, no next step</span>
+            </div>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
