@@ -124,6 +124,54 @@ p{ margin:0; }
 .preloader.is-hidden{ opacity:0; visibility:hidden; pointer-events:none; }
 @keyframes pulse{ 0%,100%{opacity:.4} 50%{opacity:1} }
 
+/* Floating shapes behind the preloader avatar */
+.preloader__shapes{ position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+.preloader__shape{
+  position:absolute; display:block;
+  opacity:0;
+  animation: preloader-shape-in 1s cubic-bezier(.22,.68,.36,1) forwards;
+}
+.preloader__shape img{
+  display:block; width:100%; height:auto;
+  transform-origin:50% 50%;
+  animation:
+    preloader-spin 18s linear infinite,
+    preloader-bob 6s ease-in-out infinite alternate;
+}
+/* size + fade-in stagger */
+.preloader__shape--1{ width: clamp(46px, 7vw, 96px);  animation-delay:.15s; }
+.preloader__shape--2{ width: clamp(60px, 9vw, 128px); animation-delay:.30s; }
+.preloader__shape--3{ width: clamp(52px, 8vw, 108px); animation-delay:.24s; }
+.preloader__shape--4{ width: clamp(40px, 6vw, 82px);  animation-delay:.38s; }
+.preloader__shape--5{ width: clamp(44px, 6vw, 88px);  animation-delay:.45s; }
+.preloader__shape--6{ width: clamp(48px, 7vw, 100px); animation-delay:.20s; }
+/* per-shape spin speed / direction + bob timing so they never sync up */
+.preloader__shape--1 img{ animation-duration: 16s, 5.5s; }
+.preloader__shape--2 img{ animation-duration: 24s, 7s;   animation-direction: reverse, alternate; }
+.preloader__shape--3 img{ animation-duration: 20s, 6.5s; }
+.preloader__shape--4 img{ animation-duration: 13s, 5s;   animation-direction: reverse, alternate; }
+.preloader__shape--5 img{ animation-duration: 27s, 8s; }
+.preloader__shape--6 img{ animation-duration: 18s, 6s;   animation-direction: reverse, alternate; }
+
+@keyframes preloader-shape-in{
+  from{ opacity:0; scale:.4; }
+  to  { opacity:.18; scale:1; }
+}
+@keyframes preloader-spin{
+  to{ rotate: 360deg; }
+}
+@keyframes preloader-bob{
+  from{ translate: 0 -12px; scale:.9; }
+  to  { translate: 0 16px;  scale:1.08; }
+}
+@media (max-width: 560px){
+  .preloader__shape--5, .preloader__shape--6{ display:none; }
+}
+@media (prefers-reduced-motion: reduce){
+  .preloader__shape{ animation-duration:.01s; }
+  .preloader__shape img{ animation:none; }
+}
+
 /* ===== Reveal animation ===== */
 .reveal{
   opacity:0;
