@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prime Bank Digital Token · Case study — Rejoanul Ferdoush</title>
-<meta name="description" content="Case study: designing Prime Bank's Digital Token — a white-label queue product that moves your place in a branch line onto your phone. A four-step check-in, a live token, and the unglamorous screens that make a bank trust it.">
+<meta name="description" content="Case study: designing Prime Bank's Digital Token — a queue product that moves your place in a branch line onto your phone. A four-step check-in, a live token, and the unglamorous screens that make a bank trust it.">
 <link rel="icon" type="image/png" href="assets/mine2.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,7 +66,7 @@
   <a href="#ticket"><span class="nav__index">04</span>The digital token</a>
   <a href="#arrive"><span class="nav__index">05</span>Show on arrival</a>
   <a href="#manage"><span class="nav__index">06</span>Trust screens</a>
-  <a href="#whitelabel"><span class="nav__index">07</span>One product, many banks</a>
+  <a href="#lifecycle"><span class="nav__index">07</span>The life of a token</a>
   <a href="#gallery"><span class="nav__index">08</span>Every screen</a>
   <a href="#outcome"><span class="nav__index">09</span>Outcome</a>
 
@@ -86,7 +86,7 @@
   <a href="#ticket" data-label="The token"></a>
   <a href="#arrive" data-label="On arrival"></a>
   <a href="#manage" data-label="Trust screens"></a>
-  <a href="#whitelabel" data-label="Many banks"></a>
+  <a href="#lifecycle" data-label="Token life"></a>
   <a href="#gallery" data-label="Every screen"></a>
   <a href="#outcome" data-label="Outcome"></a>
 </nav>
@@ -112,12 +112,12 @@
         <div class="pb-hero__lede">
           <span class="pb-kicker">Case study &mdash; FinTech &middot; queue product</span>
           <h1 class="pb-hero__title">Your place in line,<br><em>off the wall and onto your phone</em>.</h1>
-          <p class="pb-hero__sub">Prime Bank branches ran on paper tokens and a plastic chair. Digital Token lets a customer pick a branch, check in from the pavement in four taps, and walk in holding a live token &mdash; the same product a second bank runs under its own name.</p>
+          <p class="pb-hero__sub">Prime Bank branches ran on paper tokens and a plastic chair. Digital Token lets a customer pick a branch, check in from the pavement in four taps, and walk in holding a live token that tracks itself from the pavement to the counter.</p>
 
           <dl class="pb-hero__meta">
             <div><dt>Role</dt><dd>Product &amp; UI/UX design, design system</dd></div>
             <div><dt>Platform</dt><dd>Responsive web app &middot; installable</dd></div>
-            <div><dt>Scope</dt><dd>30 screens &middot; white-label</dd></div>
+            <div><dt>Scope</dt><dd>30 screens &middot; one design system</dd></div>
           </dl>
 
           <a href="#checkin" class="pb-hero__try">
@@ -280,9 +280,9 @@
           <li class="pb-rulerow">
             <span class="pb-rulerow__no">04</span>
             <div class="pb-rulerow__body">
-              <h3>One product, any bank</h3>
-              <p class="pb-rulerow__hold">Brand name, logo, colour and copy are theme values, not baked-in art. The same build already runs for a second bank under a different name.</p>
-              <p class="pb-rulerow__fault"><span>Fault line</span> a client needs a fork just to rebrand.</p>
+              <h3>Fair when it&rsquo;s crowded</h3>
+              <p class="pb-rulerow__hold">One live token per person. Positions never change silently. A missed turn is held once and slotted back three &mdash; not dropped, not ignored. The queue has to feel fair or people walk back to the chair.</p>
+              <p class="pb-rulerow__fault"><span>Fault line</span> someone jumps the line, or loses their place without being told.</p>
             </div>
             <button type="button" class="pb-rulerow__toggle" aria-pressed="false">
               <span class="pb-rulerow__status" data-hold="Holds" data-fault="Fault">Holds</span>
@@ -641,51 +641,58 @@
           <div>
             <span class="pb-tabs__tag">Contact</span>
             <h3>A message that already knows the context</h3>
-            <p>Category dropdown, a body field with a character count, and three chips the customer never fills in &mdash; <b>Branch</b>, <b>Token</b>, <b>Customer</b> &mdash; attached automatically so the branch team isn&rsquo;t playing twenty questions. This shot is the same product running as <b>City Trust Bank</b>, which brings us to&hellip;</p>
+            <p>Category dropdown, a body field with a character count, and three chips the customer never fills in &mdash; <b>Branch</b>, <b>Token</b>, <b>Customer</b> &mdash; attached automatically so the branch team isn&rsquo;t playing twenty questions. The customer types the problem; the context comes for free.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================ WHITE-LABEL ============================ -->
-  <section class="pb-section" id="whitelabel">
+  <!-- ============================ TOKEN LIFECYCLE ============================ -->
+  <section class="pb-section" id="lifecycle">
     <div class="container">
-      <span class="pb-kicker">07 &mdash; One product, many banks</span>
-      <h2 class="pb-h2">Built as a <em>theme, not a one-off</em></h2>
-      <p class="pb-lead">Every brand-specific value &mdash; name, mark, primary colour, support label, even the copy on the door &mdash; is a config value. Flip it and the whole product becomes a different bank. Try the switch.</p>
+      <span class="pb-kicker">07 &mdash; The token, end to end</span>
+      <h2 class="pb-h2">A token is a <em>state, not a screen</em></h2>
+      <p class="pb-lead">The customer sees one number. Behind it, that number moves through a fixed set of states &mdash; each with its own trigger, its own line to the customer, and its own row on the branch display. Walk it forward, then break it.</p>
 
-      <div class="pb-wl reveal" id="pbWL" data-brand="prime">
-        <div class="pb-wl__toggle" role="group" aria-label="Preview the product for a different bank">
-          <button type="button" data-brand="prime" class="is-on">Prime Bank</button>
-          <button type="button" data-brand="city">City Trust Bank</button>
+      <div class="pb-life reveal" id="pbLife">
+        <button type="button" class="pb-life__play" id="pbLifePlay">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          Play the journey
+        </button>
+
+        <div class="pb-life__track" role="tablist" aria-label="Token states">
+          <span class="pb-life__prog" id="pbLifeProg" aria-hidden="true"></span>
+          <button type="button" class="pb-life__node is-active" role="tab"><span class="pb-life__dot" aria-hidden="true"></span><span class="pb-life__label">Booked</span></button>
+          <button type="button" class="pb-life__node" role="tab"><span class="pb-life__dot" aria-hidden="true"></span><span class="pb-life__label">In&nbsp;queue</span></button>
+          <button type="button" class="pb-life__node" role="tab"><span class="pb-life__dot" aria-hidden="true"></span><span class="pb-life__label">Heads-up</span></button>
+          <button type="button" class="pb-life__node" role="tab"><span class="pb-life__dot" aria-hidden="true"></span><span class="pb-life__label">Called</span></button>
+          <button type="button" class="pb-life__node" role="tab"><span class="pb-life__dot" aria-hidden="true"></span><span class="pb-life__label">At the counter</span></button>
+          <button type="button" class="pb-life__node" role="tab"><span class="pb-life__dot" aria-hidden="true"></span><span class="pb-life__label">Done</span></button>
         </div>
 
-        <div class="pb-wl__grid">
-          <div class="pb-wl__device">
-            <div class="pb-wl__topbar">
-              <span class="pb-wl__mark" aria-hidden="true"></span>
-              <span class="pb-wl__brand">
-                <b id="pbWLName">Prime Bank</b>
-                <i id="pbWLSub">Token Management</i>
-              </span>
-            </div>
-            <div class="pb-wl__screen">
-              <span class="pb-wl__pin" aria-hidden="true"><i class="bx bxs-map"></i></span>
-              <span class="pb-wl__ready">Ready when you are</span>
-              <strong>You&rsquo;re all set!</strong>
-              <span class="pb-wl__cta" id="pbWLCta">+ Create New Token</span>
-              <span class="pb-wl__care">Prime Care &middot; <span id="pbWLCare">16207</span></span>
-            </div>
+        <div class="pb-life__panel">
+          <div class="pb-life__phase" id="pbLifePhase" aria-live="polite">
+            <b>Booked</b><span>step 1 of 6</span>
           </div>
-
-          <ul class="pb-wl__list">
-            <li><b>What changes</b>Brand name, logo mark, primary &amp; gradient colours, support line, branch list, welcome copy.</li>
-            <li><b>What doesn&rsquo;t</b>Every flow, component, state and accessibility decision &mdash; one codebase, one design system.</li>
-            <li><b>Why it matters</b>A new bank is an onboarding config and a colour, not a design and build project.</li>
-            <li><b>Proof</b>The Help, Feedback and Message screens in this case study were captured from the <em>City Trust Bank</em> instance &mdash; same pixels, different name.</li>
-          </ul>
+          <dl class="pb-life__grid">
+            <div class="pb-life__cell"><dt>Trigger</dt><dd id="pbLifeTrigger">Check-in finishes.</dd></div>
+            <div class="pb-life__cell"><dt>You see</dt><dd id="pbLifeYou">&ldquo;Token <b>A-074</b> &middot; about 24 min &middot; 5 people ahead.&rdquo;</dd></div>
+            <div class="pb-life__cell"><dt>The branch sees</dt><dd id="pbLifeBranch">A-074 joins the tail of the Deposit desk.</dd></div>
+          </dl>
         </div>
+
+        <div class="pb-life__exc">
+          <button type="button" data-exc="missed">&#9888; Missed the call</button>
+          <button type="button" data-exc="cancelled">&#9888; Cancelled by you</button>
+        </div>
+
+        <p class="pb-life__rule">
+          <b>The fairness rule.</b> A place in line is never taken silently. Miss your turn and the token
+          holds for one call cycle and moves back three &mdash; once. Miss it twice and it releases rather
+          than freeze the desk. Every promise in this case study leans on that: the number only means
+          something if it stays fair.
+        </p>
       </div>
     </div>
   </section>
@@ -738,14 +745,14 @@
       <div class="pb-outcome">
         <div>
           <span class="pb-kicker">Where it landed</span>
-          <h2 class="pb-h2">A platform, not a <em>bank app</em></h2>
-          <p class="pb-lead">Digital Token shipped as one responsive product with a themable brand layer, a four-step check-in that a first-timer clears without help, and a token screen that stands in for the whole waiting room.</p>
+          <h2 class="pb-h2">A system, not a <em>stack of screens</em></h2>
+          <p class="pb-lead">Digital Token shipped as one responsive product on a single design system, a four-step check-in that a first-timer clears without help, and a token that carries its own state from the pavement to the counter.</p>
         </div>
         <ul class="pb-outcome__list">
           <li><i class="bx bxs-check-circle"></i><span><strong>The wait left the building.</strong> Customers hold a live number, get an SMS before their turn, and spend the wait wherever they want.</span></li>
           <li><i class="bx bxs-check-circle"></i><span><strong>Right desk, first time.</strong> Service routing at check-in means the ETA you see is the ETA you get.</span></li>
           <li><i class="bx bxs-check-circle"></i><span><strong>Bank-ready trust screens.</strong> Clean cancellation, a one-token fairness rule, in-context help and closed-loop feedback.</span></li>
-          <li><i class="bx bxs-check-circle"></i><span><strong>Resold without a redesign.</strong> A second bank runs the identical build under its own brand from config alone.</span></li>
+          <li><i class="bx bxs-check-circle"></i><span><strong>The number stays honest.</strong> One live token per person, positions that never move silently, and a missed turn that&rsquo;s held once &mdash; not dropped.</span></li>
         </ul>
       </div>
 
@@ -760,7 +767,7 @@
   <div class="pb-cta">
     <div class="container">
       <h2>Want the walkthrough?</h2>
-      <p>Happy to screen-share the flows, the design-system file, and how the white-label theming is wired.</p>
+      <p>Happy to screen-share the flows, the design-system file, and how the token lifecycle is wired.</p>
       <div class="pb-cta__row">
         <a href="index.html#contact" class="pb-btn pb-btn--primary">
           Start a conversation
@@ -814,6 +821,7 @@
   <button class="pb-lb__nav pb-lb__nav--next" id="pbLbNext" aria-label="Next">&#8250;</button>
   <img id="pbLbImg" src="" alt="">
   <span class="pb-lb__cap" id="pbLbCap"></span>
+  <span class="pb-lb__hint" id="pbLbHint">click or scroll to zoom</span>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
