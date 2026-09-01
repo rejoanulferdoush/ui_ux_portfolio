@@ -370,17 +370,23 @@ img.logo__mark{
   padding-top: 140px; padding-bottom: 56px;
   text-align:center;
 }
-/* Skills ticker above the portrait */
+/* Skills strip above the portrait — drifts on its own, and you can grab it
+   and drag left / right to scrub through it (JS in script.js drives --tx). */
 .hero__ticker{
   width:100%; overflow:hidden;
   border-top:1px dashed var(--border); border-bottom:1px dashed var(--border);
   padding: 16px 0;
+  cursor: grab;
+  -webkit-user-select: none; user-select: none;
+  touch-action: pan-y;
 }
+.hero__ticker.is-grabbing{ cursor: grabbing; }
 .hero__ticker-track{
   display:inline-flex; align-items:center; gap:30px; white-space:nowrap; width:max-content;
   font-family: "Oswald", var(--ff-head); font-weight:400; text-transform:uppercase; letter-spacing:.06em;
   font-size: clamp(22px, 3.2vw, 38px);
-  animation: hero-ticker 32s linear infinite;
+  will-change: transform;
+  transform: translate3d(var(--tx, 0px), 0, 0);
 }
 .hero__ticker-star{
   display:inline-block; flex-shrink:0;
@@ -389,8 +395,12 @@ img.logo__mark{
   filter: drop-shadow(0 0 8px color-mix(in srgb, #fff 65%, transparent));
   animation: ticker-star-spin 5s linear infinite;
 }
-@keyframes hero-ticker{ from{ transform: translateX(0);} to{ transform: translateX(-50%);} }
 @keyframes ticker-star-spin{ to{ transform: rotate(360deg); } }
+/* No JS / reduced motion: fall back to a natively scrollable row */
+@media (prefers-reduced-motion: reduce){
+  .hero__ticker{ overflow-x: auto; cursor: default; }
+  .hero__ticker-star{ animation: none; }
+}
 
 /* Split title wrapped around the avatar */
 .hero__frame{

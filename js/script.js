@@ -99,6 +99,75 @@ document.addEventListener('DOMContentLoaded', () => {
     hero.addEventListener('mouseleave', () => { tiltX = 0; tiltY = 0; queueRender(); });
   }
 
+  /* Hero skills strip: drifts left on its own, but you can grab it and drag
+     left / right to scrub through the skills. Follows the pointer 1:1 while
+     held, keeps momentum on release, then eases back into the idle drift;
+     pauses the drift while hovered. The markup lists the skill set twice, so
+     the offset wraps by one set-width and the loop is seamless both ways. */
+  const skillsStrip = document.getElementById('skillsTicker');
+  const skillsTrack = document.getElementById('skillsTrack');
+
+  if (skillsStrip && skillsTrack && !reduceMotion) {
+    let unit = 0;
+    const measure = () => {
+      const kids = skillsTrack.children;
+      const half = Math.floor(kids.length / 2);
+      unit = half ? kids[half].offsetLeft - kids[0].offsetLeft
+                  : skillsTrack.scrollWidth / 2;
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    window.addEventListener('load', measure);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+
+    const IDLE_SPEED = 0.4;            // px/frame leftward drift when untouched
+    let offset = 0, vel = 0, dragging = false, hovering = false, lastX = 0;
+
+    const wrap = () => {
+      if (unit <= 0) return;
+      while (offset <= -unit) offset += unit;
+      while (offset > 0) offset -= unit;
+    };
+
+    const frame = () => {
+      if (!dragging) {
+        if (Math.abs(vel) > 0.06) { offset += vel; vel *= 0.92; }
+        else { vel = 0; if (!hovering) offset -= IDLE_SPEED; }
+      }
+      wrap();
+      skillsTrack.style.setProperty('--tx', offset.toFixed(2) + 'px');
+      requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+
+    skillsStrip.addEventListener('pointerenter', () => { hovering = true; });
+    skillsStrip.addEventListener('pointerleave', () => { hovering = false; });
+
+    skillsStrip.addEventListener('pointerdown', (e) => {
+      dragging = true; lastX = e.clientX; vel = 0;
+      try { skillsStrip.setPointerCapture(e.pointerId); } catch (err) { /* no-op */ }
+      skillsStrip.classList.add('is-grabbing');
+    });
+    skillsStrip.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - lastX;
+      lastX = e.clientX;
+      offset += dx;
+      vel = Math.max(-55, Math.min(55, dx));
+      wrap();
+    });
+    const release = (e) => {
+      if (!dragging) return;
+      dragging = false;
+      skillsStrip.classList.remove('is-grabbing');
+      if (e && e.pointerId != null && skillsStrip.hasPointerCapture(e.pointerId)) {
+        skillsStrip.releasePointerCapture(e.pointerId);
+      }
+    };
+    skillsStrip.addEventListener('pointerup', release);
+    skillsStrip.addEventListener('pointercancel', release);
+  }
+
   /* Header identity: type the role line out like a terminal prompt, cycling roles */
   const roleEl = document.querySelector('.logo__role-text');
   if (roleEl) {
