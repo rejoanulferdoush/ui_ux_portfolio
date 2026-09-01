@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=65">
-<link rel="stylesheet" href="css/safe-home.css?v=4">
+<link rel="stylesheet" href="css/safe-home.css?v=5">
 </head>
 <body>
 
@@ -333,25 +333,80 @@
         </div>
       </div>
 
-      <div class="cs-status">
-        <div class="cs-status__card reveal" data-tone="safe">
-          <span class="cs-status__dot"></span>
-          <h3>Safe</h3>
-          <p>All readings inside their thresholds. The home banner shows a shield, the feed is a single calm line, and nothing competes for attention.</p>
-          <div class="cs-status__meta">#34C77B · "Your Home is Safe"</div>
-        </div>
-        <div class="cs-status__card reveal" data-tone="warn">
-          <span class="cs-status__dot"></span>
-          <h3>Warning</h3>
-          <p>A reading is drifting, a device is offline, or a child is near a danger zone. Worth a glance — the room card flips to amber, the family is notified, but no siren.</p>
-          <div class="cs-status__meta">#F0A63C · "Warning"</div>
-        </div>
-        <div class="cs-status__card reveal" data-tone="danger">
-          <span class="cs-status__dot"></span>
-          <h3>Emergency</h3>
-          <p>A threshold is crossed — gas, fire or heat. Full-screen red takeover, local siren, automatic SMS and calls, and a single "I'm in Danger" button.</p>
-          <div class="cs-status__meta">#EF4444 · "Your Home is Unsafe"</div>
-        </div>
+      <div class="cs-states reveal">
+        <span class="cs-states__spine" aria-hidden="true"></span>
+
+        <article class="cs-state" data-tone="safe">
+          <div class="cs-state__screen" aria-hidden="true">
+            <div class="cs-state__bar">
+              <i class="bx bxs-shield-alt-2"></i>
+              <span>Your Home is Safe</span>
+            </div>
+            <div class="cs-state__body cs-state__body--safe">
+              <span class="cs-state__feed"></span>
+              <span class="cs-state__mut">3 rooms · all clear</span>
+            </div>
+          </div>
+          <div class="cs-state__head">
+            <span class="cs-state__pulse"></span>
+            <h3>Safe</h3>
+            <span class="cs-state__hex">#34C77B</span>
+          </div>
+          <dl class="cs-state__spec">
+            <div><dt>Trigger</dt><dd>Every reading inside its threshold</dd></div>
+            <div><dt>Screen</dt><dd>Shield + one calm feed line</dd></div>
+            <div><dt>Alarm</dt><dd>Silent — nothing is sent</dd></div>
+          </dl>
+        </article>
+
+        <article class="cs-state" data-tone="warn">
+          <div class="cs-state__screen" aria-hidden="true">
+            <div class="cs-state__bar">
+              <i class="bx bxs-error"></i>
+              <span>Warning</span>
+            </div>
+            <div class="cs-state__body">
+              <span class="cs-state__chip">Kitchen · CO 82 ppm <b>&uarr;</b></span>
+              <span class="cs-state__note"><i class="bx bx-check"></i> Family notified</span>
+            </div>
+          </div>
+          <div class="cs-state__head">
+            <span class="cs-state__pulse"></span>
+            <h3>Warning</h3>
+            <span class="cs-state__hex">#F0A63C</span>
+          </div>
+          <dl class="cs-state__spec">
+            <div><dt>Trigger</dt><dd>A reading drifts, a device drops, a child nears a zone</dd></div>
+            <div><dt>Screen</dt><dd>Room card flips amber, banner names the room</dd></div>
+            <div><dt>Alarm</dt><dd>Push to the family — no siren</dd></div>
+          </dl>
+        </article>
+
+        <article class="cs-state" data-tone="danger">
+          <div class="cs-state__screen cs-state__screen--takeover" aria-hidden="true">
+            <span class="cs-state__scan"></span>
+            <div class="cs-state__bar">
+              <i class="bx bxs-bell-ring"></i>
+              <span>Your Home is Unsafe</span>
+            </div>
+            <div class="cs-state__body">
+              <strong class="cs-state__big">UNSAFE</strong>
+              <span class="cs-state__where">Kitchen · Gas 540 ppm</span>
+              <span class="cs-state__cta">I'm in Danger</span>
+              <span class="cs-state__ticks"><i class="bx bx-check"></i> SMS sent &nbsp;·&nbsp; <i class="bx bx-phone-call"></i> Calling contacts</span>
+            </div>
+          </div>
+          <div class="cs-state__head">
+            <span class="cs-state__pulse"></span>
+            <h3>Emergency</h3>
+            <span class="cs-state__hex">#EF4444</span>
+          </div>
+          <dl class="cs-state__spec">
+            <div><dt>Trigger</dt><dd>A hard threshold crossed — gas, fire or heat</dd></div>
+            <div><dt>Screen</dt><dd>Full-screen red takeover + one giant action</dd></div>
+            <div><dt>Alarm</dt><dd>Local siren, auto SMS &amp; calls down the list</dd></div>
+          </dl>
+        </article>
       </div>
 
       <!-- interactive threshold -->
