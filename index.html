@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=66">
+<link rel="stylesheet" href="css/style.css?v=69">
 <link rel="stylesheet" href="css/chatbot.css?v=4">
 </head>
 <body>
@@ -138,14 +138,24 @@
       </p>
 
       <div class="hero__bottom-actions">
-        <ul class="hero__socials">
-          <li><i class='bx bx-plus'></i><a href="https://www.behance.net/rejoanulferdoush" target="_blank">Behance</a></li>
-          <li><i class='bx bx-plus'></i><a href="https://www.linkedin.com/in/rejoanulferdoush/" target="_blank">LinkedIn</a></li>
-        </ul>
+        <div class="hero__socials">
+          <span class="hero__socials-label"><span class="hero__socials-sigil">~/</span>find me on</span>
+          <ul class="hero__socials-list" aria-label="Find me elsewhere">
+            <li><a href="https://www.behance.net/rejoanulferdoush" target="_blank" rel="noopener" aria-label="Behance">
+              <i class='bx bxl-behance'></i><span class="hero__socials-name">Behance</span>
+            </a></li>
+            <li><a href="https://www.linkedin.com/in/rejoanulferdoush/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <i class='bx bxl-linkedin'></i><span class="hero__socials-name">LinkedIn</span>
+            </a></li>
+            <li><a href="https://github.com/rejoanulferdoush" target="_blank" rel="noopener" aria-label="GitHub">
+              <i class='bx bxl-github'></i><span class="hero__socials-name">GitHub</span>
+            </a></li>
+          </ul>
+        </div>
 
-        <a href="#work" class="hero__scroll">
-          <span class="hero__scroll-icon"><i class='bx bx-down-arrow-alt'></i></span>
-          Scroll for more
+        <a href="#work" class="hero__scroll" aria-label="Scroll down to see more">
+          <span class="hero__scroll-text">Scroll<i>&mdash; there&rsquo;s more</i></span>
+          <span class="hero__scroll-rail" aria-hidden="true"><span class="hero__scroll-bead"></span></span>
         </a>
       </div>
     </div>
