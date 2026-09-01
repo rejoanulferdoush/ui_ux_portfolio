@@ -71,14 +71,36 @@
   display:grid; grid-template-columns: 1.15fr .85fr; gap: clamp(32px, 6vw, 90px);
   align-items:center;
 }
-.cs-hero__backlink{
-  display:inline-flex; align-items:center; gap:8px;
-  font-size:13px; color: var(--text-soft);
-  font-family: var(--ff-mono); letter-spacing:.5px;
-  transition: color .2s;
+/* Back link + "you are here" — mirrors the project archive hero */
+.cs-hero__nav{
+  display:flex; align-items:center; flex-wrap:wrap;
+  gap:18px 40px; margin-bottom:34px;
 }
-.cs-hero__backlink:hover{ color: var(--cs-safe); }
-.cs-hero__backlink svg{ width:16px; height:16px; }
+.cs-back{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family: var(--ff-mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  color: var(--text);
+  padding:12px 22px;
+  border:1px solid var(--cs-line); border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--surface) 42%, transparent);
+  transition: color .3s ease, border-color .3s ease, background .3s ease;
+}
+.cs-back svg{ width:15px; height:15px; transition: transform .3s ease; }
+.cs-back:hover{
+  color: var(--cs-safe);
+  border-color: color-mix(in srgb, var(--cs-safe) 45%, var(--cs-line));
+  background: color-mix(in srgb, var(--cs-safe) 8%, transparent);
+}
+.cs-back:hover svg{ transform: translateX(-3px); }
+.cs-here{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family: var(--ff-mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  color: var(--text-soft);
+}
+.cs-here::before{
+  content:""; flex-shrink:0; width:6px; height:6px; border-radius:50%; background: var(--cs-safe);
+}
+.cs-here b{ color: var(--text); font-weight:500; }
 
 .cs-hero__title{
   font-family: var(--ff-head); font-weight:600;
@@ -359,7 +381,12 @@
   margin-top:30px; display:flex; gap:22px; overflow-x:auto;
   padding: 8px 4px 26px; scroll-snap-type: x mandatory;
   scrollbar-width: thin; scrollbar-color: var(--cs-safe) transparent;
+  cursor: grab; -webkit-user-select: none; user-select: none;
+  overscroll-behavior-x: contain;
 }
+.cs-strip.is-dragging{ cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+.cs-strip.is-dragging .cs-shot{ cursor: grabbing; }
+.cs-strip img{ -webkit-user-drag: none; user-drag: none; pointer-events: none; }
 .cs-strip::-webkit-scrollbar{ height:6px; }
 .cs-strip::-webkit-scrollbar-thumb{ background: var(--cs-safe); border-radius:100px; }
 .cs-strip__item{
@@ -554,7 +581,17 @@
 .cs-lb img{
   max-width:100%; max-height:90vh; border-radius:20px;
   box-shadow: 0 40px 100px -20px rgba(0,0,0,.9);
+  transform-origin: center center; will-change: transform;
+  transition: transform .18s ease-out;
+  cursor: zoom-in; touch-action: none; position:relative; z-index:1;
+  -webkit-user-drag: none; user-drag: none; -webkit-user-select: none; user-select: none;
 }
+.cs-lb.is-zoomed img{ cursor: grab; border-radius:0; transition: transform .12s ease-out; }
+.cs-lb.is-panning img{ cursor: grabbing; transition: none; }
+.cs-lb__close,
+.cs-lb__nav,
+.cs-lb__cap,
+.cs-lb__hint{ z-index:3; }
 .cs-lb__close{
   position:absolute; top:22px; right:26px; width:44px; height:44px;
   border-radius:50%; border:1px solid var(--cs-line); background:#111; color:#fff;
@@ -565,12 +602,21 @@
   width:52px; height:52px; border-radius:50%; border:1px solid var(--cs-line);
   background:#111; color:#fff; font-size:22px; cursor:pointer;
 }
+.cs-lb.is-zoomed .cs-lb__nav{ opacity:.25; pointer-events:none; }
 .cs-lb__nav--prev{ left:20px; }
 .cs-lb__nav--next{ right:20px; }
 .cs-lb__cap{
   position:absolute; bottom:24px; left:50%; transform:translateX(-50%);
   font-family: var(--ff-mono); font-size:12px; letter-spacing:1px; color: var(--text-soft);
+  text-align:center;
 }
+.cs-lb__hint{
+  position:absolute; bottom:24px; right:26px;
+  font-family: var(--ff-mono); font-size:11px; letter-spacing:.5px; color: var(--text-soft);
+  opacity:.7;
+}
+.cs-lb.is-zoomed .cs-lb__hint::after{ content:" · drag to pan · click resets"; }
+@media (max-width: 640px){ .cs-lb__hint{ display:none; } }
 
 /* ============================================================
    RESPONSIVE

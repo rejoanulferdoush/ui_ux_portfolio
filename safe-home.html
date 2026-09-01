@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=65">
-<link rel="stylesheet" href="css/safe-home.css?v=1">
+<link rel="stylesheet" href="css/safe-home.css?v=3">
 </head>
 <body>
 
@@ -98,11 +98,14 @@
     <div class="container">
       <div class="cs-hero__inner">
         <div class="cs-hero__lede">
-          <a href="projects.html#safe" class="cs-hero__backlink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M12 19l-7-7 7-7"/></svg>
-            Project archive / SAFE
-          </a>
-          <span class="cs-kicker" style="margin-top:22px;">Case study — iOS · IoT</span>
+          <div class="cs-hero__nav">
+            <a href="projects.html" class="cs-back">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M12 19l-7-7 7-7"/></svg>
+              Back to all projects
+            </a>
+            <span class="cs-here">You&rsquo;re reading <b>a case study</b></span>
+          </div>
+          <span class="cs-kicker">Case study &mdash; iOS &middot; IoT &middot; 2025</span>
           <h1 class="cs-hero__title">A house full of sensors,<br>read as <em>one calm feed</em>.</h1>
           <p class="cs-hero__sub">SAFE watches for gas leaks, fire, heat, bad air and camera events across every room — then stays quiet until something actually matters. When it does, it escalates on its own and puts help one tap away.</p>
 
@@ -841,10 +844,11 @@
   <button class="cs-lb__nav cs-lb__nav--next" id="csLbNext" aria-label="Next">&#8250;</button>
   <img id="csLbImg" src="" alt="">
   <span class="cs-lb__cap" id="csLbCap"></span>
+  <span class="cs-lb__hint" id="csLbHint">click or scroll to zoom</span>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
 <script src="js/script.js?v=3"></script>
-<script src="js/safe-home.js?v=1"></script>
+<script src="js/safe-home.js?v=2"></script>
 </body>
 </html>

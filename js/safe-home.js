@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     targets.forEach((t) => spy.observe(t));
   }
 
-  /* ---------- Lightbox across every .cs-shot ---------- */
+  /* ---------- Lightbox across every .cs-shot (with zoom + pan) ---------- */
   const lb = document.getElementById('csLb');
   const lbImg = document.getElementById('csLbImg');
   const lbCap = document.getElementById('csLbCap');
@@ -130,12 +130,46 @@ document.addEventListener('DOMContentLoaded', () => {
     let idx = 0;
     let lastFocus = null;
 
+    /* zoom state */
+    const ZOOM_MIN = 1, ZOOM_MAX = 5, DBL_ZOOM = 2.6;
+    let scale = 1, tx = 0, ty = 0;
+    let panning = false, panMoved = 0, sx = 0, sy = 0, sTx = 0, sTy = 0;
+
+    const clampPan = () => {
+      /* keep the image roughly within view once zoomed
+         (offsetWidth/Height are layout sizes, unaffected by the transform) */
+      const bw = lbImg.offsetWidth, bh = lbImg.offsetHeight;
+      const ex = Math.max(0, (bw * scale - window.innerWidth) / 2 + 40);
+      const ey = Math.max(0, (bh * scale - window.innerHeight) / 2 + 40);
+      tx = Math.max(-ex, Math.min(ex, tx));
+      ty = Math.max(-ey, Math.min(ey, ty));
+    };
+    const apply = () => {
+      if (scale <= ZOOM_MIN) { scale = ZOOM_MIN; tx = 0; ty = 0; }
+      else clampPan();
+      lbImg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+      lb.classList.toggle('is-zoomed', scale > ZOOM_MIN);
+      lb.classList.toggle('is-panning', panning);
+    };
+    const resetZoom = () => { scale = 1; tx = 0; ty = 0; panning = false; apply(); };
+
+    /* zoom toward a screen point (cx, cy measured from viewport centre) */
+    const zoomTo = (next, cx, cy) => {
+      next = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, next));
+      const f = next / scale;
+      tx = cx - (cx - tx) * f;
+      ty = cy - (cy - ty) * f;
+      scale = next;
+      apply();
+    };
+
     const show = (i) => {
       idx = (i + shots.length) % shots.length;
       const shot = shots[idx];
       lbImg.src = shot.dataset.full;
       lbImg.alt = shot.dataset.cap || '';
       lbCap.textContent = shot.dataset.cap || '';
+      resetZoom();
     };
     const open = (i) => {
       lastFocus = document.activeElement;
@@ -149,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
       lb.classList.remove('is-open');
       lb.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      resetZoom();
       setTimeout(() => { if (!lb.classList.contains('is-open')) lbImg.src = ''; }, 300);
       if (lastFocus && lastFocus.focus) lastFocus.focus();
     };
@@ -169,31 +204,89 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
       if (!lb.classList.contains('is-open')) return;
       if (e.key === 'Escape') close();
-      if (e.key === 'ArrowLeft') show(idx - 1);
-      if (e.key === 'ArrowRight') show(idx + 1);
+      else if (e.key === 'ArrowLeft') show(idx - 1);
+      else if (e.key === 'ArrowRight') show(idx + 1);
+      else if (e.key === '+' || e.key === '=') zoomTo(scale + 0.5, 0, 0);
+      else if (e.key === '-' || e.key === '_') zoomTo(scale - 0.5, 0, 0);
+      else if (e.key === '0') resetZoom();
     });
+
+    /* wheel = zoom toward the cursor */
+    lb.addEventListener('wheel', (e) => {
+      if (!lb.classList.contains('is-open')) return;
+      e.preventDefault();
+      const cx = e.clientX - window.innerWidth / 2;
+      const cy = e.clientY - window.innerHeight / 2;
+      zoomTo(scale * (e.deltaY < 0 ? 1.18 : 1 / 1.18), cx, cy);
+    }, { passive: false });
+
+    /* drag to pan while zoomed */
+    lbImg.setAttribute('draggable', 'false');
+    lbImg.addEventListener('dragstart', (e) => e.preventDefault());
+    lbImg.addEventListener('pointerdown', (e) => {
+      if (scale <= ZOOM_MIN) return;
+      e.preventDefault();
+      panning = true; panMoved = 0;
+      sx = e.clientX; sy = e.clientY; sTx = tx; sTy = ty;
+      lbImg.setPointerCapture?.(e.pointerId);
+      apply();
+    });
+    lbImg.addEventListener('pointermove', (e) => {
+      if (!panning) return;
+      panMoved = Math.max(panMoved, Math.abs(e.clientX - sx) + Math.abs(e.clientY - sy));
+      tx = sTx + (e.clientX - sx);
+      ty = sTy + (e.clientY - sy);
+      apply();
+    });
+    const endPan = () => { if (panning) { panning = false; apply(); } };
+    lbImg.addEventListener('pointerup', endPan);
+    lbImg.addEventListener('pointercancel', endPan);
+    /* click the image to toggle zoom (a pan-release must not count as a click) */
+    lbImg.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (panMoved > 6) { panMoved = 0; return; }
+      if (scale > ZOOM_MIN) resetZoom();
+      else zoomTo(DBL_ZOOM, e.clientX - window.innerWidth / 2, e.clientY - window.innerHeight / 2);
+    });
+
+    window.addEventListener('resize', () => { if (scale > ZOOM_MIN) apply(); });
   }
 
   /* ---------- Filmstrip: drag to scrub (pointer) ---------- */
   document.querySelectorAll('.cs-strip').forEach((strip) => {
-    let down = false, startX = 0, startScroll = 0, moved = 0;
+    let down = false, dragging = false, startX = 0, startScroll = 0, moved = 0, pid = null;
+
+    /* kill the browser's native image ghost-drag — it cancels the pointer stream */
+    strip.querySelectorAll('img').forEach((img) => {
+      img.setAttribute('draggable', 'false');
+      img.addEventListener('dragstart', (e) => e.preventDefault());
+    });
+
     strip.addEventListener('pointerdown', (e) => {
-      down = true; moved = 0;
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      down = true; dragging = false; moved = 0; pid = e.pointerId;
       startX = e.clientX; startScroll = strip.scrollLeft;
-      strip.setPointerCapture?.(e.pointerId);
     });
     strip.addEventListener('pointermove', (e) => {
       if (!down) return;
       const dx = e.clientX - startX;
       moved = Math.max(moved, Math.abs(dx));
-      strip.scrollLeft = startScroll - dx;
+      /* only hijack the pointer once it's clearly a drag — keeps plain clicks
+         reaching the thumbnail so the lightbox still opens */
+      if (!dragging && moved > 8) {
+        dragging = true;
+        strip.classList.add('is-dragging');
+        strip.setPointerCapture?.(pid);
+      }
+      if (dragging) strip.scrollLeft = startScroll - dx;
     });
-    const up = () => { down = false; };
+    const up = () => { down = false; dragging = false; strip.classList.remove('is-dragging'); };
     strip.addEventListener('pointerup', up);
     strip.addEventListener('pointercancel', up);
+    strip.addEventListener('lostpointercapture', up);
     /* swallow the click that follows a real drag so the lightbox doesn't open */
     strip.addEventListener('click', (e) => {
-      if (moved > 6) { e.stopPropagation(); e.preventDefault(); }
+      if (moved > 8) { e.stopPropagation(); e.preventDefault(); moved = 0; }
     }, true);
   });
 
