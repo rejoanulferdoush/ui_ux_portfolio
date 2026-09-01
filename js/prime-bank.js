@@ -172,6 +172,54 @@ document.addEventListener('DOMContentLoaded', () => {
     show(1);
   }
 
+  /* ---------- Design-integrity board: stress-test the rules ---------- */
+  const integrity = document.getElementById('pbIntegrity');
+  if (integrity) {
+    const rows = Array.from(integrity.querySelectorAll('.pb-rulerow'));
+    const countEl = document.getElementById('pbIntCount');
+    const allBtn = document.getElementById('pbIntAll');
+
+    const sync = () => {
+      const held = rows.filter((r) => !r.classList.contains('is-fault')).length;
+      countEl.textContent = held;
+      integrity.classList.toggle('is-faulted', held < rows.length);
+      allBtn.textContent = held === 0 ? 'Reset all' : 'Stress-test all';
+    };
+
+    const setFault = (row, on) => {
+      row.classList.toggle('is-fault', on);
+      const btn = row.querySelector('.pb-rulerow__toggle');
+      const status = row.querySelector('.pb-rulerow__status');
+      const action = row.querySelector('.pb-rulerow__action');
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      status.textContent = status.dataset[on ? 'fault' : 'hold'];
+      action.textContent = on ? 'Restore' : 'Stress-test';
+      if (on && !reduceMotion) {
+        row.classList.remove('is-shake');
+        void row.offsetWidth;
+        row.classList.add('is-shake');
+      }
+    };
+
+    rows.forEach((row) => {
+      row.querySelector('.pb-rulerow__toggle').addEventListener('click', () => {
+        setFault(row, !row.classList.contains('is-fault'));
+        sync();
+      });
+    });
+
+    allBtn.addEventListener('click', () => {
+      const anyHeld = rows.some((r) => !r.classList.contains('is-fault'));
+      rows.forEach((row, i) => {
+        if (reduceMotion) { setFault(row, anyHeld); }
+        else setTimeout(() => { setFault(row, anyHeld); sync(); }, i * 90);
+      });
+      if (reduceMotion) sync();
+    });
+
+    sync();
+  }
+
   /* ---------- People-ahead nudge slider ---------- */
   const nudge = document.getElementById('pbNudgeRange');
   if (nudge) {
@@ -327,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ---------- Drag-to-scrub strips ---------- */
-  document.querySelectorAll('.pb-proofstrip, .pb-strip').forEach((strip) => {
+  document.querySelectorAll('.pb-proofstrip, .pb-strip, .pb-recut__steps').forEach((strip) => {
     let down = false, dragging = false, startX = 0, startScroll = 0, moved = 0, pid = null;
     strip.querySelectorAll('img').forEach((img) => {
       img.setAttribute('draggable', 'false');

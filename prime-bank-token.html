@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=70">
-<link rel="stylesheet" href="css/prime-bank.css?v=5">
+<link rel="stylesheet" href="css/prime-bank.css?v=6">
 </head>
 <body>
 
@@ -230,46 +230,92 @@
     <div class="container">
       <span class="pb-kicker">02 &mdash; The reframe</span>
       <h2 class="pb-h2">Same queue. <em>The seat is now your phone.</em></h2>
-      <p class="pb-lead">One idea carries the whole product: a token is just a promise that you&rsquo;ll be served in order. That promise doesn&rsquo;t need a building to live in. Four rules kept it honest.</p>
+      <p class="pb-lead">One idea carries the whole product: a token is just a promise that you&rsquo;ll be served in order. That promise doesn&rsquo;t need a building to live in. Four rules kept it honest &mdash; and each one had a fault line. Push on them.</p>
 
-      <ol class="pb-rules reveal">
-        <li class="pb-rule">
-          <span class="pb-rule__no">01</span>
-          <h3>Bank-grade on first glance</h3>
-          <p>Deep Prime Bank blue, real spacing, no playful gimmicks. A customer has to believe this is the bank talking before they&rsquo;ll hand over a phone number.</p>
-          <span class="pb-rule__break"><span>Breaks when</span> it looks like a third-party app bolted on.</span>
-        </li>
-        <li class="pb-rule">
-          <span class="pb-rule__no">02</span>
-          <h3>Usable on the pavement</h3>
-          <p>Big targets, one decision per screen, a visible step counter, plain verbs. Designed for one thumb, bright sun and a slow connection.</p>
-          <span class="pb-rule__break"><span>Breaks when</span> a screen asks for two things at once.</span>
-        </li>
-        <li class="pb-rule">
-          <span class="pb-rule__no">03</span>
-          <h3>The branch keeps its word</h3>
-          <p>Live &ldquo;now serving&rdquo;, people ahead, an honest ETA, and an SMS before your turn. The number means something because the status is real-time.</p>
-          <span class="pb-rule__break"><span>Breaks when</span> the app and the counter disagree.</span>
-        </li>
-        <li class="pb-rule">
-          <span class="pb-rule__no">04</span>
-          <h3>One product, any bank</h3>
-          <p>Brand name, logo, colour and copy are theme values, not baked-in art. The same build already runs for a second bank under a different name.</p>
-          <span class="pb-rule__break"><span>Breaks when</span> a client needs a fork to rebrand.</span>
-        </li>
-      </ol>
+      <!-- design integrity board — four rules you can try to break -->
+      <div class="pb-integrity reveal" id="pbIntegrity">
+        <div class="pb-integrity__bar">
+          <span class="pb-integrity__title">Design integrity</span>
+          <span class="pb-integrity__count"><b id="pbIntCount">4</b> of 4 rules holding</span>
+          <button type="button" class="pb-integrity__all" id="pbIntAll">Stress-test all</button>
+        </div>
 
-      <div class="pb-beforeafter reveal">
-        <div class="pb-ba pb-ba--before">
-          <span class="pb-ba__tag">Before</span>
-          <p>Arrive &rarr; tear paper &rarr; sit &rarr; guess &rarr; hope you&rsquo;re at the right desk</p>
+        <ol class="pb-integrity__list">
+          <li class="pb-rulerow">
+            <span class="pb-rulerow__no">01</span>
+            <div class="pb-rulerow__body">
+              <h3>Bank-grade on first glance</h3>
+              <p class="pb-rulerow__hold">Deep Prime Bank blue, real spacing, no playful gimmicks. A customer has to believe this is the bank talking before they&rsquo;ll hand over a phone number.</p>
+              <p class="pb-rulerow__fault"><span>Fault line</span> it starts to look like a third-party app bolted on.</p>
+            </div>
+            <button type="button" class="pb-rulerow__toggle" aria-pressed="false">
+              <span class="pb-rulerow__status" data-hold="Holds" data-fault="Fault">Holds</span>
+              <span class="pb-rulerow__action">Stress-test</span>
+            </button>
+          </li>
+          <li class="pb-rulerow">
+            <span class="pb-rulerow__no">02</span>
+            <div class="pb-rulerow__body">
+              <h3>Usable on the pavement</h3>
+              <p class="pb-rulerow__hold">Big targets, one decision per screen, a visible step counter, plain verbs. Designed for one thumb, bright sun and a slow connection.</p>
+              <p class="pb-rulerow__fault"><span>Fault line</span> a screen starts asking for two things at once.</p>
+            </div>
+            <button type="button" class="pb-rulerow__toggle" aria-pressed="false">
+              <span class="pb-rulerow__status" data-hold="Holds" data-fault="Fault">Holds</span>
+              <span class="pb-rulerow__action">Stress-test</span>
+            </button>
+          </li>
+          <li class="pb-rulerow">
+            <span class="pb-rulerow__no">03</span>
+            <div class="pb-rulerow__body">
+              <h3>The branch keeps its word</h3>
+              <p class="pb-rulerow__hold">Live &ldquo;now serving&rdquo;, people ahead, an honest ETA, and an SMS before your turn. The number means something because the status is real-time.</p>
+              <p class="pb-rulerow__fault"><span>Fault line</span> the app and the counter start to disagree.</p>
+            </div>
+            <button type="button" class="pb-rulerow__toggle" aria-pressed="false">
+              <span class="pb-rulerow__status" data-hold="Holds" data-fault="Fault">Holds</span>
+              <span class="pb-rulerow__action">Stress-test</span>
+            </button>
+          </li>
+          <li class="pb-rulerow">
+            <span class="pb-rulerow__no">04</span>
+            <div class="pb-rulerow__body">
+              <h3>One product, any bank</h3>
+              <p class="pb-rulerow__hold">Brand name, logo, colour and copy are theme values, not baked-in art. The same build already runs for a second bank under a different name.</p>
+              <p class="pb-rulerow__fault"><span>Fault line</span> a client needs a fork just to rebrand.</p>
+            </div>
+            <button type="button" class="pb-rulerow__toggle" aria-pressed="false">
+              <span class="pb-rulerow__status" data-hold="Holds" data-fault="Fault">Holds</span>
+              <span class="pb-rulerow__action">Stress-test</span>
+            </button>
+          </li>
+        </ol>
+      </div>
+
+      <!-- the journey, re-cut -->
+      <div class="pb-recut reveal">
+        <div class="pb-recut__track pb-recut__track--before">
+          <span class="pb-recut__tag">Before &mdash; the branch does the remembering</span>
+          <ol class="pb-recut__steps">
+            <li>Drive to the branch</li>
+            <li>Tear a paper token</li>
+            <li>Take a plastic seat</li>
+            <li>Guess how long it&rsquo;ll be</li>
+            <li class="is-open">Hope you queued for the right desk</li>
+          </ol>
         </div>
-        <div class="pb-ba__arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div class="pb-recut__seam" aria-hidden="true">
+          <span></span><i class="bx bx-down-arrow-alt"></i><span></span>
         </div>
-        <div class="pb-ba pb-ba--after">
-          <span class="pb-ba__tag">After</span>
-          <p>Pick branch &rarr; four taps &rarr; live token on your phone &rarr; SMS before your turn &rarr; walk to the right counter</p>
+        <div class="pb-recut__track pb-recut__track--after">
+          <span class="pb-recut__tag">After &mdash; the token does</span>
+          <ol class="pb-recut__steps">
+            <li>Pick a branch from the pavement</li>
+            <li>Four taps</li>
+            <li>Live token on your phone</li>
+            <li>SMS three people out</li>
+            <li class="is-done">Walk straight to the right counter</li>
+          </ol>
         </div>
       </div>
     </div>
@@ -772,6 +818,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
 <script src="js/script.js?v=3"></script>
-<script src="js/prime-bank.js?v=2"></script>
+<script src="js/prime-bank.js?v=3"></script>
 </body>
 </html>
