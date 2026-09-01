@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=70">
-<link rel="stylesheet" href="css/prime-bank.css?v=7">
+<link rel="stylesheet" href="css/prime-bank.css?v=8">
 </head>
 <body>
 
@@ -68,7 +68,8 @@
   <a href="#manage"><span class="nav__index">06</span>Trust screens</a>
   <a href="#lifecycle"><span class="nav__index">07</span>The life of a token</a>
   <a href="#gallery"><span class="nav__index">08</span>Every screen</a>
-  <a href="#outcome"><span class="nav__index">09</span>Outcome</a>
+  <a href="#prototype"><span class="nav__index">09</span>Live prototype</a>
+  <a href="#outcome"><span class="nav__index">10</span>Outcome</a>
 
   <a href="projects.html" class="nav__home">
     <svg class="nav__home-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H5M12 19l-7-7 7-7"/></svg>
@@ -88,6 +89,7 @@
   <a href="#manage" data-label="Trust screens"></a>
   <a href="#lifecycle" data-label="Token life"></a>
   <a href="#gallery" data-label="Every screen"></a>
+  <a href="#prototype" data-label="Prototype"></a>
   <a href="#outcome" data-label="Outcome"></a>
 </nav>
 
@@ -229,8 +231,8 @@
   <section class="pb-section" id="idea">
     <div class="container">
       <span class="pb-kicker">02 &mdash; The reframe</span>
-      <h2 class="pb-h2">Same queue. <em>The seat is now your phone.</em></h2>
-      <p class="pb-lead">One idea carries the whole product: a token is just a promise that you&rsquo;ll be served in order. That promise doesn&rsquo;t need a building to live in. Four rules kept it honest &mdash; and each one had a fault line. Push on them.</p>
+      <h2 class="pb-h2">Not a bigger app. <em>A smaller question.</em></h2>
+      <p class="pb-lead">The old app tried to be a branch on a screen &mdash; every service, every menu, all at once. The redesign starts from what a token actually is: a promise you&rsquo;ll be served in order. So the app has one job &mdash; keep that promise legible. Where you stand, how long that&rsquo;s likely to be, a nudge before your turn. Everything else moved out of the way. Four rules kept the cut honest &mdash; and each one had a fault line. Push on them.</p>
 
       <!-- design integrity board — four rules you can try to break -->
       <div class="pb-integrity reveal" id="pbIntegrity">
@@ -295,26 +297,26 @@
       <!-- the journey, re-cut -->
       <div class="pb-recut reveal">
         <div class="pb-recut__track pb-recut__track--before">
-          <span class="pb-recut__tag">Before &mdash; the branch does the remembering</span>
+          <span class="pb-recut__tag">Before &mdash; the old app, and the digging it took</span>
           <ol class="pb-recut__steps">
-            <li>Drive to the branch</li>
-            <li>Tear a paper token</li>
-            <li>Take a plastic seat</li>
-            <li>Guess how long it&rsquo;ll be</li>
-            <li class="is-open">Hope you queued for the right desk</li>
+            <li>Open to a wall of services</li>
+            <li>Hunt for the queue feature yourself</li>
+            <li>Answer questions with no stated reason</li>
+            <li>Pull a token &mdash; land on a dead end</li>
+            <li class="is-open">Ring the branch to ask how long</li>
           </ol>
         </div>
         <div class="pb-recut__seam" aria-hidden="true">
           <span></span><i class="bx bx-down-arrow-alt"></i><span></span>
         </div>
         <div class="pb-recut__track pb-recut__track--after">
-          <span class="pb-recut__tag">After &mdash; the token does</span>
+          <span class="pb-recut__tag">After &mdash; the redesign, one thing at a time</span>
           <ol class="pb-recut__steps">
-            <li>Pick a branch from the pavement</li>
-            <li>Four taps</li>
-            <li>Live token on your phone</li>
-            <li>SMS three people out</li>
-            <li class="is-done">Walk straight to the right counter</li>
+            <li>Open to where you stand in line</li>
+            <li>Four taps, one decision each</li>
+            <li>Every step says why it&rsquo;s asking</li>
+            <li>Live position and an honest ETA</li>
+            <li class="is-done">SMS three people before your turn</li>
           </ol>
         </div>
       </div>
@@ -735,6 +737,47 @@
         <div class="pb-shot" data-full="projects/prime_bank_digital_token/service_detail_screen_business_man.png" data-cap="Service explainer — Business Owner"><img src="projects/prime_bank_digital_token/service_detail_screen_business_man.png" alt="Service explainer, Business Owner path" loading="lazy"></div>
         <div class="pb-shot" data-full="projects/prime_bank_digital_token/post_detail_screen.png" data-cap="Bank story — folded"><img src="projects/prime_bank_digital_token/post_detail_screen.png" alt="CSR bank story, folded" loading="lazy"></div>
         <div class="pb-shot" data-full="projects/prime_bank_digital_token/post_detail_screen-1.png" data-cap="Bank story — expanded"><img src="projects/prime_bank_digital_token/post_detail_screen-1.png" alt="CSR bank story, expanded" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PROTOTYPE ============================ -->
+  <section class="pb-section" id="prototype">
+    <div class="container">
+      <span class="pb-kicker">Live prototype</span>
+      <h2 class="pb-h2">Don&rsquo;t just look &mdash; <em>drive it</em></h2>
+      <p class="pb-lead">The full Figma prototype, running right here on the page. Walk the four-step check-in, generate a token, flip the dashboard between its active and collapsed states, and open every trust sheet &mdash; each hotspot is live.</p>
+
+      <div class="pb-proto reveal">
+        <span class="pb-proto__glow" aria-hidden="true"></span>
+
+        <div class="pb-proto__frame">
+          <div class="pb-proto__chrome">
+            <span class="pb-proto__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="pb-proto__addr">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+              embed.figma.com / Prime&#8209;Bank / prototype
+            </span>
+            <a class="pb-proto__pop" href="https://www.figma.com/proto/X50f9qdmAXn0ualkvslquf/Prime-Bank?node-id=1-348&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" target="_blank" rel="noopener">
+              Open in Figma
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+          <div class="pb-proto__stage">
+            <iframe
+              class="pb-proto__embed"
+              title="Prime Bank Digital Token — interactive Figma prototype"
+              src="https://embed.figma.com/proto/X50f9qdmAXn0ualkvslquf/Prime-Bank?node-id=1-348&viewport=264%2C-1404%2C0.15&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&embed-host=share"
+              allowfullscreen
+              loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <ul class="pb-proto__hints">
+          <li><b>Click</b> the highlighted hotspots to move between screens</li>
+          <li><b>R</b> restarts the flow from the first frame</li>
+          <li><b>&#10530;</b> go fullscreen for a true one-to-one device scale</li>
+        </ul>
       </div>
     </div>
   </section>

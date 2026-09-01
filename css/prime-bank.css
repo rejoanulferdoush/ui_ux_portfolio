@@ -881,6 +881,99 @@ figure.pb-shot::after{ top:8px; bottom:auto; }
 }
 
 /* ============================================================
+   LIVE PROTOTYPE
+   ============================================================ */
+.pb-proto{
+  margin-top:clamp(28px,5vw,44px);
+  position:relative;
+}
+.pb-proto__glow{
+  position:absolute; left:-6%; right:-6%; top:-9%; height:72%;
+  background:radial-gradient(58% 100% at 50% 0%,
+     color-mix(in srgb, var(--pb-brand) 26%, transparent), transparent 72%);
+  filter:blur(48px); pointer-events:none; z-index:0;
+}
+.pb-proto__frame{
+  position:relative; z-index:1;
+  border:1px solid var(--pb-line); border-radius:12px;
+  background:var(--pb-panel); overflow:hidden;
+  box-shadow:0 50px 110px -34px rgba(0,0,0,.78);
+}
+.pb-proto__chrome{
+  display:flex; align-items:center; gap:16px;
+  padding:13px 16px; border-bottom:1px solid var(--pb-line);
+  background:linear-gradient(180deg, var(--pb-panel-2), var(--pb-panel));
+}
+.pb-proto__dots{ display:flex; gap:7px; flex-shrink:0; }
+.pb-proto__dots i{ width:11px; height:11px; border-radius:50%; background:rgba(255,255,255,.16); }
+.pb-proto__dots i:first-child{ background:#ff5f57; }
+.pb-proto__dots i:nth-child(2){ background:#febc2e; }
+.pb-proto__dots i:nth-child(3){ background:#28c840; }
+.pb-proto__addr{
+  flex:1; display:flex; align-items:center; gap:9px; min-width:0;
+  font-family:var(--ff-mono); font-size:11.5px; letter-spacing:.03em;
+  color:var(--text-soft); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  padding:8px 15px; border-radius:100px;
+  background:color-mix(in srgb, var(--surface) 40%, transparent);
+  border:1px solid var(--pb-line);
+}
+.pb-proto__addr svg{ width:12px; height:12px; flex-shrink:0; opacity:.55; }
+.pb-proto__pop{
+  flex-shrink:0; display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--ff-mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--pb-brand);
+  padding:9px 15px; border-radius:100px;
+  border:1px solid color-mix(in srgb, var(--pb-brand) 40%, var(--pb-line));
+  background:color-mix(in srgb, var(--pb-brand) 8%, transparent);
+  transition:background .25s ease, color .25s ease;
+}
+.pb-proto__pop svg{ width:13px; height:13px; transition:transform .25s; }
+.pb-proto__pop:hover{ background:var(--pb-brand); color:#08122e; }
+.pb-proto__pop:hover svg{ transform:translate(2px,-2px); }
+.pb-proto__stage{
+  position:relative;
+  background:repeating-linear-gradient(45deg, #0d0d0d 0 14px, #101010 14px 28px);
+}
+.pb-proto__stage::before,
+.pb-proto__stage::after{
+  content:""; position:absolute; width:16px; height:16px; pointer-events:none; z-index:2;
+  border:2px solid color-mix(in srgb, var(--pb-brand) 55%, transparent);
+}
+.pb-proto__stage::before{ top:12px; left:12px; border-right:0; border-bottom:0; }
+.pb-proto__stage::after{ bottom:12px; right:12px; border-left:0; border-top:0; }
+.pb-proto__embed{
+  display:block; width:100%; height:min(88vh, 940px); border:0;
+}
+.pb-proto__hints{
+  position:relative; z-index:1;
+  list-style:none; margin:22px 0 0; padding:0;
+  display:flex; flex-wrap:wrap; gap:10px 12px;
+}
+.pb-proto__hints li{
+  display:flex; align-items:center; gap:10px;
+  font-size:12.5px; color:var(--text-soft); line-height:1.4;
+  padding:9px 15px; border-radius:12px;
+  border:1px solid var(--pb-line); background:var(--pb-panel-2);
+}
+.pb-proto__hints b{
+  font-family:var(--ff-mono); font-size:11px; font-weight:500; color:var(--text);
+  min-width:22px; text-align:center;
+  padding:3px 7px; border-radius:6px;
+  background:color-mix(in srgb, var(--pb-brand) 14%, transparent);
+  border:1px solid color-mix(in srgb, var(--pb-brand) 30%, transparent);
+}
+@media (max-width:640px){
+  .pb-proto__chrome{ flex-wrap:wrap; gap:10px 14px; }
+  .pb-proto__addr{ order:3; flex-basis:100%; }
+  .pb-proto__embed{ height:min(82vh, 680px); }
+  .pb-proto__stage::before,
+  .pb-proto__stage::after{ display:none; }
+}
+@media (prefers-reduced-motion: reduce){
+  .pb-proto__pop, .pb-proto__pop svg{ transition:none; }
+}
+
+/* ============================================================
    OUTCOME + CTA
    ============================================================ */
 .pb-outcome{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,64px); align-items:start; }
