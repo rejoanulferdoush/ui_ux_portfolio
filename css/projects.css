@@ -298,6 +298,73 @@
   border:1px solid var(--border); border-radius: var(--radius-pill); padding:4px 10px;
 }
 
+/* ---------- Per-card "View case study" action ----------
+   Opens the same full-screen shot as Expand, but reads as the card's primary
+   move. On hover an accent wash in the project's own two colours sweeps across
+   from the left and the arrow node darkens and steps forward. */
+.proj-card__cta{
+  position:relative; isolation:isolate; overflow:hidden;
+  margin-top:4px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  min-height:58px; padding:8px 12px 8px 24px;
+  text-align:left; cursor:pointer;
+  font-family: var(--ff-mono); line-height:1.2;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface) 42%, transparent);
+  border:1px solid var(--border); border-radius: var(--radius-pill);
+  transition: color .35s ease, border-color .35s ease;
+}
+.proj-card__cta::before{
+  content:""; position:absolute; inset:0; z-index:-1;
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--accent) 80%, var(--c1, #fff)) 0%,
+      var(--accent) 55%);
+  transform: translateX(-101%);
+  transition: transform .55s cubic-bezier(.22,.68,.36,1);
+}
+.proj-card__cta:hover,
+.proj-card__cta:focus-visible{ color:#0d0d0d; border-color:transparent; outline:none; }
+.proj-card__cta:hover::before,
+.proj-card__cta:focus-visible::before{ transform:none; }
+.proj-card__cta-label{ display:flex; flex-direction:column; gap:3px; }
+.proj-card__cta-label b{
+  font-family: var(--ff-mono); font-weight:500; font-size:12px;
+  letter-spacing:.14em; text-transform:uppercase;
+}
+.proj-card__cta-label i{
+  font-family: var(--ff-mono); font-style:normal; font-size:10px;
+  letter-spacing:.06em; color: var(--text-soft); transition: color .35s ease;
+}
+.proj-card__cta:hover .proj-card__cta-label i,
+.proj-card__cta:focus-visible .proj-card__cta-label i{
+  color: color-mix(in srgb, #0d0d0d 65%, transparent);
+}
+.proj-card__cta-arrow{
+  flex-shrink:0; width:40px; height:40px; border-radius:50%;
+  display:grid; place-items:center; overflow:hidden;
+  background: var(--accent); color:#111;
+  transition: background .35s ease, color .35s ease;
+}
+.proj-card__cta-arrow svg{
+  width:16px; height:16px;
+  transition: transform .4s cubic-bezier(.22,.68,.36,1);
+}
+/* Nudge only the arrowhead — the disc stays put so it never rides into the
+   pill's rounded edge. */
+.proj-card__cta:hover .proj-card__cta-arrow,
+.proj-card__cta:focus-visible .proj-card__cta-arrow{
+  background:#0d0d0d; color:#fff;
+}
+.proj-card__cta:hover .proj-card__cta-arrow svg,
+.proj-card__cta:focus-visible .proj-card__cta-arrow svg{
+  transform: translateX(3px);
+}
+@media (prefers-reduced-motion: reduce){
+  .proj-card__cta, .proj-card__cta::before,
+  .proj-card__cta-arrow, .proj-card__cta-arrow svg{ transition:none; }
+}
+
 /* staggered reveal */
 .archive__grid.reveal .proj-card{ opacity:0; transform: translateY(38px); }
 .archive__grid.in-view .proj-card{
@@ -456,8 +523,22 @@
   border:1px solid var(--border); border-radius: var(--radius-m);
   overflow:auto; background: var(--bg-soft);
   transform: scale(.94); transition: transform .35s cubic-bezier(.22,.68,.36,1);
+  /* Reserve a gutter so the scrollbar rides in its OWN strip beside the
+     screenshot instead of cropping the image's right edge. */
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 55%, transparent) transparent;
 }
 .lightbox.is-open .lightbox__frame{ transform: scale(1); }
+.lightbox__frame::-webkit-scrollbar{ width:10px; }
+.lightbox__frame::-webkit-scrollbar-track{ background: transparent; }
+.lightbox__frame::-webkit-scrollbar-thumb{
+  background: color-mix(in srgb, var(--accent) 55%, transparent);
+  border-radius:999px; border:3px solid transparent; background-clip:padding-box;
+}
+.lightbox__frame::-webkit-scrollbar-thumb:hover{
+  background: color-mix(in srgb, var(--accent) 85%, transparent);
+}
 .lightbox__frame img{ display:block; width:100%; height:auto; }
 .lightbox__cap{
   position:sticky; left:0; bottom:0;

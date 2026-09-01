@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
     };
 
-    document.querySelectorAll('.proj-card__zoom').forEach((btn) => {
+    document.querySelectorAll('.proj-card__zoom, .proj-card__cta').forEach((btn) => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         open(btn.dataset.full, btn.dataset.cap);
