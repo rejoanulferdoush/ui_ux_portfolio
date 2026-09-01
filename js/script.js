@@ -21,6 +21,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Creative scroll: ease the whole page with Lenis so wheel / trackpad
+     input glides with inertia instead of the browser's stepped jump.
+     Lenis keeps the native scrollbar and keyboard working and dispatches
+     regular scroll events, so every scroll-linked effect below is unchanged.
+     Anchor links are routed through lenis.scrollTo for a matching glide.
+     Skipped entirely when the visitor asks for reduced motion. */
+  let lenis = null;
+  if (!reduceMotion && typeof Lenis === 'function') {
+    lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.6,
+      smoothWheel: true,
+    });
+
+    const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
+    requestAnimationFrame(raf);
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const id = link.getAttribute('href');
+        if (id === '#' || id === '#top') {
+          e.preventDefault();
+          lenis.scrollTo(0);
+          return;
+        }
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          lenis.scrollTo(target, { offset: 0 });
+        }
+      });
+    });
+  }
+
   /* Header scroll state: only the pinned actions (résumé + burger) react */
   const headerActions = document.querySelector('.header__actions');
   const onScroll = () => headerActions.classList.toggle('is-scrolled', window.scrollY > 20);
@@ -31,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
      lines are locked around the avatar by CSS, so nothing moves on scroll. */
   const hero = document.querySelector('.hero');
   const heroPortraitWrap = document.getElementById('heroPortraitWrap');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (hero && heroPortraitWrap && !reduceMotion) {
     let tiltX = 0, tiltY = 0, ticking = false;
@@ -324,5 +361,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Footer year */
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Cursor aura.
+     The native OS cursor is left visible and untouched, so it is always
+     clear where a click will land. We only add a soft accent glow that
+     eases a beat behind the pointer, swelling into a halo over anything
+     clickable. Skipped on touch pointers and with reduced motion. */
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (finePointer && !reduceMotion) {
+    const root = document.documentElement;
+    const aura = document.createElement('div');
+    aura.className = 'cursor-aura';
+    document.body.appendChild(aura);
+
+    const interactiveSel = 'a, button, [role="button"], input, textarea, select, label, summary, .work-card, [data-cursor="hover"]';
+
+    let mx = window.innerWidth / 2, my = window.innerHeight / 2;   // target
+    let ax = mx, ay = my;                                          // eased aura
+    let ready = false;
+
+    window.addEventListener('mousemove', (e) => {
+      mx = e.clientX; my = e.clientY;
+      if (!ready) { ready = true; ax = mx; ay = my; root.classList.add('cursor-ready'); }
+      root.classList.remove('cursor-out');
+
+      const el = e.target instanceof Element ? e.target.closest(interactiveSel) : null;
+      root.classList.toggle('cursor-hover', !!el);
+    }, { passive: true });
+
+    document.addEventListener('mousedown', () => root.classList.add('cursor-down'));
+    document.addEventListener('mouseup', () => root.classList.remove('cursor-down'));
+    document.addEventListener('mouseleave', () => root.classList.add('cursor-out'));
+    document.addEventListener('mouseenter', () => root.classList.remove('cursor-out'));
+
+    const follow = () => {
+      ax += (mx - ax) * 0.16;
+      ay += (my - ay) * 0.16;
+      aura.style.transform = `translate(${ax}px, ${ay}px)`;
+      requestAnimationFrame(follow);
+    };
+    requestAnimationFrame(follow);
+  }
 
 });

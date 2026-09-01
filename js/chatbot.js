@@ -957,7 +957,7 @@
       '      <button class="rf-chat__icon-btn" id="rfClose" title="Close" aria-label="Close chat">' + ICON.close + '</button>',
       '    </span>',
       '  </div>',
-      '  <div class="rf-chat__log" id="rfLog" aria-live="polite"></div>',
+      '  <div class="rf-chat__log" id="rfLog" aria-live="polite" data-lenis-prevent></div>',
       '  <div class="rf-chat__suggests" id="rfSuggests"></div>',
       '  <form class="rf-chat__form" id="rfForm">',
       '    <textarea class="rf-chat__input" id="rfInput" rows="1" placeholder="Ask me anything…" autocomplete="off"></textarea>',
