@@ -872,9 +872,13 @@ figure.pb-shot::after{ top:8px; bottom:auto; }
    ============================================================ */
 .pb-gallery{
   margin-top:clamp(28px,5vw,44px);
-  display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:14px;
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(190px,1fr)); gap:16px;
 }
-.pb-gallery .pb-shot img{ aspect-ratio:9/16; object-fit:cover; object-position:top; }
+.pb-gallery .pb-shot{ aspect-ratio:4/9; }
+.pb-gallery .pb-shot img{ width:100%; height:100%; aspect-ratio:auto; object-fit:cover; object-position:top center; }
+@media (max-width:560px){
+  .pb-gallery{ grid-template-columns:repeat(2,1fr); gap:12px; }
+}
 
 /* ============================================================
    OUTCOME + CTA
