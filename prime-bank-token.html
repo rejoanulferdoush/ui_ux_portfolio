@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=70">
-<link rel="stylesheet" href="css/prime-bank.css?v=2">
+<link rel="stylesheet" href="css/prime-bank.css?v=5">
 </head>
 <body>
 
@@ -60,7 +60,7 @@
 
 <div class="nav-backdrop" id="navBackdrop"></div>
 <nav class="nav" id="mainNav">
-  <a href="#problem"><span class="nav__index">01</span>The wait</a>
+  <a href="#problem"><span class="nav__index">01</span>The old app</a>
   <a href="#idea"><span class="nav__index">02</span>The reframe</a>
   <a href="#checkin"><span class="nav__index">03</span>Four-step check-in</a>
   <a href="#ticket"><span class="nav__index">04</span>The digital token</a>
@@ -80,7 +80,7 @@
 <!-- Side progress rail -->
 <nav class="pb-rail" id="pbRail" aria-label="Section progress">
   <a href="#overview" data-label="Overview" class="is-active"></a>
-  <a href="#problem" data-label="The wait"></a>
+  <a href="#problem" data-label="The old app"></a>
   <a href="#idea" data-label="The reframe"></a>
   <a href="#checkin" data-label="Check-in"></a>
   <a href="#ticket" data-label="The token"></a>
@@ -173,52 +173,54 @@
       <div class="pb-split">
         <div>
           <span class="pb-kicker">01 &mdash; The problem</span>
-          <h2 class="pb-h2">A number on a paper slip, and <em>nothing else to go on</em></h2>
+          <h2 class="pb-h2">The app already existed. Customers <em>couldn&rsquo;t find their way through it</em></h2>
         </div>
         <div class="pb-prose">
-          <p>Walk into a busy Prime Bank branch and the ritual is fixed: find the dispenser, tear a token, sit down, and watch a wall display you can barely read from the back row. You don&rsquo;t know how long it&rsquo;ll be, you can&rsquo;t step out for chai without gambling your place, and if you picked the wrong counter you find out at the front of the line.</p>
-          <p>The brief was a customer-facing product that keeps the fairness of a numbered queue but <strong>moves the waiting off the branch floor</strong> &mdash; and it had to look and feel like something a bank would put its name on, usable by someone standing on the street with one bar of signal.</p>
-          <p class="pb-pullquote">The token was never the problem. The <span>dead time around it</span> was.</p>
+          <p>Prime Bank had already shipped a queue app: you could pull a token from your phone instead of the branch dispenser. But the feedback was blunt &mdash; people opened it, froze, and rang the branch anyway to ask how long the wait was.</p>
+          <p>Every screen carried too much at once, and the one thing customers came for &mdash; <strong>where am I in line, and how long</strong> &mdash; was buried under services, banners and menus.</p>
+          <p class="pb-pullquote">Nothing here was broken. Everything here was <span>saying too much at once</span>.</p>
         </div>
       </div>
 
-      <!-- paper-receipt styled friction list -->
-      <div class="pb-receipt reveal">
-        <div class="pb-receipt__head">
-          <span>PRIME BANK &mdash; BANANI</span>
-          <span>THE OLD WAY</span>
+      <!-- the problem, in customers' own words -->
+      <div class="pb-voices reveal">
+        <div class="pb-voices__head">
+          <span class="pb-voices__mark" aria-hidden="true">&ldquo;</span>
+          <p class="pb-voices__lead">Before the redesign, this is what came back &mdash; in store reviews, at the call centre, in usability tests.</p>
         </div>
-        <ul class="pb-receipt__list">
-          <li>
-            <span class="pb-receipt__n">01</span>
-            <div>
-              <h3>Blind wait</h3>
-              <p>The slip says <b>A&nbsp;238</b>. It doesn&rsquo;t say how many are ahead, how fast the counter is moving, or whether it&rsquo;s twenty minutes or ninety.</p>
+
+        <ul class="pb-voices__wall">
+          <li class="pb-voice">
+            <div class="pb-voice__stars" role="img" aria-label="Rated 2 out of 5">
+              <span>&#9733;&#9733;</span><span class="is-empty">&#9733;&#9733;&#9733;</span>
             </div>
+            <blockquote>I could pull a token, but not how many people were ahead or how long it&rsquo;d take. So I&rsquo;d call the branch anyway &mdash; every single time.</blockquote>
+            <span class="pb-voice__tag"><i class="bx bx-hourglass" aria-hidden="true"></i> The wait stayed invisible</span>
           </li>
-          <li>
-            <span class="pb-receipt__n">02</span>
-            <div>
-              <h3>Chained to the chair</h3>
-              <p>Leave the room and you risk missing your call. So people arrive early and burn an hour they can&rsquo;t get back.</p>
+          <li class="pb-voice">
+            <div class="pb-voice__stars" role="img" aria-label="Rated 2 out of 5">
+              <span>&#9733;&#9733;</span><span class="is-empty">&#9733;&#9733;&#9733;</span>
             </div>
+            <blockquote>The home screen has a bit of everything on it. I open it and I&rsquo;m not sure where I&rsquo;m meant to tap first.</blockquote>
+            <span class="pb-voice__tag"><i class="bx bx-been-here" aria-hidden="true"></i> Too much on every screen</span>
           </li>
-          <li>
-            <span class="pb-receipt__n">03</span>
-            <div>
-              <h3>Wrong queue, found out late</h3>
-              <p>Deposit, loan, remittance and account opening are different desks. Pick wrong and the wait resets at the front.</p>
+          <li class="pb-voice">
+            <div class="pb-voice__stars" role="img" aria-label="Rated 1 out of 5">
+              <span>&#9733;</span><span class="is-empty">&#9733;&#9733;&#9733;&#9733;</span>
             </div>
+            <blockquote>All the services looked the same. I picked the wrong one twice, and each time I had to go back to the start.</blockquote>
+            <span class="pb-voice__tag"><i class="bx bx-copy" aria-hidden="true"></i> Nothing stood out</span>
           </li>
-          <li>
-            <span class="pb-receipt__n">04</span>
-            <div>
-              <h3>No memory of you</h3>
-              <p>The branch has no way to text you, tell you it&rsquo;s nearly your turn, or ask how the visit went once you leave.</p>
+          <li class="pb-voice">
+            <div class="pb-voice__stars" role="img" aria-label="Rated 2 out of 5">
+              <span>&#9733;&#9733;</span><span class="is-empty">&#9733;&#9733;&#9733;</span>
             </div>
+            <blockquote>It kept asking for details without telling me why, then dropped me on a screen with no clear next step.</blockquote>
+            <span class="pb-voice__tag"><i class="bx bx-block" aria-hidden="true"></i> Steps with no signposts</span>
           </li>
         </ul>
-        <div class="pb-receipt__tear" aria-hidden="true"></div>
+
+        <p class="pb-voices__foot">Four complaints, one root cause: <strong>the screen never told you what mattered right now.</strong> That became the whole brief for the redesign.</p>
       </div>
     </div>
   </section>

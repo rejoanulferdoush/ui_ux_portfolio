@@ -240,30 +240,70 @@
 }
 
 /* ============================================================
-   PROBLEM — paper receipt
+   PROBLEM — the problem in customers' own words
    ============================================================ */
-.pb-receipt{
-  margin-top:8px; max-width:620px;
-  background:var(--pb-paper); color:var(--pb-paper-ink);
-  border-radius:6px; padding:26px 26px 6px;
+.pb-voices{
+  margin-top:clamp(28px,5vw,48px);
   position:relative;
-  box-shadow:0 40px 80px -30px rgba(0,0,0,.7);
-  -webkit-mask:
-     radial-gradient(9px at 9px 50%, transparent 98%, #000) -9px 0,
-     radial-gradient(9px at calc(100% - 9px) 50%, transparent 98%, #000) 0 0;
 }
-.pb-receipt__head{
-  display:flex; justify-content:space-between; gap:12px;
-  font-family:var(--ff-mono); font-size:11px; letter-spacing:.12em;
-  padding-bottom:14px; border-bottom:2px dashed rgba(28,35,48,.35);
+.pb-voices__head{
+  display:flex; align-items:flex-start; gap:16px;
+  max-width:60ch; margin-bottom:clamp(22px,3vw,32px);
 }
-.pb-receipt__list{ display:flex; flex-direction:column; }
-.pb-receipt__list li{ display:flex; gap:16px; padding:18px 0; border-bottom:1px dashed rgba(28,35,48,.3); }
-.pb-receipt__n{ font-family:var(--ff-mono); font-weight:700; color:var(--pb-brand-deep); font-size:13px; flex-shrink:0; }
-.pb-receipt__list h3{ font-family:var(--ff-head); font-size:17px; margin-bottom:5px; color:var(--pb-paper-ink); }
-.pb-receipt__list p{ font-size:13.5px; line-height:1.6; color:rgba(28,35,48,.72); }
-.pb-receipt__list b{ font-family:var(--ff-mono); }
-.pb-receipt__tear{ height:20px; }
+.pb-voices__mark{
+  font-family:var(--ff-head); font-weight:800;
+  font-size:64px; line-height:.7; color:var(--pb-wait);
+  flex-shrink:0; user-select:none;
+}
+.pb-voices__lead{
+  font-family:var(--ff-head); font-size:clamp(17px,2.1vw,22px);
+  line-height:1.45; color:var(--text); margin:6px 0 0;
+}
+
+.pb-voices__wall{
+  display:grid; grid-template-columns:repeat(2,1fr);
+  gap:clamp(12px,1.6vw,18px);
+}
+.pb-voice{
+  position:relative;
+  background:var(--pb-panel); border:1px solid var(--pb-line);
+  border-radius:16px; padding:22px 22px 20px;
+  display:flex; flex-direction:column; gap:14px;
+  transition:border-color .25s ease, transform .25s ease;
+}
+.pb-voice:hover{
+  border-color:color-mix(in srgb, var(--pb-wait) 40%, transparent);
+  transform:translateY(-3px);
+}
+.pb-voice__stars{
+  font-size:13px; letter-spacing:2px; line-height:1;
+  color:var(--pb-wait);
+}
+.pb-voice__stars .is-empty{ color:rgba(255,255,255,.16); }
+.pb-voice blockquote{
+  margin:0; font-family:var(--ff-head); font-weight:400;
+  font-size:clamp(15px,1.7vw,17.5px); line-height:1.5;
+  color:var(--text);
+}
+.pb-voice__tag{
+  margin-top:auto;
+  display:inline-flex; align-items:center; gap:7px;
+  align-self:flex-start;
+  font-family:var(--ff-mono); font-size:11px; letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--pb-danger);
+  background:color-mix(in srgb, var(--pb-danger) 12%, transparent);
+  border:1px solid color-mix(in srgb, var(--pb-danger) 30%, transparent);
+  border-radius:999px; padding:6px 12px;
+}
+.pb-voice__tag i{ font-size:13px; }
+
+.pb-voices__foot{
+  margin:clamp(22px,3vw,30px) 0 0;
+  font-size:clamp(14px,1.6vw,16px); line-height:1.65;
+  color:var(--text-soft); max-width:60ch;
+}
+.pb-voices__foot strong{ color:var(--text); font-weight:600; }
 
 /* ============================================================
    IDEA — rules + before/after
@@ -696,6 +736,7 @@ figure.pb-shot::after{ top:8px; bottom:auto; }
   .pb-hero__inner{ grid-template-columns:1fr; }
   .pb-hero__stage{ order:-1; margin-bottom:20px; }
   .pb-split{ grid-template-columns:1fr; }
+  .pb-voices__wall{ grid-template-columns:1fr; }
   .pb-rules{ grid-template-columns:1fr; }
   .pb-beforeafter{ grid-template-columns:1fr; }
   .pb-ba__arrow{ transform:rotate(90deg); }
@@ -719,7 +760,9 @@ figure.pb-shot::after{ top:8px; bottom:auto; }
   .pb-choices--grid{ grid-template-columns:repeat(2,1fr); }
   .pb-proofstrip figure{ flex-basis:112px; }
   .pb-strip figure{ flex-basis:160px; }
-  .pb-receipt{ padding:20px 18px 4px; }
+  .pb-voices__head{ gap:12px; }
+  .pb-voices__mark{ font-size:46px; }
+  .pb-voice{ padding:18px 18px 16px; }
 }
 
 @media (prefers-reduced-motion:reduce){
