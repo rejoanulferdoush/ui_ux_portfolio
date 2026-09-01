@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=65">
-<link rel="stylesheet" href="css/projects.css?v=12">
+<link rel="stylesheet" href="css/projects.css?v=18">
 <link rel="stylesheet" href="css/chatbot.css?v=4">
 </head>
 <body>
@@ -219,23 +219,127 @@
 
       </div>
 
-      <!-- Under NDA -->
-      <div class="archive__nda">
-        <div class="archive__nda-head reveal">
-          <h2>Under wraps</h2>
-          <p>Flagship products shipped for clients across POS, kiosk and enterprise platforms. Walkthroughs available on request during a call.</p>
+      </div><!-- /.container — the vault below runs full-bleed -->
+
+      <!-- ============ Private / NDA work — its own full-bleed band ============ -->
+      <section class="vault" aria-labelledby="vaultTitle">
+        <div class="vault__marquee" aria-hidden="true">
+          <span>Under NDA</span><span>Under NDA</span><span>Under NDA</span><span>Under NDA</span><span>Under NDA</span><span>Under NDA</span><span>Under NDA</span><span>Under NDA</span><span>Under NDA</span><span>Under NDA</span>
         </div>
-        <div class="nda-grid reveal" id="ndaGrid">
-          <div class="nda-tile" data-cat="web"><span class="nda-tile__lock"><i class='bx bxs-lock-alt'></i></span><span class="nda-tile__name">POS System</span><span class="nda-tile__cat">Retail · Web + App</span><span class="nda-tile__foot">Available on request</span></div>
-          <div class="nda-tile" data-cat="web"><span class="nda-tile__lock"><i class='bx bxs-lock-alt'></i></span><span class="nda-tile__name">Self-Order Kiosk</span><span class="nda-tile__cat">QSR · Kiosk</span><span class="nda-tile__foot">Available on request</span></div>
-          <div class="nda-tile" data-cat="web"><span class="nda-tile__lock"><i class='bx bxs-lock-alt'></i></span><span class="nda-tile__name">Kitchen Display (KDS)</span><span class="nda-tile__cat">QSR · Display</span><span class="nda-tile__foot">Available on request</span></div>
-          <div class="nda-tile" data-cat="web"><span class="nda-tile__lock"><i class='bx bxs-lock-alt'></i></span><span class="nda-tile__name">Customer Display (CDS)</span><span class="nda-tile__cat">Retail · Display</span><span class="nda-tile__foot">Available on request</span></div>
-          <div class="nda-tile" data-cat="web"><span class="nda-tile__lock"><i class='bx bxs-lock-alt'></i></span><span class="nda-tile__name">Enterprise CRM</span><span class="nda-tile__cat">SaaS · Web</span><span class="nda-tile__foot">Available on request</span></div>
-          <div class="nda-tile" data-cat="web"><span class="nda-tile__lock"><i class='bx bxs-lock-alt'></i></span><span class="nda-tile__name">ERP Platform</span><span class="nda-tile__cat">Enterprise · Web</span><span class="nda-tile__foot">Available on request</span></div>
-          <div class="nda-tile" data-cat="web"><span class="nda-tile__lock"><i class='bx bxs-lock-alt'></i></span><span class="nda-tile__name">eCommerce Storefront</span><span class="nda-tile__cat">Retail · Web</span><span class="nda-tile__foot">Available on request</span></div>
-          <div class="nda-tile" data-cat="web"><span class="nda-tile__lock"><i class='bx bxs-lock-alt'></i></span><span class="nda-tile__name">EdTech Portal</span><span class="nda-tile__cat">Education · Web</span><span class="nda-tile__foot">Available on request</span></div>
+        <span class="deco deco--sm deco--a deco--hide-mobile" style="top:34%; right:5%; --deco-opacity:.09;" data-speed="18" aria-hidden="true"><img src="img/4.svg" alt="" decoding="async"></span>
+
+        <div class="container">
+          <div class="vault__head reveal">
+            <span class="vault__kicker"><i class='bx bxs-lock-alt'></i> The half I can&rsquo;t publish</span>
+            <h2 id="vaultTitle">Client work, still under wraps</h2>
+            <p>Most of my full-time years went into products that never make it into a portfolio &mdash; from retail counters and restaurant floors to the back-office systems that run a whole company. Here&rsquo;s the ground it covers and the parts I worked on.</p>
+          </div>
+
+          <div class="nda-grid reveal" id="ndaGrid">
+
+            <div class="nda-tile" data-cat="web mobile" style="--tint:#F0A63C">
+              <div class="nda-tile__head">
+                <i class='bx bxs-receipt nda-tile__icon'></i>
+                <h3 class="nda-tile__name">Retail &amp; point of sale</h3>
+                <span class="nda-tile__nda">NDA</span>
+              </div>
+              <p class="nda-tile__desc">The software that runs a retail counter &mdash; ringing up sales, the display the customer watches while it happens, and the web store behind it. Most of the work sat in the edge cases: split tender, returns, staying usable when the network drops.</p>
+              <ul class="nda-tile__products">
+                <li>POS terminal</li><li>Customer display</li><li>Web store</li>
+              </ul>
+            </div>
+
+            <div class="nda-tile" data-cat="web mobile" style="--tint:#FF6B5B">
+              <div class="nda-tile__head">
+                <i class='bx bxs-bowl-hot nda-tile__icon'></i>
+                <h3 class="nda-tile__name">Quick-service restaurants</h3>
+                <span class="nda-tile__nda">NDA</span>
+              </div>
+              <p class="nda-tile__desc">Order screens for fast-food counters, and the kitchen display that catches those orders. Big touch targets, no scrolling, readable from a step back.</p>
+              <ul class="nda-tile__products">
+                <li>Self-order kiosk</li><li>Kitchen display (KDS)</li>
+              </ul>
+            </div>
+
+            <div class="nda-tile" data-cat="web dashboard" style="--tint:#6F8BFF">
+              <div class="nda-tile__head">
+                <i class='bx bxs-spreadsheet nda-tile__icon'></i>
+                <h3 class="nda-tile__name">ERP &amp; operations</h3>
+                <span class="nda-tile__nda">NDA</span>
+              </div>
+              <p class="nda-tile__desc">The core operations platform &mdash; procurement, invoicing, reporting, all wired into one another. Years of feature requests to keep coherent instead of a pile of switches.</p>
+              <ul class="nda-tile__products">
+                <li>ERP platform</li><li>Ops dashboards</li>
+              </ul>
+            </div>
+
+            <div class="nda-tile" data-cat="web dashboard" style="--tint:#B98BE7">
+              <div class="nda-tile__head">
+                <i class='bx bxs-user-detail nda-tile__icon'></i>
+                <h3 class="nda-tile__name">Sales &amp; CRM</h3>
+                <span class="nda-tile__nda">NDA</span>
+              </div>
+              <p class="nda-tile__desc">Where a sales team lives: leads, pipeline stages, follow-ups, quotes. The job is making a hundred small updates a day feel like two clicks each.</p>
+              <ul class="nda-tile__products">
+                <li>CRM</li><li>Sales pipeline</li><li>Quotes</li>
+              </ul>
+            </div>
+
+            <div class="nda-tile" data-cat="web mobile" style="--tint:#38C9A6">
+              <div class="nda-tile__head">
+                <i class='bx bxs-id-card nda-tile__icon'></i>
+                <h3 class="nda-tile__name">HR &amp; payroll (HRMS)</h3>
+                <span class="nda-tile__nda">NDA</span>
+              </div>
+              <p class="nda-tile__desc">Attendance, leave, payroll and the org chart. One calm face for the employee checking a payslip, a denser one for HR running month-end.</p>
+              <ul class="nda-tile__products">
+                <li>Attendance</li><li>Payroll</li><li>Leave &amp; approvals</li>
+              </ul>
+            </div>
+
+            <div class="nda-tile" data-cat="web dashboard" style="--tint:#E4C05A">
+              <div class="nda-tile__head">
+                <i class='bx bxs-package nda-tile__icon'></i>
+                <h3 class="nda-tile__name">Inventory &amp; warehousing</h3>
+                <span class="nda-tile__nda">NDA</span>
+              </div>
+              <p class="nda-tile__desc">Stock counts, SKUs, purchase orders, transfers between locations. The numbers here have to be exactly right or everything downstream breaks.</p>
+              <ul class="nda-tile__products">
+                <li>Stock &amp; SKUs</li><li>Purchase orders</li><li>Stock takes</li>
+              </ul>
+            </div>
+
+            <div class="nda-tile" data-cat="web mobile" style="--tint:#5FB0E8">
+              <div class="nda-tile__head">
+                <i class='bx bxs-truck nda-tile__icon'></i>
+                <h3 class="nda-tile__name">Logistics &amp; delivery</h3>
+                <span class="nda-tile__nda">NDA</span>
+              </div>
+              <p class="nda-tile__desc">A dispatch board for the office, a stripped-down app for the driver, and live tracking for whoever&rsquo;s waiting on the order.</p>
+              <ul class="nda-tile__products">
+                <li>Dispatch board</li><li>Driver app</li><li>Order tracking</li>
+              </ul>
+            </div>
+
+            <div class="nda-tile" data-cat="web" style="--tint:#E86FA6">
+              <div class="nda-tile__head">
+                <i class='bx bxs-book-reader nda-tile__icon'></i>
+                <h3 class="nda-tile__name">Education technology</h3>
+                <span class="nda-tile__nda">NDA</span>
+              </div>
+              <p class="nda-tile__desc">A portal for a training institute &mdash; admissions, schedules, course material and student progress, on one login for staff and students.</p>
+              <ul class="nda-tile__products">
+                <li>Student &amp; admin portal</li>
+              </ul>
+            </div>
+
+          </div>
+
+          <p class="vault__foot reveal">Ask for a proper walkthrough on a call.</p>
         </div>
-      </div>
+      </section>
+
+      <div class="container"><!-- reopen the archive column for the CTA -->
 
       <!-- CTA -->
       <div class="archive__cta reveal">
@@ -293,7 +397,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
 <script src="js/script.js?v=3"></script>
-<script src="js/projects.js?v=6"></script>
+<script src="js/projects.js?v=7"></script>
 <script src="js/chatbot.js?v=5"></script>
 </body>
 </html>

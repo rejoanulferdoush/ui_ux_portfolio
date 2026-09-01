@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (filterBar) {
     const chips = Array.from(filterBar.querySelectorAll('.chip'));
     const items = cards.concat(ndaTiles);
-    const ndaSection = document.querySelector('.archive__nda');
+    const ndaSection = document.querySelector('.vault');
 
     const catsOf = (el) => (el.dataset.cat || '').trim().split(/\s+/).filter(Boolean);
     const matches = (el, filter) => filter === 'all' || catsOf(el).includes(filter);
