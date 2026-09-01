@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=65">
-<link rel="stylesheet" href="css/projects.css?v=20">
+<link rel="stylesheet" href="css/projects.css?v=30">
 <link rel="stylesheet" href="css/chatbot.css?v=4">
 </head>
 <body>
@@ -61,12 +61,16 @@
 
 <div class="nav-backdrop" id="navBackdrop"></div>
 <nav class="nav" id="mainNav">
-  <a href="index.html#work"><span class="nav__index">01</span>Work</a>
-  <a href="index.html#approach"><span class="nav__index">02</span>Approach</a>
-  <a href="index.html#stack"><span class="nav__index">03</span>Stack</a>
-  <a href="index.html#experience"><span class="nav__index">04</span>Experience</a>
-  <a href="index.html#education"><span class="nav__index">05</span>Education</a>
-  <a href="index.html#contact"><span class="nav__index">06</span>Contact</a>
+  <a href="#top"><span class="nav__index">01</span>The archive</a>
+  <a href="#clients"><span class="nav__index">02</span>Clients</a>
+  <a href="#work"><span class="nav__index">03</span>Case studies</a>
+  <a href="#vault"><span class="nav__index">04</span>Under NDA</a>
+  <a href="#start"><span class="nav__index">05</span>Start a project</a>
+
+  <a href="index.html" class="nav__home">
+    <svg class="nav__home-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10V20h13V10M10 20v-5h4v5"/></svg>
+    Back to homepage
+  </a>
   <a href="https://drive.google.com/file/d/1JJXKkSYM4AgdVSk-zB2cIQozw0DpkMTV/view?usp=sharing" target="_blank" rel="noopener" class="nav__resume">Resume <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H14a1 1 0 0 1-1-1V3.5zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h4v2H8V9z"/></svg></a>
 </nav>
 
@@ -110,6 +114,48 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
           </span>
         </aside>
+      </div>
+
+      <!-- ============ Client wall — a kinetic, draggable marquee ============
+           Names drift on their own; grab the strip and drag left / right to
+           scrub through the list, with a bit of momentum on release. -->
+      <section class="cwall reveal" id="clients" aria-label="Companies I&rsquo;ve had the chance to work with">
+        <div class="cwall__frame" id="clientTicker">
+          <div class="cwall__head">
+            <span class="cwall__tag"><b>Selected clients</b><span class="cwall__tag-dot"></span><i>and counting</i></span>
+            <span class="cwall__hint" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-4 5 4 5M16 7l4 5-4 5M4 12h16"/></svg>
+              drag to browse
+            </span>
+          </div>
+
+          <div class="cwall__marquee">
+            <ul class="cwall__track" id="clientTrack" aria-label="Companies I&rsquo;ve worked with">
+              <li class="cwall__item" style="--brand:#F26522"><span class="cwall__coin">Pf</span><span class="cwall__text"><b>Paperfly</b><i>Logistics</i></span></li>
+              <li class="cwall__item" style="--brand:#ED1C24"><span class="cwall__coin">Bd</span><span class="cwall__text"><b>BRAC Dairy</b><i>Dairy &amp; FMCG</i></span></li>
+              <li class="cwall__item" style="--brand:#1B75BB"><span class="cwall__coin">Bf</span><span class="cwall__text"><b>BRAC Fisheries</b><i>Agribusiness</i></span></li>
+              <li class="cwall__item" style="--brand:#B08D57"><span class="cwall__coin">De</span><span class="cwall__text"><b>Debonair</b><i>Group of companies</i></span></li>
+              <li class="cwall__item" style="--brand:#0E8A4F"><span class="cwall__coin">Db</span><span class="cwall__text"><b>Dhaka Bank</b><i>Banking</i></span></li>
+              <li class="cwall__item" style="--brand:#EC008C"><span class="cwall__coin">Mm</span><span class="cwall__text"><b>Modhumoti Bank</b><i>Banking</i></span></li>
+              <li class="cwall__item" style="--brand:#E4002B"><span class="cwall__coin">Pb</span><span class="cwall__text"><b>Prime Bank</b><i>Banking</i></span></li>
+              <li class="cwall__item" style="--brand:#A67C52"><span class="cwall__coin">Mn</span><span class="cwall__text"><b>Maisonette</b><i>Lifestyle retail</i></span></li>
+              <li class="cwall__item" style="--brand:#F5A623"><span class="cwall__coin">Sc</span><span class="cwall__text"><b>ShoeCue</b><i>Footwear</i></span></li>
+              <li class="cwall__item" style="--brand:#FDB913"><span class="cwall__coin">Bz</span><span class="cwall__text"><b>Beezit</b><i>E-commerce</i></span></li>
+              <li class="cwall__item" style="--brand:#2C6DB5"><span class="cwall__coin">Fg</span><span class="cwall__text"><b>Falcon Group</b><i>Manufacturing</i></span></li>
+              <li class="cwall__item" style="--brand:#2E9E4F"><span class="cwall__coin">Cf</span><span class="cwall__text"><b>City Fresh Thailand</b><i>Food &amp; beverage</i></span></li>
+              <li class="cwall__item" style="--brand:#3DAE2B"><span class="cwall__coin">Gp</span><span class="cwall__text"><b>Green Power Limited</b><i>Energy</i></span></li>
+              <li class="cwall__item" style="--brand:#12879E"><span class="cwall__coin">Iw</span><span class="cwall__text"><b>BUET &middot; IWFM</b><i>Water &amp; flood research</i></span></li>
+              <li class="cwall__item" style="--brand:#EC1E79"><span class="cwall__coin">Ca</span><span class="cwall__text"><b>City Alo</b><i>Women&rsquo;s banking &mdash; The City Bank</i></span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured case studies — section intro -->
+      <div class="feat-head reveal" id="work">
+        <span class="feat-head__kicker">Featured work &mdash; full walkthroughs</span>
+        <h2 class="feat-head__title">The ones I can <em>take apart</em></h2>
+        <p class="feat-head__lead"><b class="feat-head__count">4</b> <span class="feat-head__noun">projects</span> with nothing skipped &mdash; the problem, the research, the flows and the finished interface. Filter the set, or read straight through.</p>
       </div>
 
       <!-- Filters -->
@@ -246,7 +292,7 @@
       </div><!-- /.container — the vault below runs full-bleed -->
 
       <!-- ============ Private / NDA work — its own full-bleed band ============ -->
-      <section class="vault" aria-labelledby="vaultTitle">
+      <section class="vault" id="vault" aria-labelledby="vaultTitle">
         <div class="vault__marquee" aria-hidden="true">
           <span>Under NDA</span><span>Under NDA</span><span>Under NDA</span><span>Under NDA</span><span>Under NDA</span><span>Under NDA</span><span>Under NDA</span><span>Under NDA</span><span>Under NDA</span><span>Under NDA</span>
         </div>
@@ -366,7 +412,7 @@
       <div class="container"><!-- reopen the archive column for the CTA -->
 
       <!-- CTA -->
-      <div class="archive__cta reveal">
+      <div class="archive__cta reveal" id="start">
         <h2>Have a project in mind?</h2>
         <p>I take on a couple of freelance slots each quarter, alongside full-time UI/UX work.</p>
         <a href="index.html#contact" class="archive__cta-btn">
@@ -421,7 +467,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
 <script src="js/script.js?v=3"></script>
-<script src="js/projects.js?v=8"></script>
+<script src="js/projects.js?v=13"></script>
 <script src="js/chatbot.js?v=5"></script>
 </body>
 </html>

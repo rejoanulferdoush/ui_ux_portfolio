@@ -80,6 +80,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const deckCount = document.querySelector('.archive__deck-count');
   if (deckCount) deckCount.textContent = cards.length;
 
+  /* Featured-section subtitle counts itself from the cards in the DOM, so
+     dropping in another <article class="proj-card"> updates the number and
+     the "project / projects" wording with no edit here. */
+  const featCount = document.querySelector('.feat-head__count');
+  if (featCount) featCount.textContent = cards.length;
+  const featNoun = document.querySelector('.feat-head__noun');
+  if (featNoun) featNoun.textContent = cards.length === 1 ? 'project' : 'projects';
+
   if (deckStack) {
     // Hand-tuned scatter presets, cycled through for however many cards exist.
     // Index 0 is the top card (nearly straight); later ones peek out behind it.
@@ -125,6 +133,101 @@ document.addEventListener('DOMContentLoaded', () => {
       a.appendChild(im);
       deckStack.appendChild(a);
     });
+  }
+
+  /* ---------- Client wall: kinetic, drag-to-scrub marquee ---------------
+     One rAF loop owns a single scroll offset. Left alone it eases the strip
+     leftward; while you drag it follows the pointer 1:1 and remembers the
+     last-frame velocity, so on release the strip keeps gliding and settles
+     back into the idle drift. The item row is duplicated enough times to
+     cover 2x the frame, and the offset wraps by one original-set width so
+     the loop is seamless in both directions. */
+  const cwall = document.getElementById('clientTicker');
+  const cwallTrack = document.getElementById('clientTrack');
+
+  if (cwall && cwallTrack && !reduceMotion) {
+    const originals = Array.from(cwallTrack.children);
+
+    const cloneSet = () => originals.forEach((li) => {
+      const c = li.cloneNode(true);
+      c.setAttribute('aria-hidden', 'true');
+      cwallTrack.appendChild(c);
+    });
+    cloneSet();
+    let guard = 0;
+    while (cwallTrack.scrollWidth < cwall.offsetWidth * 2 + 200 && guard++ < 4) cloneSet();
+
+    // Exact advance for one full loop = distance from item[0] to the first clone.
+    let unit = 0;
+    const measure = () => {
+      const first = cwallTrack.children[0];
+      const wrapPoint = cwallTrack.children[originals.length];
+      unit = wrapPoint ? wrapPoint.offsetLeft - first.offsetLeft : cwallTrack.scrollWidth / 2;
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    window.addEventListener('load', measure);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+
+    const IDLE_SPEED = 0.45;          // px/frame drift when untouched
+    let offset = 0;
+    let vel = 0;
+    let dragging = false;
+    let hovering = false;
+    let lastX = 0;
+
+    const wrap = () => {
+      if (unit <= 0) return;
+      while (offset <= -unit) offset += unit;
+      while (offset > 0) offset -= unit;
+    };
+
+    const frame = () => {
+      if (!dragging) {
+        if (Math.abs(vel) > 0.06) {
+          offset += vel;
+          vel *= 0.93;                // momentum decay
+        } else {
+          vel = 0;
+          if (!hovering) offset -= IDLE_SPEED;
+        }
+      }
+      wrap();
+      cwallTrack.style.setProperty('--tx', offset.toFixed(2) + 'px');
+      cwallTrack.style.setProperty('--v', (dragging || Math.abs(vel) > 0.06 ? vel : 0).toFixed(2));
+      requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+
+    cwall.addEventListener('pointerdown', (e) => {
+      dragging = true; lastX = e.clientX; vel = 0;
+      try { cwall.setPointerCapture(e.pointerId); } catch (err) { /* no-op */ }
+      cwall.classList.add('is-grabbing');
+    });
+
+    cwall.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - lastX;
+      lastX = e.clientX;
+      offset += dx;
+      vel = Math.max(-55, Math.min(55, dx));
+      if (Math.abs(dx) > 2) cwall.classList.add('has-dragged');
+      wrap();
+    });
+
+    const release = (e) => {
+      if (!dragging) return;
+      dragging = false;
+      cwall.classList.remove('is-grabbing');
+      if (e && e.pointerId != null && cwall.hasPointerCapture(e.pointerId)) {
+        cwall.releasePointerCapture(e.pointerId);
+      }
+    };
+    cwall.addEventListener('pointerup', release);
+    cwall.addEventListener('pointercancel', release);
+
+    cwall.addEventListener('pointerenter', () => { hovering = true; });
+    cwall.addEventListener('pointerleave', () => { hovering = false; });
   }
 
   /* ---------- Lightbox ---------- */
