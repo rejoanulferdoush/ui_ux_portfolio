@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=65">
-<link rel="stylesheet" href="css/safe-home.css?v=6">
+<link rel="stylesheet" href="css/safe-home.css?v=10">
 </head>
 <body>
 
@@ -66,6 +66,7 @@
   <a href="#flows"><span class="nav__index">04</span>The flows</a>
   <a href="#alerts"><span class="nav__index">05</span>Alert model</a>
   <a href="#gallery"><span class="nav__index">06</span>Every screen</a>
+  <a href="#prototype"><span class="nav__index">07</span>Live prototype</a>
 
   <a href="projects.html" class="nav__home">
     <svg class="nav__home-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10V20h13V10M10 20v-5h4v5"/></svg>
@@ -84,6 +85,7 @@
   <a href="#alerts" data-label="Alert model"></a>
   <a href="#craft" data-label="Craft"></a>
   <a href="#gallery" data-label="Every screen"></a>
+  <a href="#prototype" data-label="Prototype"></a>
   <a href="#outcome" data-label="Outcome"></a>
 </nav>
 
@@ -861,6 +863,47 @@
         <div class="cs-shot" data-full="projects/safe_home/Modal/Tutorial%20(v3).png" data-cap="Tutorial"><img src="projects/safe_home/Modal/Tutorial%20(v3).png" alt="Tutorial" loading="lazy"></div>
         <div class="cs-shot" data-full="projects/safe_home/Modal/Help%20Center%20(v3).png" data-cap="Help center"><img src="projects/safe_home/Modal/Help%20Center%20(v3).png" alt="Help center" loading="lazy"></div>
         <div class="cs-shot" data-full="projects/safe_home/Settings/Settings%20(v3).png" data-cap="Settings"><img src="projects/safe_home/Settings/Settings%20(v3).png" alt="Settings" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PROTOTYPE ============================ -->
+  <section class="cs-section" id="prototype">
+    <div class="container">
+      <span class="cs-kicker">Live prototype</span>
+      <h2 class="cs-h2">Don&rsquo;t just look &mdash; <em>drive it</em></h2>
+      <p class="cs-lead">The full Figma prototype, running right here on the page. Flip the home between calm and emergency, walk the bilingual onboarding, open a sensor and drag its threshold &mdash; every hotspot is live.</p>
+
+      <div class="cs-proto reveal">
+        <span class="cs-proto__glow" aria-hidden="true"></span>
+
+        <div class="cs-proto__frame">
+          <div class="cs-proto__chrome">
+            <span class="cs-proto__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="cs-proto__addr">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+              embed.figma.com / Smart&#8209;Safe&#8209;Home / prototype
+            </span>
+            <a class="cs-proto__pop" href="https://www.figma.com/proto/9EpcRZyYQlYcoG91lAdTlz/Smart-Safe-Home?node-id=365-493&scaling=min-zoom&content-scaling=fixed&page-id=26%3A330" target="_blank" rel="noopener">
+              Open in Figma
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+          <div class="cs-proto__stage">
+            <iframe
+              class="cs-proto__embed"
+              title="SAFE — interactive Figma prototype"
+              src="https://embed.figma.com/proto/9EpcRZyYQlYcoG91lAdTlz/Smart-Safe-Home?node-id=365-493&scaling=min-zoom&content-scaling=fixed&page-id=26%3A330&embed-host=share"
+              allowfullscreen
+              loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <ul class="cs-proto__hints">
+          <li><b>Click</b> the highlighted hotspots to move between screens</li>
+          <li><b>R</b> restarts the flow from the first frame</li>
+          <li><b>&#10530;</b> go fullscreen for a true one-to-one device scale</li>
+        </ul>
       </div>
     </div>
   </section>
