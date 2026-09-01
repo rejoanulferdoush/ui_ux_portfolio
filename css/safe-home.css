@@ -429,10 +429,11 @@
 .cs-rule[data-rule="escalate"]{ --c: var(--cs-warn); }
 .cs-rule:hover{ background: linear-gradient(180deg, var(--cs-panel-2), #1d1d1d); }
 
-/* running accent line down the seam */
+/* running accent line down the seam — inset from the top/bottom so the
+   card's rounded outer corners never clip it into a broken-looking stub */
 .cs-rule::before{
-  content:""; position:absolute; left:0; top:0; bottom:0; width:2px;
-  background: linear-gradient(180deg, var(--c), transparent 70%);
+  content:""; position:absolute; left:0; top:28px; bottom:28px; width:2px;
+  background: linear-gradient(180deg, var(--c), transparent 78%);
   transform: scaleY(0); transform-origin:top; transition: transform .6s ease;
 }
 .cs-rules.in-view .cs-rule::before{ transform: scaleY(1); }
