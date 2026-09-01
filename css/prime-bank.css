@@ -480,6 +480,33 @@
 .pb-recut__seam span{ flex:1; height:1px; background:var(--pb-line); }
 .pb-recut__seam i{ font-size:18px; }
 
+/* tablet + mobile — stack the two filmstrips into readable vertical lists */
+@media (max-width:900px){
+  .pb-recut{ margin-top:clamp(32px,7vw,48px); }
+  .pb-recut__track{ padding:16px 15px 18px; }
+  .pb-recut__steps{
+    flex-direction:column; align-items:stretch; gap:14px;
+    overflow:visible; padding:2px 0;
+  }
+  .pb-recut__steps li{
+    max-width:none; width:100%; align-items:flex-start;
+  }
+  /* connector: horizontal rung becomes a vertical one under the number badge */
+  .pb-recut__steps li + li::after{
+    left:24px; top:-14px; width:2px; height:14px; transform:none;
+  }
+  .pb-recut__track--before .pb-recut__steps li + li::after{
+    background:repeating-linear-gradient(180deg, color-mix(in srgb, var(--pb-wait) 70%, transparent) 0 3px, transparent 3px 6px);
+  }
+  .pb-recut__track--after .pb-recut__steps li + li::after{
+    background:linear-gradient(180deg, transparent, color-mix(in srgb, var(--pb-serve) 75%, transparent));
+  }
+}
+@media (max-width:480px){
+  .pb-recut__track{ padding:14px 13px 16px; border-radius:16px; }
+  .pb-recut__steps li{ font-size:12.5px; padding:10px 13px; }
+}
+
 /* ============================================================
    CHECK-IN — interactive wizard
    ============================================================ */
@@ -627,6 +654,66 @@
 .pb-proofstrip figure{ flex:0 0 200px; scroll-snap-align:start; margin:0; }
 .pb-proofstrip figcaption{ font-family:var(--ff-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-soft); margin-top:8px; }
 .pb-demo__note{ font-family:var(--ff-mono); font-size:11px; color:var(--text-soft); }
+
+/* ============================================================
+   THE FLOW, PLAYABLE — responsive (wizard · ticket · proof strip)
+   ============================================================ */
+@media (max-width:960px){
+  /* once the demo stacks, the wizard is full-width — the fixed 290px stage
+     height just left a dead gap above the nav on the shorter steps */
+  .pb-wizard__stage{ min-height:0; }
+  .pb-demo{ gap:clamp(18px,5vw,32px); }
+}
+
+@media (max-width:640px){
+  /* --- step wizard card --- */
+  .pb-wizard{ padding:20px 16px; border-radius:18px; }
+  .pb-wizard__top{ font-size:10px; }
+  .pb-wizard__bar{ margin:10px 0 18px; }
+  .pb-wstep h3{ font-size:18px; line-height:1.25; }
+  .pb-wstep__hint{ font-size:12.5px; margin:8px 0 14px; }
+  .pb-choices button{ font-size:14px; padding:12px 14px; }
+  .pb-choices button small{ font-size:11.5px; }
+  /* step 1 branch list: put the name and the distance/wait on one row so
+     the five options don't each grow to two lines and crowd the step */
+  .pb-choices[data-group="branch"] button{
+    flex-direction:row; align-items:baseline; justify-content:space-between;
+    gap:10px; padding:12px 13px;
+  }
+  .pb-choices[data-group="branch"] button small{
+    flex:0 0 auto; text-align:right; white-space:nowrap; font-size:11px;
+  }
+  .pb-choices--grid{ grid-template-columns:repeat(2,1fr); gap:8px; }
+  .pb-choices--grid button{ font-size:12.5px; }
+  .pb-field input{ font-size:16px; }              /* stop iOS zoom-on-focus */
+  .pb-wizard__go{ font-size:14px; padding:14px; }
+  .pb-wizard__nav{ flex-wrap:wrap; gap:10px 12px; }
+  .pb-wizard__back{ flex-shrink:0; }
+  .pb-wizard__crumbs{ width:100%; font-size:10.5px; }
+
+  /* --- generated ticket ("test run" card) --- */
+  .pb-ticket__stub{ padding:22px 16px 24px; }
+  .pb-ticket__branch{ font-size:12px; }
+  /* .pb-flap gets forced to 18px below 560px — keep the token number big */
+  .pb-ticket .pb-flap--big{ font-size:clamp(30px,9vw,42px); }
+  .pb-ticket__meta{ gap:12px 18px; margin-top:14px; }
+  .pb-ticket__meta b{ font-size:14px; }
+  .pb-ticket__foot{ padding:16px 18px 20px; }
+
+  /* --- real-screens strip --- */
+  .pb-proofstrip{ gap:12px; }
+  .pb-proofstrip figure{ flex-basis:158px; }
+  .pb-demo__note{ font-size:10.5px; }
+}
+
+@media (max-width:380px){
+  .pb-wizard{ padding:16px 13px; }
+  .pb-ticket__meta{ gap:10px 14px; }
+  /* tightest screens: if the branch row can't hold both, let the
+     distance/wait fall under the name rather than overflow */
+  .pb-choices[data-group="branch"] button{ flex-wrap:wrap; gap:2px 10px; }
+  .pb-choices[data-group="branch"] button small{ white-space:normal; text-align:left; }
+}
 
 /* ============================================================
    SHOT / thumbnails
@@ -921,8 +1008,8 @@ figure.pb-shot::after{ top:8px; bottom:auto; }
 .pb-proto__pop{
   flex-shrink:0; display:inline-flex; align-items:center; gap:8px;
   font-family:var(--ff-mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--pb-brand);
-  padding:9px 15px; border-radius:100px;
+  color:var(--pb-brand); white-space:nowrap;
+  padding:9px 16px; border-radius:100px;
   border:1px solid color-mix(in srgb, var(--pb-brand) 40%, var(--pb-line));
   background:color-mix(in srgb, var(--pb-brand) 8%, transparent);
   transition:background .25s ease, color .25s ease;
@@ -950,15 +1037,16 @@ figure.pb-shot::after{ top:8px; bottom:auto; }
   display:flex; flex-wrap:wrap; gap:10px 12px;
 }
 .pb-proto__hints li{
-  display:flex; align-items:center; gap:10px;
+  display:flex; align-items:center; gap:12px;
   font-size:12.5px; color:var(--text-soft); line-height:1.4;
-  padding:9px 15px; border-radius:12px;
+  padding:10px 16px; border-radius:12px;
   border:1px solid var(--pb-line); background:var(--pb-panel-2);
 }
 .pb-proto__hints b{
+  flex-shrink:0;
   font-family:var(--ff-mono); font-size:11px; font-weight:500; color:var(--text);
   min-width:22px; text-align:center;
-  padding:3px 7px; border-radius:6px;
+  padding:4px 9px; border-radius:6px;
   background:color-mix(in srgb, var(--pb-brand) 14%, transparent);
   border:1px solid color-mix(in srgb, var(--pb-brand) 30%, transparent);
 }
@@ -968,6 +1056,10 @@ figure.pb-shot::after{ top:8px; bottom:auto; }
   .pb-proto__embed{ height:min(82vh, 680px); }
   .pb-proto__stage::before,
   .pb-proto__stage::after{ display:none; }
+  /* each hint on its own row, keycap aligned to the first line of text */
+  .pb-proto__hints{ gap:8px; }
+  .pb-proto__hints li{ flex-basis:100%; align-items:flex-start; }
+  .pb-proto__hints b{ margin-top:1px; }
 }
 @media (prefers-reduced-motion: reduce){
   .pb-proto__pop, .pb-proto__pop svg{ transition:none; }
@@ -1108,7 +1200,11 @@ figure.pb-shot::after{ top:8px; bottom:auto; }
   .pb-hero__stage{ order:-1; margin-bottom:20px; }
   .pb-split{ grid-template-columns:1fr; }
   .pb-voices__wall{ grid-template-columns:1fr; }
-  .pb-demo{ grid-template-columns:1fr; }
+  /* minmax(0,1fr), not 1fr: the proof strip is a horizontal scroller whose
+     intrinsic width (6 shots) otherwise blows the track out past the
+     viewport and drags the wizard card wide with it */
+  .pb-demo{ grid-template-columns:minmax(0,1fr); }
+  .pb-demo > *{ min-width:0; }
   .pb-demo__proof{ position:static; }
   .pb-anatomy{ grid-template-columns:1fr; }
   .pb-anatomy__media{ max-width:260px; }
