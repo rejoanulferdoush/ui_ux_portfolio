@@ -61,7 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Header scroll state: only the pinned actions (résumé + burger) react */
   const headerActions = document.querySelector('.header__actions');
-  const onScroll = () => headerActions.classList.toggle('is-scrolled', window.scrollY > 20);
+  const onScroll = () => {
+    const scrolled = window.scrollY > 20;
+    headerActions.classList.toggle('is-scrolled', scrolled);
+    /* Mobile: Resume sits in the slide-out nav at the top, then hands back to
+       the pinned capsule once the page is scrolled */
+    document.documentElement.classList.toggle('is-scrolled', scrolled);
+  };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 

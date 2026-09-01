@@ -950,7 +950,7 @@
       '    <span class="rf-chat__avatar"><img src="' + AVATAR + '" alt="Rejoanul Ferdoush"></span>',
       '    <span class="rf-chat__id">',
       '      <span class="rf-chat__name">Rejoanul Ferdoush</span>',
-      '      <span class="rf-chat__status"><b>●</b> UI/UX Engineer · usually replies fast</span>',
+      '      <span class="rf-chat__status"><b>●</b> UI/UX Engineer</span>',
       '    </span>',
       '    <span class="rf-chat__header-actions">',
       '      <a class="rf-chat__icon-btn" href="' + RESUME + '" target="_blank" rel="noopener" title="Resume" aria-label="Open resume">' + ICON.resume + '</a>',
@@ -1063,14 +1063,18 @@
       renderChips(defaultChips());
     }
 
+    var isPhone = function () { return window.matchMedia('(max-width: 520px)').matches; };
+
     function setOpen(open) {
       root.classList.toggle('is-open', open);
       launcher.setAttribute('aria-expanded', String(open));
+      // Lock the page behind the full-screen sheet on phones
+      document.documentElement.classList.toggle('rf-chat-lock', open && isPhone());
       if (open) {
         dismissNudge();
         greet();
         window.setTimeout(function () {
-          if (!window.matchMedia('(max-width: 520px)').matches) input.focus();
+          if (!isPhone()) input.focus();
         }, 350);
       }
     }
