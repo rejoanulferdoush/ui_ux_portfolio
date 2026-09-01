@@ -27,19 +27,23 @@
 }
 /* ---------- Back link + "you are here" ---------- */
 .archive__nav{
-  display:flex; align-items:center; flex-wrap:wrap; gap:12px 16px;
+  /* Button and the "you're here" note sit as a left-aligned pair. Big gaps in
+     both axes so the note never reads as a caption of the button — plus the
+     note carries its own accent dot to set it apart when the row wraps. */
+  display:flex; align-items:center; flex-wrap:wrap;
+  gap:22px 44px;
   margin-bottom:30px;
 }
 .archive__back{
-  display:inline-flex; align-items:center; gap:9px;
-  font-family: var(--ff-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  display:inline-flex; align-items:center; gap:10px;
+  font-family: var(--ff-mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
   color: var(--text);
-  padding:10px 16px;
+  padding:12px 22px;
   border:1px solid var(--border); border-radius: var(--radius-pill);
   background: color-mix(in srgb, var(--surface) 42%, transparent);
   transition: color .3s ease, border-color .3s ease, background .3s ease;
 }
-.archive__back svg{ width:14px; height:14px; transition: transform .3s ease; }
+.archive__back svg{ width:15px; height:15px; transition: transform .3s ease; }
 .archive__back:hover{
   color: var(--accent);
   border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
@@ -47,8 +51,14 @@
 }
 .archive__back:hover svg{ transform: translateX(-3px); }
 .archive__here{
+  display:inline-flex; align-items:center; gap:10px;
   font-family: var(--ff-mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
   color: var(--text-soft);
+}
+.archive__here::before{
+  content:""; flex-shrink:0;
+  width:6px; height:6px; border-radius:50%;
+  background: var(--accent);
 }
 .archive__here b{ color: var(--text); font-weight:500; }
 
@@ -274,7 +284,7 @@
 }
 
 /* Burger-menu anchor targets clear the pinned Resume / filter capsule. */
-#clients, #work, #start{ scroll-margin-top: 96px; }
+#clients, #work, #start, #vault{ scroll-margin-top: 96px; }
 
 /* ---------- Burger menu — "back to homepage" action ----------
    Not a section of this page, so it drops out of the 01–05 list and reads
@@ -738,7 +748,23 @@
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px){
-  .archive__filters.is-stuck{ max-width: calc(100% - 150px); }
+  /* Tablet + mobile: don't pin the filter/project tab bar. There isn't room to
+     keep it stuck and still clear the fixed Resume/menu capsule, so let it sit
+     in the flow as a plain full-width, centred, wrapping row. (JS still toggles
+     .is-stuck; neutralise every pinned-state offset it triggers.) */
+  .archive__filters,
+  .archive__filters.is-stuck{
+    position: static;
+    width: auto;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    transform: none;
+    justify-content: center;
+    gap: 8px;
+  }
+
   .proj-card,
   .proj-card:nth-child(even){ grid-template-columns: 1fr; }
   .proj-card:nth-child(even) .proj-card__media{ order:0; }
@@ -748,10 +774,31 @@
 }
 @media (max-width: 560px){
   .archive{ padding-top: 120px; }
-  .archive__filters{ top:8px; border-radius: var(--radius-m); }
-  .archive__filters.is-stuck{ max-width: calc(100% - 56px); }
+
+  /* Non-sticky filter bar is already handled at the 900px breakpoint; just
+     soften the pill radius to match the tighter phone layout. */
+  .archive__filters,
+  .archive__filters.is-stuck{
+    border-radius: var(--radius-m);
+  }
+
   .archive__flow{ gap:8px; }
   .archive__flow li:not(:first-child)::before{ display:none; }
   .archive__flow li span{ font-size:10px; padding:7px 12px; }
+
+  /* Preview deck: shrink so it isn't a full-width square eating the fold */
+  .archive__deck-stack{ max-width: 272px; }
+
+  /* The 56px card radius is way oversized on a phone-width card — pull it in */
+  .proj-card{ border-radius: var(--radius-m); }
+
   .proj-card__metrics{ gap:10px 18px; }
+
+  /* Card CTA: trim the padding and sub-label so the label row fits the
+     narrow card body without wrapping to a second line */
+  .proj-card__cta{ padding-left: 18px; gap: 10px; }
+  .proj-card__cta-label i{ font-size: 9px; letter-spacing: .03em; }
+
+  /* Lightbox caption: let the two labels stack instead of colliding */
+  .lightbox__cap{ flex-wrap: wrap; gap: 4px 14px; }
 }
