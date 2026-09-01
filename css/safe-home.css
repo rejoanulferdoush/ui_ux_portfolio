@@ -645,7 +645,11 @@
   border:1px solid var(--cs-line); border-radius: var(--radius-l);
   padding: clamp(28px, 4vw, 48px); background: var(--cs-panel);
   overflow-x:auto;
+  scrollbar-width: thin; scrollbar-color: var(--cs-safe) transparent;
 }
+.cs-iamap::-webkit-scrollbar{ height:6px; }
+.cs-iamap::-webkit-scrollbar-track{ background:transparent; }
+.cs-iamap::-webkit-scrollbar-thumb{ background: var(--cs-safe); border-radius:100px; }
 .cs-iamap__row{ display:flex; gap:14px; align-items:flex-start; min-width:640px; }
 .cs-iamap__col{ flex:1; }
 .cs-iamap__node{
@@ -1041,6 +1045,32 @@
   .cs-tl__time{ position:static; }
   .cs-tl{ padding-left:22px; }
   .cs-feature__media .cs-shot:nth-child(2){ margin-top:0; }
+}
+
+/* Mobile — tighten every corner (buttons keep their pill/round shape) */
+@media (max-width: 640px){
+  .cs{
+    --radius-s: 10px;
+    --radius-m: 14px;
+    --radius-l: 16px;
+  }
+  .cs-phone{ border-radius:22px; }
+  .cs-phone__screen{ border-radius:16px; }
+  .cs-phone__notch{ border-radius:0 0 9px 9px; }
+  .cs-beat__time{ border-radius:6px; }
+  .cs-state__screen{ border-radius:12px; }
+  .cs-state__chip{ border-radius:6px; }
+  .cs-state__hex{ border-radius:5px; }
+  .cs-iamap{ border-radius:24px; }
+  .cs-iamap__node{ border-radius:10px; }
+  .cs-iamap__leaf{ border-radius:9px; }
+  .cs-shot{ border-radius:14px; }
+  .cs-craft__media .cs-shot{ border-radius:14px 14px 0 0; }
+  .cs-gallery .cs-shot{ border-radius:12px; }
+  .cs-proto__frame{ border-radius:9px; }
+  .cs-proto__hints li{ border-radius:9px; }
+  .cs-proto__hints b{ border-radius:5px; }
+  .cs-lb img{ border-radius:12px; }
 }
 
 @media (prefers-reduced-motion: reduce){
