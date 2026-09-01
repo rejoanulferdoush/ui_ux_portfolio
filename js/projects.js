@@ -39,6 +39,23 @@ document.addEventListener('DOMContentLoaded', () => {
       chips.forEach((c) => c.classList.toggle('is-active', c === chip));
       apply(chip.dataset.filter);
     });
+
+    /* Shift the bar left only once it's genuinely pinned to the top — i.e.
+       sharing the row with the sticky Resume / menu capsule. A 1px sentinel
+       just above the bar flips .is-stuck the moment the bar would stick. */
+    const stickyTop = parseInt(getComputedStyle(filterBar).top, 10) || 14;
+    const sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.cssText = 'position:relative;height:1px;margin-bottom:-1px;pointer-events:none;';
+    filterBar.parentNode.insertBefore(sentinel, filterBar);
+
+    new IntersectionObserver(([entry]) => {
+      // Stuck only when the sentinel has scrolled ABOVE the sticky line —
+      // not when it's simply still below the fold on load.
+      const rootTop = entry.rootBounds ? entry.rootBounds.top : stickyTop;
+      const stuck = !entry.isIntersecting && entry.boundingClientRect.top <= rootTop;
+      filterBar.classList.toggle('is-stuck', stuck);
+    }, { rootMargin: `-${stickyTop + 1}px 0px 0px 0px`, threshold: [0] }).observe(sentinel);
   }
 
   /* ---------- Lightbox ---------- */

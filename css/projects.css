@@ -101,21 +101,28 @@
   position: sticky; top: 14px; z-index: 20;
   display:flex; flex-wrap:wrap; gap:10px;
   padding:12px;
-  /* Hug the chips. Centered at rest; once the page scrolls and the pinned
-     Resume / menu capsule locks into its top-right slot, the bar slides
-     back to the left edge so the two never overlap. */
-  width: fit-content;
+  /* Hug the chips. Centered at rest (margin-left 50% + translateX(-50%) so it
+     stays centred at any width); once the page scrolls and the pinned Resume /
+     menu capsule docks top-right, the bar slides to the left edge and caps its
+     width so the two never overlap. Both properties animate smoothly. */
+  width: max-content;
   max-width: 100%;
-  margin: 0 auto 56px;
-  transition: margin .45s cubic-bezier(.22,.68,.36,1), max-width .45s cubic-bezier(.22,.68,.36,1);
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 56px;
+  transition: margin-left .45s cubic-bezier(.22,.68,.36,1),
+              transform .45s cubic-bezier(.22,.68,.36,1),
+              max-width .45s cubic-bezier(.22,.68,.36,1);
   border:1px solid var(--border); border-radius: var(--radius-pill);
   background: color-mix(in srgb, var(--bg) 72%, transparent);
   -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
 }
-/* Scrolled: pinned capsule is now docked top-right — pull the bar left and
-   cap its width so its right edge always clears it. */
-html.is-scrolled .archive__filters{
+/* Only once the bar is actually stuck to the top (JS adds .is-stuck) does the
+   pinned Resume / menu capsule share that row — so that's when the bar pulls
+   left and caps its width to clear it. Until then it stays centred. */
+.archive__filters.is-stuck{
   margin-left: 0;
+  transform: translateX(0);
   max-width: calc(100% - 210px);
 }
 .chip{
@@ -337,7 +344,7 @@ html.is-scrolled .archive__filters{
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px){
-  html.is-scrolled .archive__filters{ max-width: calc(100% - 150px); }
+  .archive__filters.is-stuck{ max-width: calc(100% - 150px); }
   .proj-card,
   .proj-card:nth-child(even){ grid-template-columns: 1fr; }
   .proj-card:nth-child(even) .proj-card__media{ order:0; }
@@ -347,7 +354,7 @@ html.is-scrolled .archive__filters{
 @media (max-width: 560px){
   .archive{ padding-top: 120px; }
   .archive__filters{ top:8px; border-radius: var(--radius-m); }
-  html.is-scrolled .archive__filters{ max-width: calc(100% - 56px); }
+  .archive__filters.is-stuck{ max-width: calc(100% - 56px); }
   .archive__flow{ gap:8px; }
   .archive__flow li:not(:first-child)::before{ display:none; }
   .archive__flow li span{ font-size:10px; padding:7px 12px; }
