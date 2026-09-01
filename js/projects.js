@@ -14,28 +14,42 @@ document.addEventListener('DOMContentLoaded', () => {
   if (filterBar) {
     const chips = Array.from(filterBar.querySelectorAll('.chip'));
     const items = cards.concat(ndaTiles);
+    const ndaSection = document.querySelector('.archive__nda');
 
-    const matches = (el, filter) =>
-      filter === 'all' || (el.dataset.cat || '').split(/\s+/).includes(filter);
+    const catsOf = (el) => (el.dataset.cat || '').trim().split(/\s+/).filter(Boolean);
+    const matches = (el, filter) => filter === 'all' || catsOf(el).includes(filter);
 
-    // Fill each chip's count
-    chips.forEach((chip) => {
-      const f = chip.dataset.filter;
-      const n = items.filter((el) => matches(el, f)).length;
-      const badge = chip.querySelector('.chip__count');
-      if (badge) badge.textContent = n;
-    });
+    /* ---- Dynamic per-category counts --------------------------------------
+       Every badge — and the "All" total — is counted from the project cards in
+       the DOM at load time. Drop in a new <article class="proj-card"
+       data-cat="mobile fintech …"> and the numbers update themselves; no edit
+       needed here. */
+    const refreshCounts = () => {
+      chips.forEach((chip) => {
+        const f = chip.dataset.filter;
+        const n = cards.filter((el) => matches(el, f)).length;
+        const badge = chip.querySelector('.chip__count');
+        if (badge) badge.textContent = n;
+        // A category with no projects can't be filtered to — dim + disable it.
+        const empty = n === 0 && f !== 'all';
+        chip.classList.toggle('is-empty', empty);
+        chip.disabled = empty;
+      });
+    };
+    refreshCounts();
 
     const apply = (filter) => {
-      items.forEach((el) => {
-        const show = matches(el, filter);
-        el.classList.toggle('is-hidden', !show);
-      });
+      items.forEach((el) => el.classList.toggle('is-hidden', !matches(el, filter)));
+      // Fold the whole "Under wraps" block away if the filter empties it.
+      if (ndaSection) {
+        const anyNda = ndaTiles.some((el) => !el.classList.contains('is-hidden'));
+        ndaSection.classList.toggle('is-hidden', !anyNda);
+      }
     };
 
     filterBar.addEventListener('click', (e) => {
       const chip = e.target.closest('.chip');
-      if (!chip) return;
+      if (!chip || chip.disabled) return;
       chips.forEach((c) => c.classList.toggle('is-active', c === chip));
       apply(chip.dataset.filter);
     });
@@ -56,6 +70,61 @@ document.addEventListener('DOMContentLoaded', () => {
       const stuck = !entry.isIntersecting && entry.boundingClientRect.top <= rootTop;
       filterBar.classList.toggle('is-stuck', stuck);
     }, { rootMargin: `-${stickyTop + 1}px 0px 0px 0px`, threshold: [0] }).observe(sentinel);
+  }
+
+  /* ---------- Hero preview deck -------------------------------------------
+     The pile is generated straight from the project cards in #projGrid. Add
+     another <article class="proj-card" id="…"> with a .proj-card__img and it
+     drops into the pile on its own; the "N case studies below" count follows. */
+  const deckStack = document.querySelector('.archive__deck-stack');
+  const deckCount = document.querySelector('.archive__deck-count');
+  if (deckCount) deckCount.textContent = cards.length;
+
+  if (deckStack) {
+    // Hand-tuned scatter presets, cycled through for however many cards exist.
+    // Index 0 is the top card (nearly straight); later ones peek out behind it.
+    const RESTING = [
+      { rot: -2, tx:  -4, ty: -10 },
+      { rot:  6, tx:  18, ty:   5 },
+      { rot: -7, tx: -16, ty:   3 },
+      { rot:  4, tx:  12, ty:  -6 },
+      { rot: -9, tx: -22, ty:   9 },
+    ];
+    const SCATTER = [
+      { rot: -3, tx: -52, ty: -56 },
+      { rot:  9, tx:  80, ty:  52 },
+      { rot: -8, tx: -84, ty:  42 },
+      { rot:  7, tx:  66, ty: -60 },
+      { rot: -5, tx: -42, ty:  68 },
+    ];
+
+    const picks = cards.slice(0, 5);
+    deckStack.innerHTML = '';
+    picks.forEach((card, i) => {
+      const img = card.querySelector('.proj-card__img');
+      if (!img) return;
+      const r = RESTING[i % RESTING.length];
+      const s = SCATTER[i % SCATTER.length];
+
+      const a = document.createElement('a');
+      a.className = 'archive__deck-card';
+      a.href = card.id ? '#' + card.id : '#projGrid';
+      a.style.zIndex = picks.length - i;
+      a.style.setProperty('--rot', r.rot + 'deg');
+      a.style.setProperty('--tx', r.tx + 'px');
+      a.style.setProperty('--ty', r.ty + 'px');
+      a.style.setProperty('--hrot', s.rot + 'deg');
+      a.style.setProperty('--htx', s.tx + 'px');
+      a.style.setProperty('--hty', s.ty + 'px');
+
+      const im = document.createElement('img');
+      im.src = img.getAttribute('src');
+      im.alt = (card.querySelector('.proj-card__title') || {}).textContent || img.alt || '';
+      im.loading = 'lazy';
+      im.decoding = 'async';
+      a.appendChild(im);
+      deckStack.appendChild(a);
+    });
   }
 
   /* ---------- Lightbox ---------- */
