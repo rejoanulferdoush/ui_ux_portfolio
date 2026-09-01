@@ -81,6 +81,88 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---------- Information-architecture map ---------- */
+  const iaMap = document.querySelector('.cs-ia__map');
+  if (iaMap) {
+    const branches = Array.from(iaMap.querySelectorAll('.cs-iabranch'));
+    const mqMobile = window.matchMedia('(max-width: 620px)');
+    const canHover = window.matchMedia('(hover: hover)').matches;
+
+    const syncCollapse = () => {
+      branches.forEach((b) => {
+        const open = !mqMobile.matches;
+        b.classList.toggle('is-open', open);
+        b.querySelector('.cs-iabranch__head').setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    };
+    syncCollapse();
+    mqMobile.addEventListener('change', syncCollapse);
+
+    const clearSpot = () => {
+      iaMap.classList.remove('has-spot', 'is-preview');
+      branches.forEach((b) => b.classList.remove('is-spot'));
+    };
+    const spot = (branch) => {
+      iaMap.classList.add('has-spot');
+      iaMap.classList.remove('is-preview');
+      branches.forEach((b) => b.classList.toggle('is-spot', b === branch));
+    };
+
+    branches.forEach((branch) => {
+      const head = branch.querySelector('.cs-iabranch__head');
+
+      head.addEventListener('click', () => {
+        if (mqMobile.matches) {
+          const open = branch.classList.toggle('is-open');
+          head.setAttribute('aria-expanded', open ? 'true' : 'false');
+          return;
+        }
+        if (branch.classList.contains('is-spot') && !iaMap.classList.contains('is-preview')) {
+          clearSpot();
+        } else {
+          spot(branch);
+        }
+      });
+
+      if (canHover && !reduceMotion) {
+        branch.addEventListener('pointerenter', () => {
+          if (iaMap.classList.contains('has-spot') && !iaMap.classList.contains('is-preview')) return;
+          iaMap.classList.add('has-spot', 'is-preview');
+          branches.forEach((b) => b.classList.toggle('is-spot', b === branch));
+        });
+        branch.addEventListener('pointerleave', () => {
+          if (iaMap.classList.contains('is-preview')) clearSpot();
+        });
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && iaMap.classList.contains('has-spot')) clearSpot();
+    });
+  }
+
+  /* ---------- IA stat counters ---------- */
+  const iaStats = document.querySelectorAll('.cs-ia__stats dt[data-count]');
+  if (iaStats.length) {
+    const iaIo = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.count, 10) || 0;
+        if (reduceMotion) { el.textContent = target; iaIo.unobserve(el); return; }
+        const start = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - start) / 900, 1);
+          el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target);
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        iaIo.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    iaStats.forEach((el) => iaIo.observe(el));
+  }
+
   /* ---------- Stat counters ---------- */
   const counters = document.querySelectorAll('.cs-stat__num[data-count]');
   if (counters.length) {

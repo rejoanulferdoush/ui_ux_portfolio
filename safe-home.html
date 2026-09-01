@@ -381,35 +381,120 @@
         </div>
       </div>
 
-      <!-- IA map -->
-      <div class="cs-iamap reveal">
-        <span class="cs-eyebrow">Information architecture</span>
-        <div class="cs-iamap__row" style="margin-top:20px;">
-          <div class="cs-iamap__col">
-            <div class="cs-iamap__node cs-iamap__node--root">Home dashboard</div>
-            <div class="cs-iamap__node">Rooms</div>
-            <div class="cs-iamap__leaf">Room &rarr; devices &rarr; sensor detail &amp; thresholds</div>
-            <div class="cs-iamap__leaf">Category rooms (Bedroom 1, Bedroom 2&hellip;)</div>
-          </div>
-          <div class="cs-iamap__col">
-            <div class="cs-iamap__node cs-iamap__node--root">Quick actions</div>
-            <div class="cs-iamap__node">Emergency</div>
-            <div class="cs-iamap__leaf">3 live hazards &rarr; "I'm in Danger"</div>
-            <div class="cs-iamap__node" style="margin-top:10px;">Environment monitor</div>
-            <div class="cs-iamap__leaf">AQI · smoke · temp · humidity trends</div>
-          </div>
-          <div class="cs-iamap__col">
-            <div class="cs-iamap__node cs-iamap__node--root">Cameras</div>
-            <div class="cs-iamap__leaf">Live grid &rarr; stream &rarr; snapshots</div>
-            <div class="cs-iamap__node" style="margin-top:10px;">Alerts</div>
-            <div class="cs-iamap__leaf">Emergency / Warning / Safe, grouped</div>
-          </div>
-          <div class="cs-iamap__col">
-            <div class="cs-iamap__node cs-iamap__node--root">Settings</div>
-            <div class="cs-iamap__leaf">Emergency contacts &amp; escalation rules</div>
-            <div class="cs-iamap__leaf">Language · Elder Mode · Large Text</div>
-            <div class="cs-iamap__leaf">Help center · guided tutorials</div>
-          </div>
+      <!-- ============ Information architecture — interactive app map ============ -->
+      <div class="cs-ia reveal" id="csIA">
+        <div class="cs-ia__intro">
+          <span class="cs-eyebrow">Information architecture</span>
+          <h3 class="cs-ia__title">One tab bar, five destinations, nothing more than <em>three taps deep</em></h3>
+          <p class="cs-ia__lead">Every screen in SAFE hangs off one of five primary destinations. A half-asleep parent should never have to hunt &mdash; the emergency path is reachable from two places, and the deepest anything sits is a sensor threshold, three taps from home.</p>
+          <dl class="cs-ia__stats">
+            <div><dt data-count="5">5</dt><dd>Primary destinations</dd></div>
+            <div><dt data-count="32">32</dt><dd>Screens mapped</dd></div>
+            <div><dt data-count="3">3</dt><dd>Taps to the deepest screen</dd></div>
+            <div><dt data-count="2">2</dt><dd>Routes to the panic button</dd></div>
+          </dl>
+        </div>
+
+        <!-- first-run funnel that feeds the app -->
+        <ol class="cs-ia__funnel" aria-label="First-run funnel into the app">
+          <li>Splash</li>
+          <li aria-hidden="true" class="cs-ia__arrow">&rarr;</li>
+          <li>Value &times;4</li>
+          <li aria-hidden="true" class="cs-ia__arrow">&rarr;</li>
+          <li>Phone OTP</li>
+          <li aria-hidden="true" class="cs-ia__arrow">&rarr;</li>
+          <li>Name the home</li>
+          <li aria-hidden="true" class="cs-ia__arrow">&rarr;</li>
+          <li>First rooms</li>
+          <li aria-hidden="true" class="cs-ia__arrow">&rarr;</li>
+          <li class="cs-ia__funnel-end"><i class="bx bx-log-in-circle"></i> enters the app</li>
+        </ol>
+
+        <!-- the map -->
+        <div class="cs-ia__map">
+          <section class="cs-iabranch is-open" data-tone="safe">
+            <button class="cs-iabranch__head" aria-expanded="true" aria-controls="ia-home">
+              <i class="bx bxs-home-alt-2" aria-hidden="true"></i>
+              <span class="cs-iabranch__name">Home</span>
+              <span class="cs-iabranch__count">6</span>
+              <span class="cs-iabranch__role">The calm dashboard &mdash; and its red opposite</span>
+            </button>
+            <ul class="cs-iabranch__kids" id="ia-home">
+              <li class="cs-ialeaf">Dashboard<span>Safe &harr; Unsafe, one glance</span></li>
+              <li class="cs-ialeaf">Environment monitor<span>AQI &middot; smoke &middot; temp &middot; humidity trends</span></li>
+              <li class="cs-ialeaf">Quick actions</li>
+              <li class="cs-ialeaf cs-ialeaf--sub">Emergency<span>3 live hazards &rarr; &ldquo;I&rsquo;m in Danger&rdquo;</span><em class="cs-ialeaf__xlink">also in Alerts</em></li>
+              <li class="cs-ialeaf">Favourites<span>Pin up to 2 rooms</span></li>
+            </ul>
+          </section>
+
+          <section class="cs-iabranch is-open" data-tone="warn">
+            <button class="cs-iabranch__head" aria-expanded="true" aria-controls="ia-rooms">
+              <i class="bx bxs-grid-alt" aria-hidden="true"></i>
+              <span class="cs-iabranch__name">Rooms</span>
+              <span class="cs-iabranch__count">11</span>
+              <span class="cs-iabranch__role">Each room is a guardian for its devices</span>
+            </button>
+            <ul class="cs-iabranch__kids" id="ia-rooms">
+              <li class="cs-ialeaf">My Rooms<span>Grid of active rooms + status</span></li>
+              <li class="cs-ialeaf">Room &middot; Guardian<span>Devices, battery, connection</span></li>
+              <li class="cs-ialeaf cs-ialeaf--sub">Sensor detail<span>Gas &middot; fire &middot; temp &middot; air &middot; camera</span></li>
+              <li class="cs-ialeaf cs-ialeaf--sub">Threshold control<span>Deepest screen &mdash; 3 taps from home</span></li>
+              <li class="cs-ialeaf cs-ialeaf--sub">Add &amp; configure device<span>ID &middot; IP &middot; port &middot; MQTT topic</span></li>
+              <li class="cs-ialeaf">Category rooms<span>Bedroom 1, Bedroom 2&hellip;</span></li>
+              <li class="cs-ialeaf">Rename room<span>Confirm dialog</span></li>
+            </ul>
+          </section>
+
+          <section class="cs-iabranch is-open" data-tone="cam">
+            <button class="cs-iabranch__head" aria-expanded="true" aria-controls="ia-cams">
+              <i class="bx bxs-cctv" aria-hidden="true"></i>
+              <span class="cs-iabranch__name">Cameras</span>
+              <span class="cs-iabranch__count">3</span>
+              <span class="cs-iabranch__role">Live eyes on every room</span>
+            </button>
+            <ul class="cs-iabranch__kids" id="ia-cams">
+              <li class="cs-ialeaf">Live grid<span>All feeds, All&nbsp;Live</span></li>
+              <li class="cs-ialeaf cs-ialeaf--sub">Camera detail<span>Stream &rarr; snapshots</span></li>
+            </ul>
+          </section>
+
+          <section class="cs-iabranch is-open" data-tone="danger">
+            <button class="cs-iabranch__head" aria-expanded="true" aria-controls="ia-alerts">
+              <i class="bx bxs-bell" aria-hidden="true"></i>
+              <span class="cs-iabranch__name">Alerts</span>
+              <span class="cs-iabranch__count">4</span>
+              <span class="cs-iabranch__role">History, grouped by urgency</span>
+            </button>
+            <ul class="cs-iabranch__kids" id="ia-alerts">
+              <li class="cs-ialeaf">Grouped list<span>Emergency / Warning / Safe</span></li>
+              <li class="cs-ialeaf cs-ialeaf--sub">Alert detail<span>Reading, room, time, actions</span></li>
+              <li class="cs-ialeaf">Emergency<span>3 live hazards &rarr; &ldquo;I&rsquo;m in Danger&rdquo;</span><em class="cs-ialeaf__xlink">shared with Home</em></li>
+            </ul>
+          </section>
+
+          <section class="cs-iabranch is-open" data-tone="set">
+            <button class="cs-iabranch__head" aria-expanded="true" aria-controls="ia-settings">
+              <i class="bx bxs-cog" aria-hidden="true"></i>
+              <span class="cs-iabranch__name">Settings</span>
+              <span class="cs-iabranch__count">8</span>
+              <span class="cs-iabranch__role">Set it once, trust it after</span>
+            </button>
+            <ul class="cs-iabranch__kids" id="ia-settings">
+              <li class="cs-ialeaf">Emergency contacts<span>Priority list &amp; escalation rules</span></li>
+              <li class="cs-ialeaf cs-ialeaf--sub">Add contact<span>SMS &amp; call settings</span></li>
+              <li class="cs-ialeaf">Language &middot; Elder Mode &middot; Large Text</li>
+              <li class="cs-ialeaf">Help center<span>Topics + live support</span></li>
+              <li class="cs-ialeaf">Guided tutorials<span>Quick setup, connect camera, protocol</span></li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="cs-ia__legend">
+          <span><i style="background:var(--cs-safe)"></i>Safe-tier surface</span>
+          <span><i style="background:var(--cs-warn)"></i>Warning-tier</span>
+          <span><i style="background:var(--cs-danger)"></i>Emergency-tier</span>
+          <span class="cs-ia__legend--hint">Tap a destination to trace its branch &middot; dashed pill = cross-link</span>
         </div>
       </div>
     </div>

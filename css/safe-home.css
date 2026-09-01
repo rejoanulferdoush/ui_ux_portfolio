@@ -639,31 +639,142 @@
   font-family: var(--ff-mono); font-size:10px; letter-spacing:1px; color: var(--text-soft);
 }
 
-/* IA map */
-.cs-iamap{
+/* ============================================================
+   INFORMATION ARCHITECTURE — interactive app map
+   ============================================================ */
+.cs-ia{
   margin-top: clamp(40px, 6vw, 64px);
   border:1px solid var(--cs-line); border-radius: var(--radius-l);
-  padding: clamp(28px, 4vw, 48px); background: var(--cs-panel);
-  overflow-x:auto;
-  scrollbar-width: thin; scrollbar-color: var(--cs-safe) transparent;
+  padding: clamp(26px, 4vw, 48px); background: var(--cs-panel);
+  position:relative;
 }
-.cs-iamap::-webkit-scrollbar{ height:6px; }
-.cs-iamap::-webkit-scrollbar-track{ background:transparent; }
-.cs-iamap::-webkit-scrollbar-thumb{ background: var(--cs-safe); border-radius:100px; }
-.cs-iamap__row{ display:flex; gap:14px; align-items:flex-start; min-width:640px; }
-.cs-iamap__col{ flex:1; }
-.cs-iamap__node{
-  background: var(--cs-panel-2); border:1px solid var(--cs-line);
-  border-radius:14px; padding:14px 16px; font-size:13px; font-weight:600;
+.cs-ia__intro{ max-width: 66ch; }
+.cs-ia__title{
+  font-family: var(--ff-head); font-weight:600; letter-spacing:-.02em;
+  font-size: clamp(20px, 2.6vw, 30px); line-height:1.16; margin:14px 0 0;
 }
-.cs-iamap__node--root{
-  background: var(--cs-safe); color:#08130e; border-color: transparent;
-  text-align:center; margin-bottom:18px;
+.cs-ia__title em{ font-style:normal; color: var(--cs-safe); }
+.cs-ia__lead{ color: var(--text-soft); font-size:14px; line-height:1.7; margin:14px 0 0; }
+
+.cs-ia__stats{ display:flex; flex-wrap:wrap; gap:10px; margin:26px 0 0; }
+.cs-ia__stats div{
+  flex:1 1 150px; min-width:130px;
+  border:1px solid var(--cs-line); border-radius:14px;
+  padding:14px 16px; background: var(--cs-panel-2);
 }
-.cs-iamap__leaf{
-  margin-top:10px; font-size:12px; color: var(--text-soft); font-weight:400;
-  padding:10px 14px; border:1px dashed var(--cs-line); border-radius:12px;
+.cs-ia__stats dt{
+  font-family: var(--ff-head); font-weight:600; font-size:28px; line-height:1;
+  color: var(--cs-safe); letter-spacing:-.02em;
 }
+.cs-ia__stats dd{
+  margin:9px 0 0; font-family: var(--ff-mono); font-size:10px; letter-spacing:1px;
+  text-transform:uppercase; color: var(--text-soft); line-height:1.45;
+}
+
+/* first-run funnel */
+.cs-ia__funnel{
+  list-style:none; margin:28px 0 0; padding:0;
+  display:flex; flex-wrap:wrap; align-items:center; gap:7px;
+  font-family: var(--ff-mono); font-size:11px; letter-spacing:.5px; color: var(--text-soft);
+}
+.cs-ia__funnel > li:not(.cs-ia__arrow){
+  display:inline-flex; align-items:center; gap:6px;
+  border:1px dashed var(--cs-line); border-radius:100px; padding:7px 13px;
+}
+.cs-ia__arrow{ opacity:.5; user-select:none; }
+.cs-ia__funnel-end{
+  border-style:solid !important;
+  border-color: color-mix(in srgb, var(--cs-safe) 45%, transparent) !important;
+  color: var(--cs-safe);
+}
+
+/* the map grid — auto-fits 5 → 1 columns as width allows */
+.cs-ia__map{
+  margin-top:26px; display:grid; gap:14px; align-items:start;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.cs-ia__map.has-spot .cs-iabranch:not(.is-spot){ opacity:.38; }
+
+.cs-iabranch{
+  --branch: var(--cs-safe);
+  border:1px solid var(--cs-line); border-radius:18px;
+  background: var(--cs-panel-2); padding:6px;
+  transition: opacity .3s ease, border-color .3s ease, transform .3s ease;
+}
+.cs-iabranch[data-tone="safe"]  { --branch: var(--cs-safe); }
+.cs-iabranch[data-tone="warn"]  { --branch: var(--cs-warn); }
+.cs-iabranch[data-tone="danger"]{ --branch: var(--cs-danger); }
+.cs-iabranch[data-tone="cam"]   { --branch: #6aa9ff; }
+.cs-iabranch[data-tone="set"]   { --branch: #b9a4ff; }
+.cs-iabranch.is-spot{
+  border-color: color-mix(in srgb, var(--branch) 55%, transparent);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -24px color-mix(in srgb, var(--branch) 60%, transparent);
+}
+
+.cs-iabranch__head{
+  width:100%; text-align:left; cursor:pointer; font-family: inherit; color: var(--text);
+  display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:9px 10px;
+  background:transparent; border:0; padding:12px; border-radius:13px;
+  transition: background .25s ease;
+}
+.cs-iabranch__head:hover{ background: color-mix(in srgb, var(--branch) 10%, transparent); }
+.cs-iabranch__head:focus-visible{ outline:2px solid var(--branch); outline-offset:2px; }
+.cs-iabranch__head i{
+  font-size:20px; color: var(--branch);
+  width:34px; height:34px; display:grid; place-items:center;
+  border:1px solid color-mix(in srgb, var(--branch) 30%, transparent);
+  border-radius:10px; background: color-mix(in srgb, var(--branch) 12%, transparent);
+}
+.cs-iabranch__name{ font-family: var(--ff-head); font-weight:600; font-size:15px; }
+.cs-iabranch__count{
+  font-family: var(--ff-mono); font-size:11px; color: var(--branch);
+  border:1px solid color-mix(in srgb, var(--branch) 35%, transparent);
+  border-radius:100px; padding:2px 9px;
+}
+.cs-iabranch__role{
+  grid-column:1 / -1; margin-top:2px;
+  font-family: var(--ff-mono); font-size:10px; line-height:1.5; letter-spacing:.3px;
+  color: var(--text-soft); text-transform:uppercase;
+}
+
+.cs-iabranch__kids{ list-style:none; margin:2px 0 4px; padding:4px 10px 8px; }
+.cs-ialeaf{
+  position:relative; padding:9px 0 9px 22px;
+  font-size:12.5px; font-weight:500; color: var(--text); line-height:1.4;
+}
+.cs-ialeaf span{
+  display:block; margin-top:3px;
+  font-family: var(--ff-mono); font-size:10px; letter-spacing:.2px; line-height:1.45;
+  color: var(--text-soft); font-weight:400;
+}
+.cs-ialeaf::before{
+  content:""; position:absolute; left:5px; top:0; bottom:0; width:1px; background: var(--cs-line);
+}
+.cs-ialeaf::after{
+  content:""; position:absolute; left:5px; top:calc(50% - 1px); width:10px; height:1px; background: var(--cs-line);
+}
+.cs-ialeaf:last-child::before{ bottom:auto; height:50%; }
+.cs-ialeaf--sub{ margin-left:18px; }
+.cs-iabranch.is-spot .cs-ialeaf::before,
+.cs-iabranch.is-spot .cs-ialeaf::after{ background: color-mix(in srgb, var(--branch) 55%, transparent); }
+
+.cs-ialeaf__xlink{
+  display:inline-block; margin-top:6px; font-style:normal;
+  font-family: var(--ff-mono); font-size:9px; letter-spacing:.4px; text-transform:uppercase;
+  color: var(--branch);
+  border:1px dashed color-mix(in srgb, var(--branch) 42%, transparent);
+  border-radius:100px; padding:3px 8px;
+}
+
+.cs-ia__legend{
+  display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:24px; align-items:center;
+  font-family: var(--ff-mono); font-size:10px; letter-spacing:.5px; text-transform:uppercase;
+  color: var(--text-soft);
+}
+.cs-ia__legend span{ display:inline-flex; align-items:center; gap:7px; }
+.cs-ia__legend i{ width:9px; height:9px; border-radius:50%; }
+.cs-ia__legend--hint{ text-transform:none; letter-spacing:.2px; opacity:.8; }
 
 /* ============================================================
    FLOW FILMSTRIPS
@@ -1045,6 +1156,26 @@
   .cs-tl__time{ position:static; }
   .cs-tl{ padding-left:22px; }
   .cs-feature__media .cs-shot:nth-child(2){ margin-top:0; }
+
+  /* IA map — collapse to a single column of tap-to-open branches */
+  .cs-ia{ padding:20px; }
+  .cs-ia__stats{ gap:8px; }
+  .cs-ia__stats div{ flex-basis:calc(50% - 4px); min-width:0; padding:12px 13px; }
+  .cs-ia__stats dt{ font-size:24px; }
+  .cs-ia__funnel{ gap:6px 8px; font-size:10px; }
+  .cs-ia__arrow{ display:none; }
+  .cs-ia__map{ grid-template-columns: 1fr; margin-top:22px; }
+  .cs-iabranch__head{ grid-template-columns:auto 1fr auto; gap:8px 10px; padding:13px 12px; }
+  .cs-iabranch__count{ display:none; }
+  .cs-iabranch__name{ grid-row:1; grid-column:2; }
+  .cs-iabranch__role{ grid-row:2; }
+  .cs-iabranch__head::after{
+    content:"\002B"; grid-row:1; grid-column:3; justify-self:end; align-self:center;
+    font-family: var(--ff-mono); font-size:16px; line-height:1; color: var(--branch);
+  }
+  .cs-iabranch.is-open .cs-iabranch__head::after{ content:"\2212"; }
+  .cs-iabranch__kids{ display:none; }
+  .cs-iabranch.is-open .cs-iabranch__kids{ display:block; }
 }
 
 /* Mobile — tighten every corner (buttons keep their pill/round shape) */
@@ -1061,9 +1192,8 @@
   .cs-state__screen{ border-radius:12px; }
   .cs-state__chip{ border-radius:6px; }
   .cs-state__hex{ border-radius:5px; }
-  .cs-iamap{ border-radius:24px; }
-  .cs-iamap__node{ border-radius:10px; }
-  .cs-iamap__leaf{ border-radius:9px; }
+  .cs-ia{ border-radius:24px; }
+  .cs-iabranch{ border-radius:14px; }
   .cs-shot{ border-radius:14px; }
   .cs-craft__media .cs-shot{ border-radius:14px 14px 0 0; }
   .cs-gallery .cs-shot{ border-radius:12px; }
