@@ -410,35 +410,170 @@
 }
 
 /* ============================================================
-   PRINCIPLES
+   PRINCIPLES — "the rulebook": every card demonstrates its own rule
    ============================================================ */
-.cs-principles{
-  margin-top: clamp(40px, 6vw, 64px);
-  display:grid; grid-template-columns: repeat(3, 1fr); gap:20px;
-  counter-reset: principle;
-}
-.cs-principle{
-  padding: clamp(24px, 3vw, 34px);
+.cs-rules{
+  list-style:none; margin: clamp(40px, 6vw, 68px) 0 0; padding:0;
+  display:grid; grid-template-columns: repeat(2, 1fr); gap:1px;
+  background: var(--cs-line);
   border:1px solid var(--cs-line); border-radius: var(--radius-m);
+  overflow:hidden;
+}
+.cs-rule{
+  --c: var(--cs-safe);
+  position:relative; display:flex; flex-direction:column;
+  padding: clamp(24px, 3.4vw, 40px);
   background: linear-gradient(180deg, var(--cs-panel-2), var(--cs-panel));
+  transition: background .4s ease;
+}
+.cs-rule[data-rule="escalate"]{ --c: var(--cs-warn); }
+.cs-rule:hover{ background: linear-gradient(180deg, var(--cs-panel-2), #1d1d1d); }
+
+/* running accent line down the seam */
+.cs-rule::before{
+  content:""; position:absolute; left:0; top:0; bottom:0; width:2px;
+  background: linear-gradient(180deg, var(--c), transparent 70%);
+  transform: scaleY(0); transform-origin:top; transition: transform .6s ease;
+}
+.cs-rules.in-view .cs-rule::before{ transform: scaleY(1); }
+.cs-rules.in-view .cs-rule:nth-child(2)::before{ transition-delay:.08s; }
+.cs-rules.in-view .cs-rule:nth-child(3)::before{ transition-delay:.16s; }
+.cs-rules.in-view .cs-rule:nth-child(4)::before{ transition-delay:.24s; }
+
+.cs-rule__top{ display:flex; align-items:baseline; gap:14px; }
+.cs-rule__no{
+  font-family:"Oswald", var(--ff-head); font-weight:700;
+  font-size: clamp(40px, 6vw, 68px); line-height:.8;
+  color: color-mix(in srgb, var(--c) 13%, transparent);
+  -webkit-text-stroke:1.4px color-mix(in srgb, var(--c) 55%, var(--cs-line));
+  letter-spacing:-.02em;
+}
+.cs-rule__tag{
+  font-family: var(--ff-mono); font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  color: var(--text-soft);
+}
+
+/* ---- the self-demonstrating panel ---- */
+.cs-rule__demo{
+  margin:20px 0 22px; padding:18px; min-height:132px;
+  border:1px solid var(--cs-line); border-radius: var(--radius-s);
+  background:
+    radial-gradient(120% 100% at 0% 0%, color-mix(in srgb, var(--c) 12%, transparent), transparent 60%),
+    #0e0e0e;
+  display:flex; flex-direction:column; justify-content:center; gap:12px;
   position:relative; overflow:hidden;
 }
-.cs-principle::before{
-  counter-increment: principle; content: "0" counter(principle);
-  font-family: var(--ff-mono); font-size:12px; letter-spacing:2px;
+.cs-rule__spec{
+  font-family: var(--ff-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  color: color-mix(in srgb, var(--text-soft) 80%, transparent);
+}
+
+/* 01 — Quiet: one thin line, one slow blip, nothing else */
+.cs-rule__demo--quiet{ align-items:flex-start; }
+.cs-rule__wire{
+  position:relative; width:100%; height:2px; border-radius:2px;
+  background: color-mix(in srgb, var(--cs-safe) 35%, transparent);
+}
+.cs-rule__blip{
+  position:absolute; left:18px; top:calc(50% - 4px); width:8px; height:8px; border-radius:50%;
+  background: var(--cs-safe); box-shadow:0 0 12px 2px color-mix(in srgb, var(--cs-safe) 70%, transparent);
+  animation: cs-blip 7s ease-in-out infinite;
+}
+@keyframes cs-blip{
+  0%,72%,100%{ transform: translateX(0); opacity:.15; }
+  80%{ opacity:1; }
+  92%{ transform: translateX(calc(100% + 60vw)); opacity:0; }
+}
+
+/* 02 — One glance: same word echoing down every surface */
+.cs-rule__demo--glance{ gap:9px; }
+.cs-rule__echo{
+  display:flex; align-items:center; gap:10px;
+  font-family:"Oswald", var(--ff-head); font-weight:600; letter-spacing:.04em;
   color: var(--cs-safe);
+  opacity:0; transform: translateX(-8px);
 }
-.cs-principle h3{
-  font-family: var(--ff-head); font-size:20px; font-weight:600;
-  margin:14px 0 10px;
+.cs-rules.in-view .cs-rule__echo{ animation: cs-echo .5s ease forwards; }
+.cs-rule__echo:nth-child(1){ font-size:22px; animation-delay:.15s; }
+.cs-rule__echo:nth-child(2){ font-size:17px; opacity:0; animation-delay:.28s; color: color-mix(in srgb, var(--cs-safe) 85%, #fff); }
+.cs-rule__echo:nth-child(3){ font-size:14px; animation-delay:.41s; }
+.cs-rule__echo:nth-child(4){ font-size:12px; animation-delay:.54s; }
+.cs-rule__echo::after{
+  content: attr(data-where);
+  font-family: var(--ff-mono); font-weight:400; font-size:9px; letter-spacing:.14em; text-transform:uppercase;
+  color: var(--text-soft);
 }
-.cs-principle p{ color: var(--text-soft); font-size:14px; line-height:1.7; }
-.cs-principle::after{
-  content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
-  background: linear-gradient(90deg, var(--cs-safe), transparent);
-  transform: scaleX(0); transform-origin:left; transition: transform .5s ease;
+@keyframes cs-echo{ to{ opacity:.92; transform: translateX(0); } }
+
+/* 03 — Escalate: a timeline that fills itself, no tap */
+.cs-rule__demo--escalate{ padding-left:20px; }
+.cs-rule__track{
+  position:absolute; left:42px; top:26px; bottom:42px; width:2px;
+  background: var(--cs-line); border-radius:2px;
 }
-.cs-principle.in-view::after{ transform: scaleX(1); }
+.cs-rule__fill{
+  position:absolute; inset:0 0 auto 0; height:0; border-radius:2px;
+  background: linear-gradient(180deg, var(--cs-warn), var(--cs-danger));
+}
+.cs-rules.in-view .cs-rule__fill{ animation: cs-fill 4.2s ease-in-out infinite; }
+@keyframes cs-fill{ 0%{height:0} 70%{height:100%} 100%{height:100%; opacity:.6} }
+.cs-rule__steps{ list-style:none; margin:0; padding:0 0 0 22px; display:grid; gap:11px; position:relative; }
+.cs-rule__steps li{
+  position:relative; padding-left:14px;
+  font-size:12px; color: var(--text-soft); line-height:1.3;
+}
+.cs-rule__steps b{ color: var(--text); font-family: var(--ff-mono); font-weight:500; font-size:11px; margin-right:6px; }
+.cs-rule__steps li::before{
+  content:""; position:absolute; left:-4px; top:2px; width:9px; height:9px; border-radius:50%;
+  background:#0e0e0e; border:2px solid var(--cs-line);
+}
+.cs-rules.in-view .cs-rule__steps li::before{
+  animation: cs-node 4.2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.9s);
+}
+@keyframes cs-node{
+  0%,8%{ border-color: var(--cs-line); background:#0e0e0e; }
+  16%,60%{ border-color: var(--cs-warn); background: var(--cs-warn); box-shadow:0 0 10px color-mix(in srgb, var(--cs-warn) 60%, transparent); }
+  100%{ border-color: var(--cs-line); background:#0e0e0e; box-shadow:none; }
+}
+
+/* 04 — Readable: one huge plain-verb target */
+.cs-rule__demo--readable{ align-items:center; text-align:center; }
+.cs-rule__cta{
+  display:inline-block; width:100%; padding:16px 18px;
+  border:2px dashed color-mix(in srgb, var(--cs-danger) 55%, var(--cs-line));
+  border-radius:14px;
+  font-family:"Oswald", var(--ff-head); font-weight:700; text-transform:uppercase;
+  font-size: clamp(20px, 3.4vw, 30px); letter-spacing:.02em; color:#fff;
+  background: color-mix(in srgb, var(--cs-danger) 14%, transparent);
+}
+.cs-rules.in-view .cs-rule__cta{ animation: cs-breathe 3.4s ease-in-out infinite; }
+@keyframes cs-breathe{ 50%{ background: color-mix(in srgb, var(--cs-danger) 26%, transparent); } }
+
+/* ---- copy ---- */
+.cs-rule__title{
+  font-family: var(--ff-head); font-size: clamp(19px, 2.2vw, 23px); font-weight:600;
+  margin:0 0 10px; letter-spacing:-.01em;
+}
+.cs-rule__text{ color: var(--text-soft); font-size:14px; line-height:1.7; margin:0; }
+.cs-rule__break{
+  margin:16px 0 0; margin-top:auto; padding-top:14px; border-top:1px dashed var(--cs-line);
+  font-size:12.5px; color: color-mix(in srgb, var(--text-soft) 78%, transparent); line-height:1.6;
+}
+.cs-rule__break span{
+  font-family: var(--ff-mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase;
+  color: var(--cs-danger); margin-right:8px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .cs-rule__blip, .cs-rule__fill, .cs-rule__cta,
+  .cs-rules.in-view .cs-rule__echo,
+  .cs-rules.in-view .cs-rule__steps li::before{ animation:none; }
+  .cs-rule__echo{ opacity:.92; transform:none; }
+  .cs-rule__blip{ opacity:.6; }
+  .cs-rule__fill{ height:100%; opacity:.6; }
+  .cs-rule__steps li::before{ border-color: var(--cs-warn); background: var(--cs-warn); }
+}
 
 /* ============================================================
    STATUS LANGUAGE
@@ -798,7 +933,7 @@
   .cs-hero__stage{ margin: 30px auto 40px; }
   .cs-split, .cs-split--flip, .cs-feature, .cs-outcome,
   .cs-tabs__panel, .cs-threshold{ grid-template-columns: 1fr; }
-  .cs-principles, .cs-status, .cs-craft{ grid-template-columns: 1fr 1fr; }
+  .cs-status, .cs-craft{ grid-template-columns: 1fr 1fr; }
   .cs-facts{ grid-template-columns: 1fr 1fr; }
   .cs-facts__cell:nth-child(2){ border-right:0; }
   .cs-facts__cell:nth-child(1),.cs-facts__cell:nth-child(2){ border-bottom:1px solid var(--cs-line); }
@@ -808,7 +943,7 @@
   .cs-tabs__panel .cs-shot{ max-width:260px; }
 }
 @media (max-width: 620px){
-  .cs-principles, .cs-status, .cs-craft, .cs-facts{ grid-template-columns: 1fr; }
+  .cs-rules, .cs-status, .cs-craft, .cs-facts{ grid-template-columns: 1fr; }
   .cs-facts__cell{ border-right:0; border-bottom:1px solid var(--cs-line); }
   .cs-facts__cell:last-child{ border-bottom:0; }
   .cs-gallery{ columns: 2 120px; }
@@ -819,5 +954,5 @@
 }
 
 @media (prefers-reduced-motion: reduce){
-  .cs-phone, .cs-shot, .cs-principle::after{ transition:none; }
+  .cs-phone, .cs-shot, .cs-rule::before{ transition:none; }
 }

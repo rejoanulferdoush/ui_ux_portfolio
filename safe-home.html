@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=65">
-<link rel="stylesheet" href="css/safe-home.css?v=3">
+<link rel="stylesheet" href="css/safe-home.css?v=4">
 </head>
 <body>
 
@@ -248,24 +248,74 @@
       <h2 class="cs-h2">Four rules the whole app <em>bends to</em></h2>
       <p class="cs-lead">These sat above the feature list. When a screen felt wrong, it was usually breaking one of them.</p>
 
-      <div class="cs-principles">
-        <div class="cs-principle reveal">
-          <h3>Quiet by default</h3>
-          <p>A safe home is a boring screen — one green line, no red, no badges. Colour and motion are rationed so that when they appear, they mean something.</p>
-        </div>
-        <div class="cs-principle reveal">
-          <h3>One glance, one truth</h3>
-          <p>The top of every screen answers "are we OK?" before anything else loads. Room cards, sensor tiles and the nav bar all repeat that same status word.</p>
-        </div>
-        <div class="cs-principle reveal">
-          <h3>Escalate without me</h3>
-          <p>The app assumes the user is asleep, driving, or panicking. Contacts, SMS and the fire service fire on a timer, not on a tap.</p>
-        </div>
-        <div class="cs-principle reveal">
-          <h3>Readable under stress</h3>
-          <p>Big targets, plain verbs — "Shut off gas supply", "I'm in Danger" — Bangla first-class, and an Elder Mode that strips the UI down further.</p>
-        </div>
-      </div>
+      <ol class="cs-rules reveal">
+
+        <li class="cs-rule" data-rule="quiet">
+          <div class="cs-rule__top">
+            <span class="cs-rule__no">01</span>
+            <span class="cs-rule__tag">Rule</span>
+          </div>
+          <div class="cs-rule__demo cs-rule__demo--quiet" aria-hidden="true">
+            <span class="cs-rule__wire"></span>
+            <span class="cs-rule__blip"></span>
+            <span class="cs-rule__spec">0 badges · 1 line · 1 colour</span>
+          </div>
+          <h3 class="cs-rule__title">Quiet by default</h3>
+          <p class="cs-rule__text">A safe home is a boring screen — one green line, no red, no counters. Colour and motion are rationed, so the moment they appear they carry weight.</p>
+          <p class="cs-rule__break"><span>Breaks when</span> a green screen still buzzes for nothing.</p>
+        </li>
+
+        <li class="cs-rule" data-rule="glance">
+          <div class="cs-rule__top">
+            <span class="cs-rule__no">02</span>
+            <span class="cs-rule__tag">Rule</span>
+          </div>
+          <div class="cs-rule__demo cs-rule__demo--glance" aria-hidden="true">
+            <span class="cs-rule__echo" data-where="Banner">SAFE</span>
+            <span class="cs-rule__echo" data-where="Room card">SAFE</span>
+            <span class="cs-rule__echo" data-where="Sensor tile">SAFE</span>
+            <span class="cs-rule__echo" data-where="Tab bar">SAFE</span>
+          </div>
+          <h3 class="cs-rule__title">One glance, one truth</h3>
+          <p class="cs-rule__text">The top of every screen answers "are we OK?" before anything else loads. Room cards, sensor tiles and the tab bar all inherit that one status word.</p>
+          <p class="cs-rule__break"><span>Breaks when</span> you read three numbers to know you're safe.</p>
+        </li>
+
+        <li class="cs-rule" data-rule="escalate">
+          <div class="cs-rule__top">
+            <span class="cs-rule__no">03</span>
+            <span class="cs-rule__tag">Rule</span>
+          </div>
+          <div class="cs-rule__demo cs-rule__demo--escalate" aria-hidden="true">
+            <span class="cs-rule__track"><span class="cs-rule__fill"></span></span>
+            <ul class="cs-rule__steps">
+              <li style="--i:0"><b>00:00</b> You — asleep</li>
+              <li style="--i:1"><b>00:30</b> SMS to family</li>
+              <li style="--i:2"><b>01:00</b> Auto-call contacts</li>
+              <li style="--i:3"><b>02:00</b> Fire service</li>
+            </ul>
+            <span class="cs-rule__spec">runs on a timer — no tap</span>
+          </div>
+          <h3 class="cs-rule__title">Escalate without me</h3>
+          <p class="cs-rule__text">The app assumes the user is asleep, driving, or panicking. Contacts, SMS and the fire service fire on a timer, not on a tap.</p>
+          <p class="cs-rule__break"><span>Breaks when</span> the alert needs a human awake to travel.</p>
+        </li>
+
+        <li class="cs-rule" data-rule="readable">
+          <div class="cs-rule__top">
+            <span class="cs-rule__no">04</span>
+            <span class="cs-rule__tag">Rule</span>
+          </div>
+          <div class="cs-rule__demo cs-rule__demo--readable" aria-hidden="true">
+            <span class="cs-rule__cta">I'm in Danger</span>
+            <span class="cs-rule__spec">72 px target · plain verb · বাংলা first</span>
+          </div>
+          <h3 class="cs-rule__title">Readable under stress</h3>
+          <p class="cs-rule__text">Big targets, plain verbs — "Shut off gas supply", "I'm in Danger" — Bangla first-class, and an Elder Mode that strips the UI down further.</p>
+          <p class="cs-rule__break"><span>Breaks when</span> the screen won't say which room or how bad.</p>
+        </li>
+
+      </ol>
     </div>
   </section>
 
