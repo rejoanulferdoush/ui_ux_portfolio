@@ -146,13 +146,49 @@
               0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
+/* "N case studies — scroll to open them", built as a little composed unit:
+   an oversized accent numeral, a two-line mono caption, and a cascade of
+   three chevrons that ripple downward to point at the list. */
 .archive__deck-label{
-  display:inline-flex; align-items:center; gap:8px;
-  font-family: var(--ff-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  display:inline-flex; align-items:center; gap:14px;
   color: var(--text-soft);
 }
-.archive__deck-label b{ color: var(--accent); font-weight:700; }
-.archive__deck-label svg{ width:14px; height:14px; }
+.archive__deck-count{
+  font-family: "Oswald", var(--ff-head); font-weight:700;
+  font-size: 2.7rem; line-height:.9; letter-spacing:-.02em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.archive__deck-copy{
+  display:flex; flex-direction:column; gap:3px;
+  font-family: var(--ff-mono); text-transform:uppercase;
+}
+.archive__deck-copy-lead{ font-size:11px; letter-spacing:.12em; color: var(--text); }
+.archive__deck-copy-sub{
+  font-size:9.5px; letter-spacing:.08em;
+  color: color-mix(in srgb, var(--text-soft) 78%, transparent);
+}
+.archive__deck-chevrons{
+  display:flex; flex-direction:column; align-items:center; gap:2px;
+  margin-left:2px;
+}
+.archive__deck-chevrons svg{
+  width:16px; height:8px; overflow:visible;
+  fill:none; stroke: var(--accent); stroke-width:2.4;
+  stroke-linecap:round; stroke-linejoin:round;
+  opacity:.2;
+  animation: deck-chev 1.8s ease-in-out infinite;
+}
+.archive__deck-chevrons svg:nth-child(2){ animation-delay:.16s; }
+.archive__deck-chevrons svg:nth-child(3){ animation-delay:.32s; }
+@keyframes deck-chev{
+  0%,100%{ opacity:.15; transform:translateY(-2px); }
+  45%    { opacity:1;   transform:translateY(2px); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .archive__deck-chevrons svg{ animation:none; opacity:.6; }
+}
 
 @media (prefers-reduced-motion: reduce){
   .archive__deck-stack{ animation:none; }
