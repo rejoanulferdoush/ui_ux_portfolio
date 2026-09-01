@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAFE — Home Security App · Case study — Rejoanul Ferdoush</title>
+<meta name="description" content="Case study: designing SAFE, an iOS home-security app that turns a house full of gas, fire, temperature and camera sensors into one calm feed — with a three-tier alert model and a one-tap path to help.">
+<link rel="icon" type="image/png" href="assets/mine2.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=65">
+<link rel="stylesheet" href="css/safe-home.css?v=1">
+</head>
+<body>
+
+<!-- Preloader -->
+<div class="preloader" id="preloader">
+  <div class="preloader__shapes" aria-hidden="true">
+    <span class="preloader__shape preloader__shape--1" style="top:12%; left:9%;"><img src="img/2.svg" alt="" decoding="async"></span>
+    <span class="preloader__shape preloader__shape--2" style="top:18%; right:11%;"><img src="img/6.svg" alt="" decoding="async"></span>
+    <span class="preloader__shape preloader__shape--3" style="bottom:16%; left:13%;"><img src="img/4.svg" alt="" decoding="async"></span>
+    <span class="preloader__shape preloader__shape--4" style="bottom:12%; right:9%;"><img src="img/3.svg" alt="" decoding="async"></span>
+    <span class="preloader__shape preloader__shape--5" style="top:46%; left:4%;"><img src="img/8.svg" alt="" decoding="async"></span>
+    <span class="preloader__shape preloader__shape--6" style="top:52%; right:5%;"><img src="img/5.svg" alt="" decoding="async"></span>
+  </div>
+  <div class="preloader__stage" id="preloaderStage">
+    <div class="preloader__glow"></div>
+    <img src="img/mine.svg" alt="" class="preloader__avatar">
+  </div>
+  <span class="preloader__label">Opening case study</span>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container header__inner">
+    <a href="index.html" class="logo">
+      <span class="logo__badge">
+        <img src="assets/mine2.png" alt="Rejoanul Ferdoush" class="logo__mark">
+        <span class="logo__status" title="Available for work"><span class="logo__status-dot" aria-hidden="true"></span></span>
+      </span>
+      <span class="logo__text">
+        <span class="logo__name">Rejoanul<br class="logo__name-break"> Ferdoush</span>
+        <span class="logo__role" aria-label="UI/UX Engineer">
+          <span class="logo__role-sigil" aria-hidden="true">~/</span><em class="logo__role-text" aria-hidden="true" data-roles="Case Study|SAFE — Home Security|IoT Product Design|Design-to-Product">Case Study</em><span class="logo__caret" aria-hidden="true"></span>
+        </span>
+      </span>
+    </a>
+  </div>
+</header>
+
+<!-- Pinned actions -->
+<div class="header__actions">
+  <a href="https://drive.google.com/file/d/1JJXKkSYM4AgdVSk-zB2cIQozw0DpkMTV/view?usp=sharing" target="_blank" rel="noopener" class="nav__cta">Resume <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H14a1 1 0 0 1-1-1V3.5zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h4v2H8V9z"/></svg></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+
+<div class="nav-backdrop" id="navBackdrop"></div>
+<nav class="nav" id="mainNav">
+  <a href="#problem"><span class="nav__index">01</span>The problem</a>
+  <a href="#principles"><span class="nav__index">02</span>Principles</a>
+  <a href="#system"><span class="nav__index">03</span>Status language</a>
+  <a href="#flows"><span class="nav__index">04</span>The flows</a>
+  <a href="#alerts"><span class="nav__index">05</span>Alert model</a>
+  <a href="#gallery"><span class="nav__index">06</span>Every screen</a>
+
+  <a href="projects.html" class="nav__home">
+    <svg class="nav__home-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10V20h13V10M10 20v-5h4v5"/></svg>
+    Back to all projects
+  </a>
+  <a href="https://drive.google.com/file/d/1JJXKkSYM4AgdVSk-zB2cIQozw0DpkMTV/view?usp=sharing" target="_blank" rel="noopener" class="nav__resume">Resume <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H14a1 1 0 0 1-1-1V3.5zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h4v2H8V9z"/></svg></a>
+</nav>
+
+<!-- Side progress rail -->
+<nav class="cs-rail" id="csRail" aria-label="Section progress">
+  <a href="#overview" data-label="Overview" class="is-active"></a>
+  <a href="#problem" data-label="Problem"></a>
+  <a href="#principles" data-label="Principles"></a>
+  <a href="#system" data-label="Status language"></a>
+  <a href="#flows" data-label="The flows"></a>
+  <a href="#alerts" data-label="Alert model"></a>
+  <a href="#craft" data-label="Craft"></a>
+  <a href="#gallery" data-label="Every screen"></a>
+  <a href="#outcome" data-label="Outcome"></a>
+</nav>
+
+<main class="cs" id="top" data-mode="safe">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="cs-hero" id="overview">
+    <div class="cs-hero__glow" aria-hidden="true"></div>
+    <span class="deco deco--md deco--c deco--hide-mobile" style="top:16%; right:2%; --deco-opacity:.10;" data-speed="30" aria-hidden="true"><img src="img/6.svg" alt="" decoding="async"></span>
+    <span class="deco deco--sm deco--a deco--hide-mobile" style="bottom:10%; left:2%; --deco-opacity:.12;" data-speed="22" aria-hidden="true"><img src="img/2.svg" alt="" decoding="async"></span>
+
+    <div class="container">
+      <div class="cs-hero__inner">
+        <div class="cs-hero__lede">
+          <a href="projects.html#safe" class="cs-hero__backlink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M12 19l-7-7 7-7"/></svg>
+            Project archive / SAFE
+          </a>
+          <span class="cs-kicker" style="margin-top:22px;">Case study — iOS · IoT</span>
+          <h1 class="cs-hero__title">A house full of sensors,<br>read as <em>one calm feed</em>.</h1>
+          <p class="cs-hero__sub">SAFE watches for gas leaks, fire, heat, bad air and camera events across every room — then stays quiet until something actually matters. When it does, it escalates on its own and puts help one tap away.</p>
+
+          <dl class="cs-hero__meta">
+            <div><dt>Role</dt><dd>Product &amp; UI/UX design, design system</dd></div>
+            <div><dt>Platform</dt><dd>iOS · connected sensors</dd></div>
+            <div><dt>Scope</dt><dd>32 screens · 1 build</dd></div>
+            <div><dt>Year</dt><dd>2025</dd></div>
+          </dl>
+        </div>
+
+        <div class="cs-hero__stage">
+          <div class="cs-phone">
+            <span class="cs-phone__halo" aria-hidden="true"></span>
+            <span class="cs-phone__notch" aria-hidden="true"></span>
+            <div class="cs-phone__screen">
+              <img class="is-live" data-mode="safe" src="projects/safe_home/Home/Dashboard%20(v3).png" alt="SAFE dashboard — Your Home is Safe, 12 devices, all sensors active">
+              <img data-mode="danger" src="projects/safe_home/Home/Dashboard%20ALERT).png" alt="SAFE dashboard in alert state — Your Home is Unsafe, emergency highlighted">
+            </div>
+          </div>
+          <div class="cs-toggle" role="group" aria-label="Preview the dashboard's two states">
+            <button type="button" data-mode="safe" class="is-on">Calm</button>
+            <button type="button" data-mode="danger">Alert</button>
+          </div>
+          <span class="cs-toggle__hint">tap to flip the home's state</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ FACTS ============================ -->
+  <section class="cs-section" style="padding-top:0;">
+    <div class="container">
+      <div class="cs-facts reveal">
+        <div class="cs-facts__cell">
+          <div class="cs-facts__num"><span class="cs-stat__num" data-count="3">3</span></div>
+          <div class="cs-facts__label">alert tiers — Safe, Warning, Emergency — each with its own colour, sound and urgency</div>
+        </div>
+        <div class="cs-facts__cell">
+          <div class="cs-facts__num"><span class="cs-stat__num" data-count="5">5</span> types</div>
+          <div class="cs-facts__label">gas, fire, temperature, air quality and IP cameras, unified under one device model</div>
+        </div>
+        <div class="cs-facts__cell">
+          <div class="cs-facts__num">~2s</div>
+          <div class="cs-facts__label">from a sensor crossing its threshold to a full-screen alert on the phone</div>
+        </div>
+        <div class="cs-facts__cell">
+          <div class="cs-facts__num">2 langs</div>
+          <div class="cs-facts__label">Bangla &amp; English, plus an Elder Mode with larger type and simpler screens</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PROBLEM ============================ -->
+  <section class="cs-section" id="problem">
+    <div class="container">
+      <div class="cs-split">
+        <div>
+          <span class="cs-kicker">01 — The problem</span>
+          <h2 class="cs-h2">Safety gear that <em>only speaks in a crisis</em></h2>
+        </div>
+        <div class="cs-prose">
+          <p>Households were already buying gas detectors, smoke alarms and IP cameras — but each one lived in its own app, or in no app at all. A beeping box in the kitchen tells you something is wrong; it doesn't tell your family, and it doesn't tell you which room, how bad, or what to do next.</p>
+          <p>The brief was to design a single iOS app that <strong>sits on top of all of it</strong>: every sensor in every room, one status, one place. It had to be calm enough to open daily without anxiety, and loud enough that a real gas leak reaches a sleeping family and their emergency contacts within seconds.</p>
+          <p class="cs-pullquote">The hard part isn't the alarm. It's everything the app does during the <span>hours nothing is wrong</span>.</p>
+        </div>
+      </div>
+
+      <div class="cs-painlist reveal" style="margin-top:clamp(40px,6vw,64px);">
+        <div class="cs-pain">
+          <i class="bx bxs-error"></i>
+          <div><b>Fragmented devices</b><p>Gas, fire and camera hardware each shipped with a separate, inconsistent app — or a physical buzzer with no app at all.</p></div>
+        </div>
+        <div class="cs-pain">
+          <i class="bx bxs-bell-off"></i>
+          <div><b>All-or-nothing alerts</b><p>A detector is either silent or screaming. There was no "worth a glance" in between, so people learned to ignore it.</p></div>
+        </div>
+        <div class="cs-pain">
+          <i class="bx bxs-user-x"></i>
+          <div><b>Nobody else finds out</b><p>If the person holding the phone misses the alert, the chain stops. No automatic SMS, no call, no fire-service fallback.</p></div>
+        </div>
+        <div class="cs-pain">
+          <i class="bx bxs-been-here"></i>
+          <div><b>"Which room? How bad?"</b><p>Even when an alert landed, it rarely said where the danger was or what a panicking person should physically do.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PRINCIPLES ============================ -->
+  <section class="cs-section" id="principles">
+    <div class="container">
+      <span class="cs-kicker">02 — What guided every screen</span>
+      <h2 class="cs-h2">Four rules the whole app <em>bends to</em></h2>
+      <p class="cs-lead">These sat above the feature list. When a screen felt wrong, it was usually breaking one of them.</p>
+
+      <div class="cs-principles">
+        <div class="cs-principle reveal">
+          <h3>Quiet by default</h3>
+          <p>A safe home is a boring screen — one green line, no red, no badges. Colour and motion are rationed so that when they appear, they mean something.</p>
+        </div>
+        <div class="cs-principle reveal">
+          <h3>One glance, one truth</h3>
+          <p>The top of every screen answers "are we OK?" before anything else loads. Room cards, sensor tiles and the nav bar all repeat that same status word.</p>
+        </div>
+        <div class="cs-principle reveal">
+          <h3>Escalate without me</h3>
+          <p>The app assumes the user is asleep, driving, or panicking. Contacts, SMS and the fire service fire on a timer, not on a tap.</p>
+        </div>
+        <div class="cs-principle reveal">
+          <h3>Readable under stress</h3>
+          <p>Big targets, plain verbs — "Shut off gas supply", "I'm in Danger" — Bangla first-class, and an Elder Mode that strips the UI down further.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ STATUS LANGUAGE ============================ -->
+  <section class="cs-section" id="system">
+    <div class="container">
+      <div class="cs-split">
+        <div>
+          <span class="cs-kicker">03 — The design system</span>
+          <h2 class="cs-h2">Colour <em>is</em> the interface</h2>
+        </div>
+        <div class="cs-prose">
+          <p>Everything in SAFE resolves to one of three states. The palette isn't decoration — it's the fastest way to move a status from the sensor to a half-asleep human brain. Green means don't think about it. Amber means look when you can. Red means move now.</p>
+          <p>Every component — the home banner, room cards, sensor tiles, the alerts list, even the bottom tab bar — inherits the same three colours and the same three words, so the language never has to be re-learned.</p>
+        </div>
+      </div>
+
+      <div class="cs-status">
+        <div class="cs-status__card reveal" data-tone="safe">
+          <span class="cs-status__dot"></span>
+          <h3>Safe</h3>
+          <p>All readings inside their thresholds. The home banner shows a shield, the feed is a single calm line, and nothing competes for attention.</p>
+          <div class="cs-status__meta">#34C77B · "Your Home is Safe"</div>
+        </div>
+        <div class="cs-status__card reveal" data-tone="warn">
+          <span class="cs-status__dot"></span>
+          <h3>Warning</h3>
+          <p>A reading is drifting, a device is offline, or a child is near a danger zone. Worth a glance — the room card flips to amber, the family is notified, but no siren.</p>
+          <div class="cs-status__meta">#F0A63C · "Warning"</div>
+        </div>
+        <div class="cs-status__card reveal" data-tone="danger">
+          <span class="cs-status__dot"></span>
+          <h3>Emergency</h3>
+          <p>A threshold is crossed — gas, fire or heat. Full-screen red takeover, local siren, automatic SMS and calls, and a single "I'm in Danger" button.</p>
+          <div class="cs-status__meta">#EF4444 · "Your Home is Unsafe"</div>
+        </div>
+      </div>
+
+      <!-- interactive threshold -->
+      <div class="cs-threshold reveal">
+        <div>
+          <span class="cs-eyebrow">Try it — kitchen gas sensor</span>
+          <div class="cs-threshold__read" id="thRead">45<small> PPM</small></div>
+          <span class="cs-threshold__state" id="thState">Safe</span>
+          <p class="cs-threshold__note" id="thNote">Normal gas level is 0&ndash;50&nbsp;PPM. The user sets the alert threshold themselves; cross it and SAFE sends an immediate emergency alert.</p>
+          <input type="range" class="cs-range" id="thRange" min="0" max="520" value="45" aria-label="Gas reading in PPM">
+          <div class="cs-range__scale"><span>0</span><span>100 · risky</span><span>500 · critical</span></div>
+        </div>
+        <div style="display:flex;justify-content:center;">
+          <div class="cs-shot" style="width:min(240px,60vw);" data-full="projects/safe_home/Sensor/Gas%20(v3).png" data-cap="Gas sensor — reading, threshold slider & recommended actions">
+            <img src="projects/safe_home/Sensor/Gas%20(v3).png" alt="Gas sensor detail screen with a warning banner and a threshold slider">
+          </div>
+        </div>
+      </div>
+
+      <!-- IA map -->
+      <div class="cs-iamap reveal">
+        <span class="cs-eyebrow">Information architecture</span>
+        <div class="cs-iamap__row" style="margin-top:20px;">
+          <div class="cs-iamap__col">
+            <div class="cs-iamap__node cs-iamap__node--root">Home dashboard</div>
+            <div class="cs-iamap__node">Rooms</div>
+            <div class="cs-iamap__leaf">Room &rarr; devices &rarr; sensor detail &amp; thresholds</div>
+            <div class="cs-iamap__leaf">Category rooms (Bedroom 1, Bedroom 2&hellip;)</div>
+          </div>
+          <div class="cs-iamap__col">
+            <div class="cs-iamap__node cs-iamap__node--root">Quick actions</div>
+            <div class="cs-iamap__node">Emergency</div>
+            <div class="cs-iamap__leaf">3 live hazards &rarr; "I'm in Danger"</div>
+            <div class="cs-iamap__node" style="margin-top:10px;">Environment monitor</div>
+            <div class="cs-iamap__leaf">AQI · smoke · temp · humidity trends</div>
+          </div>
+          <div class="cs-iamap__col">
+            <div class="cs-iamap__node cs-iamap__node--root">Cameras</div>
+            <div class="cs-iamap__leaf">Live grid &rarr; stream &rarr; snapshots</div>
+            <div class="cs-iamap__node" style="margin-top:10px;">Alerts</div>
+            <div class="cs-iamap__leaf">Emergency / Warning / Safe, grouped</div>
+          </div>
+          <div class="cs-iamap__col">
+            <div class="cs-iamap__node cs-iamap__node--root">Settings</div>
+            <div class="cs-iamap__leaf">Emergency contacts &amp; escalation rules</div>
+            <div class="cs-iamap__leaf">Language · Elder Mode · Large Text</div>
+            <div class="cs-iamap__leaf">Help center · guided tutorials</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ FLOWS ============================ -->
+  <section class="cs-section" id="flows">
+    <div class="container">
+      <span class="cs-kicker">04 — Walking through the product</span>
+      <h2 class="cs-h2">From an empty house to a <em>guarded one</em></h2>
+      <p class="cs-lead">Six flows carry the whole app. Drag each filmstrip sideways, or tap any screen to open it full size.</p>
+
+      <!-- Flow 1 · Onboarding -->
+      <div class="cs-flow">
+        <div class="cs-flow__head">
+          <span class="cs-flow__index">Flow 01</span>
+          <h3 class="cs-flow__title">Onboarding &amp; setting up the home</h3>
+          <p class="cs-flow__desc">A bilingual walkthrough sells the "why" in four beats, then the shortest possible path to a working home — phone OTP, a home name and type, and the first rooms. Nothing about IP addresses or MQTT topics until the user chooses to add a device.</p>
+        </div>
+        <div class="cs-strip">
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Onboarding/Splash%20(v3).png" data-cap="Splash — SAFE by XYZ Group">
+              <img src="projects/safe_home/Onboarding/Splash%20(v3).png" alt="SAFE splash screen with the wordmark logo" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Splash</b>The wordmark doubles as the app icon — a house with a signal wave.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Onboarding/Features%20Step%201%20(v3).png" data-cap="Onboarding 1 — Family safety made intelligent">
+              <img src="projects/safe_home/Onboarding/Features%20Step%201%20(v3).png" alt="Onboarding step 1 with a shield illustration, Bangla headline" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Value · 1</b>Bangla headline, English sub — the bilingual pattern used app-wide.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Onboarding/Features%20Step%202%20(v3).png" data-cap="Onboarding 2 — Get alerts before danger strikes">
+              <img src="projects/safe_home/Onboarding/Features%20Step%202%20(v3).png" alt="Onboarding step 2 with a siren illustration" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Value · 2</b>Prevention framing — alerts before, not after.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Onboarding/Features%20Step%203%20(v3).png" data-cap="Onboarding 3 — Emergency help in one tap">
+              <img src="projects/safe_home/Onboarding/Features%20Step%203%20(v3).png" alt="Onboarding step 3 with a ringing phone illustration" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Value · 3</b>The one-tap promise, set up before any friction.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Onboarding/Features%20Step%204%20(v3).png" data-cap="Onboarding 4 — Enhanced child safety protection">
+              <img src="projects/safe_home/Onboarding/Features%20Step%204%20(v3).png" alt="Onboarding step 4 with a person-in-zone illustration" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Value · 4</b>Child-in-danger-zone detection, a differentiator.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Auth/OTP%20Verification%20(v3).png" data-cap="Sign in — phone number, social fallback">
+              <img src="projects/safe_home/Auth/OTP%20Verification%20(v3).png" alt="Phone number entry with Google, Facebook and LinkedIn options" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Sign in</b>Phone-first, with social fallback and a language switch.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Auth/Login%20(v3).png" data-cap="OTP — Safe Family, Secure Future">
+              <img src="projects/safe_home/Auth/Login%20(v3).png" alt="OTP code entry screen" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>OTP</b>Single field, giant target, "Change Number" always visible.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Auth/Signup%20%E2%80%93%20Room%20Setup%20(v3).png" data-cap="Set up your home — name & type">
+              <img src="projects/safe_home/Auth/Signup%20%E2%80%93%20Room%20Setup%20(v3).png" alt="Home name and type selection: apartment or office" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Home</b>Name and type — the disabled CTA teaches what's required.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Auth/Signup%20%E2%80%93%20Room%20Setup%20(v10).png" data-cap="Add your room — type + name sheet">
+              <img src="projects/safe_home/Auth/Signup%20%E2%80%93%20Room%20Setup%20(v10).png" alt="Add room bottom sheet with room-type icons" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>First rooms</b>Ten room archetypes with icons, each pre-fills a sensible name.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Flow 2 · Dashboard (feature block) -->
+      <div class="cs-flow">
+        <div class="cs-flow__head">
+          <span class="cs-flow__index">Flow 02</span>
+          <h3 class="cs-flow__title">The calm dashboard — and its opposite</h3>
+        </div>
+        <div class="cs-feature">
+          <div class="cs-feature__media">
+            <div class="cs-shot" data-full="projects/safe_home/Home/Dashboard%20(v3).png" data-cap="Dashboard — Your Home is Safe">
+              <img src="projects/safe_home/Home/Dashboard%20(v3).png" alt="Dashboard in the safe state" loading="lazy">
+            </div>
+            <div class="cs-shot" data-full="projects/safe_home/Home/Dashboard%20ALERT).png" data-cap="Dashboard — Your Home is Unsafe">
+              <img src="projects/safe_home/Home/Dashboard%20ALERT).png" alt="Dashboard in the alert state" loading="lazy">
+            </div>
+          </div>
+          <div>
+            <h3>Same layout, different temperature</h3>
+            <p>The safe and alert dashboards are structurally identical — greeting, status banner, quick actions, room grid. Only the <strong>banner, the Emergency tile and the tab-bar badge</strong> change. Nothing jumps around, so a stressed user's muscle memory still works.</p>
+            <ul>
+              <li>Status banner carries the single source of truth: shield + "12 Devices · All Sensors Active".</li>
+              <li>Quick Actions surface the four things people reach for: Emergency, Camera, the risky room, Environment.</li>
+              <li>Room cards are tinted by type and stamped with their own Safe / Warning chip and device count.</li>
+              <li>In alert state the Emergency tile goes solid red and the Warning tab shows a count.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flow 3 · Rooms -->
+      <div class="cs-flow">
+        <div class="cs-flow__head">
+          <span class="cs-flow__index">Flow 03</span>
+          <h3 class="cs-flow__title">Rooms as "guardians"</h3>
+          <p class="cs-flow__desc">Each room rolls its sensors into one status and a friendly name — "Kitchen Guardian". A room aggregates gas, heat, fire and camera into three headline readings, lists each device with a health bar, and folds multiple rooms of one type ("Bedroom 1", "Bedroom 2") under a single card.</p>
+        </div>
+        <div class="cs-strip">
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Home/Rooms%20List%20(v3).png" data-cap="My Rooms — 5 rooms active">
+              <img src="projects/safe_home/Home/Rooms%20List%20(v3).png" alt="Rooms list with colour-tinted room cards" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>All rooms</b>Colour-coded, status-chipped, with an add-room dashed tile.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Rooms/Kitchen%20(v3).png" data-cap="Kitchen Guardian — everything is normal">
+              <img src="projects/safe_home/Rooms/Kitchen%20(v3).png" alt="Kitchen room detail with gas, fire, heat readings and device list" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Room detail</b>Three headline readings, child-detection strip, per-device health.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Rooms/Category%20Rooms%20(v3).png" data-cap="Bedroom — 2 rooms, 3 devices">
+              <img src="projects/safe_home/Rooms/Category%20Rooms%20(v3).png" alt="Category rooms screen listing Bedroom 1 and Bedroom 2" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Category</b>Two bedrooms managed separately under one entry.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Rooms/Bedroom%20(v3).png" data-cap="Bedroom — air quality + fire sensor">
+              <img src="projects/safe_home/Rooms/Bedroom%20(v3).png" alt="Bedroom room detail, favourited" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Favourited</b>Up to two rooms pin to the top for one-tap access.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Home/Add%20Room%20(v3).png" data-cap="Add new room sheet">
+              <img src="projects/safe_home/Home/Add%20Room%20(v3).png" alt="Add new room bottom sheet over a blurred dashboard" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Add room</b>Same sheet from onboarding, reused in-app over a blur.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Rooms/Drawing%20Room%20(v3).png" data-cap="Drawing Room — 0 devices active">
+              <img src="projects/safe_home/Rooms/Drawing%20Room%20(v3).png" alt="Drawing room detail with a single sensor" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Empty-ish</b>A near-empty room still reads clearly — no dead space.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Modal/Room%20Change%20%E2%80%93%20Confirm%20(v3).png" data-cap="Rename room dialog">
+              <img src="projects/safe_home/Modal/Room%20Change%20%E2%80%93%20Confirm%20(v3).png" alt="Rename room confirmation dialog" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Rename</b>Small, centred, destructive-safe — Cancel is never the primary.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Flow 4 · Sensors -->
+      <div class="cs-flow">
+        <div class="cs-flow__head">
+          <span class="cs-flow__index">Flow 04</span>
+          <h3 class="cs-flow__title">One sensor template, five personalities</h3>
+          <p class="cs-flow__desc">Gas, fire, temperature, air-quality and camera detail screens all share a skeleton: a tinted hero with the live reading, a 2&times;2 status grid (room, battery, reading, connection), recent alerts, then management actions. Each type recolours the hero and swaps in its own threshold control — a PPM slider for gas, a &deg;C slider for heat, a simple on/off for fire.</p>
+        </div>
+        <div class="cs-strip">
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Sensor/Gas%20(v3).png" data-cap="Gas sensor — 45 PPM, threshold 100">
+              <img src="projects/safe_home/Sensor/Gas%20(v3).png" alt="Gas sensor detail" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Gas</b>PPM slider, "Warning: Gas Leak Detected" state, Take Action.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Sensor/Fire%20(v3).png" data-cap="Fire sensor — normal, detection active">
+              <img src="projects/safe_home/Sensor/Fire%20(v3).png" alt="Fire sensor detail with an active toggle" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Fire</b>No slider — a binary "detection active" with the alert process spelled out.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Sensor/Temperature%20(v3).png" data-cap="Temperature sensor — 32°C, threshold 45°C">
+              <img src="projects/safe_home/Sensor/Temperature%20(v3).png" alt="Temperature sensor detail with a °C threshold slider" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Temperature</b>&deg;C slider with plain-language guidance on what each band means.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Sensor/Air%20Quality%20(v3).png" data-cap="Air quality sensor — AQI 42, Normal">
+              <img src="projects/safe_home/Sensor/Air%20Quality%20(v3).png" alt="Air quality sensor detail" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Air quality</b>AQI as the hero number; blue hero tint keeps it non-alarming.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Sensor/Camera%20(v3).png" data-cap="Kitchen Camera — Normal, Live">
+              <img src="projects/safe_home/Sensor/Camera%20(v3).png" alt="Camera device detail with a View Live Camera action" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Camera</b>Same template — but the primary action is "View Live Camera".</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Modal/Add%20Device%20(v4).png" data-cap="Add new device — type, room, name">
+              <img src="projects/safe_home/Modal/Add%20Device%20(v4).png" alt="Add new device sheet with device-type chips" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Add device</b>Type &rarr; room &rarr; name. Advanced config is a separate step.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Modal/Configure%20Sensor%20(v2).png" data-cap="Sensor configuration — ID, IP, port, topic">
+              <img src="projects/safe_home/Modal/Configure%20Sensor%20(v2).png" alt="Sensor configuration sheet with ID, IP address, port and MQTT topic" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Config</b>The technical layer — kept behind "Configure", never in the main path.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Flow 5 · Environment -->
+      <div class="cs-flow">
+        <div class="cs-flow__head">
+          <span class="cs-flow__index">Flow 05</span>
+          <h3 class="cs-flow__title">Environment monitor</h3>
+        </div>
+        <div class="cs-feature">
+          <div>
+            <h3>The "everything's fine, here's why" screen</h3>
+            <p>Air-quality index, smoke, temperature, humidity and light on one board, each with a plain verdict — "Good", "Comfortable", "Normal". Two trend charts show the day's shape, and a by-room list flags the one space that's drifting (Kitchen: Moderate) without alarm.</p>
+            <ul>
+              <li>Hero AQI card in soft green — informative, not a warning.</li>
+              <li>Metric tiles pair a big number with a one-word state, colour-matched.</li>
+              <li>Line charts stay minimal: one series, labelled hours, a caption that interprets the trend.</li>
+            </ul>
+          </div>
+          <div class="cs-feature__media">
+            <div class="cs-shot" data-full="projects/safe_home/Home/Environment%20(v3).png" data-cap="Environment monitor — AQI, trends, by-room">
+              <img src="projects/safe_home/Home/Environment%20(v3).png" alt="Environment monitor screen with AQI, metric tiles and trend charts" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flow 6 · Cameras -->
+      <div class="cs-flow">
+        <div class="cs-flow__head">
+          <span class="cs-flow__index">Flow 06</span>
+          <h3 class="cs-flow__title">Live cameras</h3>
+          <p class="cs-flow__desc">A dark, deliberately different corner of the app — camera feeds want contrast, not calm pastels. A grid of live tiles with status and channel number, a full stream view with a timestamped feed and recent snapshots, and management tucked at the bottom.</p>
+        </div>
+        <div class="cs-strip">
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Camera/Cameras%20List%20(v3).png" data-cap="Live Cameras — grid, All Live">
+              <img src="projects/safe_home/Camera/Cameras%20List%20(v3).png" alt="Live cameras grid with Kitchen, Front Door, Balcony and Bedroom" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Grid</b>Live / Offline chips, channel numbers, dark cards against the light app.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Camera/Camera%20Detail%20(v5).png" data-cap="Kitchen camera — live stream + snapshots">
+              <img src="projects/safe_home/Camera/Camera%20Detail%20(v5).png" alt="Camera stream view with a live kitchen feed and snapshot strip" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Stream</b>RTSP address, timestamp, a snapshot strip along the bottom.</figcaption>
+          </figure>
+          <figure class="cs-strip__item">
+            <div class="cs-shot" data-full="projects/safe_home/Camera/Camera%20Detail%20(v3).png" data-cap="Camera detail — streaming state">
+              <img src="projects/safe_home/Camera/Camera%20Detail%20(v3).png" alt="Camera detail screen, streaming" loading="lazy">
+            </div>
+            <figcaption class="cs-strip__cap"><b>Detail</b>Rename / Configure / Delete kept low-priority and low-contrast.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ ALERT MODEL ============================ -->
+  <section class="cs-section" id="alerts">
+    <div class="container">
+      <div class="cs-split">
+        <div>
+          <span class="cs-kicker">05 — The heart of it</span>
+          <h2 class="cs-h2">Three tiers, and a chain that <em>runs itself</em></h2>
+        </div>
+        <div class="cs-prose">
+          <p>The Alerts screen groups events into Emergency, Warning and Safe — each with a count, a colour and a left border. An emergency card shows the device, the room, the reading and the action already taken ("Shut off gas supply"), then offers Resolve or Details.</p>
+          <p>Tap Details and a sheet lays out the level (55&nbsp;PPM), the timeline, and a short list of <strong>physical instructions</strong> — open the windows, check the stove, wait and re-check. The app never assumes the user knows what to do.</p>
+        </div>
+      </div>
+
+      <!-- tabs -->
+      <div class="cs-tabs">
+        <div class="cs-tabs__bar" role="tablist" aria-label="Alert tiers">
+          <button class="cs-tab" data-tone="danger" role="tab" aria-selected="true" aria-controls="tab-emg" id="t-emg">Emergency</button>
+          <button class="cs-tab" data-tone="warn" role="tab" aria-selected="false" aria-controls="tab-warn" id="t-warn">Warning</button>
+          <button class="cs-tab" role="tab" aria-selected="false" aria-controls="tab-safe" id="t-safe">Safe</button>
+        </div>
+
+        <div class="cs-tabs__panel" id="tab-emg" role="tabpanel" aria-labelledby="t-emg">
+          <div class="cs-shot" data-full="projects/safe_home/Alerts/Alert%20Detail%20(v3).png" data-cap="Alert detail — Gas Leak Detected, 55 PPM">
+            <img src="projects/safe_home/Alerts/Alert%20Detail%20(v3).png" alt="Alert detail sheet with level, timeline and recommended actions" loading="lazy">
+          </div>
+          <div>
+            <span class="cs-tabs__tag" style="color:var(--cs-danger);">Emergency</span>
+            <h3>Move now</h3>
+            <p>Full-screen red. A local siren fires, the family and emergency contacts are messaged automatically, and the "I'm in Danger" button escalates straight to the fire service. The detail sheet still finds room for calm, numbered instructions — because that's exactly when people forget them.</p>
+          </div>
+        </div>
+
+        <div class="cs-tabs__panel" id="tab-warn" role="tabpanel" aria-labelledby="t-warn" hidden>
+          <div class="cs-shot" data-full="projects/safe_home/Alerts/Alerts%20List%20(v3).png" data-cap="Alerts — Emergency, Warning, Safe groups">
+            <img src="projects/safe_home/Alerts/Alerts%20List%20(v3).png" alt="Alerts list grouped by severity" loading="lazy">
+          </div>
+          <div>
+            <span class="cs-tabs__tag" style="color:var(--cs-warn);">Warning</span>
+            <h3>Look when you can</h3>
+            <p>A child near a danger zone, poor air quality, a weak sensor connection. Amber left border, family notified, a resolution line ("Family has been notified") — but no siren and no takeover. It sits in the list until acknowledged.</p>
+          </div>
+        </div>
+
+        <div class="cs-tabs__panel" id="tab-safe" role="tabpanel" aria-labelledby="t-safe" hidden>
+          <div class="cs-shot" data-full="projects/safe_home/Alerts/Open%20Emergency%20(v3).png" data-cap="Alerts — expanded emergency card">
+            <img src="projects/safe_home/Alerts/Open%20Emergency%20(v3).png" alt="Alerts list with an expanded emergency card showing Resolve and Details" loading="lazy">
+          </div>
+          <div>
+            <span class="cs-tabs__tag" style="color:var(--cs-safe);">Safe</span>
+            <h3>Proof of life</h3>
+            <p>"All Systems Normal · Entire Home · 1 hour ago". Safe events are logged too, so the absence of a problem is visible — a quiet reassurance that the system is actually watching, plus a Tips card pointing back to the emergency button.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- escalation timeline -->
+      <div class="cs-escalation reveal">
+        <div class="cs-escalation__title">The escalation chain — for a kitchen gas leak</div>
+        <p style="color:var(--text-soft);margin-top:10px;font-size:14px;max-width:60ch;line-height:1.7;">Configured once in Settings &rarr; Emergency Contacts, then it runs on a timer with no taps required. Contacts are drag-ordered by priority; each has its own SMS and call cadence.</p>
+        <div class="cs-timeline">
+          <div class="cs-tl"><span class="cs-tl__dot"></span><div class="cs-tl__time">0:00</div><div class="cs-tl__body"><b>Threshold crossed</b><p>Gas passes the user's PPM limit. Full-screen alert + local siren on the device.</p></div></div>
+          <div class="cs-tl"><span class="cs-tl__dot"></span><div class="cs-tl__time">0:00</div><div class="cs-tl__body"><b>Instant SMS to priority 1 &amp; 2</b><p>Dad and Mom get an SMS the moment the issue occurs — room, hazard and level.</p></div></div>
+          <div class="cs-tl"><span class="cs-tl__dot"></span><div class="cs-tl__time">~0:00</div><div class="cs-tl__body"><b>Automatic calls begin</b><p>Priority 1 is called every 5 minutes, priority 2 every 10 — until someone answers.</p></div></div>
+          <div class="cs-tl"><span class="cs-tl__dot"></span><div class="cs-tl__time">5:00</div><div class="cs-tl__body"><b>No response &rarr; next contact</b><p>If nobody has answered in 5 minutes, SAFE moves down the priority list automatically.</p></div></div>
+          <div class="cs-tl"><span class="cs-tl__dot"></span><div class="cs-tl__time">10:00</div><div class="cs-tl__body"><b>Fire service notified</b><p>Still unresolved after 10 minutes — the app contacts emergency services with the address.</p></div></div>
+        </div>
+
+        <div style="display:flex;gap:18px;margin-top:34px;flex-wrap:wrap;">
+          <div class="cs-shot" style="width:min(220px,60vw);" data-full="projects/safe_home/Alerts/Emergency%20(v3).png" data-cap="Emergency — 3 live hazards, I'm in Danger">
+            <img src="projects/safe_home/Alerts/Emergency%20(v3).png" alt="Full-screen emergency view listing three hazards" loading="lazy">
+          </div>
+          <div class="cs-shot" style="width:min(220px,60vw);" data-full="projects/safe_home/Contacts/Contacts%20List%20(v3).png" data-cap="Emergency contacts — priority list & escalation rules">
+            <img src="projects/safe_home/Contacts/Contacts%20List%20(v3).png" alt="Emergency contacts priority list with escalation rules" loading="lazy">
+          </div>
+          <div class="cs-shot" style="width:min(220px,60vw);" data-full="projects/safe_home/Modal/Add%20Contact%20%E2%80%93%20Expanded%20(v3).png" data-cap="Add contact — SMS & call settings">
+            <img src="projects/safe_home/Modal/Add%20Contact%20%E2%80%93%20Expanded%20(v3).png" alt="Add contact sheet with SMS and call cadence settings" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CRAFT ============================ -->
+  <section class="cs-section" id="craft">
+    <div class="container">
+      <span class="cs-kicker">06 — The details that carry it</span>
+      <h2 class="cs-h2">Small decisions, <em>repeated everywhere</em></h2>
+
+      <div class="cs-craft">
+        <div class="cs-craft__card reveal">
+          <div class="cs-craft__media">
+            <div class="cs-shot" data-full="projects/safe_home/Settings/Settings%20(v3).png" data-cap="Settings — profile, language, notifications, security, accessibility">
+              <img src="projects/safe_home/Settings/Settings%20(v3).png" alt="Settings screen" loading="lazy">
+            </div>
+          </div>
+          <div class="cs-craft__text">
+            <h3>Accessibility isn't a toggle at the bottom</h3>
+            <p>Large Text and Elder Mode live in their own Accessibility group, and Elder Mode isn't just bigger type — it's a genuinely reduced UI. Language sits up top; the whole app ships Bangla-first.</p>
+          </div>
+        </div>
+        <div class="cs-craft__card reveal">
+          <div class="cs-craft__media">
+            <div class="cs-shot" data-full="projects/safe_home/Modal/Tutorial%20(v3).png" data-cap="Tutorial — Quick Setup, Connect Camera, Emergency Protocol">
+              <img src="projects/safe_home/Modal/Tutorial%20(v3).png" alt="Tutorial list sheet" loading="lazy">
+            </div>
+          </div>
+          <div class="cs-craft__text">
+            <h3>Teach where the task is</h3>
+            <p>Guided tutorials and the Help Center are one tap from Settings, each chunked into short steps with a time estimate — and "Emergency Protocol" is its own SOS-marked lesson.</p>
+          </div>
+        </div>
+        <div class="cs-craft__card reveal">
+          <div class="cs-craft__media">
+            <div class="cs-shot" data-full="projects/safe_home/Modal/Favorite.png" data-cap="Favorites — max 2 rooms">
+              <img src="projects/safe_home/Modal/Favorite.png" alt="Favorite rooms sheet, max two" loading="lazy">
+            </div>
+          </div>
+          <div class="cs-craft__text">
+            <h3>Constraints as kindness</h3>
+            <p>"Favourite rooms (max 2)" is a hard cap on purpose — the point is a shortcut to the spaces that matter, not another list to manage.</p>
+          </div>
+        </div>
+        <div class="cs-craft__card reveal">
+          <div class="cs-craft__media">
+            <div class="cs-shot" data-full="projects/safe_home/Modal/Help%20Center%20(v3).png" data-cap="Help Center — topics + live support">
+              <img src="projects/safe_home/Modal/Help%20Center%20(v3).png" alt="Help center sheet with topics" loading="lazy">
+            </div>
+          </div>
+          <div class="cs-craft__text">
+            <h3>Bottom sheets over new screens</h3>
+            <p>Add device, add contact, help, rename, favourites — anything modal is a sheet over a blurred context, so the user never loses their place in the home.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ GALLERY ============================ -->
+  <section class="cs-section" id="gallery">
+    <div class="container">
+      <span class="cs-kicker">Every screen</span>
+      <h2 class="cs-h2">The full set</h2>
+      <p class="cs-lead">Thirty-two screens across onboarding, home, rooms, sensors, cameras, alerts and settings. Click any to open it.</p>
+
+      <div class="cs-gallery">
+        <div class="cs-shot" data-full="projects/safe_home/Onboarding/Splash%20(v3).png" data-cap="Splash"><img src="projects/safe_home/Onboarding/Splash%20(v3).png" alt="Splash" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Onboarding/Features%20Step%201%20(v3).png" data-cap="Onboarding 1"><img src="projects/safe_home/Onboarding/Features%20Step%201%20(v3).png" alt="Onboarding 1" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Onboarding/Features%20Step%202%20(v3).png" data-cap="Onboarding 2"><img src="projects/safe_home/Onboarding/Features%20Step%202%20(v3).png" alt="Onboarding 2" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Onboarding/Features%20Step%203%20(v3).png" data-cap="Onboarding 3"><img src="projects/safe_home/Onboarding/Features%20Step%203%20(v3).png" alt="Onboarding 3" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Onboarding/Features%20Step%204%20(v3).png" data-cap="Onboarding 4"><img src="projects/safe_home/Onboarding/Features%20Step%204%20(v3).png" alt="Onboarding 4" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Auth/OTP%20Verification%20(v3).png" data-cap="Sign in"><img src="projects/safe_home/Auth/OTP%20Verification%20(v3).png" alt="Sign in" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Auth/Login%20(v3).png" data-cap="OTP"><img src="projects/safe_home/Auth/Login%20(v3).png" alt="OTP" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Auth/Signup%20%E2%80%93%20Room%20Setup%20(v3).png" data-cap="Set up home"><img src="projects/safe_home/Auth/Signup%20%E2%80%93%20Room%20Setup%20(v3).png" alt="Set up home" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Auth/Signup%20%E2%80%93%20Room%20Setup%20(v10).png" data-cap="Add room sheet"><img src="projects/safe_home/Auth/Signup%20%E2%80%93%20Room%20Setup%20(v10).png" alt="Add room sheet" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Home/Dashboard%20(v3).png" data-cap="Dashboard — safe"><img src="projects/safe_home/Home/Dashboard%20(v3).png" alt="Dashboard safe" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Home/Dashboard%20ALERT).png" data-cap="Dashboard — alert"><img src="projects/safe_home/Home/Dashboard%20ALERT).png" alt="Dashboard alert" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Home/Add%20Room%20(v3).png" data-cap="Add room in-app"><img src="projects/safe_home/Home/Add%20Room%20(v3).png" alt="Add room in-app" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Home/Rooms%20List%20(v3).png" data-cap="My rooms"><img src="projects/safe_home/Home/Rooms%20List%20(v3).png" alt="My rooms" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Rooms/Kitchen%20(v3).png" data-cap="Kitchen"><img src="projects/safe_home/Rooms/Kitchen%20(v3).png" alt="Kitchen" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Rooms/Bedroom%20(v3).png" data-cap="Bedroom"><img src="projects/safe_home/Rooms/Bedroom%20(v3).png" alt="Bedroom" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Rooms/Category%20Rooms%20(v3).png" data-cap="Category rooms"><img src="projects/safe_home/Rooms/Category%20Rooms%20(v3).png" alt="Category rooms" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Rooms/Drawing%20Room%20(v3).png" data-cap="Drawing room"><img src="projects/safe_home/Rooms/Drawing%20Room%20(v3).png" alt="Drawing room" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Rooms/Dining%20Room%20(v3).png" data-cap="Dining room"><img src="projects/safe_home/Rooms/Dining%20Room%20(v3).png" alt="Dining room" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Rooms/Corridor%20(v3).png" data-cap="Corridor"><img src="projects/safe_home/Rooms/Corridor%20(v3).png" alt="Corridor" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Sensor/Gas%20(v3).png" data-cap="Gas sensor"><img src="projects/safe_home/Sensor/Gas%20(v3).png" alt="Gas sensor" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Sensor/Fire%20(v3).png" data-cap="Fire sensor"><img src="projects/safe_home/Sensor/Fire%20(v3).png" alt="Fire sensor" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Sensor/Temperature%20(v3).png" data-cap="Temperature sensor"><img src="projects/safe_home/Sensor/Temperature%20(v3).png" alt="Temperature sensor" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Sensor/Air%20Quality%20(v3).png" data-cap="Air quality sensor"><img src="projects/safe_home/Sensor/Air%20Quality%20(v3).png" alt="Air quality sensor" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Sensor/Camera%20(v3).png" data-cap="Camera device"><img src="projects/safe_home/Sensor/Camera%20(v3).png" alt="Camera device" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Home/Environment%20(v3).png" data-cap="Environment monitor"><img src="projects/safe_home/Home/Environment%20(v3).png" alt="Environment monitor" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Camera/Cameras%20List%20(v3).png" data-cap="Live cameras"><img src="projects/safe_home/Camera/Cameras%20List%20(v3).png" alt="Live cameras" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Camera/Camera%20Detail%20(v5).png" data-cap="Camera stream"><img src="projects/safe_home/Camera/Camera%20Detail%20(v5).png" alt="Camera stream" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Camera/Camera%20Detail%20(v3).png" data-cap="Camera detail"><img src="projects/safe_home/Camera/Camera%20Detail%20(v3).png" alt="Camera detail" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Alerts/Alerts%20List%20(v3).png" data-cap="Alerts list"><img src="projects/safe_home/Alerts/Alerts%20List%20(v3).png" alt="Alerts list" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Alerts/Open%20Emergency%20(v3).png" data-cap="Alerts — expanded"><img src="projects/safe_home/Alerts/Open%20Emergency%20(v3).png" alt="Alerts expanded" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Alerts/Alert%20Detail%20(v3).png" data-cap="Alert detail"><img src="projects/safe_home/Alerts/Alert%20Detail%20(v3).png" alt="Alert detail" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Alerts/Emergency%20(v3).png" data-cap="Emergency"><img src="projects/safe_home/Alerts/Emergency%20(v3).png" alt="Emergency" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Contacts/Contacts%20List%20(v3).png" data-cap="Emergency contacts"><img src="projects/safe_home/Contacts/Contacts%20List%20(v3).png" alt="Emergency contacts" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Modal/Add%20Device%20(v4).png" data-cap="Add device"><img src="projects/safe_home/Modal/Add%20Device%20(v4).png" alt="Add device" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Modal/Configure%20Sensor%20(v2).png" data-cap="Sensor configuration"><img src="projects/safe_home/Modal/Configure%20Sensor%20(v2).png" alt="Sensor configuration" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Modal/Add%20Contact%20%E2%80%93%20Expanded%20(v3).png" data-cap="Add contact"><img src="projects/safe_home/Modal/Add%20Contact%20%E2%80%93%20Expanded%20(v3).png" alt="Add contact" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Modal/Room%20Change%20%E2%80%93%20Confirm%20(v3).png" data-cap="Rename room"><img src="projects/safe_home/Modal/Room%20Change%20%E2%80%93%20Confirm%20(v3).png" alt="Rename room" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Modal/Favorite.png" data-cap="Favourites"><img src="projects/safe_home/Modal/Favorite.png" alt="Favourites" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Modal/Tutorial%20(v3).png" data-cap="Tutorial"><img src="projects/safe_home/Modal/Tutorial%20(v3).png" alt="Tutorial" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Modal/Help%20Center%20(v3).png" data-cap="Help center"><img src="projects/safe_home/Modal/Help%20Center%20(v3).png" alt="Help center" loading="lazy"></div>
+        <div class="cs-shot" data-full="projects/safe_home/Settings/Settings%20(v3).png" data-cap="Settings"><img src="projects/safe_home/Settings/Settings%20(v3).png" alt="Settings" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ OUTCOME ============================ -->
+  <section class="cs-section" id="outcome">
+    <div class="container">
+      <div class="cs-outcome">
+        <div>
+          <span class="cs-kicker">Where it landed</span>
+          <h2 class="cs-h2">A system, not a <em>screen pile</em></h2>
+          <p class="cs-lead">SAFE shipped as one coherent iOS product: a reusable device model, a three-state design language, and an escalation engine that works whether or not anyone is looking at the phone.</p>
+        </div>
+        <ul class="cs-outcome__list">
+          <li><i class="bx bxs-check-circle"></i><span><strong>One mental model.</strong> Safe / Warning / Emergency is learned once and reused on every surface — banner, room, sensor, tab bar, alert.</span></li>
+          <li><i class="bx bxs-check-circle"></i><span><strong>Setup without jargon.</strong> A household gets to a working, guarded home before ever seeing an IP address or a sensor topic.</span></li>
+          <li><i class="bx bxs-check-circle"></i><span><strong>Help that doesn't depend on you.</strong> Timed SMS, calls and a fire-service fallback mean a missed notification isn't a dead end.</span></li>
+          <li><i class="bx bxs-check-circle"></i><span><strong>Built for the whole family.</strong> Bangla-first, Elder Mode, large targets, plain verbs — usable by the person most likely to be home alone.</span></li>
+        </ul>
+      </div>
+
+      <div class="cs-prose reveal" style="margin-top:clamp(48px,8vw,90px);max-width:64ch;">
+        <span class="cs-eyebrow">What I'd push further</span>
+        <p style="margin-top:16px;">Next iteration: an on-device history view so households can see how their air and heat trend over weeks, and a shared "who's home / who's been notified" state so the escalation chain is visible to the whole family in real time — not just to whoever set it up.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CTA ============================ -->
+  <div class="cs-cta">
+    <div class="container">
+      <h2>Want the full walkthrough?</h2>
+      <p>Happy to screen-share the prototype and the design-system file, or talk through the escalation logic on a call.</p>
+      <div class="cs-cta__row">
+        <a href="index.html#contact" class="cs-btn cs-btn--primary">
+          Start a conversation
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="projects.html" class="cs-btn cs-btn--ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M12 19l-7-7 7-7"/></svg>
+          Back to all projects
+        </a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <span class="deco deco--sm deco--b deco--hide-mobile" style="top:14%; right:5%; --deco-opacity:.1;" data-speed="18" aria-hidden="true"><img src="img/1.svg" alt="" loading="lazy" decoding="async"></span>
+  <div class="container footer__inner">
+    <a href="#top" class="footer__sig" aria-label="Rejoanul Ferdoush — back to top">
+      <span class="footer__avatar">
+        <img src="assets/mine2.png" alt="Rejoanul Ferdoush" loading="lazy" decoding="async">
+        <span class="footer__avatar-ring" aria-hidden="true"></span>
+      </span>
+      <span class="footer__wordmark">
+        <span class="footer__name">Rejoanul <em>Ferdoush</em></span>
+        <span class="footer__role"><i class='bx bxs-circle' aria-hidden="true"></i> UI/UX Engineer — Dhaka, BD</span>
+      </span>
+    </a>
+
+    <div class="footer__meta">
+      <p class="footer__copy">© <span id="year">2026</span> — hand-built, no templates.</p>
+      <a href="#top" class="btn-to-top" aria-label="Back to top">
+        <span class="btn-to-top__label">Back to top</span>
+        <i class='bx bx-up-arrow-alt' aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+
+  <a href="#top" class="footer__baseline" aria-hidden="true" tabindex="-1">
+    <span>Rejoanul Ferdoush</span>
+    <span>Rejoanul Ferdoush</span>
+    <span>Rejoanul Ferdoush</span>
+    <span>Rejoanul Ferdoush</span>
+  </a>
+</footer>
+
+<!-- Lightbox -->
+<div class="cs-lb" id="csLb" aria-hidden="true">
+  <button class="cs-lb__close" id="csLbClose" aria-label="Close">&times;</button>
+  <button class="cs-lb__nav cs-lb__nav--prev" id="csLbPrev" aria-label="Previous">&#8249;</button>
+  <button class="cs-lb__nav cs-lb__nav--next" id="csLbNext" aria-label="Next">&#8250;</button>
+  <img id="csLbImg" src="" alt="">
+  <span class="cs-lb__cap" id="csLbCap"></span>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+<script src="js/script.js?v=3"></script>
+<script src="js/safe-home.js?v=1"></script>
+</body>
+</html>

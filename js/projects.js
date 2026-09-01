@@ -259,7 +259,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
     };
 
-    document.querySelectorAll('.proj-card__zoom, .proj-card__cta').forEach((btn) => {
+    /* A CTA that carries data-full opens the lightbox; a CTA that's a real
+       link (e.g. the SAFE case study) is left alone to navigate. */
+    document.querySelectorAll('.proj-card__zoom, .proj-card__cta[data-full]').forEach((btn) => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         open(btn.dataset.full, btn.dataset.cap);
