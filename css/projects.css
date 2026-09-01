@@ -247,14 +247,12 @@
   content:""; position:absolute; inset:0; pointer-events:none;
   background: linear-gradient(200deg, rgba(6,6,8,.15) 0%, rgba(6,6,8,.05) 40%, rgba(6,6,8,.55) 100%);
 }
-.proj-card__index{
-  position:absolute; top:18px; left:22px; z-index:2;
-  font-family: var(--ff-head); font-weight:700; font-size: clamp(2.4rem, 5vw, 3.6rem);
-  color: rgba(255,255,255,.9); line-height:1;
-  text-shadow: 0 2px 18px rgba(0,0,0,.35);
-}
+/* Expand sits at the media's INNER top corner — never the card's big rounded
+   outer corner (--radius-l: 56px), so it never gets clipped by overflow:hidden.
+   Odd cards: media is on the left  -> button hugs the top-right (inner) edge.
+   Even cards: media is on the right -> button hugs the top-left  (inner) edge. */
 .proj-card__zoom{
-  position:absolute; right:18px; bottom:18px; z-index:3;
+  position:absolute; top:20px; right:20px; z-index:3;
   display:inline-flex; align-items:center; gap:8px;
   font-family: var(--ff-mono); font-size:11px; letter-spacing:.04em; color:#fff;
   padding:9px 14px; border-radius: var(--radius-pill);
@@ -268,6 +266,7 @@
 .proj-card:focus-within .proj-card__zoom{ opacity:1; transform:none; }
 .proj-card__zoom:hover{ background: var(--accent); color:#161616; border-color: var(--accent); }
 .proj-card__zoom svg{ width:14px; height:14px; }
+.proj-card:nth-child(even) .proj-card__zoom{ right:auto; left:20px; }
 
 .proj-card__body{
   display:flex; flex-direction:column; gap:18px;
