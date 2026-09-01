@@ -342,24 +342,51 @@ img.logo__mark{
 .nav{
   position:fixed; top:0; right:0; height:100vh; width:min(420px, 88vw); z-index:110;
   background: var(--surface); border-left:1px dashed var(--border);
-  display:flex; flex-direction:column; justify-content:center;
-  padding: clamp(20px, 7vh, 60px) 48px;
-  overflow:hidden;
+  display:flex; flex-direction:column; justify-content:center; justify-content:safe center;
+  padding: clamp(16px, 5vh, 48px) 48px;
+  overflow-y:auto; overscroll-behavior:contain;
   transform: translateX(100%);
   transition: transform .45s cubic-bezier(.22,.68,.36,1);
 }
 .nav.is-open{ transform: translateX(0); }
 .nav a{
   display:flex; align-items:baseline; gap:18px;
-  font-family: var(--ff-head); font-size: clamp(20px, 2.6vh, 28px); font-weight:600;
+  font-family: var(--ff-head); font-size: clamp(17px, 2.2vh, 26px); font-weight:600;
   line-height:1.15; color: var(--text);
-  padding: clamp(16px, 3.4vh, 30px) 0; border-bottom:1px dashed var(--border);
+  padding: clamp(10px, 2.2vh, 20px) 0; border-bottom:1px dashed var(--border);
+  flex-shrink:0;
 }
 .nav a:first-of-type{ padding-top:0; }
 .nav a:last-of-type{ border-bottom:none; padding-bottom:0; }
 .nav a:hover{ color: var(--accent); }
 .nav__index{
   font-family: var(--ff-mono); font-size:12px; font-weight:400; color: var(--accent);
+}
+
+/* "Back to all projects" — not a section of the page, so it drops out of the
+   numbered list and reads as an action instead: a ghost pill with a house glyph. */
+.nav a.nav__home{
+  align-self: flex-start; align-items: center; gap: 10px;
+  margin-top: clamp(20px, 4vh, 34px);
+  padding: 11px 20px 11px 15px;
+  border: 1px solid var(--border); border-radius: var(--radius-pill);
+  font-family: var(--ff-mono); font-weight: 400;
+  font-size: 12px; letter-spacing: .09em; text-transform: uppercase; line-height: 1;
+  color: var(--text);
+  transition: color .3s ease, border-color .3s ease, background .3s ease;
+}
+.nav a.nav__home:hover{
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+.nav__home-ico{
+  width: 16px; height: 16px; flex-shrink: 0; color: var(--accent);
+  transition: transform .3s cubic-bezier(.34,1.5,.6,1);
+}
+.nav a.nav__home:hover .nav__home-ico{ transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce){
+  .nav a.nav__home, .nav__home-ico{ transition: none; }
 }
 
 /* ===== Hero ===== */
@@ -1649,8 +1676,8 @@ img.logo__mark{
 
 /* ===== Responsive ===== */
 @media (max-width: 980px){
-  .nav{ width:min(360px,86vw); padding: clamp(24px, 6vh, 48px) 32px; }
-  .nav a{ font-size: clamp(18px, 2.4vh, 24px); padding: clamp(14px, 3vh, 24px) 0; }
+  .nav{ width:min(360px,86vw); padding: clamp(16px, 4vh, 36px) 32px; }
+  .nav a{ font-size: clamp(16px, 2.1vh, 22px); padding: clamp(8px, 2vh, 16px) 0; }
 
   /* Unwrap the split title — stack everything through the middle */
   .hero__stage{ display:flex; flex-direction:column; align-items:center; width:auto; }
