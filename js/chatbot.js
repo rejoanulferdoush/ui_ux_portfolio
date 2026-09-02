@@ -93,8 +93,8 @@
       id: 'proj-dcim',
       patterns: ['dcim', 'data center', 'data centre', 'power flow', 'pue', 'ups status'],
       answer:
-        '<p><strong>DCIM — Data Center Infrastructure</strong> (2025). A web app showing <strong>live power-flow, PUE and capacity</strong> across a facility — power, temperature and UPS status at a glance.</p>' +
-        '<p>★ Shown at <strong>IT Expo 2025</strong>. Tags: Dashboard · Analytics. <a href="#work">See it in Work →</a></p>',
+        '<p><strong>DCIM — Data Center Infrastructure</strong> (2025). A web app that folds a data centre\'s ATS, UPS, cooling, rack PDUs and environment sensors into <strong>one owned pane of glass</strong> — replacing five vendor consoles and a yearly per-point licence.</p>' +
+        '<p>★ Shown at <strong>IT Expo 2025</strong>. Tags: Dashboard · Analytics. <a href="dcim-system.html">Read the case study →</a></p>',
       chips: [
         { label: 'What is NMS?', q: 'what is NMS' },
         { label: 'Show other projects', q: 'show me your work' }
