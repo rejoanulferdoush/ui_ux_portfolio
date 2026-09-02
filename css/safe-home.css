@@ -1098,14 +1098,13 @@
 }
 .cs-lb.is-open{ display:flex; }
 .cs-lb img{
-  max-width:100%; max-height:90vh; border-radius:20px;
+  max-width:100%; max-height:90vh; width:auto; height:auto; border-radius:20px;
   box-shadow: 0 40px 100px -20px rgba(0,0,0,.9);
-  transform-origin: center center; will-change: transform;
-  transition: transform .18s ease-out;
+  transition: transform .12s ease-out;
   cursor: zoom-in; touch-action: none; position:relative; z-index:1;
   -webkit-user-drag: none; user-drag: none; -webkit-user-select: none; user-select: none;
 }
-.cs-lb.is-zoomed img{ cursor: grab; border-radius:0; transition: transform .12s ease-out; }
+.cs-lb.is-zoomed img{ cursor: grab; border-radius:0; max-width:none; max-height:none; }
 .cs-lb.is-panning img{ cursor: grabbing; transition: none; }
 .cs-lb__close,
 .cs-lb__nav,

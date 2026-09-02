@@ -213,23 +213,34 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastFocus = null;
 
     /* zoom state */
-    const ZOOM_MIN = 1, ZOOM_MAX = 5, DBL_ZOOM = 2.6;
-    let scale = 1, tx = 0, ty = 0;
+    const ZOOM_MIN = 1, DBL_ZOOM = 2.6;
+    let scale = 1, tx = 0, ty = 0, baseW = 0, baseH = 0, maxScale = 5;
     let panning = false, panMoved = 0, sx = 0, sy = 0, sTx = 0, sTy = 0;
 
+    /* fitted (scale-1) size of the current image inside the 90vw x 90vh stage,
+       plus how far it can zoom before it runs past its own pixels and smears */
+    const fitImg = () => {
+      const availW = window.innerWidth * 0.9, availH = window.innerHeight * 0.9;
+      const nw = lbImg.naturalWidth || availW, nh = lbImg.naturalHeight || availH;
+      const r = Math.min(availW / nw, availH / nh, 1);
+      baseW = Math.round(nw * r); baseH = Math.round(nh * r);
+      maxScale = Math.max(2, Math.min(6, (nw / (baseW || 1)) * 1.05));
+    };
     const clampPan = () => {
-      /* keep the image roughly within view once zoomed
-         (offsetWidth/Height are layout sizes, unaffected by the transform) */
-      const bw = lbImg.offsetWidth, bh = lbImg.offsetHeight;
-      const ex = Math.max(0, (bw * scale - window.innerWidth) / 2 + 40);
-      const ey = Math.max(0, (bh * scale - window.innerHeight) / 2 + 40);
+      /* keep the image roughly within view once zoomed */
+      const bw = baseW * scale, bh = baseH * scale;
+      const ex = Math.max(0, (bw - window.innerWidth) / 2 + 40);
+      const ey = Math.max(0, (bh - window.innerHeight) / 2 + 40);
       tx = Math.max(-ex, Math.min(ex, tx));
       ty = Math.max(-ey, Math.min(ey, ty));
     };
     const apply = () => {
       if (scale <= ZOOM_MIN) { scale = ZOOM_MIN; tx = 0; ty = 0; }
       else clampPan();
-      lbImg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+      /* width/height drive the zoom so the browser resamples the full-res
+         source; transform only carries the pan offset */
+      if (baseW) { lbImg.style.width = (baseW * scale) + 'px'; lbImg.style.height = (baseH * scale) + 'px'; }
+      lbImg.style.transform = `translate(${tx}px, ${ty}px)`;
       lb.classList.toggle('is-zoomed', scale > ZOOM_MIN);
       lb.classList.toggle('is-panning', panning);
     };
@@ -237,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* zoom toward a screen point (cx, cy measured from viewport centre) */
     const zoomTo = (next, cx, cy) => {
-      next = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, next));
+      next = Math.max(ZOOM_MIN, Math.min(maxScale, next));
       const f = next / scale;
       tx = cx - (cx - tx) * f;
       ty = cy - (cy - ty) * f;
@@ -248,10 +259,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const show = (i) => {
       idx = (i + shots.length) % shots.length;
       const shot = shots[idx];
+      lbImg.style.width = ''; lbImg.style.height = ''; baseW = 0; baseH = 0;
       lbImg.src = shot.dataset.full;
       lbImg.alt = shot.dataset.cap || '';
       lbCap.textContent = shot.dataset.cap || '';
-      resetZoom();
+      const ready = () => { fitImg(); resetZoom(); };
+      if (lbImg.complete && lbImg.naturalWidth) ready();
+      else lbImg.addEventListener('load', ready, { once: true });
     };
     const open = (i) => {
       lastFocus = document.activeElement;
@@ -331,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
       else zoomTo(DBL_ZOOM, e.clientX - window.innerWidth / 2, e.clientY - window.innerHeight / 2);
     });
 
-    window.addEventListener('resize', () => { if (scale > ZOOM_MIN) apply(); });
+    window.addEventListener('resize', () => { fitImg(); apply(); });
   }
 
   /* ---------- Filmstrip: drag to scrub (pointer) ---------- */

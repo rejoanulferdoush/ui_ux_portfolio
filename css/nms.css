@@ -872,8 +872,8 @@ figure.noc-shot figcaption b{ display:block; font-family:var(--ff-head); font-si
    ============================================================ */
 .noc-lb{ position:fixed; inset:0; z-index:200; display:none; background:rgba(3,6,8,.94); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:5vh 5vw; }
 .noc-lb.is-open{ display:flex; }
-.noc-lb img{ max-width:100%; max-height:90vh; border-radius:12px; box-shadow:0 40px 100px -20px rgba(0,0,0,.7); transform-origin:center center; will-change:transform; transition:transform .18s ease-out; cursor:zoom-in; touch-action:none; position:relative; z-index:1; -webkit-user-drag:none; user-drag:none; -webkit-user-select:none; user-select:none; }
-.noc-lb.is-zoomed img{ cursor:grab; border-radius:0; transition:transform .12s ease-out; }
+.noc-lb img{ max-width:100%; max-height:90vh; width:auto; height:auto; border-radius:12px; box-shadow:0 40px 100px -20px rgba(0,0,0,.7); transition:transform .12s ease-out; cursor:zoom-in; touch-action:none; position:relative; z-index:1; -webkit-user-drag:none; user-drag:none; -webkit-user-select:none; user-select:none; }
+.noc-lb.is-zoomed img{ cursor:grab; border-radius:0; max-width:none; max-height:none; }
 .noc-lb.is-panning img{ cursor:grabbing; transition:none; }
 .noc-lb__close,.noc-lb__nav,.noc-lb__cap,.noc-lb__hint{ z-index:3; }
 .noc-lb__close{ position:absolute; top:20px; right:24px; width:44px; height:44px; border-radius:50%; border:1px solid var(--line); background:rgba(255,255,255,.06); color:#fff; font-size:24px; cursor:pointer; }

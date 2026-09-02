@@ -1,7 +1,8 @@
-"""Regenerate web-optimized thumbnails for the NMS case study.
+"""Regenerate web-optimized thumbnails for the DCIM case study.
 
-Every *.png under this folder (recursively) -> thumbs/<same relative path>.webp,
-downscaled to max-width 1920px and encoded at WebP q92 / method 6.
+Every *.png under this folder (recursively, including the per-device
+subfolders) -> thumbs/<same relative path>.webp, downscaled to max-width
+1920px and encoded at WebP q92 / method 6.
 
 The on-page <img src> points at these webp files; data-full keeps the original
 PNG for the lightbox. High DPR phones render the hero / anatomy shots at close
@@ -9,13 +10,13 @@ to 1900 CSS px, so 1920 is the smallest width that still looks crisp there, and
 q92 keeps small UI text and 1px rules from smearing. Run after adding or
 replacing a screenshot:
 
-    python projects/nms_system/_make-thumbs.py
+    python projects/dcim_system/_make-thumbs.py
 """
 import os
 import sys
 from PIL import Image
 
-Image.MAX_IMAGE_PIXELS = None  # some full network-map exports are very large
+Image.MAX_IMAGE_PIXELS = None  # some full-screen exports are very large
 
 SRC = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(SRC, "thumbs")
