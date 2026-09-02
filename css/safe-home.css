@@ -1066,21 +1066,27 @@
    SIDE PROGRESS RAIL
    ============================================================ */
 .cs-rail{
-  position:fixed; right:26px; top:50%; transform:translateY(-50%);
+  position:fixed; left:22px; top:50%; transform:translateY(-50%);
   z-index:40; display:flex; flex-direction:column; gap:14px;
 }
 .cs-rail a{
-  --d:9px; width:var(--d); height:var(--d); border-radius:50%;
-  background: rgba(255,255,255,.2); position:relative; transition: all .3s;
+  position:relative; width:11px; height:11px; border-radius:3px;
+  border:1px solid rgba(255,255,255,.28); background:transparent;
+  transition: background .25s ease, border-color .25s ease, transform .25s ease;
 }
 .cs-rail a::after{
   content: attr(data-label);
-  position:absolute; right:22px; top:50%; transform:translateY(-50%) translateX(6px);
-  font-family: var(--ff-mono); font-size:10px; letter-spacing:1px; text-transform:uppercase;
-  white-space:nowrap; color: var(--text-soft); opacity:0; pointer-events:none; transition: all .25s;
+  position:absolute; left:22px; top:50%; transform:translateY(-50%);
+  font-family: var(--ff-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  white-space:nowrap; color: var(--text-soft); opacity:0; pointer-events:none; transition: opacity .2s ease;
 }
-.cs-rail a:hover::after{ opacity:1; transform:translateY(-50%) translateX(0); }
-.cs-rail a.is-active{ background: var(--cs-safe); box-shadow:0 0 0 5px color-mix(in srgb, var(--cs-safe) 22%, transparent); }
+.cs-rail a:hover::after{ opacity:1; }
+.cs-rail a:hover{ border-color: var(--cs-safe); }
+.cs-rail a.is-active{
+  background: var(--cs-safe); border-color: var(--cs-safe);
+  transform: scale(1.25) rotate(45deg);
+}
+@media (max-width: 1180px){ .cs-rail{ display:none; } }
 
 /* ============================================================
    LIGHTBOX
@@ -1140,7 +1146,6 @@
   .cs-split, .cs-split--flip, .cs-feature, .cs-outcome,
   .cs-tabs__panel, .cs-threshold{ grid-template-columns: 1fr; }
   .cs-craft{ grid-template-columns: 1fr 1fr; }
-  .cs-rail{ display:none; }
   .cs-gallery{ columns: 3 150px; }
   .cs-tabs__panel{ grid-template-columns:1fr; }
   .cs-tabs__panel .cs-shot{ max-width:260px; }
