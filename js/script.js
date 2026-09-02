@@ -300,7 +300,20 @@ document.addEventListener('DOMContentLoaded', () => {
     else openNav();
   });
   navBackdrop.addEventListener('click', closeNav);
-  nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
+  nav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      const href = link.getAttribute('href') || '';
+      closeNav();
+      /* closeNav() restarts Lenis, and Lenis.start() runs reset() which snaps
+         targetScroll back to the current position — that cancels the glide the
+         global a[href^="#"] handler just kicked off. Re-issue it on the next
+         frame, once Lenis is live again, so in-page menu links actually land. */
+      if (lenis && href.startsWith('#') && href.length > 1) {
+        const target = document.querySelector(href);
+        if (target) requestAnimationFrame(() => lenis.scrollTo(target, { offset: 0, force: true }));
+      }
+    });
+  });
   window.addEventListener('resize', queueFitNav, { passive: true });
   window.addEventListener('scroll', queueFitNav, { passive: true });
   if (window.ResizeObserver && navPinned) {
