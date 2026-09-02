@@ -236,7 +236,7 @@ figure.beat--hero__board:hover img{ transform:rotate(3deg); border-color:var(--l
   margin:12px 0 14px; font-size:10px; color:var(--text-soft);
 }
 .invoice__grow output{ color:var(--wire); font-variant-numeric:tabular-nums; text-align:right; }
-.invoice__grow input[type=range]{ -webkit-appearance:none; appearance:none; width:100%; height:4px; border-radius:3px; background:var(--line); outline:none; }
+.invoice__grow input[type=range]{ -webkit-appearance:none; appearance:none; width:100%; min-width:0; height:4px; border-radius:3px; background:var(--line); outline:none; }
 .invoice__grow input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:15px; height:15px; border-radius:50%; background:var(--crit); border:3px solid var(--panel-2); cursor:pointer; }
 .invoice__grow input[type=range]::-moz-range-thumb{ width:12px; height:12px; border-radius:50%; background:var(--crit); border:3px solid var(--panel-2); cursor:pointer; }
 
@@ -578,6 +578,31 @@ figure.noc-shot figcaption b{ display:block; font-family:var(--ff-head); font-si
 .drawer__panel b{ color:var(--text); } .drawer__panel em{ font-style:normal; color:var(--text); }
 @media (max-width:820px){ .drawer__panel.is-on{ grid-template-columns:1fr; } .drawer__panel .noc-shot{ max-width:100%; margin:0 auto; } .drawer__tab{ flex-basis:33.333%; } }
 
+/* "A small job to do" · drawer tool tabs — on phones the 6 tabs wrapped into a
+   ragged, half-bordered block. Lay them out as a tidy 3×2 grid of chips. */
+@media (max-width:560px){
+  .drawer{ border-radius:14px; }
+  .drawer__tabs{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:6px;
+    padding:8px; flex-wrap:nowrap;
+  }
+  .drawer__tab{
+    flex:none; border:1px solid var(--line); border-radius:9px;
+    padding:0 5px; min-height:40px;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-size:10px; letter-spacing:.02em; line-height:1.25;
+  }
+  .drawer__tab:last-child{ border-right:1px solid var(--line); }
+  .drawer__tab.is-on{
+    background:color-mix(in srgb, var(--sig) 15%, var(--panel));
+    border-color:color-mix(in srgb, var(--sig) 55%, var(--line));
+    color:var(--text);
+  }
+  .drawer__tab.is-on::after{ display:none; }
+  .drawer__panel.is-on{ padding:18px 15px; gap:16px; }
+  .drawer__panel h3{ font-size:18px; }
+}
+
 /* ============================================================
    LOGBOOK (reports feature)
    ============================================================ */
@@ -872,17 +897,76 @@ figure.noc-shot figcaption b{ display:block; font-family:var(--ff-head); font-si
   .beat--hero__brief div{ border-right:0; }
   .brief-exhibits{ grid-template-columns:1fr; }
   .quiet-anatomy{ grid-template-columns:1fr; }
-  .incident{ grid-template-columns:1fr; }
-  .incident-proof{ position:static; }
+  .incident{ grid-template-columns:minmax(0,1fr); }
+  .incident-proof{ position:static; min-width:0; }
   .incident-proof .noc-strip figure{ flex-basis:min(82vw,560px); }
   .ladder{ grid-template-columns:1fr; }
   .logbook{ grid-template-columns:1fr; }
+}
+
+/* Incident console (the "Step n / 4" triage card) — once it is full-width,
+   make every inner block shrink and wrap instead of pushing past the card edge. */
+@media (max-width:820px){
+  .incident{ min-width:0; }
+  .incident-console{ min-width:0; max-width:100%; }
+  .incident-console *{ min-width:0; max-width:100%; }
+  .incident-console__top{ flex-wrap:wrap; gap:4px 12px; }
+  .incident-console__top span{ overflow-wrap:anywhere; }
+
+  .ic-alertcard{ overflow-wrap:anywhere; }
+  .ic-alertcard__dev{ flex-wrap:wrap; row-gap:3px; overflow-wrap:anywhere; }
+
+  .ic-devpanel__grid dd,
+  .ic-ack__meta dd,
+  .ic-step__hint{ overflow-wrap:anywhere; }
+  .ic-devpanel__head{ gap:8px; }
+  .ic-devpanel__head span:first-child{ overflow-wrap:anywhere; }
+  .ic-devpanel__sev{ flex-shrink:0; }
+
+  .ic-term{ overflow-x:auto; }
+  .ic-term__line{ overflow-wrap:anywhere; }
+  .ic-pingstats{ flex-wrap:wrap; gap:10px 18px; }
 }
 @media (max-width:560px){
   .beat__line{ font-size:clamp(24px,7vw,34px); }
   .noc-strip figure{ flex-basis:210px; }
   .incident-proof .noc-strip figure{ flex-basis:min(88vw,560px); }
   .noc-strip-block .noc-strip figure{ flex-basis:min(90vw,560px); }
+
+  /* Problem 01 · renewal invoice — stop the slider row and line items from overflowing the narrow card */
+  .invoice__grow{ grid-template-columns:1fr auto; row-gap:9px; }
+  .invoice__grow > span{ order:1; }
+  .invoice__grow output{ order:2; }
+  .invoice__grow input[type=range]{ order:3; grid-column:1 / -1; }
+  .invoice__lines li{ flex-wrap:wrap; row-gap:2px; }
+  .invoice__lines li b{ margin-left:auto; white-space:nowrap; }
+  .invoice__proj-row{ grid-template-columns:104px 1fr auto; column-gap:8px; }
+
+  /* Incident console · the "Step n / 4" triage card — shrink the shell and the
+     inner panels on phones (wrapping rules live in the max-width:820px block). */
+  .incident{ gap:20px; }
+  .incident-console{ padding:13px; border-radius:12px; }
+  .incident-console__bar{ margin:10px 0 16px; }
+  .incident-console__stage{ min-height:200px; }
+
+  .ic-alertcard{ padding:12px 13px; }
+  .ic-alertcard h3{ font-size:16px; }
+
+  .ic-devpanel__grid{ grid-template-columns:1fr; }
+  .ic-devpanel__grid > div{ padding:9px 13px; }
+  .ic-devpanel__head{ padding:11px 13px; font-size:14.5px; }
+
+  .ic-term{ padding:11px 12px; font-size:11px; min-height:110px; }
+  .ic-pingstats{ gap:9px 16px; }
+  .ic-pingstats b{ font-size:16px; }
+
+  .ic-ack{ padding:13px; }
+  .ic-ack__title{ font-size:15.5px; }
+  .ic-ack__meta div{ flex-direction:column; gap:3px; align-items:flex-start; }
+  .ic-ack__meta dd{ text-align:left; }
+
+  .ic-go{ padding:12px; font-size:13.5px; }
+  .ic-step__hint{ font-size:12.5px; }
 }
 
 @media (prefers-reduced-motion:reduce){
