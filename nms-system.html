@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=70">
-<link rel="stylesheet" href="css/nms.css?v=2">
+<link rel="stylesheet" href="css/nms.css?v=11">
 </head>
 <body>
 
@@ -43,7 +43,7 @@
       <span class="logo__text">
         <span class="logo__name">Rejoanul<br class="logo__name-break"> Ferdoush</span>
         <span class="logo__role" aria-label="UI/UX Engineer">
-          <span class="logo__role-sigil" aria-hidden="true">~/</span><em class="logo__role-text" aria-hidden="true" data-roles="Case Study|NMS · one night on the NOC|Network monitoring, rebuilt|Design-to-Product">Case Study</em><span class="logo__caret" aria-hidden="true"></span>
+          <span class="logo__role-sigil" aria-hidden="true">~/</span><em class="logo__role-text" aria-hidden="true" data-roles="UI/UX Engineer|Design-System Architect|Interface Craftsman|Prototype-to-Product">UI/UX Engineer</em><span class="logo__caret" aria-hidden="true"></span>
         </span>
       </span>
     </a>
@@ -60,16 +60,17 @@
 
 <div class="nav-backdrop" id="navBackdrop"></div>
 <nav class="nav" id="mainNav">
-  <a href="#handover"><span class="nav__index">23:47</span>Handover</a>
-  <a href="#brief"><span class="nav__index">00:20</span>The briefing</a>
-  <a href="#quiet"><span class="nav__index">01:12</span>A quiet network</a>
-  <a href="#alert"><span class="nav__index">02:14</span>An alert</a>
-  <a href="#resolved"><span class="nav__index">02:19</span>Resolved</a>
-  <a href="#map"><span class="nav__index">03:40</span>The map</a>
-  <a href="#drawer"><span class="nav__index">05:30</span>The drawer</a>
-  <a href="#logbook"><span class="nav__index">06:55</span>The logbook</a>
-  <a href="#board"><span class="nav__index">07:00</span>The full board</a>
-  <a href="#shiftend"><span class="nav__index">07:02</span>Shift end</a>
+  <a href="#handover"><span class="nav__index">01</span>Handover</a>
+  <a href="#brief"><span class="nav__index">02</span>The tool before this</a>
+  <a href="#quiet"><span class="nav__index">03</span>Reading a quiet network</a>
+  <a href="#alert"><span class="nav__index">04</span>Working an alert</a>
+  <a href="#resolved"><span class="nav__index">05</span>Why red means red</a>
+  <a href="#map"><span class="nav__index">06</span>The live topology map</a>
+  <a href="#drawer"><span class="nav__index">07</span>Tools on the device page</a>
+  <a href="#logbook"><span class="nav__index">08</span>Reports &amp; audit trail</a>
+  <a href="#board"><span class="nav__index">09</span>Every screen</a>
+  <a href="#proto"><span class="nav__index">10</span>Live prototype</a>
+  <a href="#shiftend"><span class="nav__index">11</span>The outcome</a>
 
   <a href="projects.html" class="nav__home">
     <svg class="nav__home-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H5M12 19l-7-7 7-7"/></svg>
@@ -78,31 +79,19 @@
   <a href="https://drive.google.com/file/d/1JJXKkSYM4AgdVSk-zB2cIQozw0DpkMTV/view?usp=sharing" target="_blank" rel="noopener" class="nav__resume">Resume <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H14a1 1 0 0 1-1-1V3.5zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h4v2H8V9z"/></svg></a>
 </nav>
 
-<!-- ============ PERSISTENT NOC HUD ============ -->
-<div class="noc-hud" id="nocHud" aria-hidden="true">
-  <div class="container noc-hud__inner">
-    <span class="noc-hud__badge"><i></i>NOC</span>
-    <span class="noc-hud__clock" id="hudClock">23:47:00</span>
-    <span class="noc-hud__phase" id="hudPhase">Handover</span>
-    <span class="noc-hud__status" id="hudStatus">All systems nominal</span>
-    <span class="noc-hud__alerts" id="hudAlerts"><b id="hudAlertN">0</b> active</span>
-    <span class="noc-hud__scrub" aria-hidden="true"><i id="hudScrub"></i></span>
-  </div>
-</div>
-
 <!-- ============ SHIFT TIME-RAIL ============ -->
-<nav class="noc-rail" id="nocRail" aria-label="Shift timeline">
-  <span class="noc-rail__fill" id="nocRailFill" aria-hidden="true"></span>
-  <a href="#handover" data-t="23:47" class="is-active"><span>Handover</span></a>
-  <a href="#brief" data-t="00:20"><span>The briefing</span></a>
-  <a href="#quiet" data-t="01:12"><span>Quiet network</span></a>
-  <a href="#alert" data-t="02:14"><span>An alert</span></a>
-  <a href="#resolved" data-t="02:19"><span>Resolved</span></a>
-  <a href="#map" data-t="03:40"><span>The map</span></a>
-  <a href="#drawer" data-t="05:30"><span>The drawer</span></a>
-  <a href="#logbook" data-t="06:55"><span>The logbook</span></a>
-  <a href="#board" data-t="07:00"><span>Full board</span></a>
-  <a href="#shiftend" data-t="07:02"><span>Shift end</span></a>
+<nav class="noc-rail" id="nocRail" aria-label="Section progress">
+  <a href="#handover" data-label="Handover" class="is-active"></a>
+  <a href="#brief" data-label="The tool before this"></a>
+  <a href="#quiet" data-label="Reading a quiet network"></a>
+  <a href="#alert" data-label="Working an alert"></a>
+  <a href="#resolved" data-label="Why red means red"></a>
+  <a href="#map" data-label="The live topology map"></a>
+  <a href="#drawer" data-label="Tools on the device page"></a>
+  <a href="#logbook" data-label="Reports &amp; audit trail"></a>
+  <a href="#board" data-label="Every screen"></a>
+  <a href="#proto" data-label="Live prototype"></a>
+  <a href="#shiftend" data-label="The outcome"></a>
 </nav>
 
 <main class="noc" id="top" data-alarm="ok">
@@ -118,12 +107,12 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M12 19l-7-7 7-7"/></svg>
           Back to all projects
         </a>
-        <span class="noc-here">Case study &mdash; told as one night on shift</span>
+        <span class="noc-here">You&rsquo;re reading <b>a case study</b></span>
       </div>
 
       <div class="beat--hero__inner">
         <div class="beat--hero__lede">
-          <p class="beat__stamp"><span class="beat__tick">23:47:00</span> &middot; shift log &middot; 24 Sep</p>
+          <p class="beat__stamp">Case study &mdash; network monitoring system &middot; built for a bank&rsquo;s NOC</p>
           <h1 class="beat--hero__title">You&rsquo;ve got the network<br>for the <em>next eight hours</em>.</h1>
           <p class="beat--hero__say">This is <b>NMS</b> &mdash; a network monitoring system built for a bank, in Dhaka, to replace an imported platform that billed per device and made the simplest task a scavenger hunt. The best way to show what changed is to work a shift on it. Scroll, and the night runs: quiet, an alert, a fix, a handover.</p>
 
@@ -141,43 +130,11 @@
         </div>
 
         <div class="beat--hero__stage">
-          <div class="noc-console" id="nocConsole">
-            <div class="noc-console__bar">
-              <span class="noc-console__live"><i aria-hidden="true"></i>LIVE</span>
-              <span class="noc-console__where">Gulshan Branch &middot; <b>48</b> devices</span>
-              <span class="noc-console__clock" id="consoleClock">23:47:03</span>
-            </div>
-            <div class="noc-console__tiles">
-              <div class="noc-t"><span class="noc-t__k">Health</span><span class="noc-t__v"><b data-count="80">0</b>%</span><span class="noc-t__s noc-t__s--ok">8 of 10 online</span></div>
-              <div class="noc-t"><span class="noc-t__k">Uptime</span><span class="noc-t__v"><b data-count="99" data-suffix=".9">0</b>%</span><span class="noc-t__s">last sync 23:44</span></div>
-              <div class="noc-t"><span class="noc-t__k">Alerts</span><span class="noc-t__v"><b data-count="0">0</b></span><span class="noc-t__s noc-t__s--ok">nothing open</span></div>
-              <div class="noc-t"><span class="noc-t__k">Throughput</span><span class="noc-t__v"><b data-count="1" data-suffix=".2">0</b><small>Gbps</small></span><span class="noc-t__s">12ms latency</span></div>
-            </div>
-            <div class="noc-console__flow">
-              <svg viewBox="0 0 520 90" role="img" aria-label="Live network path, all healthy">
-                <g class="noc-flow__links">
-                  <line x1="52" y1="45" x2="150" y2="45"/><line x1="150" y1="45" x2="250" y2="45"/>
-                  <line x1="250" y1="45" x2="350" y2="45"/><line x1="350" y1="45" x2="466" y2="45"/>
-                </g>
-                <g class="noc-flow__nodes" font-family="JetBrains Mono, monospace" font-size="9">
-                  <g transform="translate(40,45)"><circle r="13"/><text y="28" text-anchor="middle">ISP</text><circle class="noc-flow__led" cx="10" cy="-10" r="3"/></g>
-                  <g transform="translate(150,45)"><circle r="13"/><text y="28" text-anchor="middle">FW</text><circle class="noc-flow__led" cx="10" cy="-10" r="3"/></g>
-                  <g transform="translate(250,45)"><circle r="13"/><text y="28" text-anchor="middle">RTR</text><circle class="noc-flow__led" cx="10" cy="-10" r="3"/></g>
-                  <g transform="translate(350,45)"><circle r="13"/><text y="28" text-anchor="middle">SW</text><circle class="noc-flow__led" cx="10" cy="-10" r="3"/></g>
-                  <g transform="translate(479,45)"><circle r="13"/><text y="28" text-anchor="middle">SRV</text><circle class="noc-flow__led" cx="10" cy="-10" r="3"/></g>
-                </g>
-              </svg>
-            </div>
-            <div class="noc-console__ticker" aria-hidden="true">
-              <div class="noc-console__tape" id="consoleTape">
-                <span><i>23:44:10</i> OK &nbsp;&mdash; sync complete &middot; 48/48 devices reported</span>
-                <span><i>23:41:02</i> INFO &mdash; RTR MikroTik DHCP lease renewed</span>
-                <span><i>23:38:55</i> OK &nbsp;&mdash; Core-Router-01 uptime 45d 12h</span>
-                <span><i>23:31:20</i> INFO &mdash; nightly backup job started on SRV-01</span>
-              </div>
-            </div>
-          </div>
-          <p class="noc-console__cap">The home screen. Everything you watch tonight starts here.</p>
+          <figure class="noc-shot beat--hero__board" data-full="projects/nms_system/data_center-dashboard_with_all_system_operational_alert.png" data-cap="NMS operations dashboard — all systems operational, no active alerts across any facility">
+            <img src="projects/nms_system/thumbs/data_center-dashboard_with_all_system_operational_alert.webp" alt="NMS operations dashboard showing an 'All systems operational' banner with no active alerts, a live power-flow diagram and rack telemetry" loading="eager" decoding="async">
+            <figcaption><b>The operations dashboard at 23:47</b>All systems operational &middot; no active alerts across any facility</figcaption>
+          </figure>
+          <p class="noc-console__cap">This is what the network looks like when you pick it up.<br>At 02:14, one device on it stops answering.</p>
         </div>
       </div>
     </div>
@@ -187,42 +144,104 @@
   <section class="beat" id="brief" data-phase="The briefing" data-state="ok">
     <div class="container">
       <header class="beat__head">
-        <p class="beat__stamp"><span class="beat__tick">00:20:00</span> &middot; before your shift</p>
+        <p class="beat__stamp">Before your shift</p>
         <h2 class="beat__line">Read the notes the last team left.</h2>
-        <p class="beat__say">There was a monitoring platform before this one &mdash; imported, capable, and disliked by everyone who touched it. Two reasons, pinned to the wall.</p>
+        <p class="beat__say">There was a monitoring platform before this one &mdash; imported, capable, and disliked by everyone who touched it. Two exhibits, straight off the old system.</p>
       </header>
 
-      <div class="brief-wall">
-        <article class="brief-note brief-note--money">
-          <span class="brief-note__pin" aria-hidden="true"></span>
-          <span class="brief-note__tag">Problem 1 &mdash; the invoice</span>
-          <p>The licence is priced <b>per monitored element</b>, renewed yearly, in dollars. Every port, sensor and VPN tunnel is a line item &mdash; and the network only grows.</p>
-          <div class="brief-cost" id="briefCost">
-            <label class="brief-cost__row">
-              <span>Grow the branch</span>
-              <input type="range" id="briefRange" min="20" max="600" value="120" step="10" aria-label="Monitored elements">
-              <output id="briefN">120 elements</output>
-            </label>
-            <div class="brief-cost__bars">
-              <div class="brief-cost__bar brief-cost__bar--saas"><i id="briefBarSaas"></i><span id="briefFigSaas">&mdash;</span></div>
-              <div class="brief-cost__bar brief-cost__bar--nms"><i id="briefBarNms"></i><span>NMS &middot; paid once</span></div>
+      <div class="brief-exhibits">
+
+        <!-- EXHIBIT A — the invoice that never stops -->
+        <article class="exhibit exhibit--invoice">
+          <span class="exhibit__no">Problem 01</span>
+          <header class="exhibit__head">
+            <h3 class="exhibit__name">The invoice that never stops</h3>
+            <span class="exhibit__stamp" aria-hidden="true">Renews yearly</span>
+          </header>
+          <p class="exhibit__say">The licence is priced <b>per monitored element</b>, in dollars, renewed every year. Every port, sensor and VPN tunnel is a line on the bill &mdash; and the network only grows.</p>
+
+          <div class="invoice" id="briefCost">
+            <div class="invoice__paper">
+              <div class="invoice__meta">
+                <span>Licence &middot; renewal</span>
+                <span aria-hidden="true">&#9608;&#9608;&#9608;&#9608;&#9608; Systems Inc.</span>
+              </div>
+              <label class="invoice__grow">
+                <span>Grow the branch</span>
+                <input type="range" id="briefRange" min="20" max="600" value="120" step="10" aria-label="Monitored elements">
+                <output id="briefN">120 elements</output>
+              </label>
+              <ul class="invoice__lines">
+                <li><span>Switch ports &amp; interfaces</span><i aria-hidden="true"></i><b id="briefL1">&mdash;</b></li>
+                <li><span>Sensors &amp; probes</span><i aria-hidden="true"></i><b id="briefL2">&mdash;</b></li>
+                <li><span>VPN tunnels</span><i aria-hidden="true"></i><b id="briefL3">&mdash;</b></li>
+              </ul>
+              <div class="invoice__total">
+                <span>Due this year</span>
+                <b id="briefFigSaas">&mdash;</b>
+              </div>
+              <p class="invoice__renew"><i class="bx bx-revision" aria-hidden="true"></i> renews in 365 days &mdash; and every year after</p>
             </div>
-            <p class="brief-cost__note" id="briefNote">Drag it. The red bar renews every year; the green one doesn&rsquo;t.</p>
+
+            <div class="invoice__proj" aria-hidden="true">
+              <div class="invoice__proj-row is-saas">
+                <span>Imported &middot; &times;3 yrs</span>
+                <i id="briefBarSaas"></i>
+                <b id="briefProj3">&mdash;</b>
+              </div>
+              <div class="invoice__proj-row is-nms">
+                <span>NMS &middot; once</span>
+                <i style="width:12%"></i>
+                <b>paid</b>
+              </div>
+            </div>
           </div>
+
+          <p class="exhibit__verdict"><span>then</span> a bill that scales with the network <b>&rarr;</b> <span>now</span> bought once, the bank&rsquo;s to keep</p>
         </article>
 
-        <article class="brief-note brief-note--flow">
-          <span class="brief-note__pin" aria-hidden="true"></span>
-          <span class="brief-note__tag">Problem 2 &mdash; the flow</span>
-          <p>Acknowledging one critical alert crossed <b>four screens and a separate SSH client</b>. A new hire needed a week of shadowing before they trusted what they were looking at.</p>
-          <ol class="brief-steps">
-            <li>Spot it in a list of forty</li>
-            <li>Open it &mdash; a row, not a cause</li>
-            <li>Copy the name, search for the device</li>
-            <li>New tab &middot; new SSH client &middot; tab back</li>
-            <li class="is-lost">Acknowledge &mdash; if you still know which</li>
+        <!-- EXHIBIT B — five screens to say "seen it" -->
+        <article class="exhibit exhibit--flow">
+          <span class="exhibit__no">Problem 02</span>
+          <header class="exhibit__head">
+            <h3 class="exhibit__name">Five screens to say &ldquo;seen it&rdquo;</h3>
+            <span class="exhibit__stamp" aria-hidden="true">~90s / alert</span>
+          </header>
+          <p class="exhibit__say">Acknowledging one critical alert crossed <b>four screens and a separate SSH client</b>. A new hire needed a week of shadowing before they trusted what they were looking at.</p>
+
+          <div class="crossing-wrap">
+          <ol class="crossing">
+            <li class="crossing__stop">
+              <span class="crossing__step">Alert list</span>
+              <span class="crossing__do">spot it in a list of forty</span>
+            </li>
+            <li class="crossing__stop">
+              <span class="crossing__step">The row</span>
+              <span class="crossing__do">open it &mdash; a row, not a cause</span>
+            </li>
+            <li class="crossing__stop crossing__stop--loop">
+              <span class="crossing__step">Device search</span>
+              <span class="crossing__do">copy the name, search for the device</span>
+            </li>
+            <li class="crossing__stop crossing__stop--ext">
+              <span class="crossing__step">SSH client <em>outside app</em></span>
+              <span class="crossing__do">new tab, new client, tab back</span>
+            </li>
+            <li class="crossing__stop crossing__stop--lost">
+              <span class="crossing__step">Acknowledge</span>
+              <span class="crossing__do">&hellip;if you still know which one</span>
+            </li>
           </ol>
+          <span class="crossing__trace" aria-hidden="true"></span>
+          </div>
+          <p class="crossing__cap">That marker is <b>one alert</b> on its way to being acknowledged &mdash; three screens deep, then out to a separate app, and it still ends on a guess.</p>
+          <div class="crossing__tally">
+            <span><b>4</b> screens</span><span><b>1</b> outside app</span><span><b>~90s</b> / alert</span><span><b>1 week</b> to trust it</span>
+          </div>
+
+          <p class="exhibit__verdict"><span>then</span> four screens and a guess <b>&rarr;</b> <span>now</span> four taps on one screen</p>
         </article>
+
       </div>
 
       <p class="beat__brief-out">The brief that came out of it: <b>a monitoring product the bank owns outright, that a first-timer can read, with support in the same city.</b> Everything after this is that brief, working.</p>
@@ -233,7 +252,7 @@
   <section class="beat" id="quiet" data-phase="A quiet network" data-state="ok">
     <div class="container">
       <header class="beat__head">
-        <p class="beat__stamp"><span class="beat__tick">01:12:00</span> &middot; nothing is happening</p>
+        <p class="beat__stamp">Nothing is happening</p>
         <h2 class="beat__line">A good hour looks like this &mdash; and that&rsquo;s the hard part.</h2>
         <p class="beat__say">Most of a shift is quiet. The dashboard&rsquo;s real job is to let you confirm &ldquo;all clear&rdquo; in a glance and look away. Every number leads with a verdict, and every number is a link back to the device it came from.</p>
       </header>
@@ -241,7 +260,7 @@
       <div class="quiet-anatomy">
         <figure class="quiet-shot">
           <div class="noc-shot" data-full="projects/nms_system/monitoring-dashboard_closed-OVERVIEW_WITH-ROUTER-SIDE-DETAIL.png" data-cap="Operations dashboard — verdict tiles across the top, the live path below, racks and alerts beneath">
-            <img src="projects/nms_system/monitoring-dashboard_closed-OVERVIEW_WITH-ROUTER-SIDE-DETAIL.png" alt="NMS operations dashboard with health, device count, alerts and uptime tiles above a live network traffic path" loading="lazy">
+            <img src="projects/nms_system/thumbs/monitoring-dashboard_closed-OVERVIEW_WITH-ROUTER-SIDE-DETAIL.webp" alt="NMS operations dashboard with health, device count, alerts and uptime tiles above a live network traffic path" decoding="async" loading="lazy">
           </div>
         </figure>
         <ol class="quiet-notes">
@@ -263,7 +282,7 @@
   <section class="beat beat--incident" id="alert" data-phase="An alert" data-state="red">
     <div class="container">
       <header class="beat__head">
-        <p class="beat__stamp beat__stamp--alarm"><span class="beat__tick">02:14:07</span> &middot; <span class="beat__pill">incident</span></p>
+        <p class="beat__stamp beat__stamp--alarm"><span class="beat__pill">incident</span></p>
         <h2 class="beat__line">A switch stops answering.</h2>
         <p class="beat__say">Here&rsquo;s the task the whole rebuild is about. A critical alert has fired. Work it &mdash; confirm the device, check if it&rsquo;s dead or just flapping, acknowledge. It&rsquo;s the real sequence, wired to nothing; nothing leaves the page.</p>
       </header>
@@ -340,19 +359,19 @@
           <span class="beat__eyebrow">The real screens</span>
           <div class="noc-strip" id="incidentStrip">
             <figure class="noc-shot" data-full="projects/nms_system/alerts_screen-SELECTED.png" data-cap="Alert Management — cause and device on every row">
-              <img src="projects/nms_system/alerts_screen-SELECTED.png" alt="Alert Management table, each row showing device and a plain-language cause" loading="lazy">
+              <img src="projects/nms_system/thumbs/alerts_screen-SELECTED.webp" alt="Alert Management table, each row showing device and a plain-language cause" decoding="async" loading="lazy">
               <figcaption>Alert list</figcaption>
             </figure>
             <figure class="noc-shot" data-full="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20CRITICAL.png" data-cap="Device Details — identity, IP, latency and Ping in one panel">
-              <img src="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20CRITICAL.png" alt="Network map with a device details panel open on a critical device" loading="lazy">
+              <img src="projects/nms_system/thumbs/Network%20Monitoring%20System%20Map%20-%20CRITICAL.webp" alt="Network map with a device details panel open on a critical device" decoding="async" loading="lazy">
               <figcaption>Device panel</figcaption>
             </figure>
             <figure class="noc-shot" data-full="projects/nms_system/ping_result_modal.png" data-cap="Ping — live replies, then a sent / received / avg summary">
-              <img src="projects/nms_system/ping_result_modal.png" alt="Ping Device modal showing timeouts, replies and a statistics row" loading="lazy">
+              <img src="projects/nms_system/thumbs/ping_result_modal.webp" alt="Ping Device modal showing timeouts, replies and a statistics row" decoding="async" loading="lazy">
               <figcaption>Ping</figcaption>
             </figure>
             <figure class="noc-shot" data-full="projects/nms_system/single_alerts.png" data-cap="On the map — the banner links straight to the offending switch">
-              <img src="projects/nms_system/single_alerts.png" alt="Network map with an alert banner for a high-latency access switch" loading="lazy">
+              <img src="projects/nms_system/thumbs/single_alerts.webp" alt="Network map with an alert banner for a high-latency access switch" decoding="async" loading="lazy">
               <figcaption>In context</figcaption>
             </figure>
           </div>
@@ -366,9 +385,9 @@
   <section class="beat" id="resolved" data-phase="Resolved" data-state="ok">
     <div class="container">
       <header class="beat__head">
-        <p class="beat__stamp"><span class="beat__tick">02:19:41</span> &middot; back to green</p>
+        <p class="beat__stamp">Back to green</p>
         <h2 class="beat__line">Why the red was worth trusting.</h2>
-        <p class="beat__say">That took four minutes because the alert was <em>real</em>. NMS never jumps a device straight to Critical &mdash; it climbs a ladder, threshold by threshold, each rung with its own notice. Red means <b>tried, escalated, still bad</b> &mdash; not &ldquo;one packet was slow&rdquo;. Hover a rung.</p>
+        <p class="beat__say">That took four minutes because the alert was <em>real</em>. NMS never jumps a device straight to Critical &mdash; it climbs a ladder, threshold by threshold, each rung with its own notice. Red means <b>tried, escalated, still bad</b> &mdash; not &ldquo;one packet was slow&rdquo;. It climbs on its own below &mdash; hover any rung to hold it there.</p>
       </header>
 
       <div class="ladder" id="ladder">
@@ -416,7 +435,7 @@
   <section class="beat" id="map" data-phase="The map" data-state="ok">
     <div class="container">
       <header class="beat__head">
-        <p class="beat__stamp"><span class="beat__tick">03:40:00</span> &middot; still quiet &mdash; stress-test it</p>
+        <p class="beat__stamp">Still quiet &mdash; stress-test it</p>
         <h2 class="beat__line">The map does the thinking for you.</h2>
         <p class="beat__say">The topology is the home screen: every device a node, every link coloured by health, the whole path on one canvas. Break something and watch it propagate &mdash; the node flags, the count moves, the banner drops. Tap a node for the same panel the operator gets.</p>
       </header>
@@ -496,19 +515,19 @@
         </div>
         <div class="noc-strip" id="mapStrip">
           <figure class="noc-shot" data-full="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20WARNING.png" data-cap="Warning — a node amber, the rest of the path still green">
-            <img src="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20WARNING.png" alt="Network map with one node in a warning state" loading="lazy">
+            <img src="projects/nms_system/thumbs/Network%20Monitoring%20System%20Map%20-%20WARNING.webp" alt="Network map with one node in a warning state" decoding="async" loading="lazy">
             <figcaption><b>Warning</b>Node amber, path intact.</figcaption>
           </figure>
           <figure class="noc-shot" data-full="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20CRITICAL.png" data-cap="Critical — device panel open, 250ms latency, 45% uptime">
-            <img src="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20CRITICAL.png" alt="Network map, critical device with a details panel" loading="lazy">
+            <img src="projects/nms_system/thumbs/Network%20Monitoring%20System%20Map%20-%20CRITICAL.webp" alt="Network map, critical device with a details panel" decoding="async" loading="lazy">
             <figcaption><b>Critical</b>Panel open, the numbers that matter.</figcaption>
           </figure>
           <figure class="noc-shot" data-full="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20OFFLINE.png" data-cap="Offline — link goes dashed red, downstream greys out">
-            <img src="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20OFFLINE.png" alt="Network map with an offline device and a dashed red link" loading="lazy">
+            <img src="projects/nms_system/thumbs/Network%20Monitoring%20System%20Map%20-%20OFFLINE.webp" alt="Network map with an offline device and a dashed red link" decoding="async" loading="lazy">
             <figcaption><b>Offline</b>Dashed link, downstream greyed.</figcaption>
           </figure>
           <figure class="noc-shot" data-full="projects/nms_system/GULSHAN%20BRANCH-FULL-VIEW.png" data-cap="Full canvas — 48 devices, 37 connections, minimap bottom-right">
-            <img src="projects/nms_system/GULSHAN%20BRANCH-FULL-VIEW.png" alt="Full network topology canvas for the Gulshan branch with a minimap" loading="lazy">
+            <img src="projects/nms_system/thumbs/GULSHAN%20BRANCH-FULL-VIEW.webp" alt="Full network topology canvas for the Gulshan branch with a minimap" decoding="async" loading="lazy">
             <figcaption><b>Full canvas</b>Pan, zoom, minimap.</figcaption>
           </figure>
         </div>
@@ -520,7 +539,7 @@
   <section class="beat" id="drawer" data-phase="The drawer" data-state="ok">
     <div class="container">
       <header class="beat__head">
-        <p class="beat__stamp"><span class="beat__tick">05:30:00</span> &middot; a small job to do</p>
+        <p class="beat__stamp">A small job to do</p>
         <h2 class="beat__line">Everything you need to fix it is in the drawer &mdash; not another app.</h2>
         <p class="beat__say">Spotting a failure is half the job. In the old tool the other half meant switching apps. NMS keeps the terminal, ping, restart, config and logs on the device page itself. Pull a tab.</p>
       </header>
@@ -537,7 +556,7 @@
 
         <div class="drawer__panel is-on" id="dr-ssh" role="tabpanel">
           <div class="noc-shot" data-full="projects/nms_system/ssh_modal_screen.png" data-cap="SSH Terminal Access — connection string, copy button, live session">
-            <img src="projects/nms_system/ssh_modal_screen.png" alt="SSH Terminal Access modal with a connection command and a session log" loading="lazy">
+            <img src="projects/nms_system/thumbs/ssh_modal_screen.webp" alt="SSH Terminal Access modal with a connection command and a session log" decoding="async" loading="lazy">
           </div>
           <div>
             <span class="drawer__tag">Terminal</span>
@@ -547,7 +566,7 @@
         </div>
         <div class="drawer__panel" id="dr-ping" role="tabpanel" hidden>
           <div class="noc-shot" data-full="projects/nms_system/ping_result_modal.png" data-cap="Ping — live replies then sent / received / avg">
-            <img src="projects/nms_system/ping_result_modal.png" alt="Ping Device modal with replies and a statistics summary" loading="lazy">
+            <img src="projects/nms_system/thumbs/ping_result_modal.webp" alt="Ping Device modal with replies and a statistics summary" decoding="async" loading="lazy">
           </div>
           <div>
             <span class="drawer__tag">Reachability</span>
@@ -557,7 +576,7 @@
         </div>
         <div class="drawer__panel" id="dr-restart" role="tabpanel" hidden>
           <div class="noc-shot" data-full="projects/nms_system/restart_device_modal_screen_SOFT-RESTART-ACTIVE.png" data-cap="Restart Device — soft is default, a checkbox gates the button">
-            <img src="projects/nms_system/restart_device_modal_screen_SOFT-RESTART-ACTIVE.png" alt="Restart Device modal with soft restart selected and an acknowledgement checkbox" loading="lazy">
+            <img src="projects/nms_system/thumbs/restart_device_modal_screen_SOFT-RESTART-ACTIVE.webp" alt="Restart Device modal with soft restart selected and an acknowledgement checkbox" decoding="async" loading="lazy">
           </div>
           <div>
             <span class="drawer__tag drawer__tag--warn">Disruptive</span>
@@ -567,7 +586,7 @@
         </div>
         <div class="drawer__panel" id="dr-config" role="tabpanel" hidden>
           <div class="noc-shot" data-full="projects/nms_system/device_configuration_modal_screen-MONITORING-TAB.png" data-cap="Device Configuration — polling interval and per-device thresholds">
-            <img src="projects/nms_system/device_configuration_modal_screen-MONITORING-TAB.png" alt="Device Configuration modal, Monitoring tab, with polling interval and warning thresholds" loading="lazy">
+            <img src="projects/nms_system/thumbs/device_configuration_modal_screen-MONITORING-TAB.webp" alt="Device Configuration modal, Monitoring tab, with polling interval and warning thresholds" decoding="async" loading="lazy">
           </div>
           <div>
             <span class="drawer__tag">Per-device</span>
@@ -577,7 +596,7 @@
         </div>
         <div class="drawer__panel" id="dr-trouble" role="tabpanel" hidden>
           <div class="noc-shot" data-full="projects/nms_system/trouble_shoot_modal-1st_process.png" data-cap="Troubleshoot — a checklist that runs top to bottom and flags the failing step">
-            <img src="projects/nms_system/trouble_shoot_modal-1st_process.png" alt="Troubleshoot modal running connectivity, gateway, DNS, port scan and cable checks" loading="lazy">
+            <img src="projects/nms_system/thumbs/trouble_shoot_modal-1st_process.webp" alt="Troubleshoot modal running connectivity, gateway, DNS, port scan and cable checks" decoding="async" loading="lazy">
           </div>
           <div>
             <span class="drawer__tag drawer__tag--crit">Guided</span>
@@ -587,7 +606,7 @@
         </div>
         <div class="drawer__panel" id="dr-logs" role="tabpanel" hidden>
           <div class="noc-shot" data-full="projects/nms_system/view_log_modal.png" data-cap="Device Logs — filter by severity, timestamps aligned">
-            <img src="projects/nms_system/view_log_modal.png" alt="Device Logs modal with colour-coded severity filters and timestamped entries" loading="lazy">
+            <img src="projects/nms_system/thumbs/view_log_modal.webp" alt="Device Logs modal with colour-coded severity filters and timestamped entries" decoding="async" loading="lazy">
           </div>
           <div>
             <span class="drawer__tag">History</span>
@@ -603,7 +622,7 @@
   <section class="beat" id="logbook" data-phase="The logbook" data-state="ok">
     <div class="container">
       <header class="beat__head">
-        <p class="beat__stamp"><span class="beat__tick">06:55:00</span> &middot; before you hand over</p>
+        <p class="beat__stamp">Before you hand over</p>
         <h2 class="beat__line">What you leave for the next shift &mdash; and the auditor.</h2>
         <p class="beat__say">A regulated network has to produce uptime, alert-response times, security events and bandwidth trends on demand. The report flow is a three-step wizard: pick a type, set the window, generate now or schedule.</p>
       </header>
@@ -611,10 +630,10 @@
       <div class="logbook">
         <div class="logbook__media">
           <div class="noc-shot" data-full="projects/nms_system/generate_report_modal-STEPS-1.png" data-cap="Generate New Report — step 1, six types incl. Security Audit and Custom">
-            <img src="projects/nms_system/generate_report_modal-STEPS-1.png" alt="Generate New Report wizard, step 1, choosing a report type" loading="lazy">
+            <img src="projects/nms_system/thumbs/generate_report_modal-STEPS-1.webp" alt="Generate New Report wizard, step 1, choosing a report type" decoding="async" loading="lazy">
           </div>
           <div class="noc-shot" data-full="projects/nms_system/report_screen-SELECTED.png" data-cap="Reports library — type, date, status, format, per-row actions">
-            <img src="projects/nms_system/report_screen-SELECTED.png" alt="Reports and Analytics library listing generated reports" loading="lazy">
+            <img src="projects/nms_system/thumbs/report_screen-SELECTED.webp" alt="Reports and Analytics library listing generated reports" decoding="async" loading="lazy">
           </div>
         </div>
         <div>
@@ -634,7 +653,7 @@
   <section class="beat" id="board" data-phase="The full board" data-state="ok">
     <div class="container">
       <header class="beat__head">
-        <p class="beat__stamp"><span class="beat__tick">07:00:00</span> &middot; everything you watched tonight</p>
+        <p class="beat__stamp">Everything you watched tonight</p>
         <h2 class="beat__line">The full board.</h2>
         <p class="beat__say">Login, the dashboards, the topology and its rack details, every device page, every operator sheet, analytics, reports and settings. Filter it, or open any screen.</p>
       </header>
@@ -650,76 +669,119 @@
       </div>
 
       <div class="board__grid" id="boardGrid">
-        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/login_screen-v2.png" data-cap="Login — split layout, product promise left, SSO right"><img src="projects/nms_system/login_screen-v2.png" alt="NMS login screen" loading="lazy"></div>
-        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/login_screen-forgot_email.png" data-cap="Login — forgot password"><img src="projects/nms_system/login_screen-forgot_email.png" alt="NMS forgot password screen" loading="lazy"></div>
-        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/login_screen-check_email.png" data-cap="Login — check your email"><img src="projects/nms_system/login_screen-check_email.png" alt="NMS check email screen" loading="lazy"></div>
-        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/login_screen-set_new_password.png" data-cap="Login — set a new password"><img src="projects/nms_system/login_screen-set_new_password.png" alt="NMS set new password screen" loading="lazy"></div>
-        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/data_center-dashboard.png" data-cap="Data centre dashboard — power flow, rack temperature, UPS and battery history"><img src="projects/nms_system/data_center-dashboard.png" alt="Data centre operations dashboard" loading="lazy"></div>
-        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/data_center-dashboard_with%20active%20alerts.png" data-cap="Dashboard — with active alerts"><img src="projects/nms_system/data_center-dashboard_with%20active%20alerts.png" alt="Dashboard showing active alerts" loading="lazy"></div>
-        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/data_center-dashboard_with_all_system_operational_alert.png" data-cap="Dashboard — all systems operational"><img src="projects/nms_system/data_center-dashboard_with_all_system_operational_alert.png" alt="Dashboard, all systems operational" loading="lazy"></div>
-        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/monitoring-dashboard_closed-OVERVIEW_WITH-ROUTER-SIDE-DETAIL.png" data-cap="Monitoring overview — traffic flow with the Router layer detail open"><img src="projects/nms_system/monitoring-dashboard_closed-OVERVIEW_WITH-ROUTER-SIDE-DETAIL.png" alt="Monitoring dashboard with router side detail" loading="lazy"></div>
-        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/monitoring-dashboard_closed-OVERVIEW_WITH-FIREWALL-SIDE-DETAIL.png" data-cap="Monitoring overview — Firewall layer detail"><img src="projects/nms_system/monitoring-dashboard_closed-OVERVIEW_WITH-FIREWALL-SIDE-DETAIL.png" alt="Monitoring dashboard with firewall side detail" loading="lazy"></div>
-        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/monitoring-dashboard_closed-OVERVIEW_WITH-CORE_SWITCH-SIDE-DETAIL.png" data-cap="Monitoring overview — Core Switch layer detail"><img src="projects/nms_system/monitoring-dashboard_closed-OVERVIEW_WITH-CORE_SWITCH-SIDE-DETAIL.png" alt="Monitoring dashboard with core switch side detail" loading="lazy"></div>
-        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/monitoring-dashboard_closed-HEATMAP.png" data-cap="Monitoring — heatmap view, load per node"><img src="projects/nms_system/monitoring-dashboard_closed-HEATMAP.png" alt="Monitoring dashboard heatmap view" loading="lazy"></div>
-        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/monitoring-dashboard_closed-PHYSICAL.png" data-cap="Monitoring — physical view"><img src="projects/nms_system/monitoring-dashboard_closed-PHYSICAL.png" alt="Monitoring dashboard physical view" loading="lazy"></div>
-        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/monitoring-dashboard_expanded.png" data-cap="Monitoring — expanded, bandwidth consumers and device status table"><img src="projects/nms_system/monitoring-dashboard_expanded.png" alt="Expanded monitoring dashboard" loading="lazy"></div>
-        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/analytics_screen.png" data-cap="Network Analytics — performance, health, top consumers"><img src="projects/nms_system/analytics_screen.png" alt="Network analytics screen" loading="lazy"></div>
-        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/power_screen.png" data-cap="Power — energy, current and voltage over 24h"><img src="projects/nms_system/power_screen.png" alt="Power screen" loading="lazy"></div>
-        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/battery_screen.png" data-cap="Battery — bank health and voltage history"><img src="projects/nms_system/battery_screen.png" alt="Battery screen" loading="lazy"></div>
-        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/environment_screen.png" data-cap="Environment — temperature, humidity, dew point"><img src="projects/nms_system/environment_screen.png" alt="Environment screen" loading="lazy"></div>
-        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/topology_screen.png" data-cap="Network Topology — racks across floors, grid view"><img src="projects/nms_system/topology_screen.png" alt="Network topology screen, rack grid" loading="lazy"></div>
-        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/topology_-RACK-A1-DETAIL-screen.png" data-cap="Rack A1 detail — device types, performance, installed devices"><img src="projects/nms_system/topology_-RACK-A1-DETAIL-screen.png" alt="Rack A1 detail screen" loading="lazy"></div>
-        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/topology_-RACK-A2-DETAIL-screen.png" data-cap="Rack A2 detail"><img src="projects/nms_system/topology_-RACK-A2-DETAIL-screen.png" alt="Rack A2 detail screen" loading="lazy"></div>
-        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/GULSHAN%20BRANCH.png" data-cap="Live map — Gulshan branch, device panel open"><img src="projects/nms_system/GULSHAN%20BRANCH.png" alt="Gulshan branch network map" loading="lazy"></div>
-        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/GULSHAN%20BRANCH-FULL-VIEW.png" data-cap="Live map — full canvas with minimap"><img src="projects/nms_system/GULSHAN%20BRANCH-FULL-VIEW.png" alt="Gulshan branch full topology" loading="lazy"></div>
-        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/BANANI-BRANCH.png" data-cap="Live map — Banani branch"><img src="projects/nms_system/BANANI-BRANCH.png" alt="Banani branch network map" loading="lazy"></div>
-        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20WARNING.png" data-cap="Map — warning state"><img src="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20WARNING.png" alt="Network map warning state" loading="lazy"></div>
-        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20CRITICAL.png" data-cap="Map — critical device, details panel"><img src="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20CRITICAL.png" alt="Network map critical state" loading="lazy"></div>
-        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20OFFLINE.png" data-cap="Map — offline, dashed link"><img src="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20OFFLINE.png" alt="Network map offline state" loading="lazy"></div>
-        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20Router.png" data-cap="Map — router details, port status"><img src="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20Router.png" alt="Network map router details" loading="lazy"></div>
-        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/all_alerts.png" data-cap="Map — alert banner across the top"><img src="projects/nms_system/all_alerts.png" alt="Network map with alert banner" loading="lazy"></div>
-        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/devices_screen_grid_view.png" data-cap="Devices — grid view with CPU / memory / bandwidth per card"><img src="projects/nms_system/devices_screen_grid_view.png" alt="Devices grid view" loading="lazy"></div>
-        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/devices_screen_grid_view-1.png" data-cap="Devices — grid view, alternate"><img src="projects/nms_system/devices_screen_grid_view-1.png" alt="Devices grid view alternate" loading="lazy"></div>
-        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/core_router_ONLINE_screen.png" data-cap="Device page — Core-Router-01 online, bandwidth and performance trends"><img src="projects/nms_system/core_router_ONLINE_screen.png" alt="Core Router 01 device page, online" loading="lazy"></div>
-        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/core_router_OFFLINE_screen.png" data-cap="Device page — Core-Router-02 offline"><img src="projects/nms_system/core_router_OFFLINE_screen.png" alt="Core Router 02 device page, offline" loading="lazy"></div>
-        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/edge_firewall_DEGRADED_screen.png" data-cap="Device page — Edge-Firewall-01 degraded"><img src="projects/nms_system/edge_firewall_DEGRADED_screen.png" alt="Edge Firewall 01 device page, degraded" loading="lazy"></div>
-        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/db_server_ONLINE_screen.png" data-cap="Device page — DB-Server-01"><img src="projects/nms_system/db_server_ONLINE_screen.png" alt="DB Server 01 device page" loading="lazy"></div>
-        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/web_server_ONLINE_screen.png" data-cap="Device page — Web-Server-01"><img src="projects/nms_system/web_server_ONLINE_screen.png" alt="Web Server 01 device page" loading="lazy"></div>
-        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/app_server_ONLINE_screen.png" data-cap="Device page — App-Server-01"><img src="projects/nms_system/app_server_ONLINE_screen.png" alt="App Server 01 device page" loading="lazy"></div>
-        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/dist_switch_ONLINE_screen.png" data-cap="Device page — Dist-Switch-01"><img src="projects/nms_system/dist_switch_ONLINE_screen.png" alt="Dist Switch 01 device page" loading="lazy"></div>
-        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/access_switch_ONLINE_screen.png" data-cap="Device page — Access-Switch-02"><img src="projects/nms_system/access_switch_ONLINE_screen.png" alt="Access Switch 02 device page" loading="lazy"></div>
-        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/PDU_ONLINE_screen.png" data-cap="Device page — PDU-A1-01"><img src="projects/nms_system/PDU_ONLINE_screen.png" alt="PDU A1 01 device page" loading="lazy"></div>
-        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/UPS_primary_ONLINE_screen.png" data-cap="Device page — UPS-Primary"><img src="projects/nms_system/UPS_primary_ONLINE_screen.png" alt="UPS Primary device page" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/add_device_modal_screen.png" data-cap="Add New Device — basic info"><img src="projects/nms_system/add_device_modal_screen.png" alt="Add new device modal" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/add_network_device_screen_modal.png" data-cap="Add device — from the network map"><img src="projects/nms_system/add_network_device_screen_modal.png" alt="Add network device modal" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/add_new_rack-BASIC-INFO-MODAL.png" data-cap="Add New Rack — basic info, one of four tabs"><img src="projects/nms_system/add_new_rack-BASIC-INFO-MODAL.png" alt="Add new rack modal, basic info" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/add_new_rack-CAPACITY-MODAL.png" data-cap="Add New Rack — capacity"><img src="projects/nms_system/add_new_rack-CAPACITY-MODAL.png" alt="Add new rack modal, capacity" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/add_new_rack-ENVIRONMENTAL-MODAL.png" data-cap="Add New Rack — environmental thresholds"><img src="projects/nms_system/add_new_rack-ENVIRONMENTAL-MODAL.png" alt="Add new rack modal, environmental" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/ssh_modal_screen.png" data-cap="SSH Terminal Access"><img src="projects/nms_system/ssh_modal_screen.png" alt="SSH terminal modal" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/ssh_modal_screen-1.png" data-cap="SSH Terminal — session in progress"><img src="projects/nms_system/ssh_modal_screen-1.png" alt="SSH terminal modal, session" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/ping_result_modal.png" data-cap="Ping Device — result"><img src="projects/nms_system/ping_result_modal.png" alt="Ping device modal" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/restart_device_modal_screen_SOFT-RESTART-ACTIVE.png" data-cap="Restart Device — soft restart, confirmed"><img src="projects/nms_system/restart_device_modal_screen_SOFT-RESTART-ACTIVE.png" alt="Restart device modal, soft restart" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/restart_device_modal_screen_HARD-RESTART-ACTIVE.png" data-cap="Restart Device — hard restart selected"><img src="projects/nms_system/restart_device_modal_screen_HARD-RESTART-ACTIVE.png" alt="Restart device modal, hard restart" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/device_configuration_modal_screen-GENERAL-TAB.png" data-cap="Device Configuration — general"><img src="projects/nms_system/device_configuration_modal_screen-GENERAL-TAB.png" alt="Device configuration, general tab" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/device_configuration_modal_screen-MONITORING-TAB.png" data-cap="Device Configuration — monitoring thresholds"><img src="projects/nms_system/device_configuration_modal_screen-MONITORING-TAB.png" alt="Device configuration, monitoring tab" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/device_configuration_modal_screen-NETWORK-TAB.png" data-cap="Device Configuration — network"><img src="projects/nms_system/device_configuration_modal_screen-NETWORK-TAB.png" alt="Device configuration, network tab" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/trouble_shoot_modal-1st_process.png" data-cap="Troubleshoot — checklist running"><img src="projects/nms_system/trouble_shoot_modal-1st_process.png" alt="Troubleshoot modal, first process" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/trouble_shoot_modal-2nd_process.png" data-cap="Troubleshoot — checklist complete"><img src="projects/nms_system/trouble_shoot_modal-2nd_process.png" alt="Troubleshoot modal, second process" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/view_log_modal.png" data-cap="Device Logs — severity filters"><img src="projects/nms_system/view_log_modal.png" alt="View log modal" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/alerts_screen_NOT-SELECTED.png" data-cap="Alert Management — nothing selected"><img src="projects/nms_system/alerts_screen_NOT-SELECTED.png" alt="Alert management, no selection" loading="lazy"></div>
-        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/alerts_screen-SELECTED.png" data-cap="Alert Management — bulk selection, acknowledge"><img src="projects/nms_system/alerts_screen-SELECTED.png" alt="Alert management, selection" loading="lazy"></div>
-        <div class="noc-shot" data-cat="report" data-full="projects/nms_system/generate_report_modal-STEPS-1.png" data-cap="Generate Report — step 1, type"><img src="projects/nms_system/generate_report_modal-STEPS-1.png" alt="Generate report wizard step 1" loading="lazy"></div>
-        <div class="noc-shot" data-cat="report" data-full="projects/nms_system/generate_report_modal-2ND%20STEPS.png" data-cap="Generate Report — step 2, configuration"><img src="projects/nms_system/generate_report_modal-2ND%20STEPS.png" alt="Generate report wizard step 2" loading="lazy"></div>
-        <div class="noc-shot" data-cat="report" data-full="projects/nms_system/generate_report_modal-3RD-STEPS_SCHEDULE-LATER-SELECTED_WITH-REPORT-SELECTION.png" data-cap="Generate Report — step 3, schedule later"><img src="projects/nms_system/generate_report_modal-3RD-STEPS_SCHEDULE-LATER-SELECTED_WITH-REPORT-SELECTION.png" alt="Generate report wizard step 3, schedule" loading="lazy"></div>
-        <div class="noc-shot" data-cat="report" data-full="projects/nms_system/report_screen-SELECTED.png" data-cap="Reports library"><img src="projects/nms_system/report_screen-SELECTED.png" alt="Reports library" loading="lazy"></div>
-        <div class="noc-shot" data-cat="report" data-full="projects/nms_system/share_report_screen-SHARE-LINK-TAB.png" data-cap="Share Report — tokenised link, expiry, password"><img src="projects/nms_system/share_report_screen-SHARE-LINK-TAB.png" alt="Share report, link tab" loading="lazy"></div>
-        <div class="noc-shot" data-cat="report" data-full="projects/nms_system/share_report_screen-SEND-VIA-EMAIL-TAB.png" data-cap="Share Report — send via email"><img src="projects/nms_system/share_report_screen-SEND-VIA-EMAIL-TAB.png" alt="Share report, email tab" loading="lazy"></div>
-        <div class="noc-shot" data-cat="report" data-full="projects/nms_system/report_delete_modal.png" data-cap="Delete report — confirm"><img src="projects/nms_system/report_delete_modal.png" alt="Delete report modal" loading="lazy"></div>
-        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/settings_screen_GENERAL-TAB.png" data-cap="Settings — general"><img src="projects/nms_system/settings_screen_GENERAL-TAB.png" alt="Settings, general tab" loading="lazy"></div>
-        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/settings_screen_NOTIFICATIONS-TAB.png" data-cap="Settings — notifications"><img src="projects/nms_system/settings_screen_NOTIFICATIONS-TAB.png" alt="Settings, notifications tab" loading="lazy"></div>
-        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/settings_screen_SECURITY-TAB.png" data-cap="Settings — security"><img src="projects/nms_system/settings_screen_SECURITY-TAB.png" alt="Settings, security tab" loading="lazy"></div>
-        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/settings_screen_MONITORING-TAB.png" data-cap="Settings — monitoring"><img src="projects/nms_system/settings_screen_MONITORING-TAB.png" alt="Settings, monitoring tab" loading="lazy"></div>
-        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/settings_screen_APPEARANCE-TAB.png" data-cap="Settings — appearance, light / dark / auto"><img src="projects/nms_system/settings_screen_APPEARANCE-TAB.png" alt="Settings, appearance tab" loading="lazy"></div>
+        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/login_screen-v2.png" data-cap="Login — split layout, product promise left, SSO right"><img src="projects/nms_system/thumbs/login_screen-v2.webp" alt="NMS login screen" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/login_screen-forgot_email.png" data-cap="Login — forgot password"><img src="projects/nms_system/thumbs/login_screen-forgot_email.webp" alt="NMS forgot password screen" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/login_screen-check_email.png" data-cap="Login — check your email"><img src="projects/nms_system/thumbs/login_screen-check_email.webp" alt="NMS check email screen" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/login_screen-set_new_password.png" data-cap="Login — set a new password"><img src="projects/nms_system/thumbs/login_screen-set_new_password.webp" alt="NMS set new password screen" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/data_center-dashboard.png" data-cap="Data centre dashboard — power flow, rack temperature, UPS and battery history"><img src="projects/nms_system/thumbs/data_center-dashboard.webp" alt="Data centre operations dashboard" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/data_center-dashboard_with%20active%20alerts.png" data-cap="Dashboard — with active alerts"><img src="projects/nms_system/thumbs/data_center-dashboard_with%20active%20alerts.webp" alt="Dashboard showing active alerts" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/data_center-dashboard_with_all_system_operational_alert.png" data-cap="Dashboard — all systems operational"><img src="projects/nms_system/thumbs/data_center-dashboard_with_all_system_operational_alert.webp" alt="Dashboard, all systems operational" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/monitoring-dashboard_closed-OVERVIEW_WITH-ROUTER-SIDE-DETAIL.png" data-cap="Monitoring overview — traffic flow with the Router layer detail open"><img src="projects/nms_system/thumbs/monitoring-dashboard_closed-OVERVIEW_WITH-ROUTER-SIDE-DETAIL.webp" alt="Monitoring dashboard with router side detail" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/monitoring-dashboard_closed-OVERVIEW_WITH-FIREWALL-SIDE-DETAIL.png" data-cap="Monitoring overview — Firewall layer detail"><img src="projects/nms_system/thumbs/monitoring-dashboard_closed-OVERVIEW_WITH-FIREWALL-SIDE-DETAIL.webp" alt="Monitoring dashboard with firewall side detail" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/monitoring-dashboard_closed-OVERVIEW_WITH-CORE_SWITCH-SIDE-DETAIL.png" data-cap="Monitoring overview — Core Switch layer detail"><img src="projects/nms_system/thumbs/monitoring-dashboard_closed-OVERVIEW_WITH-CORE_SWITCH-SIDE-DETAIL.webp" alt="Monitoring dashboard with core switch side detail" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/monitoring-dashboard_closed-HEATMAP.png" data-cap="Monitoring — heatmap view, load per node"><img src="projects/nms_system/thumbs/monitoring-dashboard_closed-HEATMAP.webp" alt="Monitoring dashboard heatmap view" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/monitoring-dashboard_closed-PHYSICAL.png" data-cap="Monitoring — physical view"><img src="projects/nms_system/thumbs/monitoring-dashboard_closed-PHYSICAL.webp" alt="Monitoring dashboard physical view" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/monitoring-dashboard_expanded.png" data-cap="Monitoring — expanded, bandwidth consumers and device status table"><img src="projects/nms_system/thumbs/monitoring-dashboard_expanded.webp" alt="Expanded monitoring dashboard" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/analytics_screen.png" data-cap="Network Analytics — performance, health, top consumers"><img src="projects/nms_system/thumbs/analytics_screen.webp" alt="Network analytics screen" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/power_screen.png" data-cap="Power — energy, current and voltage over 24h"><img src="projects/nms_system/thumbs/power_screen.webp" alt="Power screen" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/battery_screen.png" data-cap="Battery — bank health and voltage history"><img src="projects/nms_system/thumbs/battery_screen.webp" alt="Battery screen" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="dash" data-full="projects/nms_system/environment_screen.png" data-cap="Environment — temperature, humidity, dew point"><img src="projects/nms_system/thumbs/environment_screen.webp" alt="Environment screen" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/topology_screen.png" data-cap="Network Topology — racks across floors, grid view"><img src="projects/nms_system/thumbs/topology_screen.webp" alt="Network topology screen, rack grid" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/topology_-RACK-A1-DETAIL-screen.png" data-cap="Rack A1 detail — device types, performance, installed devices"><img src="projects/nms_system/thumbs/topology_-RACK-A1-DETAIL-screen.webp" alt="Rack A1 detail screen" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/topology_-RACK-A2-DETAIL-screen.png" data-cap="Rack A2 detail"><img src="projects/nms_system/thumbs/topology_-RACK-A2-DETAIL-screen.webp" alt="Rack A2 detail screen" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/GULSHAN%20BRANCH.png" data-cap="Live map — Gulshan branch, device panel open"><img src="projects/nms_system/thumbs/GULSHAN%20BRANCH.webp" alt="Gulshan branch network map" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/GULSHAN%20BRANCH-FULL-VIEW.png" data-cap="Live map — full canvas with minimap"><img src="projects/nms_system/thumbs/GULSHAN%20BRANCH-FULL-VIEW.webp" alt="Gulshan branch full topology" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/BANANI-BRANCH.png" data-cap="Live map — Banani branch"><img src="projects/nms_system/thumbs/BANANI-BRANCH.webp" alt="Banani branch network map" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20WARNING.png" data-cap="Map — warning state"><img src="projects/nms_system/thumbs/Network%20Monitoring%20System%20Map%20-%20WARNING.webp" alt="Network map warning state" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20CRITICAL.png" data-cap="Map — critical device, details panel"><img src="projects/nms_system/thumbs/Network%20Monitoring%20System%20Map%20-%20CRITICAL.webp" alt="Network map critical state" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20OFFLINE.png" data-cap="Map — offline, dashed link"><img src="projects/nms_system/thumbs/Network%20Monitoring%20System%20Map%20-%20OFFLINE.webp" alt="Network map offline state" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/Network%20Monitoring%20System%20Map%20-%20Router.png" data-cap="Map — router details, port status"><img src="projects/nms_system/thumbs/Network%20Monitoring%20System%20Map%20-%20Router.webp" alt="Network map router details" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="map" data-full="projects/nms_system/all_alerts.png" data-cap="Map — alert banner across the top"><img src="projects/nms_system/thumbs/all_alerts.webp" alt="Network map with alert banner" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/devices_screen_grid_view.png" data-cap="Devices — grid view with CPU / memory / bandwidth per card"><img src="projects/nms_system/thumbs/devices_screen_grid_view.webp" alt="Devices grid view" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/devices_screen_grid_view-1.png" data-cap="Devices — grid view, alternate"><img src="projects/nms_system/thumbs/devices_screen_grid_view-1.webp" alt="Devices grid view alternate" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/core_router_ONLINE_screen.png" data-cap="Device page — Core-Router-01 online, bandwidth and performance trends"><img src="projects/nms_system/thumbs/core_router_ONLINE_screen.webp" alt="Core Router 01 device page, online" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/core_router_OFFLINE_screen.png" data-cap="Device page — Core-Router-02 offline"><img src="projects/nms_system/thumbs/core_router_OFFLINE_screen.webp" alt="Core Router 02 device page, offline" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/edge_firewall_DEGRADED_screen.png" data-cap="Device page — Edge-Firewall-01 degraded"><img src="projects/nms_system/thumbs/edge_firewall_DEGRADED_screen.webp" alt="Edge Firewall 01 device page, degraded" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/db_server_ONLINE_screen.png" data-cap="Device page — DB-Server-01"><img src="projects/nms_system/thumbs/db_server_ONLINE_screen.webp" alt="DB Server 01 device page" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/web_server_ONLINE_screen.png" data-cap="Device page — Web-Server-01"><img src="projects/nms_system/thumbs/web_server_ONLINE_screen.webp" alt="Web Server 01 device page" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/app_server_ONLINE_screen.png" data-cap="Device page — App-Server-01"><img src="projects/nms_system/thumbs/app_server_ONLINE_screen.webp" alt="App Server 01 device page" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/dist_switch_ONLINE_screen.png" data-cap="Device page — Dist-Switch-01"><img src="projects/nms_system/thumbs/dist_switch_ONLINE_screen.webp" alt="Dist Switch 01 device page" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/access_switch_ONLINE_screen.png" data-cap="Device page — Access-Switch-02"><img src="projects/nms_system/thumbs/access_switch_ONLINE_screen.webp" alt="Access Switch 02 device page" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/PDU_ONLINE_screen.png" data-cap="Device page — PDU-A1-01"><img src="projects/nms_system/thumbs/PDU_ONLINE_screen.webp" alt="PDU A1 01 device page" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="device" data-full="projects/nms_system/UPS_primary_ONLINE_screen.png" data-cap="Device page — UPS-Primary"><img src="projects/nms_system/thumbs/UPS_primary_ONLINE_screen.webp" alt="UPS Primary device page" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/add_device_modal_screen.png" data-cap="Add New Device — basic info"><img src="projects/nms_system/thumbs/add_device_modal_screen.webp" alt="Add new device modal" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/add_network_device_screen_modal.png" data-cap="Add device — from the network map"><img src="projects/nms_system/thumbs/add_network_device_screen_modal.webp" alt="Add network device modal" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/add_new_rack-BASIC-INFO-MODAL.png" data-cap="Add New Rack — basic info, one of four tabs"><img src="projects/nms_system/thumbs/add_new_rack-BASIC-INFO-MODAL.webp" alt="Add new rack modal, basic info" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/add_new_rack-CAPACITY-MODAL.png" data-cap="Add New Rack — capacity"><img src="projects/nms_system/thumbs/add_new_rack-CAPACITY-MODAL.webp" alt="Add new rack modal, capacity" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/add_new_rack-ENVIRONMENTAL-MODAL.png" data-cap="Add New Rack — environmental thresholds"><img src="projects/nms_system/thumbs/add_new_rack-ENVIRONMENTAL-MODAL.webp" alt="Add new rack modal, environmental" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/ssh_modal_screen.png" data-cap="SSH Terminal Access"><img src="projects/nms_system/thumbs/ssh_modal_screen.webp" alt="SSH terminal modal" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/ssh_modal_screen-1.png" data-cap="SSH Terminal — session in progress"><img src="projects/nms_system/thumbs/ssh_modal_screen-1.webp" alt="SSH terminal modal, session" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/ping_result_modal.png" data-cap="Ping Device — result"><img src="projects/nms_system/thumbs/ping_result_modal.webp" alt="Ping device modal" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/restart_device_modal_screen_SOFT-RESTART-ACTIVE.png" data-cap="Restart Device — soft restart, confirmed"><img src="projects/nms_system/thumbs/restart_device_modal_screen_SOFT-RESTART-ACTIVE.webp" alt="Restart device modal, soft restart" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/restart_device_modal_screen_HARD-RESTART-ACTIVE.png" data-cap="Restart Device — hard restart selected"><img src="projects/nms_system/thumbs/restart_device_modal_screen_HARD-RESTART-ACTIVE.webp" alt="Restart device modal, hard restart" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/device_configuration_modal_screen-GENERAL-TAB.png" data-cap="Device Configuration — general"><img src="projects/nms_system/thumbs/device_configuration_modal_screen-GENERAL-TAB.webp" alt="Device configuration, general tab" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/device_configuration_modal_screen-MONITORING-TAB.png" data-cap="Device Configuration — monitoring thresholds"><img src="projects/nms_system/thumbs/device_configuration_modal_screen-MONITORING-TAB.webp" alt="Device configuration, monitoring tab" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/device_configuration_modal_screen-NETWORK-TAB.png" data-cap="Device Configuration — network"><img src="projects/nms_system/thumbs/device_configuration_modal_screen-NETWORK-TAB.webp" alt="Device configuration, network tab" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/trouble_shoot_modal-1st_process.png" data-cap="Troubleshoot — checklist running"><img src="projects/nms_system/thumbs/trouble_shoot_modal-1st_process.webp" alt="Troubleshoot modal, first process" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/trouble_shoot_modal-2nd_process.png" data-cap="Troubleshoot — checklist complete"><img src="projects/nms_system/thumbs/trouble_shoot_modal-2nd_process.webp" alt="Troubleshoot modal, second process" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/view_log_modal.png" data-cap="Device Logs — severity filters"><img src="projects/nms_system/thumbs/view_log_modal.webp" alt="View log modal" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/alerts_screen_NOT-SELECTED.png" data-cap="Alert Management — nothing selected"><img src="projects/nms_system/thumbs/alerts_screen_NOT-SELECTED.webp" alt="Alert management, no selection" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="modal" data-full="projects/nms_system/alerts_screen-SELECTED.png" data-cap="Alert Management — bulk selection, acknowledge"><img src="projects/nms_system/thumbs/alerts_screen-SELECTED.webp" alt="Alert management, selection" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="report" data-full="projects/nms_system/generate_report_modal-STEPS-1.png" data-cap="Generate Report — step 1, type"><img src="projects/nms_system/thumbs/generate_report_modal-STEPS-1.webp" alt="Generate report wizard step 1" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="report" data-full="projects/nms_system/generate_report_modal-2ND%20STEPS.png" data-cap="Generate Report — step 2, configuration"><img src="projects/nms_system/thumbs/generate_report_modal-2ND%20STEPS.webp" alt="Generate report wizard step 2" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="report" data-full="projects/nms_system/generate_report_modal-3RD-STEPS_SCHEDULE-LATER-SELECTED_WITH-REPORT-SELECTION.png" data-cap="Generate Report — step 3, schedule later"><img src="projects/nms_system/thumbs/generate_report_modal-3RD-STEPS_SCHEDULE-LATER-SELECTED_WITH-REPORT-SELECTION.webp" alt="Generate report wizard step 3, schedule" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="report" data-full="projects/nms_system/report_screen-SELECTED.png" data-cap="Reports library"><img src="projects/nms_system/thumbs/report_screen-SELECTED.webp" alt="Reports library" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="report" data-full="projects/nms_system/share_report_screen-SHARE-LINK-TAB.png" data-cap="Share Report — tokenised link, expiry, password"><img src="projects/nms_system/thumbs/share_report_screen-SHARE-LINK-TAB.webp" alt="Share report, link tab" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="report" data-full="projects/nms_system/share_report_screen-SEND-VIA-EMAIL-TAB.png" data-cap="Share Report — send via email"><img src="projects/nms_system/thumbs/share_report_screen-SEND-VIA-EMAIL-TAB.webp" alt="Share report, email tab" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="report" data-full="projects/nms_system/report_delete_modal.png" data-cap="Delete report — confirm"><img src="projects/nms_system/thumbs/report_delete_modal.webp" alt="Delete report modal" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/settings_screen_GENERAL-TAB.png" data-cap="Settings — general"><img src="projects/nms_system/thumbs/settings_screen_GENERAL-TAB.webp" alt="Settings, general tab" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/settings_screen_NOTIFICATIONS-TAB.png" data-cap="Settings — notifications"><img src="projects/nms_system/thumbs/settings_screen_NOTIFICATIONS-TAB.webp" alt="Settings, notifications tab" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/settings_screen_SECURITY-TAB.png" data-cap="Settings — security"><img src="projects/nms_system/thumbs/settings_screen_SECURITY-TAB.webp" alt="Settings, security tab" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/settings_screen_MONITORING-TAB.png" data-cap="Settings — monitoring"><img src="projects/nms_system/thumbs/settings_screen_MONITORING-TAB.webp" alt="Settings, monitoring tab" decoding="async" loading="lazy"></div>
+        <div class="noc-shot" data-cat="settings" data-full="projects/nms_system/settings_screen_APPEARANCE-TAB.png" data-cap="Settings — appearance, light / dark / auto"><img src="projects/nms_system/thumbs/settings_screen_APPEARANCE-TAB.webp" alt="Settings, appearance tab" decoding="async" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 07:01 · DRIVE IT ============================ -->
+  <section class="beat" id="proto" data-phase="Live prototype" data-state="ok">
+    <div class="container">
+      <header class="beat__head">
+        <p class="beat__stamp">Before you sign off</p>
+        <h2 class="beat__line">Don&rsquo;t just read the shift &mdash; <em>drive it</em>.</h2>
+        <p class="beat__say">The full Figma prototype, running right here on the page. Walk the dashboards, open a rack, drill into a device, acknowledge an alert &mdash; every hotspot is live.</p>
+      </header>
+
+      <div class="noc-proto reveal">
+        <span class="noc-proto__glow" aria-hidden="true"></span>
+
+        <div class="noc-proto__frame">
+          <div class="noc-proto__chrome">
+            <span class="noc-proto__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="noc-proto__addr">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+              embed.figma.com / NMS / prototype
+            </span>
+            <a class="noc-proto__pop" href="https://www.figma.com/proto/1zpvveakfJg4RF6EkpsnKM/DCIM-System?node-id=4966-14228&scaling=min-zoom&content-scaling=fixed&page-id=1077%3A14117" target="_blank" rel="noopener">
+              Open in Figma
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+          <div class="noc-proto__stage">
+            <iframe
+              class="noc-proto__embed"
+              title="NMS &mdash; interactive Figma prototype"
+              src="https://embed.figma.com/proto/1zpvveakfJg4RF6EkpsnKM/DCIM-System?node-id=4966-14228&viewport=477%2C-1636%2C0.04&scaling=min-zoom&content-scaling=fixed&page-id=1077%3A14117&embed-host=share"
+              allowfullscreen
+              loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <ul class="noc-proto__hints">
+          <li><b>Click</b> the highlighted hotspots to move between screens</li>
+          <li><b>R</b> restarts the flow from the first frame</li>
+          <li><b>&#10530;</b> go fullscreen for a true one-to-one scale</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -728,35 +790,80 @@
   <section class="beat beat--end" id="shiftend" data-phase="Shift end" data-state="ok">
     <div class="container">
       <header class="beat__head">
-        <p class="beat__stamp"><span class="beat__tick">07:02:00</span> &middot; sign off</p>
+        <p class="beat__stamp">Sign off</p>
         <h2 class="beat__line">Shift report.</h2>
         <p class="beat__say">One quiet night, one real alert, one clean handover &mdash; on a product the bank owns outright. Here&rsquo;s what the rebuild changed.</p>
       </header>
 
-      <div class="report-slip reveal">
-        <div class="report-slip__head">
-          <span>NMS &middot; shift-report.txt</span>
-          <span class="report-slip__stamp">SHIPPED</span>
+      <div class="shift-report reveal" id="shiftReport" aria-label="Shift report — before and after the rebuild">
+        <div class="shift-report__paper">
+          <div class="shift-report__bar">
+            <span class="shift-report__file"><i class="bx bx-receipt" aria-hidden="true"></i> NMS &middot; shift-report.txt</span>
+            <span class="shift-report__led"><i aria-hidden="true"></i><b>printing</b></span>
+          </div>
+
+          <div class="shift-report__body">
+            <p class="srow" data-row>
+              <span class="srow__k">SITE</span>
+              <span class="srow__v">Bank network &mdash; branch + data centre, Dhaka <span class="srow__dim">(on-prem)</span></span>
+            </p>
+            <p class="srow" data-row>
+              <span class="srow__k">BUILD</span>
+              <span class="srow__v">v1.0 &middot; responsive web &middot; one design system</span>
+            </p>
+
+            <p class="srow srow--delta" data-row>
+              <span class="srow__k">COST</span>
+              <span class="srow__delta">
+                <span class="srow__from">per-element yearly licence</span>
+                <span class="srow__arrow" aria-hidden="true"></span>
+                <span class="srow__to">one-time build, unmetered</span>
+              </span>
+              <span class="srow__note">new devices now cost nothing to monitor</span>
+            </p>
+
+            <p class="srow srow--delta" data-row>
+              <span class="srow__k">FLOW</span>
+              <span class="srow__delta">
+                <span class="srow__from">acknowledge a critical alert &mdash; <b>7</b> screens</span>
+                <span class="srow__arrow" aria-hidden="true"></span>
+                <span class="srow__to"><b class="srow__num">3</b> screens</span>
+              </span>
+              <span class="srow__note">terminal, ping, restart, logs all on the device page</span>
+            </p>
+
+            <p class="srow srow--delta" data-row>
+              <span class="srow__k">ONBOARDING</span>
+              <span class="srow__delta">
+                <span class="srow__from">new hire runs triage solo &mdash; <b>~1 week</b></span>
+                <span class="srow__arrow" aria-hidden="true"></span>
+                <span class="srow__to"><b class="srow__num">&lt; 1 day</b></span>
+              </span>
+              <span class="srow__note">status legible on first glance, one colour system</span>
+            </p>
+
+            <p class="srow srow--delta" data-row>
+              <span class="srow__k">SUPPORT</span>
+              <span class="srow__delta">
+                <span class="srow__from">ticket + timezone</span>
+                <span class="srow__arrow" aria-hidden="true"></span>
+                <span class="srow__to">same city, same day</span>
+              </span>
+              <span class="srow__note">data never leaves the building</span>
+            </p>
+
+            <p class="srow srow--record" data-row>
+              <span class="srow__k">ON RECORD</span>
+              <span class="srow__v">showcased at IT EXPO 2025, Dhaka &mdash; on the stand as a locally built alternative to imported monitoring</span>
+            </p>
+
+            <span class="shift-report__caret" aria-hidden="true"></span>
+          </div>
+
+          <div class="shift-report__foot"><span class="shift-report__barcode" aria-hidden="true"></span><span>end of shift &middot; 07:02 &middot; 24 Sep 2025</span></div>
+
+          <span class="shift-report__stamp" aria-hidden="true">SHIPPED</span>
         </div>
-        <pre class="report-slip__body"><b>SITE</b>        Bank network &mdash; branch + data centre, Dhaka (on-prem)
-<b>BUILD</b>       v1.0 &middot; responsive web &middot; one design system
-
-<b>COST</b>        per-element yearly licence  &rarr;  one-time build, unmetered
-            new devices now cost nothing to monitor
-
-<b>FLOW</b>        acknowledge a critical alert:  7 screens  &rarr;  3
-            terminal, ping, restart, logs all on the device page
-
-<b>ONBOARDING</b>  time for a new hire to run triage solo:  ~1 week  &rarr;  &lt; 1 day
-            status legible on first glance, one colour system
-
-<b>SUPPORT</b>     ticket + timezone  &rarr;  same city, same day
-            data never leaves the building
-
-<b>ON RECORD</b>   showcased at IT EXPO 2025, Dhaka &mdash; on the stand as a
-            locally built alternative to imported monitoring
-</pre>
-        <div class="report-slip__foot"><span class="report-slip__bars" aria-hidden="true"></span><span>end of shift &middot; 07:02 &middot; 24 Sep 2025</span></div>
       </div>
     </div>
   </section>
@@ -824,6 +931,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
 <script src="js/script.js?v=3"></script>
-<script src="js/nms.js?v=2"></script>
+<script src="js/nms.js?v=4"></script>
 </body>
 </html>

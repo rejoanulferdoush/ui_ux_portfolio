@@ -8,72 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const q = (id) => document.getElementById(id);
   const noc = document.querySelector('.noc');
 
-  /* ---------- clock helpers (shift runs 23:47 -> 07:02) ---------- */
-  const SHIFT_START = 23 * 3600 + 47 * 60;      // 23:47:00
-  const SHIFT_LEN = 7 * 3600 + 15 * 60;         // 23:47 -> 07:02 next day
-  const fmtClock = (sec) => {
-    sec = ((sec % 86400) + 86400) % 86400;
-    const h = String(Math.floor(sec / 3600)).padStart(2, '0');
-    const m = String(Math.floor(sec / 60) % 60).padStart(2, '0');
-    const s = String(Math.floor(sec) % 60).padStart(2, '0');
-    return `${h}:${m}:${s}`;
-  };
-
-  /* ---------- HUD: dock, scroll-driven clock + scrub ---------- */
-  const hud = q('nocHud');
-  const hudClock = q('hudClock');
-  const hudPhase = q('hudPhase');
-  const hudStatus = q('hudStatus');
-  const hudAlertN = q('hudAlertN');
-  const hudScrub = q('hudScrub');
-  const railFill = q('nocRailFill');
-  const hero = q('handover');
-  const main = document.querySelector('.noc');
-
-  const STATUS_TXT = {
-    ok: 'All systems nominal',
-    amber: 'Degraded — investigating',
-    red: 'CRITICAL — incident open',
-  };
-
-  const onScroll = () => {
-    const y = window.scrollY;
-    const heroBottom = hero ? hero.offsetHeight - 120 : 400;
-    if (hud) hud.classList.toggle('is-on', y > heroBottom);
-
-    const total = main.scrollHeight - window.innerHeight;
-    const p = total > 0 ? Math.min(1, Math.max(0, y / total)) : 0;
-    if (hudClock) hudClock.textContent = fmtClock(SHIFT_START + p * SHIFT_LEN);
-    if (hudScrub) hudScrub.style.width = (p * 100) + '%';
-    if (railFill) railFill.style.height = (p * 100) + '%';
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  onScroll();
-
-  /* ---------- section state -> alarm colour + HUD + rail ---------- */
+  /* ---------- section state -> alarm colour + rail ---------- */
   const beats = Array.from(document.querySelectorAll('.beat'));
   const railLinks = Array.from(document.querySelectorAll('.noc-rail a'));
-  let alertFired = false;
 
   const setActive = (beat) => {
     const state = beat.dataset.state || 'ok';
-    const phase = beat.dataset.phase || '';
     if (noc) noc.dataset.alarm = state;
-    if (hudPhase) hudPhase.textContent = phase;
-    if (hudStatus) hudStatus.textContent = STATUS_TXT[state] || STATUS_TXT.ok;
-    if (hudAlertN) hudAlertN.textContent = state === 'red' ? '1' : '0';
 
     const id = '#' + beat.id;
     railLinks.forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === id));
-
-    if (beat.id === 'alert' && !alertFired) {
-      alertFired = true;
-      if (hud && !reduceMotion) {
-        hud.classList.add('is-firing');
-        setTimeout(() => hud.classList.remove('is-firing'), 1200);
-      }
-    }
   };
 
   const beatSpy = new IntersectionObserver((entries) => {
@@ -81,60 +25,47 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { rootMargin: '-45% 0px -50% 0px' });
   beats.forEach((b) => beatSpy.observe(b));
 
-  /* ---------- animated counters ---------- */
-  const counters = document.querySelectorAll('.noc-t b[data-count]');
-  if (counters.length) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = parseInt(el.dataset.count, 10);
-        const suffix = el.dataset.suffix || '';
-        if (reduceMotion) { el.textContent = target + suffix; io.unobserve(el); return; }
-        const dur = 1100, start = performance.now();
-        const tick = (now) => {
-          const pr = Math.min((now - start) / dur, 1);
-          const eased = 1 - Math.pow(1 - pr, 3);
-          el.textContent = Math.round(eased * target) + (pr === 1 ? suffix : '');
-          if (pr < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-        io.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-    counters.forEach((el) => io.observe(el));
-  }
-
-  /* ---------- hero console clock + tape ---------- */
-  const cClock = q('consoleClock');
-  if (cClock && !reduceMotion) {
-    let base = 23 * 3600 + 47 * 60 + 3;
-    setInterval(() => { base += 1; cClock.textContent = fmtClock(base); }, 1000);
-  }
-  const cTape = q('consoleTape');
-  if (cTape && !reduceMotion) cTape.innerHTML += cTape.innerHTML;
-
-  /* ---------- briefing cost slider ---------- */
+  /* ---------- briefing · exhibit A: the renewal invoice ---------- */
   const briefRange = q('briefRange');
   if (briefRange) {
     const nOut = q('briefN');
+    const l1 = q('briefL1'), l2 = q('briefL2'), l3 = q('briefL3');
+    const total = q('briefFigSaas');
     const barSaas = q('briefBarSaas');
-    const figSaas = q('briefFigSaas');
-    const note = q('briefNote');
+    const proj3 = q('briefProj3');
     const PER = 42, MAX = 600 * PER;
-    const fmt = (n) => '$' + Math.round(n).toLocaleString('en-US');
+    const money = (n) => '$' + Math.round(n).toLocaleString('en-US');
     const update = () => {
       const v = +briefRange.value;
+      const ports = Math.round(v * 0.62);
+      const sensors = Math.round(v * 0.28);
+      const tunnels = Math.max(0, v - ports - sensors);
       nOut.textContent = v + ' elements';
+      l1.textContent = `${ports} × $42 · ${money(ports * PER)}`;
+      l2.textContent = `${sensors} × $42 · ${money(sensors * PER)}`;
+      l3.textContent = `${tunnels} × $42 · ${money(tunnels * PER)}`;
       const saas = v * PER;
+      total.textContent = money(saas);
       barSaas.style.width = Math.min(100, (saas / MAX) * 100) + '%';
-      figSaas.textContent = fmt(saas) + ' / yr';
-      note.textContent = v <= 60
-        ? `Even one branch — ${v} elements — is ${fmt(saas)} a year, every year, in foreign currency.`
-        : `${v} elements is ${fmt(saas)} a year on a per-element licence, and it renews. The green bar is paid once.`;
+      if (proj3) proj3.textContent = money(saas * 3);
     };
     briefRange.addEventListener('input', update);
     update();
+  }
+
+  /* ---------- briefing · exhibit B: walk the crossing once, on view ---------- */
+  const crossingWrap = document.querySelector('.crossing-wrap');
+  if (crossingWrap && !reduceMotion && 'IntersectionObserver' in window) {
+    crossingWrap.classList.add('is-armed');
+    const walkSpy = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          crossingWrap.classList.add('is-walked');
+          walkSpy.disconnect();
+        }
+      });
+    }, { threshold: 0.45 });
+    walkSpy.observe(crossingWrap);
   }
 
   /* ---------- incident console (playable triage) ---------- */
@@ -246,13 +177,44 @@ document.addEventListener('DOMContentLoaded', () => {
       youEl.textContent = d.you;
       mapEl.textContent = d.map;
     };
+    let cur = 0;
+    const show = (i) => { cur = i; pick(i); };
+
+    /* auto-advance through the ladder; hover / focus takes over */
+    let timer = null, running = false;
+    const STEP = 2200;
+    const tick = () => { show((cur + 1) % rungs.length); };
+    const play = () => {
+      if (running || reduceMotion) return;
+      running = true;
+      ladder.classList.add('is-auto');
+      timer = setInterval(tick, STEP);
+    };
+    const pause = () => {
+      running = false;
+      ladder.classList.remove('is-auto');
+      if (timer) { clearInterval(timer); timer = null; }
+    };
+
     rungs.forEach((r, i) => {
-      r.addEventListener('mouseenter', () => pick(i));
-      r.addEventListener('click', () => pick(i));
-      r.addEventListener('focus', () => pick(i));
+      r.addEventListener('mouseenter', () => { pause(); show(i); });
+      r.addEventListener('click', () => { pause(); show(i); });
+      r.addEventListener('focus', () => { pause(); show(i); });
       r.setAttribute('tabindex', '0');
     });
-    pick(0);
+    ladder.addEventListener('mouseleave', play);
+    ladder.addEventListener('focusout', (e) => {
+      if (!ladder.contains(e.relatedTarget)) play();
+    });
+
+    show(0);
+
+    if ('IntersectionObserver' in window && !reduceMotion) {
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach((en) => { en.isIntersecting ? play() : pause(); });
+      }, { threshold: 0.4 });
+      spy.observe(ladder);
+    }
   }
 
   /* ---------- live map: node inspector + fault injection ---------- */
@@ -522,5 +484,41 @@ document.addEventListener('DOMContentLoaded', () => {
     strip.addEventListener('lostpointercapture', up);
     strip.addEventListener('click', (e) => { if (moved > 8) { e.stopPropagation(); e.preventDefault(); moved = 0; } }, true);
   });
+
+  /* ---------- shift report: tractor-feed line printer ---------- */
+  const sr = q('shiftReport');
+  if (sr) {
+    const rows = Array.from(sr.querySelectorAll('[data-row]'));
+    const led = sr.querySelector('.shift-report__led b');
+    const finish = () => {
+      sr.classList.add('is-done');
+      if (led) led.textContent = 'filed';
+    };
+    const run = () => {
+      sr.classList.add('is-live');
+      if (reduceMotion) {
+        rows.forEach((r) => r.classList.add('is-in'));
+        finish();
+        return;
+      }
+      let i = 0;
+      const step = () => {
+        if (i > 0) rows[i - 1].classList.remove('is-printing');
+        if (i >= rows.length) { setTimeout(finish, 260); return; }
+        rows[i].classList.add('is-in', 'is-printing');
+        i += 1;
+        setTimeout(step, 250 + Math.random() * 110);
+      };
+      step();
+    };
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((ents, obs) => {
+        ents.forEach((en) => { if (en.isIntersecting) { obs.disconnect(); run(); } });
+      }, { threshold: 0.35 });
+      io.observe(sr);
+    } else {
+      run();
+    }
+  }
 
 });
