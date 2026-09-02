@@ -337,7 +337,12 @@ img.logo__mark{
   opacity:0; visibility:hidden;
   transition: opacity .4s ease, visibility .4s ease;
 }
-.nav-backdrop.is-open{ opacity:1; visibility:visible; }
+.nav-backdrop.is-open{ opacity:1; visibility:visible; touch-action:none; }
+
+/* Menu open: freeze the page behind it so only the menu scrolls (when its
+   links overflow). Paired with lenis.stop() + backdrop wheel/touch blocking
+   in script.js. */
+html.nav-open, html.nav-open body{ overflow:hidden; }
 
 .nav{
   position:fixed; top:0; right:0; z-index:110;
@@ -346,8 +351,10 @@ img.logo__mark{
   display:flex; flex-direction:column;
   /* Top pad clears the pinned Resume + close (X) capsule at every width, so a
      long, scrolling menu never slides under it; bottom pad gives the last item
-     air. */
-  padding: clamp(76px, 9vh, 100px) 48px clamp(28px, 5vh, 48px);
+     air. --nav-pad-top is measured live in script.js from the capsule's real
+     bottom edge, so however many links the menu grows to, the gap below the
+     capsule holds and the panel scrolls inside itself. */
+  padding: max(clamp(76px, 9vh, 100px), var(--nav-pad-top, 0px)) 48px clamp(28px, 5vh, 48px);
   overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;
   transform: translateX(100%);
   transition: transform .45s cubic-bezier(.22,.68,.36,1);
@@ -362,6 +369,10 @@ img.logo__mark{
 .nav::after{ content:""; display:block; min-height:0; }
 .nav::before{ flex:2 1 0; }
 .nav::after{ flex:1 1 0; }
+/* Once the links overflow, drop the centring spacers so the first item sits at
+   the measured top gap and the panel scrolls cleanly inside itself. */
+.nav.is-scrollable::before,
+.nav.is-scrollable::after{ flex:0 0 0; }
 .nav.is-open{ transform: translateX(0); }
 .nav a{
   display:flex; align-items:baseline; gap:18px;
@@ -1692,7 +1703,7 @@ img.logo__mark{
 @media (max-width: 980px){
   /* Extra headroom up top so the fixed close (X) button never lands on the
      first menu item on short screens */
-  .nav{ width:min(360px,86vw); padding: clamp(72px, 11vh, 96px) 32px clamp(24px, 5vh, 40px); }
+  .nav{ width:min(360px,86vw); padding: max(clamp(72px, 11vh, 96px), var(--nav-pad-top, 0px)) 32px clamp(24px, 5vh, 40px); }
   .nav a{ font-size: clamp(16px, 2.1vh, 22px); padding: clamp(8px, 2vh, 16px) 0; }
 
   /* Compact close button on mobile */

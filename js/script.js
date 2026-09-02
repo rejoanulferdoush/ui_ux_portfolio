@@ -47,13 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const id = link.getAttribute('href');
         if (id === '#' || id === '#top') {
           e.preventDefault();
-          lenis.scrollTo(0);
+          lenis.scrollTo(0, { force: true });
           return;
         }
         const target = document.querySelector(id);
         if (target) {
           e.preventDefault();
-          lenis.scrollTo(target, { offset: 0 });
+          lenis.scrollTo(target, { offset: 0, force: true });
         }
       });
     });
@@ -245,19 +245,67 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.getElementById('mainNav');
   const navToggle = document.getElementById('navToggle');
   const navBackdrop = document.getElementById('navBackdrop');
+  const navPinned = document.querySelector('.header__actions');
 
+  /* Keep the slide-out menu clear of the pinned Resume + close (X) capsule and
+     let it scroll inside itself when the links don't fit. Everything is measured
+     live from the capsule's real bottom edge, so any number of menu items — at
+     any capsule size, viewport height, or scroll position — auto-adjusts: the
+     gap below the capsule always holds and an overflowing menu scrolls cleanly
+     instead of sliding under the capsule. */
+  const NAV_GAP_BELOW_CAPSULE = 28;
+  const fitNav = () => {
+    if (!nav || !nav.classList.contains('is-open')) return;
+    const capsuleBottom = navPinned ? navPinned.getBoundingClientRect().bottom : 0;
+    nav.style.setProperty(
+      '--nav-pad-top',
+      Math.max(0, Math.round(capsuleBottom + NAV_GAP_BELOW_CAPSULE)) + 'px'
+    );
+    nav.classList.toggle('is-scrollable', nav.scrollHeight > nav.clientHeight + 1);
+  };
+  let navFitRaf = 0;
+  const queueFitNav = () => {
+    if (navFitRaf) return;
+    navFitRaf = requestAnimationFrame(() => { navFitRaf = 0; fitNav(); });
+  };
+
+  /* While the menu is open the page behind it is frozen: Lenis is paused, the
+     document gets `overflow:hidden`, and wheel / touch over the backdrop is
+     swallowed. Only the menu itself scrolls — and only when its links overflow
+     (`.nav` keeps `overflow-y:auto` + `overscroll-behavior:contain`). */
+  const blockScroll = (e) => { e.preventDefault(); };
+  const openNav = () => {
+    nav.classList.add('is-open');
+    navToggle.classList.add('is-active');
+    navBackdrop.classList.add('is-open');
+    document.documentElement.classList.add('nav-open');
+    if (lenis) lenis.stop();
+    navBackdrop.addEventListener('wheel', blockScroll, { passive: false });
+    navBackdrop.addEventListener('touchmove', blockScroll, { passive: false });
+    fitNav();
+    /* re-measure once the capsule's open-state transition has settled */
+    setTimeout(fitNav, 400);
+  };
   const closeNav = () => {
-    nav.classList.remove('is-open');
+    nav.classList.remove('is-open', 'is-scrollable');
     navToggle.classList.remove('is-active');
     navBackdrop.classList.remove('is-open');
+    document.documentElement.classList.remove('nav-open');
+    if (lenis) lenis.start();
+    navBackdrop.removeEventListener('wheel', blockScroll, { passive: false });
+    navBackdrop.removeEventListener('touchmove', blockScroll, { passive: false });
   };
   navToggle.addEventListener('click', () => {
-    nav.classList.toggle('is-open');
-    navToggle.classList.toggle('is-active');
-    navBackdrop.classList.toggle('is-open');
+    if (nav.classList.contains('is-open')) closeNav();
+    else openNav();
   });
   navBackdrop.addEventListener('click', closeNav);
   nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
+  window.addEventListener('resize', queueFitNav, { passive: true });
+  window.addEventListener('scroll', queueFitNav, { passive: true });
+  if (window.ResizeObserver && navPinned) {
+    new ResizeObserver(queueFitNav).observe(navPinned);
+  }
 
   /* Scroll reveal */
   const revealEls = document.querySelectorAll('.reveal');
