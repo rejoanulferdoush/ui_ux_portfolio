@@ -29,8 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
      regular scroll events, so every scroll-linked effect below is unchanged.
      Anchor links are routed through lenis.scrollTo for a matching glide.
      Skipped entirely when the visitor asks for reduced motion. */
+  /* Smooth-scroll is a desktop-only nicety: on phones/tablets it fights the
+     native touch scroller and drops frames, so we skip it there entirely and
+     let the browser scroll natively (every effect below already degrades to a
+     plain scroll when `lenis` is null). */
+  const canSmoothScroll = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+    && window.matchMedia('(min-width: 1024px)').matches;
+
   let lenis = null;
-  if (!reduceMotion && typeof Lenis === 'function') {
+  if (!reduceMotion && canSmoothScroll && typeof Lenis === 'function') {
     lenis = new Lenis({
       duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -211,8 +218,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', queueWarp, { passive: true });
     queueWarp();
 
-    // Only decode/play the background video while the section is actually on screen.
-    if (workWarpVideo) {
+    // Only decode/play the background video while the section is actually on
+    // screen — and never on small screens, where a multi-MB decorative clip
+    // behind the cards isn't worth the download or the decode cost.
+    if (workWarpVideo && window.matchMedia('(min-width: 900px)').matches) {
       const warpVideoObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) workWarpVideo.play().catch(() => {});

@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ats: {
         tag: 'Transfer switch', title: 'ATS — APC AP7724',
         thumb: 'projects/dcim_system/thumbs/ATS1_Detail_Screen.webp',
-        full: 'projects/dcim_system/ATS1_Detail_Screen.png',
+        full: 'projects/dcim_system/ATS1_Detail_Screen.webp',
         cap: 'ATS-1 Overview — source status, transfer state, thresholds, electrical measurements, event log',
         desc: 'Source A and source B, the selected feed, phase sync, redundancy health and the overload ladder — then the same Alarms and Report tabs every other device has.',
         points: [
@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ups: {
         tag: 'Uninterruptible power', title: 'UPS — APC Symmetra PX',
         thumb: 'projects/dcim_system/thumbs/UPS1_Detail_Screen.webp',
-        full: 'projects/dcim_system/UPS1_Detail_Screen.png',
+        full: 'projects/dcim_system/UPS1_Detail_Screen.webp',
         cap: 'UPS-01 Overview — load & headroom, battery health, live power-flow & operating mode, battery strings',
         desc: 'Load against capacity, available headroom, battery state of charge and health, the live power path through rectifier and inverter, and every string broken out — on the same three tabs.',
         points: [
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
       pac: {
         tag: 'Precision cooling', title: 'PAC — Uniflair AM LE',
         thumb: 'projects/dcim_system/thumbs/PAC1_Detail_Screen.webp',
-        full: 'projects/dcim_system/PAC1_Detail_Screen.png',
+        full: 'projects/dcim_system/PAC1_Detail_Screen.webp',
         cap: 'PAC-1 Overview — room temp/humidity, compressor status, operating modes, refrigeration circuit, runtime & service',
         desc: 'Room temperature and humidity, per-compressor run hours, the operating-mode stack, the whole refrigeration circuit down to superheat and EXV steps, plus maintenance countdowns — three tabs, same order.',
         points: [
@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
       pdu: {
         tag: 'Rack power distribution', title: 'Rack PDU — APC NMC',
         thumb: 'projects/dcim_system/thumbs/RACKPDU_Detail_Screen.webp',
-        full: 'projects/dcim_system/RACKPDU_Detail_Screen.png',
+        full: 'projects/dcim_system/RACKPDU_Detail_Screen.webp',
         cap: 'Rack PDU Fleet — load distribution by rack, top consumers first, per-unit load and power',
         desc: '200 rack PDUs, the fleet donut, load distribution ranked by rack, and each unit as a card with load, power and position — then drill into one for the same Overview / Alarms / Report tabs.',
         points: [
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
       netbotz: {
         tag: 'Environment monitor', title: 'NetBotz — APC 450',
         thumb: 'projects/dcim_system/thumbs/NETBOTZ_Detail_Screen.webp',
-        full: 'projects/dcim_system/NETBOTZ_Detail_Screen.png',
+        full: 'projects/dcim_system/NETBOTZ_Detail_Screen.webp',
         cap: 'NetBotz-1 Overview — temp, humidity, dew point, smoke & leak sensors, thresholds, sensor ports, polling health',
         desc: 'Temperature, humidity and dew point, the safety-sensor status board (leak rope, smoke, beacon), threshold and alert limits, sensor-port map and polling health — the same page shape as a UPS or a PDU.',
         points: [
@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
       desc.textContent = d.desc;
       points.innerHTML = d.points.map((p) => `<li>${p}</li>`).join('');
       strip.innerHTML = d.strip.map(([f, cap, label]) =>
-        `<figure class="noc-shot" data-full="projects/dcim_system/${enc(f)}.png" data-cap="${cap.replace(/&/g, '&amp;')}">` +
+        `<figure class="noc-shot" data-full="projects/dcim_system/${enc(f)}.webp" data-cap="${cap.replace(/&/g, '&amp;')}">` +
         `<img src="projects/dcim_system/thumbs/${enc(f)}.webp" alt="${label}" decoding="async" loading="lazy">` +
         `<figcaption>${label}</figcaption></figure>`
       ).join('');
