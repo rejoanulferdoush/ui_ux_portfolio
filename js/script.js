@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
+    window.__lenis = lenis; // used by protect.js for smooth arrow-key scrolling
 
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener('click', (e) => {

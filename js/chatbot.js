@@ -142,7 +142,7 @@
       patterns: ['video', 'intro video', 'your video', 'showreel', 'show reel', 'reel', 'walkthrough video', 'introduction video', 'do you have a video', 'do you have an intro video', 'watch you', 'see you talk'],
       answer:
         '<p>Yes — there\'s a short <strong>intro video</strong> on the home page. The disc in the hero plays a muted preview on hover; click it and the full video opens with sound in a lightbox.</p>' +
-        '<p>It\'s a quick personal introduction — who I am and how I work. <a href="index.html#top">Open the home page and hit play →</a> For a deeper walkthrough of any specific project, I\'m happy to screen-share — email <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>.</p>',
+        '<p>It\'s a quick personal introduction — who I am and how I work. <a href="portfolio.html#top">Open the home page and hit play →</a> For a deeper walkthrough of any specific project, I\'m happy to screen-share — email <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>.</p>',
       chips: [
         { label: 'Show me your work', q: 'show me your work' },
         { label: 'Your design approach', q: 'what is your approach' },

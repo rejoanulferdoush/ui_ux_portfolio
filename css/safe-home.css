@@ -339,14 +339,16 @@
   background: color-mix(in srgb, var(--cs-safe) 35%, transparent);
 }
 .cs-rule__blip{
-  position:absolute; left:18px; top:calc(50% - 4px); width:8px; height:8px; border-radius:50%;
+  position:absolute; left:0; top:50%; width:8px; height:8px; border-radius:50%;
+  margin:-4px 0 0 -4px;                 /* centre the dot on the line + on its x-position */
   background: var(--cs-safe); box-shadow:0 0 12px 2px color-mix(in srgb, var(--cs-safe) 70%, transparent);
   animation: cs-blip 7s ease-in-out infinite;
 }
 @keyframes cs-blip{
-  0%,72%,100%{ transform: translateX(0); opacity:.15; }
-  80%{ opacity:1; }
-  92%{ transform: translateX(calc(100% + 60vw)); opacity:0; }
+  0%, 66%  { left:0;    opacity:.16; }
+  73%      { left:0;    opacity:1; }
+  95%      { left:100%; opacity:1; }
+  100%     { left:100%; opacity:0; }
 }
 
 /* 02 — One glance: same word echoing down every surface */
