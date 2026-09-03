@@ -3,9 +3,13 @@
 
    No backend, no API key. The "training" is a hand-written
    knowledge base built from everything on this portfolio:
-   projects, design approach, the full tool stack (and what
-   each tool is actually used for), the work done at every
-   company, education and contact details.
+   the four case studies (SAFE, Prime Bank Digital Token, NMS,
+   DCIM) in depth, the intro video, the design approach, the
+   full tool stack (and what each tool is actually used for),
+   every domain shipped (ERP, CRM, HRMS, POS, KDS, CDS, Kiosk,
+   SMS + Email marketing solutions, EdTech, Job Portal, Edu
+   portal, SaaS, eCommerce, websites & landing pages), the work
+   done at every company, education and contact details.
 
    A lightweight keyword-scoring matcher picks the best answer.
    Everything is in English.
@@ -42,62 +46,107 @@
       id: 'work',
       patterns: ['work', 'project', 'projects', 'case study', 'case studies', 'portfolio piece', 'featured', 'show me your work', 'best work', 'recent work', 'what have you built', 'what have you made'],
       answer:
-        '<p>Here are four recent case studies — <a href="#work">jump to the Work section</a>:</p>' +
+        '<p>Four in-depth case studies — <a href="#work">jump to the Work section</a>, and each has its own full write-up:</p>' +
         '<ul>' +
-        '<li><strong>SAFE</strong> — AI-powered home security app (iOS · IoT · real-time gas, intrusion &amp; camera alerts), 2025</li>' +
-        '<li><strong>Prime Bank Digital Token</strong> — join a branch queue remotely and check in by QR (FinTech), 2025</li>' +
-        '<li><strong>NMS</strong> — Network Monitoring System, real-time device topology &amp; 99.9% uptime tracking <em>(★ IT Expo 2025)</em></li>' +
-        '<li><strong>DCIM</strong> — Data Center Infrastructure, live power-flow, PUE &amp; capacity <em>(★ IT Expo 2025)</em></li>' +
-        '</ul>',
+        '<li><strong>SAFE</strong> — AI-powered home-security iOS app: a house full of gas, intrusion &amp; camera sensors read as one calm feed, with a three-state colour language and an escalation chain that runs itself. <a href="safe-home.html">Case study →</a></li>' +
+        '<li><strong>Prime Bank Digital Token</strong> — FinTech branch-queue redesign: pick a branch, check in from the pavement in four taps, hold a live token that tracks itself to the counter. <a href="prime-bank-token.html">Case study →</a></li>' +
+        '<li><strong>NMS</strong> — Network Monitoring System for a Dhaka bank, told as one night on the NOC: real-time topology, a device-state ladder and 99.9% uptime tracking <em>(★ IT Expo 2025)</em>. <a href="nms-system.html">Case study →</a></li>' +
+        '<li><strong>DCIM</strong> — Data-Centre Infrastructure Monitoring for Dhaka Bank: five vendor consoles folded into one owned pane — power chain, cooling, PUE, capacity <em>(★ IT Expo 2025)</em>. <a href="dcim-system.html">Case study →</a></li>' +
+        '</ul>' +
+        '<p>There\'s also a short <a href="#top">intro video</a> on the home page, and NDA client work across POS, ERP, CRM, HRMS and more.</p>',
       chips: [
         { label: 'Tell me about SAFE', q: 'tell me about SAFE' },
         { label: 'What is NMS?', q: 'what is NMS' },
         { label: 'Prime Bank Token', q: 'tell me about prime bank digital token' },
-        { label: 'What is DCIM?', q: 'what is DCIM' }
+        { label: 'What is DCIM?', q: 'what is DCIM' },
+        { label: 'Watch the intro video', q: 'do you have an intro video' }
       ]
     },
     {
       id: 'proj-safe',
-      patterns: ['safe', 'home security', 'security app', 'gas leak', 'smart home', 'intrusion'],
+      patterns: ['safe', 'safe app', 'safe case study', 'home security', 'security app', 'gas leak', 'gas leak app', 'smart home', 'intrusion', 'home security app', 'iot app', 'sensor app', 'camera alerts', 'safe home'],
       answer:
-        '<p><strong>SAFE — Home Security App</strong> (2025). An iOS app that uses AI monitoring to send instant <strong>gas-leak, intrusion and camera alerts</strong>, with room-by-room monitoring.</p>' +
-        '<p>Tags: iOS · IoT · Real-time alerts. <a href="#work">See it in Work →</a></p>',
+        '<p><strong>SAFE — AI Home-Security App</strong> (iOS, 2025). A house fills up with sensors — gas, smoke/CO, motion, door contacts, cameras, air quality — and SAFE reads all of it as <strong>one calm feed</strong> instead of three apps giving three verdicts.</p>' +
+        '<p>The core ideas:</p>' +
+        '<ul>' +
+        '<li><strong>Colour is the interface</strong> — one three-state language: Safe (green), Warning (amber), Emergency (red full-screen takeover).</li>' +
+        '<li><strong>Quiet by default</strong> — the app only speaks in a crisis; a good day shows &ldquo;3 rooms · all clear&rdquo;.</li>' +
+        '<li><strong>Escalate without me</strong> — a three-tier chain (SMS → call contacts → proof of life) that runs whether or not anyone is looking at the phone.</li>' +
+        '<li><strong>Readable under stress</strong> — big type, high contrast, the emergency path never more than two taps away.</li>' +
+        '</ul>' +
+        '<p>Shipped as a system: a reusable device model, 32 screens across onboarding / home / rooms / sensors / cameras / alerts / settings, and a live Figma prototype embedded in the write-up. <a href="safe-home.html">Read the full case study →</a></p>',
       chips: [
-        { label: 'Show other projects', q: 'show me your work' },
+        { label: 'Prime Bank Token', q: 'tell me about prime bank digital token' },
+        { label: 'What is NMS?', q: 'what is NMS' },
         { label: 'Your design approach', q: 'what is your design approach' }
       ]
     },
     {
       id: 'proj-primebank',
-      patterns: ['prime bank', 'digital token', 'queue', 'branch queue', 'token app', 'qr service', 'fintech', 'banking', 'bank app'],
+      patterns: ['prime bank', 'primebank', 'digital token', 'prime bank token', 'queue', 'branch queue', 'token app', 'queue app', 'qr service', 'fintech', 'fintech project', 'banking', 'bank app', 'branch check in', 'serial app'],
       answer:
-        '<p><strong>Prime Bank Digital Token</strong> (2025). A product-design project for FinTech: customers <strong>join the branch queue remotely</strong> and check in with a QR code instead of waiting in line.</p>' +
-        '<p>Tags: Mobile app · QR service · Queue system. <a href="#work">See it in Work →</a></p>',
+        '<p><strong>Prime Bank Digital Token</strong> (FinTech, 2025) — a redesign, not a new build. Prime Bank already had a branch-queue app, but customers opened it, lost the thread, and phoned the branch anyway to ask &ldquo;how long is the wait?&rdquo;</p>' +
+        '<p>The redesign starts from what a token actually is — <em>a promise you\'ll be served in order</em> — and makes only that legible:</p>' +
+        '<ul>' +
+        '<li><strong>Four taps from the street</strong> — branch (sorted by distance + live wait) → customer or bearer → service → phone OTP → a live token in hand.</li>' +
+        '<li><strong>One screen replaces the waiting room</strong> — your number, how many are ahead, and when to start walking; SMS + email nudges before your turn.</li>' +
+        '<li><strong>The queue has to feel fair</strong> — one live token per person, positions never change silently, a missed turn is held once and slotted back three rather than dropped.</li>' +
+        '<li>Plus the &ldquo;unglamorous&rdquo; screens a bank needs to trust it — OTP, errors, edge cases.</li>' +
+        '</ul>' +
+        '<p><a href="prime-bank-token.html">Read the full case study →</a></p>',
       chips: [
-        { label: 'Show other projects', q: 'show me your work' },
+        { label: 'Tell me about SAFE', q: 'tell me about SAFE' },
+        { label: 'What is DCIM?', q: 'what is DCIM' },
         { label: 'FinTech experience?', q: 'what domains have you worked in' }
       ]
     },
     {
       id: 'proj-nms',
-      patterns: ['nms', 'network monitoring', 'topology', 'uptime'],
+      patterns: ['nms', 'nms case study', 'network monitoring', 'network monitoring system', 'topology', 'topology map', 'uptime', 'noc', 'network dashboard', 'device monitoring'],
       answer:
-        '<p><strong>NMS — Network Monitoring System</strong> (2025). A web app for infrastructure teams: <strong>real-time device topology</strong>, health, and 99.9% uptime tracking with heavy data-viz.</p>' +
-        '<p>★ Shown at <strong>IT Expo 2025</strong>. Tags: Dashboard · Data viz. <a href="#work">See it in Work →</a></p>',
+        '<p><strong>NMS — Network Monitoring System</strong> (2025). Built for a bank in Dhaka to replace an imported platform that <strong>billed per device</strong> and made the simplest task a scavenger hunt.</p>' +
+        '<p>The case study is told as <strong>one night on the NOC</strong> — scroll and the shift runs: quiet, an alert, a fix, a handover. What it shows:</p>' +
+        '<ul>' +
+        '<li><strong>The topology is the home screen</strong> — every device a node, every link coloured by health, the whole path on one canvas; break something and watch the failure propagate.</li>' +
+        '<li><strong>A device-state ladder</strong> — why the red is worth trusting: hard thresholds (ICMP timeout, uptime &lt; 50%) vs. soft warnings.</li>' +
+        '<li><strong>Everything to fix it is in the drawer</strong> — tap a node and the operator gets the full panel, not another app.</li>' +
+        '<li><strong>Reports for the auditor</strong> — uptime, alert-response times, security events, bandwidth trends, on demand or scheduled.</li>' +
+        '</ul>' +
+        '<p>★ Shown at <strong>IT Expo 2025</strong>. <a href="nms-system.html">Read the full case study →</a></p>',
       chips: [
         { label: 'What is DCIM?', q: 'what is DCIM' },
+        { label: 'Tell me about SAFE', q: 'tell me about SAFE' },
         { label: 'Do you design dashboards?', q: 'do you design dashboards' }
       ]
     },
     {
       id: 'proj-dcim',
-      patterns: ['dcim', 'data center', 'data centre', 'power flow', 'pue', 'ups status'],
+      patterns: ['dcim', 'dcim case study', 'data center', 'data centre', 'data center monitoring', 'power flow', 'power chain', 'pue', 'ups status', 'cooling', 'ashrae', 'rack pdu', 'facility monitoring'],
       answer:
-        '<p><strong>DCIM — Data Center Infrastructure</strong> (2025). A web app that folds a data centre\'s ATS, UPS, cooling, rack PDUs and environment sensors into <strong>one owned pane of glass</strong> — replacing five vendor consoles and a yearly per-point licence.</p>' +
-        '<p>★ Shown at <strong>IT Expo 2025</strong>. Tags: Dashboard · Analytics. <a href="dcim-system.html">Read the case study →</a></p>',
+        '<p><strong>DCIM — Data-Centre Infrastructure Monitoring</strong> (2025), built for Dhaka Bank. Their facility ran on <strong>five vendors\' boxes</strong> — transfer switches, the UPS wall, precision coolers, rack PDUs, environment sensors — each with its own console, its own login, and its own licence renewal (priced <strong>per monitored point</strong>, in dollars, yearly). DCIM folds them into one screen the bank owns outright.</p>' +
+        '<ul>' +
+        '<li><strong>Facility verdict first</strong> — total power draw, active alarms, fleet uptime, PUE and cooling load across the top, then a real floor plan, then the fleet by device class.</li>' +
+        '<li><strong>Follow the power, end to end</strong> — an interactive chain (grid → ATS → UPS → PDU → rack, generator and coolers off it); inject a fault and watch the ATS transfer and the UPS carry the load.</li>' +
+        '<li><strong>The room that can\'t get hot</strong> — ASHRAE A1 banding, ΔT, dew point, hotspots, airflow balance, water-leak rope.</li>' +
+        '<li><strong>One page shape for five device classes</strong> — same three tabs (Overview · Alarms/Events/Log · Report &amp; Export) whatever you open. One alarm log for 638 units; a report library with a scheduler.</li>' +
+        '</ul>' +
+        '<p>★ Shown at <strong>IT Expo 2025</strong>. <a href="dcim-system.html">Read the full case study →</a></p>',
       chips: [
         { label: 'What is NMS?', q: 'what is NMS' },
-        { label: 'Show other projects', q: 'show me your work' }
+        { label: 'Prime Bank Token', q: 'tell me about prime bank digital token' },
+        { label: 'Do you design dashboards?', q: 'do you design dashboards' }
+      ]
+    },
+    {
+      id: 'video',
+      patterns: ['video', 'intro video', 'your video', 'showreel', 'show reel', 'reel', 'walkthrough video', 'introduction video', 'do you have a video', 'do you have an intro video', 'watch you', 'see you talk'],
+      answer:
+        '<p>Yes — there\'s a short <strong>intro video</strong> on the home page. The disc in the hero plays a muted preview on hover; click it and the full video opens with sound in a lightbox.</p>' +
+        '<p>It\'s a quick personal introduction — who I am and how I work. <a href="index.html#top">Open the home page and hit play →</a> For a deeper walkthrough of any specific project, I\'m happy to screen-share — email <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>.</p>',
+      chips: [
+        { label: 'Show me your work', q: 'show me your work' },
+        { label: 'Your design approach', q: 'what is your approach' },
+        { label: 'Contact details', q: 'how do I contact you' }
       ]
     },
     {
@@ -574,17 +623,116 @@
       id: 'dom-website',
       patterns: ['website', 'websites', 'web design', 'landing page', 'landing pages', 'marketing site', 'marketing website', 'company website', 'corporate website', 'web page', 'webpage', 'design a website', 'build a website', 'portfolio site'],
       answer:
-        '<p>Absolutely — <strong>website design and build</strong> is bread and butter: marketing and corporate sites, landing pages, product sites and portfolios.</p>' +
-        '<p>End to end: <strong>UX and IA, visual design, responsive layout, motion, SEO-friendly semantic markup, and the front-end build</strong> in HTML5 / CSS3 / Tailwind / React — or WordPress / Shopify when a CMS or store fits. This very site is a hand-built example: no template, custom motion, even the chat window.</p>',
+        '<p>Absolutely — <strong>website design and build</strong> is bread and butter: marketing and corporate sites, <strong>landing pages</strong>, product sites and portfolios.</p>' +
+        '<p>End to end: <strong>UX and IA, visual design, responsive layout, motion, SEO-friendly semantic markup, and the front-end build</strong> in HTML5 / CSS3 / Tailwind / React — or WordPress / Shopify when a CMS or store fits. This very site is a hand-built example: no template, custom motion, even the chat window.</p>' +
+        '<p>A <strong>landing page</strong> specifically: one goal, one message, a fast page tuned for conversion — hero, proof, objection-handling, one clear CTA, A/B-ready.</p>',
       chips: [
+        { label: 'eCommerce work?', q: 'have you done ecommerce' },
         { label: 'Do you write code?', q: 'do you write code' },
+        { label: 'WordPress / Shopify?', q: 'do you use wordpress' }
+      ]
+    },
+    {
+      id: 'dom-ecommerce',
+      patterns: ['ecommerce', 'e commerce', 'e-commerce', 'online store', 'online shop', 'shopping site', 'storefront', 'checkout flow', 'cart', 'product page', 'pdp', 'plp', 'shopify store', 'woocommerce', 'have you done ecommerce'],
+      answer:
+        '<p><strong>eCommerce</strong> — yes, shipped as a flagship domain: full online stores and storefronts.</p>' +
+        '<p>The whole buying surface: <strong>catalogue and search, product listing &amp; detail pages, filters, cart and mini-cart, a short checkout, account and order history, wishlist, and the CMS side for merchandising</strong>. Built custom in React or on <strong>Shopify / WooCommerce</strong> when a platform fits. Focus is always the same — cut friction between &ldquo;I want this&rdquo; and &ldquo;order placed&rdquo;, and make it fast on a mid-range phone.</p>',
+      chips: [
+        { label: 'Landing pages / websites', q: 'do you build websites' },
         { label: 'WordPress / Shopify?', q: 'do you use wordpress' },
-        { label: 'Your projects', q: 'show me your work' }
+        { label: 'Which domains?', q: 'what domains have you worked in' }
+      ]
+    },
+    {
+      id: 'dom-sms-marketing',
+      patterns: ['sms marketing', 'sms platform', 'sms solution', 'sms campaign', 'bulk sms', 'sms gateway', 'text marketing', 'sms blast', 'otp platform', 'sms full solution'],
+      answer:
+        '<p>Yes — I designed and front-end-built a <strong>full SMS marketing solution</strong>: an end-to-end platform, not just a send box.</p>' +
+        '<ul>' +
+        '<li><strong>Campaign builder</strong> — compose, personalise with merge fields, character/segment counter, sender-ID management, schedule or drip.</li>' +
+        '<li><strong>Contacts &amp; segments</strong> — import, dedupe, opt-in / opt-out and DND handling, dynamic segments.</li>' +
+        '<li><strong>Delivery &amp; billing</strong> — gateway routing, delivery-report dashboards, per-message cost, wallet / credit top-up.</li>' +
+        '<li><strong>Transactional + OTP APIs</strong>, templates and approval, plus reporting on delivery rate, cost and click-through.</li>' +
+        '</ul>' +
+        '<p>The design challenge is density with a calm campaign flow — a marketer and an admin using the same product very differently.</p>',
+      chips: [
+        { label: 'Email marketing solution?', q: 'have you built an email marketing platform' },
+        { label: 'SaaS work', q: 'have you designed saas products' },
+        { label: 'Which domains?', q: 'what domains have you worked in' }
+      ]
+    },
+    {
+      id: 'dom-email-marketing',
+      patterns: ['email marketing', 'email platform', 'email campaign', 'newsletter tool', 'email automation', 'drip campaign', 'email builder', 'mailer', 'email full solution', 'email blast', 'email solution'],
+      answer:
+        '<p>Yes — a <strong>full email marketing solution</strong>, designed and front-end-built end to end.</p>' +
+        '<ul>' +
+        '<li><strong>Drag-and-drop email builder</strong> — blocks, reusable templates, live desktop/mobile preview, merge tags, dark-mode check.</li>' +
+        '<li><strong>Automation / journeys</strong> — a visual flow canvas: triggers, waits, conditions, A/B splits.</li>' +
+        '<li><strong>Lists &amp; deliverability</strong> — signup forms, double opt-in, suppression &amp; bounce handling, sender authentication (SPF/DKIM), warm-up.</li>' +
+        '<li><strong>Analytics</strong> — opens, clicks, heat map, revenue attribution, per-campaign and per-contact.</li>' +
+        '</ul>' +
+        '<p>It pairs with the SMS platform as one multi-channel campaign product.</p>',
+      chips: [
+        { label: 'SMS marketing solution?', q: 'have you built an sms marketing platform' },
+        { label: 'SaaS work', q: 'have you designed saas products' },
+        { label: 'Which domains?', q: 'what domains have you worked in' }
+      ]
+    },
+    {
+      id: 'dom-edtech',
+      patterns: ['edtech', 'ed tech', 'e learning', 'elearning', 'lms', 'learning management', 'online course', 'course platform', 'online class', 'student app', 'learning app', 'education technology', 'have you done edtech'],
+      answer:
+        '<p><strong>EdTech / e-learning</strong> — a shipped flagship domain: course and learning platforms.</p>' +
+        '<ul>' +
+        '<li><strong>Learner side</strong> — course catalogue, lesson player (video + notes + resources), progress tracking, quizzes and assignments, certificates, discussion.</li>' +
+        '<li><strong>Instructor / admin side</strong> — course authoring, curriculum builder, cohort and batch management, grading, live-class scheduling.</li>' +
+        '<li><strong>Around it</strong> — enrolment and payments, coupons, a reporting dashboard, and mobile-first lesson consumption for low-end devices and patchy networks.</li>' +
+        '</ul>',
+      chips: [
+        { label: 'Education portal?', q: 'have you built an education portal' },
+        { label: 'Job portal?', q: 'have you built a job portal' },
+        { label: 'Which domains?', q: 'what domains have you worked in' }
+      ]
+    },
+    {
+      id: 'dom-job-portal',
+      patterns: ['job portal', 'job board', 'recruitment platform', 'hiring platform', 'career site', 'job site', 'ats', 'applicant tracking', 'job listing', 'jobs website', 'have you built a job portal'],
+      answer:
+        '<p><strong>Job portal</strong> — yes, designed and built as a flagship product. It\'s really three products sharing a database:</p>' +
+        '<ul>' +
+        '<li><strong>Job seeker</strong> — profile &amp; résumé builder, smart search &amp; filters, one-click apply, saved jobs, application status, job alerts.</li>' +
+        '<li><strong>Employer</strong> — company page, job posting with screening questions, candidate pipeline / ATS board, messaging, plan &amp; credit management.</li>' +
+        '<li><strong>Admin</strong> — moderation, category &amp; taxonomy control, featured-listing management, analytics.</li>' +
+        '</ul>' +
+        '<p>The hard parts: matching relevance, a fast mobile apply flow, and keeping listing quality high.</p>',
+      chips: [
+        { label: 'Education portal?', q: 'have you built an education portal' },
+        { label: 'EdTech work?', q: 'have you done edtech' },
+        { label: 'HRMS work?', q: 'have you worked on HRMS' }
+      ]
+    },
+    {
+      id: 'dom-edu-portal',
+      patterns: ['edu portal', 'education portal', 'school portal', 'college portal', 'university portal', 'student portal', 'campus management', 'school management system', 'sis', 'academic portal', 'result portal', 'admission portal', 'have you built an education portal'],
+      answer:
+        '<p><strong>Education / campus portal</strong> — yes. Distinct from EdTech: this is the <strong>institution\'s system of record</strong> for a school, college or university.</p>' +
+        '<ul>' +
+        '<li><strong>Admissions</strong> — application, document upload, merit lists, enrolment.</li>' +
+        '<li><strong>Academics</strong> — class routine, attendance, assignments, exam scheduling, grade entry, results &amp; transcripts.</li>' +
+        '<li><strong>Finance</strong> — fee structure, invoicing, online payment, dues tracking.</li>' +
+        '<li><strong>Portals per role</strong> — a dense admin/registrar console, a teacher portal, and simple parent/student self-service for results, fees and notices.</li>' +
+        '</ul>',
+      chips: [
+        { label: 'EdTech / e-learning?', q: 'have you done edtech' },
+        { label: 'Job portal?', q: 'have you built a job portal' },
+        { label: 'Enterprise UX', q: 'how do you design complex enterprise software' }
       ]
     },
     {
       id: 'enterprise-ux',
-      patterns: ['complex enterprise software', 'complex software', 'enterprise ux', 'enterprise software', 'data dense', 'data-dense', 'admin panel', 'admin panels', 'admin dashboard', 'back office', 'back-office', 'internal tools', 'internal tool', 'b2b'],
+      patterns: ['complex enterprise software', 'complex software', 'enterprise ux', 'enterprise software', 'data dense', 'data-dense', 'admin panel', 'admin panels', 'admin dashboard', 'back office', 'back-office', 'internal tools', 'internal tool', 'b2b', 'erp crm', 'erp crm hrms', 'crm hrms'],
       answer:
         '<p>Designing <strong>dense, complex enterprise software</strong> is my sweet spot — ERP, CRM, HRMS, POS and monitoring tools like NMS and DCIM.</p>' +
         '<p>How I keep complexity usable:</p>' +
@@ -686,21 +834,23 @@
     },
     {
       id: 'domains',
-      patterns: ['domain', 'domains', 'industry', 'industries', 'sectors', 'sector', 'verticals', 'what fields', 'what industries', 'types of product', 'kinds of product', 'what products', 'ecommerce', 'e commerce', 'edtech'],
+      patterns: ['domain', 'domains', 'industry', 'industries', 'sectors', 'sector', 'verticals', 'what fields', 'what industries', 'types of product', 'kinds of product', 'what products', 'ecommerce', 'e commerce', 'edtech', 'what have you worked on', 'what kind of software'],
       answer:
         '<p>Flagship products shipped across high-stakes domains:</p>' +
         '<ul>' +
         '<li><strong>Enterprise:</strong> ERP, CRM, HRMS</li>' +
         '<li><strong>Retail &amp; hospitality:</strong> POS, KDS (kitchen display), CDS (customer display), self-service Kiosk</li>' +
-        '<li><strong>Products:</strong> SaaS / B2B web apps, eCommerce, EdTech, websites &amp; landing pages</li>' +
-        '<li><strong>FinTech:</strong> digital banking &amp; branch-queue solutions</li>' +
+        '<li><strong>Marketing platforms:</strong> full SMS marketing solution, full email marketing solution</li>' +
+        '<li><strong>Products:</strong> SaaS / B2B web apps, eCommerce, EdTech / e-learning, Job Portal, Education / campus portal, websites &amp; landing pages</li>' +
+        '<li><strong>FinTech:</strong> digital banking &amp; branch-queue solutions (Prime Bank Digital Token)</li>' +
         '<li><strong>Infrastructure:</strong> network &amp; data-center monitoring (NMS, DCIM)</li>' +
         '</ul>' +
-        '<p>Ask about any one — e.g. &ldquo;have you worked on POS?&rdquo; or &ldquo;what is a KDS?&rdquo;</p>',
+        '<p>Ask about any one — e.g. &ldquo;have you worked on POS?&rdquo;, &ldquo;what is a KDS?&rdquo; or &ldquo;have you built an SMS marketing platform?&rdquo;</p>',
       chips: [
         { label: 'POS / KDS / CDS', q: 'have you worked on POS' },
         { label: 'ERP / CRM / HRMS', q: 'have you worked on ERP' },
-        { label: 'SaaS & websites', q: 'have you designed saas products' }
+        { label: 'SMS / email marketing', q: 'have you built an sms marketing platform' },
+        { label: 'EdTech / job / edu portal', q: 'have you done edtech' }
       ]
     },
 
@@ -723,7 +873,7 @@
       patterns: ['skills', 'skillset', 'expertise', 'good at', 'specialize', 'specialise', 'strength', 'strengths', 'what can you do', 'services', 'speciality', 'specialty', 'what are you good at'],
       answer:
         '<p>Core skills: <strong>UI design, UX research, information architecture, wireframing, prototyping, design systems, interaction &amp; motion design, usability testing and accessibility (WCAG AA)</strong> — plus <strong>front-end (HTML5, CSS3, Tailwind, React)</strong> and design-to-code handoff.</p>' +
-        '<p>Applied across <strong>ERP, CRM, HRMS, POS, KDS, CDS, Kiosk, SaaS, FinTech, eCommerce and websites</strong> — mostly dense, complex software.</p>',
+        '<p>Applied across <strong>ERP, CRM, HRMS, POS, KDS, CDS, Kiosk, SMS &amp; email marketing platforms, EdTech, Job Portal, Edu portal, SaaS, FinTech, eCommerce and websites / landing pages</strong> — mostly dense, complex software.</p>',
       chips: [
         { label: 'Which domains?', q: 'what domains have you worked in' },
         { label: 'Design systems', q: 'tell me about design systems' },
@@ -840,7 +990,7 @@
     },
     {
       test: /(what can i ask|what should i ask|what do you know|what can you tell|show options|show menu|give me suggestions|list topics|help me)/i,
-      reply: '<p>You can ask me about:</p><ul><li>His <strong>projects</strong> — SAFE, Prime Bank Token, NMS, DCIM</li><li><strong>Domains</strong> — ERP, CRM, HRMS, POS, KDS, CDS, Kiosk, SaaS, websites</li><li><strong>Experience</strong> and what he did at each company</li><li>His <strong>design approach</strong>, and UI/UX craft — accessibility, responsive, wireframing, prototyping, design systems, IA, motion</li><li>Any <strong>tool</strong> in his stack — e.g. &ldquo;what do you use Zapier / Maze / Jira / JMeter for?&rdquo;</li><li><strong>Education</strong>, <strong>skills</strong>, <strong>hiring</strong>, email, phone and social links</li></ul>',
+      reply: '<p>You can ask me about:</p><ul><li>His <strong>case studies</strong> — SAFE, Prime Bank Digital Token, NMS, DCIM — and the <strong>intro video</strong></li><li><strong>Domains</strong> — ERP, CRM, HRMS, POS, KDS, CDS, Kiosk, SMS &amp; email marketing solutions, EdTech, Job Portal, Edu portal, SaaS, eCommerce, websites &amp; landing pages</li><li><strong>Experience</strong> and what he did at each company</li><li>His <strong>design approach</strong>, and UI/UX craft — accessibility, responsive, wireframing, prototyping, design systems, IA, motion</li><li>Any <strong>tool</strong> in his stack — e.g. &ldquo;what do you use Zapier / Maze / Jira / JMeter for?&rdquo;</li><li><strong>Education</strong>, <strong>skills</strong>, <strong>hiring</strong>, email, phone and social links</li></ul>',
       chips: defaultChips
     },
     {
@@ -915,16 +1065,13 @@
 
     return {
       html:
-        '<p>I don\'t have a specific answer for that yet. I can tell you about Rejoanul\'s <strong>projects, experience, design approach, any tool in his stack, education</strong> or <strong>how to hire him</strong>. Try one of these:</p>',
+        '<p>I don\'t have a specific answer for that yet. I can tell you about Rejoanul\'s <strong>case studies</strong> (SAFE, Prime Bank Token, NMS, DCIM), the <strong>intro video</strong>, his <strong>experience</strong>, <strong>design approach</strong>, any <strong>tool</strong> in his stack, the <strong>domains</strong> he\'s shipped (ERP, CRM, HRMS, POS, KDS, CDS, Kiosk, SMS &amp; email marketing, EdTech, Job Portal, Edu portal, SaaS, eCommerce, websites), his <strong>education</strong> or <strong>how to hire him</strong>. Try one of these:</p>',
       chips: defaultChips()
     };
   }
 
   /* ---------- Hand-drawn icons (inline SVG, no icon font) ---- */
   var ICON = {
-    resume:
-      '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-      '<path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M9 13h6M9 17h4"/></svg>',
     close:
       '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">' +
       '<path d="m6 6 12 12M18 6 6 18"/></svg>',
@@ -953,7 +1100,6 @@
       '      <span class="rf-chat__status"><b>●</b> UI/UX Engineer</span>',
       '    </span>',
       '    <span class="rf-chat__header-actions">',
-      '      <a class="rf-chat__icon-btn" href="' + RESUME + '" target="_blank" rel="noopener" title="Resume" aria-label="Open resume">' + ICON.resume + '</a>',
       '      <button class="rf-chat__icon-btn" id="rfClose" title="Close" aria-label="Close chat">' + ICON.close + '</button>',
       '    </span>',
       '  </div>',
@@ -1056,7 +1202,7 @@
       if (started) return;
       started = true;
       addMessage(
-        '<p>Hi, I’m <strong>Rejoanul Ferdoush</strong>, UI/UX Engineer. Ask me anything about my work, experience, the tools I use, or how to reach me.</p>' +
+        '<p>Hi, I’m <strong>Rejoanul Ferdoush</strong>, UI/UX Engineer. Ask me anything about my case studies, experience, the tools I use, the domains I’ve shipped, or how to reach me.</p>' +
         '<p>Here are a few things you can ask:</p>',
         'bot'
       );

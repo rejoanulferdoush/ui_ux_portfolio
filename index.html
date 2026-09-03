@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Funnel+Display:wght@300..800&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=72">
+<link rel="stylesheet" href="css/style.css?v=73">
 <link rel="stylesheet" href="css/chatbot.css?v=4">
 </head>
 <body>
@@ -132,10 +132,36 @@
     </div>
 
     <div class="container hero__bottom reveal">
-      <p class="hero__descr">
-        With <span class="hero__descr-accent">7+ years</span> of experience turning
-        rough ideas into polished, working interfaces.
-      </p>
+      <div class="hero__bottom-lead">
+        <p class="hero__descr">
+          With <span class="hero__descr-accent">7+ years</span> of experience turning
+          rough ideas into polished, working interfaces.
+        </p>
+
+        <!-- Intro reel: a dashed disc with a slowly orbiting mono caption and a
+             looping muted preview that wakes on hover; a click opens the full
+             video with sound in a lightbox. -->
+        <button type="button" class="hero__reel" id="heroReel" aria-label="Play my intro video">
+          <span class="hero__reel-disc">
+            <video class="hero__reel-preview" src="video/portfolio_intro.mp4#t=0.6"
+                   muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>
+            <span class="hero__reel-scrim" aria-hidden="true"></span>
+            <span class="hero__reel-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <svg class="hero__reel-ring" viewBox="0 0 132 132" aria-hidden="true">
+              <defs>
+                <path id="heroReelArc" d="M66,66 m-49,0 a49,49 0 1,1 98,0 a49,49 0 1,1 -98,0"></path>
+              </defs>
+              <text><textPath href="#heroReelArc" startOffset="0">WATCH&nbsp;MY&nbsp;INTRO&nbsp;&nbsp;·&nbsp;&nbsp;60&nbsp;SECOND&nbsp;HELLO&nbsp;&nbsp;·&nbsp;&nbsp;WATCH&nbsp;MY&nbsp;INTRO&nbsp;&nbsp;·&nbsp;&nbsp;60&nbsp;SEC&nbsp;&nbsp;·&nbsp;&nbsp;</textPath></text>
+            </svg>
+          </span>
+          <span class="hero__reel-text">
+            <span class="hero__reel-kicker"><span class="hero__reel-sigil">~/</span>press play</span>
+            <span class="hero__reel-line">A 60-second<br>hello from me</span>
+          </span>
+        </button>
+      </div>
 
       <div class="hero__bottom-actions">
         <div class="hero__socials">
@@ -160,6 +186,20 @@
       </div>
     </div>
   </section>
+
+  <!-- Intro video lightbox -->
+  <div class="reel-modal" id="reelModal" aria-hidden="true">
+    <div class="reel-modal__backdrop" data-reel-close></div>
+    <div class="reel-modal__frame" role="dialog" aria-modal="true" aria-label="Intro video from Rejoanul Ferdoush">
+      <button type="button" class="reel-modal__close" id="reelModalClose" aria-label="Close video">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="reel-modal__stage">
+        <video class="reel-modal__video" id="reelModalVideo" src="video/portfolio_intro.mp4"
+               controls playsinline preload="none"></video>
+      </div>
+    </div>
+  </div>
 
   <!-- Featured Work -->
   <section class="section work-warp" id="work">
@@ -691,7 +731,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
-<script src="js/script.js?v=7"></script>
+<script src="js/script.js?v=8"></script>
 <script src="js/chatbot.js?v=5"></script>
 </body>
 </html>

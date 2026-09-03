@@ -495,6 +495,63 @@ document.addEventListener('DOMContentLoaded', () => {
     queueDecos();
   }
 
+  /* Hero intro reel: hover wakes the muted preview; a click opens the full
+     clip with sound in the lightbox. While the lightbox is open the page
+     behind it is frozen (Lenis paused, <html> overflow hidden) and focus is
+     parked on the close button, returning to the reel on close. */
+  const heroReel = document.getElementById('heroReel');
+  const reelModal = document.getElementById('reelModal');
+  const reelVideo = document.getElementById('reelModalVideo');
+  const reelClose = document.getElementById('reelModalClose');
+
+  if (heroReel && reelModal && reelVideo) {
+    const preview = heroReel.querySelector('.hero__reel-preview');
+    let reelReturnFocus = null;
+
+    const canHoverPreview = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (preview && !reduceMotion && canHoverPreview) {
+      heroReel.addEventListener('pointerenter', () => {
+        preview.play().catch(() => {});
+      });
+      heroReel.addEventListener('pointerleave', () => {
+        preview.pause();
+      });
+    }
+
+    const openReel = () => {
+      if (preview) preview.pause();
+      reelReturnFocus = document.activeElement;
+      reelModal.classList.add('is-open');
+      reelModal.setAttribute('aria-hidden', 'false');
+      document.documentElement.style.overflow = 'hidden';
+      if (lenis) lenis.stop();
+      try { reelVideo.currentTime = 0; } catch (err) { /* metadata not ready */ }
+      reelVideo.play().catch(() => {});
+      if (reelClose) reelClose.focus();
+    };
+
+    const closeReel = () => {
+      if (!reelModal.classList.contains('is-open')) return;
+      reelModal.classList.remove('is-open');
+      reelModal.setAttribute('aria-hidden', 'true');
+      document.documentElement.style.overflow = '';
+      if (lenis) lenis.start();
+      reelVideo.pause();
+      if (reelReturnFocus && typeof reelReturnFocus.focus === 'function') {
+        reelReturnFocus.focus();
+      }
+    };
+
+    heroReel.addEventListener('click', openReel);
+    if (reelClose) reelClose.addEventListener('click', closeReel);
+    reelModal.querySelectorAll('[data-reel-close]').forEach((el) => {
+      el.addEventListener('click', closeReel);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeReel();
+    });
+  }
+
   /* Footer year */
   document.getElementById('year').textContent = new Date().getFullYear();
 
