@@ -9,7 +9,9 @@
    every domain shipped (ERP, CRM, HRMS, POS, KDS, CDS, Kiosk,
    SMS + Email marketing solutions, EdTech, Job Portal, Edu
    portal, SaaS, eCommerce, websites & landing pages), the work
-   done at every company, education and contact details.
+   done at every company, the international clients served
+   (Canada, Australia, USA, UAE, Pakistan, Nigeria, Rwanda),
+   education and contact details.
 
    A lightweight keyword-scoring matcher picks the best answer.
    Everything is in English.
@@ -449,6 +451,7 @@
         '<li><strong>Future Track IT</strong> — Product Designer, Dhaka (Jan 2018 – Mar 2019)</li>' +
         '<li><strong>Earlier</strong> — data &amp; CRM roles (2015 – 2017)</li>' +
         '</ul>' +
+        '<p>Beyond employers, I\'ve designed and shipped work for <strong>international companies and clients across Canada, Australia, the USA, the UAE, Pakistan, Nigeria and Rwanda</strong> — all remote, from Dhaka.</p>' +
         '<p>Ask about any one of them and I\'ll tell you what I did there.</p>',
       chips: [
         { label: 'What did you do at ADN?', q: 'what did you do at adn diginet' },
@@ -950,10 +953,32 @@
       id: 'location',
       patterns: ['location', 'where are you', 'where are you based', 'based', 'city', 'country', 'dhaka', 'bangladesh', 'remote', 'work remote', 'work remotely', 'remote work', 'remotely', 'timezone', 'time zone', 'relocate', 'onsite', 'on site'],
       answer:
-        '<p>Based in <strong>Dhaka, Bangladesh</strong>, and very comfortable working <strong>remote</strong> — I\'ve shipped with teams in Thailand and the USA, 3 countries in total.</p>',
+        '<p>Based in <strong>Dhaka, Bangladesh</strong>, and very comfortable working <strong>remote</strong> — I\'ve held roles with teams in Thailand and the USA, and shipped projects for <strong>international clients across Canada, Australia, the USA, the UAE, Pakistan, Nigeria and Rwanda</strong>. Cross–time-zone collaboration is normal for me.</p>',
       chips: [
         { label: 'Are you available for hire?', q: 'are you available for hire' },
+        { label: 'International clients?', q: 'do you work with international companies' },
         { label: 'Your experience', q: 'tell me about your experience' }
+      ]
+    },
+    {
+      id: 'international',
+      patterns: ['international', 'international company', 'international companies', 'international client', 'international clients', 'international project', 'international projects', 'global client', 'global clients', 'work internationally', 'working internationally', 'overseas', 'abroad', 'foreign client', 'foreign clients', 'foreign company', 'which countries', 'what countries', 'countries worked', 'countries have you worked', 'clients worldwide', 'worldwide', 'who are your clients', 'your clients', 'canada', 'canadian', 'australia', 'australian', 'nigeria', 'nigerian', 'rwanda', 'rwandan', 'pakistan', 'pakistani', 'uae', 'dubai', 'emirates', 'abu dhabi'],
+      answer:
+        '<p>Yes — a large part of my work is with <strong>international companies and clients</strong>. Working remotely from Dhaka, I\'ve designed and shipped products for teams and businesses across:</p>' +
+        '<ul>' +
+        '<li><strong>Canada</strong></li>' +
+        '<li><strong>Australia</strong></li>' +
+        '<li><strong>United States</strong></li>' +
+        '<li><strong>United Arab Emirates</strong></li>' +
+        '<li><strong>Pakistan</strong></li>' +
+        '<li><strong>Nigeria</strong></li>' +
+        '<li><strong>Rwanda</strong></li>' +
+        '</ul>' +
+        '<p>That\'s on top of full-time and part-time roles with companies in <strong>Bangladesh, Thailand and the USA</strong>. Discovery calls, async design reviews and design-to-code handoff across time zones are a normal part of how I work.</p>',
+      chips: [
+        { label: 'Your experience', q: 'tell me about your experience' },
+        { label: 'Where are you based?', q: 'where are you based' },
+        { label: 'Are you available for hire?', q: 'are you available for hire' }
       ]
     }
   ];
@@ -990,7 +1015,7 @@
     },
     {
       test: /(what can i ask|what should i ask|what do you know|what can you tell|show options|show menu|give me suggestions|list topics|help me)/i,
-      reply: '<p>You can ask me about:</p><ul><li>His <strong>case studies</strong> — SAFE, Prime Bank Digital Token, NMS, DCIM — and the <strong>intro video</strong></li><li><strong>Domains</strong> — ERP, CRM, HRMS, POS, KDS, CDS, Kiosk, SMS &amp; email marketing solutions, EdTech, Job Portal, Edu portal, SaaS, eCommerce, websites &amp; landing pages</li><li><strong>Experience</strong> and what he did at each company</li><li>His <strong>design approach</strong>, and UI/UX craft — accessibility, responsive, wireframing, prototyping, design systems, IA, motion</li><li>Any <strong>tool</strong> in his stack — e.g. &ldquo;what do you use Zapier / Maze / Jira / JMeter for?&rdquo;</li><li><strong>Education</strong>, <strong>skills</strong>, <strong>hiring</strong>, email, phone and social links</li></ul>',
+      reply: '<p>You can ask me about:</p><ul><li>His <strong>case studies</strong> — SAFE, Prime Bank Digital Token, NMS, DCIM — and the <strong>intro video</strong></li><li><strong>Domains</strong> — ERP, CRM, HRMS, POS, KDS, CDS, Kiosk, SMS &amp; email marketing solutions, EdTech, Job Portal, Edu portal, SaaS, eCommerce, websites &amp; landing pages</li><li><strong>Experience</strong>, what he did at each company, and the <strong>international clients</strong> he\'s worked with (Canada, Australia, USA, UAE, Pakistan, Nigeria, Rwanda)</li><li>His <strong>design approach</strong>, and UI/UX craft — accessibility, responsive, wireframing, prototyping, design systems, IA, motion</li><li>Any <strong>tool</strong> in his stack — e.g. &ldquo;what do you use Zapier / Maze / Jira / JMeter for?&rdquo;</li><li><strong>Education</strong>, <strong>skills</strong>, <strong>hiring</strong>, email, phone and social links</li></ul>',
       chips: defaultChips
     },
     {
@@ -1065,7 +1090,7 @@
 
     return {
       html:
-        '<p>I don\'t have a specific answer for that yet. I can tell you about Rejoanul\'s <strong>case studies</strong> (SAFE, Prime Bank Token, NMS, DCIM), the <strong>intro video</strong>, his <strong>experience</strong>, <strong>design approach</strong>, any <strong>tool</strong> in his stack, the <strong>domains</strong> he\'s shipped (ERP, CRM, HRMS, POS, KDS, CDS, Kiosk, SMS &amp; email marketing, EdTech, Job Portal, Edu portal, SaaS, eCommerce, websites), his <strong>education</strong> or <strong>how to hire him</strong>. Try one of these:</p>',
+        '<p>I don\'t have a specific answer for that yet. I can tell you about Rejoanul\'s <strong>case studies</strong> (SAFE, Prime Bank Token, NMS, DCIM), the <strong>intro video</strong>, his <strong>experience</strong>, the <strong>international clients</strong> he\'s worked with, his <strong>design approach</strong>, any <strong>tool</strong> in his stack, the <strong>domains</strong> he\'s shipped (ERP, CRM, HRMS, POS, KDS, CDS, Kiosk, SMS &amp; email marketing, EdTech, Job Portal, Edu portal, SaaS, eCommerce, websites), his <strong>education</strong> or <strong>how to hire him</strong>. Try one of these:</p>',
       chips: defaultChips()
     };
   }
@@ -1097,7 +1122,7 @@
       '    <span class="rf-chat__avatar"><img src="' + AVATAR + '" alt="Rejoanul Ferdoush"></span>',
       '    <span class="rf-chat__id">',
       '      <span class="rf-chat__name">Rejoanul Ferdoush</span>',
-      '      <span class="rf-chat__status"><b>●</b> UI/UX Engineer</span>',
+      '      <span class="rf-chat__status">UI/UX Engineer</span>',
       '    </span>',
       '    <span class="rf-chat__header-actions">',
       '      <button class="rf-chat__icon-btn" id="rfClose" title="Close" aria-label="Close chat">' + ICON.close + '</button>',

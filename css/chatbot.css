@@ -229,9 +229,7 @@
   color: var(--text-soft, #acacac);
   display: flex;
   align-items: center;
-  gap: 5px;
 }
-.rf-chat__status b{ color: var(--accent, #d0ff71); font-weight: 500; }
 .rf-chat__header-actions{ display: flex; gap: 6px; }
 .rf-chat__icon-btn{
   width: 32px;
