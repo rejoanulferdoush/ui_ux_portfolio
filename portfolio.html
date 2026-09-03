@@ -144,8 +144,11 @@
              video with sound in a lightbox. -->
         <button type="button" class="hero__reel" id="heroReel" aria-label="Play my intro video">
           <span class="hero__reel-disc">
-            <video class="hero__reel-preview" src="video/portfolio_intro.mp4#t=0.6"
-                   muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>
+            <video class="hero__reel-preview"
+                   muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+              <source src="https://cdn.jsdelivr.net/gh/rejoanulferdoush/ui_ux_portfolio@main/video/portfolio_intro.mp4#t=0.6" type="video/mp4">
+              <source src="video/portfolio_intro.mp4#t=0.6" type="video/mp4">
+            </video>
             <span class="hero__reel-scrim" aria-hidden="true"></span>
             <span class="hero__reel-play" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -196,8 +199,11 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
       <div class="reel-modal__stage">
-        <video class="reel-modal__video" id="reelModalVideo" src="video/portfolio_intro.mp4"
-               controls playsinline preload="none"></video>
+        <video class="reel-modal__video" id="reelModalVideo"
+               controls playsinline preload="none">
+          <source src="https://cdn.jsdelivr.net/gh/rejoanulferdoush/ui_ux_portfolio@main/video/portfolio_intro.mp4" type="video/mp4">
+          <source src="video/portfolio_intro.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </div>
@@ -206,6 +212,7 @@
   <section class="section work-warp" id="work">
     <div class="work-warp__video-wrap" aria-hidden="true">
       <video class="work-warp__video" muted loop playsinline preload="none">
+        <source src="https://cdn.jsdelivr.net/gh/rejoanulferdoush/ui_ux_portfolio@main/video/hyperspace-tunnel.mp4" type="video/mp4">
         <source src="video/hyperspace-tunnel.mp4" type="video/mp4">
       </video>
       <div class="work-warp__scrim"></div>
