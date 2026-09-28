@@ -228,13 +228,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const note = document.getElementById('pbNudgeNote');
     const bands = [
       { max: 0, name: 'Your turn', color: 'var(--pb-serve)',
-        note: 'Now serving your token. Walk to the counter shown on your screen — the branch is holding your place for a few minutes.' },
+        note: 'Now serving your token. Walk to the counter shown on your screen, the branch is holding your place for a few minutes.' },
       { max: 2, name: "You're next", color: 'var(--pb-wait)',
         note: 'One or two people to go. Please be inside the branch now so you don’t lose the slot.' },
       { max: 5, name: 'Head over', color: 'var(--pb-wait)',
-        note: 'The heads-up SMS just went out. Start making your way to the branch — you’ve got roughly ten minutes.' },
+        note: 'The heads-up SMS just went out. Start making your way to the branch, you’ve got roughly ten minutes.' },
       { max: 99, name: 'Relax', color: 'var(--pb-serve)',
-        note: 'Plenty of time. We’ll send the first SMS when three people are ahead of you — until then the app can sit in your pocket.' },
+        note: 'Plenty of time. We’ll send the first SMS when three people are ahead of you, until then the app can sit in your pocket.' },
     ];
     const viz = document.getElementById('pbQueueViz');
     const MAX = +nudge.max || 20;
@@ -288,10 +288,10 @@ document.addEventListener('DOMContentLoaded', () => {
         you: '“Token <b>A-074</b> · about 24 min · 5 people ahead.”',
         branch: 'A-074 joins the tail of the Deposit desk.' },
       { label: 'In queue', trigger: 'Desks clear ahead of you.',
-        you: 'The count ticks down on its own — the app can stay in your pocket.',
+        you: 'The count ticks down on its own, the app can stay in your pocket.',
         branch: 'Position recalculates every time a counter finishes.' },
       { label: 'Heads-up', trigger: '3 people ahead.',
-        you: 'One SMS: “You’re a few away — start heading to the branch.”',
+        you: 'One SMS: “You’re a few away, start heading to the branch.”',
         branch: 'A-074 flagged <b>on the way</b>.' },
       { label: 'Called', trigger: 'The counter taps Next.',
         you: 'Full screen, a buzz: “Go to <b>Counter 3</b> now.”',
@@ -300,15 +300,15 @@ document.addEventListener('DOMContentLoaded', () => {
         you: '“Being served at Counter 3.” Nothing left to do.',
         branch: 'The Deposit desk shows the token in progress.' },
       { label: 'Done', trigger: 'Staff closes the token.',
-        you: '“All done — how was it?” The rating sheet opens once.',
+        you: '“All done, how was it?” The rating sheet opens once.',
         branch: 'A-074 clears; the next token is called.' },
     ];
     const EXC = {
       missed: { label: 'Missed the call', trigger: 'No arrival within one call cycle.',
-        you: 'Not dropped. Held once, slotted back three places, with an SMS: “We kept your spot — you’re 3 away again.”',
+        you: 'Not dropped. Held once, slotted back three places, with an SMS: “We kept your spot, you’re 3 away again.”',
         branch: 'A-074 skipped for now and re-inserted three ahead. Flagged once.' },
       cancelled: { label: 'Cancelled by you', trigger: 'The Cancel sheet, any time before Called.',
-        you: 'The token clears immediately — no penalty, no cooldown. A fresh check-in takes ten seconds.',
+        you: 'The token clears immediately: no penalty, no cooldown. A fresh check-in takes ten seconds.',
         branch: 'A-074 is removed; every ETA behind you corrects down.' },
     };
 

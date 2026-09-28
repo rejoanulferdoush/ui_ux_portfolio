@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
         emailGame.appendChild(phone);
         emailGame.appendChild(copy);
         requestAnimationFrame(() => emailGame.classList.add('is-revealed'));
-        if (hint) hint.textContent = "the vault's open — email or call, I reply fast.";
+        if (hint) hint.textContent = "the vault's open, email or call, I reply fast.";
       }, reduceMotion ? 0 : 480);
     };
 

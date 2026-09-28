@@ -34,7 +34,7 @@
       id: 'about',
       patterns: ['who are you', 'who is rejoanul', 'about yourself', 'about you', 'about rejoanul', 'introduce yourself', 'tell me about yourself', 'tell me about rejoanul', 'tell me about him', 'your bio', 'about him', 'who r u', 'what do you do'],
       answer:
-        '<p>I\'m <strong>Rejoanul Ferdoush</strong> — a <strong>UI/UX Engineer</strong> based in Dhaka, Bangladesh, with <strong>7+ years</strong> turning rough ideas into polished, working interfaces.</p>' +
+        '<p>I\'m <strong>Rejoanul Ferdoush</strong>, a <strong>UI/UX Engineer</strong> based in Dhaka, Bangladesh, with <strong>7+ years</strong> turning rough ideas into polished, working interfaces.</p>' +
         '<p>I design the whole experience <em>and</em> build the front-end myself, so the details survive all the way to production. Currently open to collaborate.</p>',
       chips: [
         { label: 'Show me your projects', q: 'show me your work' },
@@ -48,12 +48,12 @@
       id: 'work',
       patterns: ['work', 'project', 'projects', 'case study', 'case studies', 'portfolio piece', 'featured', 'show me your work', 'best work', 'recent work', 'what have you built', 'what have you made'],
       answer:
-        '<p>Four in-depth case studies — <a href="#work">jump to the Work section</a>, and each has its own full write-up:</p>' +
+        '<p>Four in-depth case studies (jump to the <a href="#work">Work section</a>), and each has its own full write-up:</p>' +
         '<ul>' +
-        '<li><strong>SAFE</strong> — AI-powered home-security iOS app: a house full of gas, intrusion &amp; camera sensors read as one calm feed, with a three-state colour language and an escalation chain that runs itself. <a href="safe-home.html">Case study →</a></li>' +
-        '<li><strong>Prime Bank Digital Token</strong> — FinTech branch-queue redesign: pick a branch, check in from the pavement in four taps, hold a live token that tracks itself to the counter. <a href="prime-bank-token.html">Case study →</a></li>' +
-        '<li><strong>NMS</strong> — Network Monitoring System for a Dhaka bank, told as one night on the NOC: real-time topology, a device-state ladder and 99.9% uptime tracking <em>(★ IT Expo 2025)</em>. <a href="nms-system.html">Case study →</a></li>' +
-        '<li><strong>DCIM</strong> — Data-Centre Infrastructure Monitoring for Dhaka Bank: five vendor consoles folded into one owned pane — power chain, cooling, PUE, capacity <em>(★ IT Expo 2025)</em>. <a href="dcim-system.html">Case study →</a></li>' +
+        '<li><strong>SAFE</strong>: AI-powered home-security iOS app: a house full of gas, intrusion &amp; camera sensors read as one calm feed, with a three-state colour language and an escalation chain that runs itself. <a href="safe-home.html">Case study →</a></li>' +
+        '<li><strong>Prime Bank Digital Token</strong>: FinTech branch-queue redesign: pick a branch, check in from the pavement in four taps, hold a live token that tracks itself to the counter. <a href="prime-bank-token.html">Case study →</a></li>' +
+        '<li><strong>NMS</strong>: Network Monitoring System for a Dhaka bank, told as one night on the NOC: real-time topology, a device-state ladder and 99.9% uptime tracking <em>(★ IT Expo 2025)</em>. <a href="nms-system.html">Case study →</a></li>' +
+        '<li><strong>DCIM</strong>: Data-Centre Infrastructure Monitoring for Dhaka Bank: five vendor consoles folded into one owned pane, power chain, cooling, PUE, capacity <em>(★ IT Expo 2025)</em>. <a href="dcim-system.html">Case study →</a></li>' +
         '</ul>' +
         '<p>There\'s also a short <a href="#top">intro video</a> on the home page, and NDA client work across POS, ERP, CRM, HRMS and more.</p>',
       chips: [
@@ -68,13 +68,13 @@
       id: 'proj-safe',
       patterns: ['safe', 'safe app', 'safe case study', 'home security', 'security app', 'gas leak', 'gas leak app', 'smart home', 'intrusion', 'home security app', 'iot app', 'sensor app', 'camera alerts', 'safe home'],
       answer:
-        '<p><strong>SAFE — AI Home-Security App</strong> (iOS, 2025). A house fills up with sensors — gas, smoke/CO, motion, door contacts, cameras, air quality — and SAFE reads all of it as <strong>one calm feed</strong> instead of three apps giving three verdicts.</p>' +
+        '<p><strong>SAFE: AI Home-Security App</strong> (iOS, 2025). A house fills up with sensors (gas, smoke/CO, motion, door contacts, cameras, air quality), and SAFE reads all of it as <strong>one calm feed</strong> instead of three apps giving three verdicts.</p>' +
         '<p>The core ideas:</p>' +
         '<ul>' +
-        '<li><strong>Colour is the interface</strong> — one three-state language: Safe (green), Warning (amber), Emergency (red full-screen takeover).</li>' +
-        '<li><strong>Quiet by default</strong> — the app only speaks in a crisis; a good day shows &ldquo;3 rooms · all clear&rdquo;.</li>' +
-        '<li><strong>Escalate without me</strong> — a three-tier chain (SMS → call contacts → proof of life) that runs whether or not anyone is looking at the phone.</li>' +
-        '<li><strong>Readable under stress</strong> — big type, high contrast, the emergency path never more than two taps away.</li>' +
+        '<li><strong>Colour is the interface</strong>: one three-state language: Safe (green), Warning (amber), Emergency (red full-screen takeover).</li>' +
+        '<li><strong>Quiet by default</strong>: the app only speaks in a crisis; a good day shows &ldquo;3 rooms · all clear&rdquo;.</li>' +
+        '<li><strong>Escalate without me</strong>: a three-tier chain (SMS → call contacts → proof of life) that runs whether or not anyone is looking at the phone.</li>' +
+        '<li><strong>Readable under stress</strong>: big type, high contrast, the emergency path never more than two taps away.</li>' +
         '</ul>' +
         '<p>Shipped as a system: a reusable device model, 32 screens across onboarding / home / rooms / sensors / cameras / alerts / settings, and a live Figma prototype embedded in the write-up. <a href="safe-home.html">Read the full case study →</a></p>',
       chips: [
@@ -87,13 +87,13 @@
       id: 'proj-primebank',
       patterns: ['prime bank', 'primebank', 'digital token', 'prime bank token', 'queue', 'branch queue', 'token app', 'queue app', 'qr service', 'fintech', 'fintech project', 'banking', 'bank app', 'branch check in', 'serial app'],
       answer:
-        '<p><strong>Prime Bank Digital Token</strong> (FinTech, 2025) — a redesign, not a new build. Prime Bank already had a branch-queue app, but customers opened it, lost the thread, and phoned the branch anyway to ask &ldquo;how long is the wait?&rdquo;</p>' +
-        '<p>The redesign starts from what a token actually is — <em>a promise you\'ll be served in order</em> — and makes only that legible:</p>' +
+        '<p><strong>Prime Bank Digital Token</strong> (FinTech, 2025), a redesign, not a new build. Prime Bank already had a branch-queue app, but customers opened it, lost the thread, and phoned the branch anyway to ask &ldquo;how long is the wait?&rdquo;</p>' +
+        '<p>The redesign starts from what a token actually is (<em>a promise you\'ll be served in order</em>) and makes only that legible:</p>' +
         '<ul>' +
-        '<li><strong>Four taps from the street</strong> — branch (sorted by distance + live wait) → customer or bearer → service → phone OTP → a live token in hand.</li>' +
-        '<li><strong>One screen replaces the waiting room</strong> — your number, how many are ahead, and when to start walking; SMS + email nudges before your turn.</li>' +
-        '<li><strong>The queue has to feel fair</strong> — one live token per person, positions never change silently, a missed turn is held once and slotted back three rather than dropped.</li>' +
-        '<li>Plus the &ldquo;unglamorous&rdquo; screens a bank needs to trust it — OTP, errors, edge cases.</li>' +
+        '<li><strong>Four taps from the street</strong>: branch (sorted by distance + live wait) → customer or bearer → service → phone OTP → a live token in hand.</li>' +
+        '<li><strong>One screen replaces the waiting room</strong>: your number, how many are ahead, and when to start walking; SMS + email nudges before your turn.</li>' +
+        '<li><strong>The queue has to feel fair</strong>: one live token per person, positions never change silently, a missed turn is held once and slotted back three rather than dropped.</li>' +
+        '<li>Plus the &ldquo;unglamorous&rdquo; screens a bank needs to trust it: OTP, errors, edge cases.</li>' +
         '</ul>' +
         '<p><a href="prime-bank-token.html">Read the full case study →</a></p>',
       chips: [
@@ -106,13 +106,13 @@
       id: 'proj-nms',
       patterns: ['nms', 'nms case study', 'network monitoring', 'network monitoring system', 'topology', 'topology map', 'uptime', 'noc', 'network dashboard', 'device monitoring'],
       answer:
-        '<p><strong>NMS — Network Monitoring System</strong> (2025). Built for a bank in Dhaka to replace an imported platform that <strong>billed per device</strong> and made the simplest task a scavenger hunt.</p>' +
-        '<p>The case study is told as <strong>one night on the NOC</strong> — scroll and the shift runs: quiet, an alert, a fix, a handover. What it shows:</p>' +
+        '<p><strong>NMS: Network Monitoring System</strong> (2025). Built for a bank in Dhaka to replace an imported platform that <strong>billed per device</strong> and made the simplest task a scavenger hunt.</p>' +
+        '<p>The case study is told as <strong>one night on the NOC</strong>: scroll and the shift runs: quiet, an alert, a fix, a handover. What it shows:</p>' +
         '<ul>' +
-        '<li><strong>The topology is the home screen</strong> — every device a node, every link coloured by health, the whole path on one canvas; break something and watch the failure propagate.</li>' +
-        '<li><strong>A device-state ladder</strong> — why the red is worth trusting: hard thresholds (ICMP timeout, uptime &lt; 50%) vs. soft warnings.</li>' +
-        '<li><strong>Everything to fix it is in the drawer</strong> — tap a node and the operator gets the full panel, not another app.</li>' +
-        '<li><strong>Reports for the auditor</strong> — uptime, alert-response times, security events, bandwidth trends, on demand or scheduled.</li>' +
+        '<li><strong>The topology is the home screen</strong>: every device a node, every link coloured by health, the whole path on one canvas; break something and watch the failure propagate.</li>' +
+        '<li><strong>A device-state ladder</strong>: why the red is worth trusting: hard thresholds (ICMP timeout, uptime &lt; 50%) vs. soft warnings.</li>' +
+        '<li><strong>Everything to fix it is in the drawer</strong>: tap a node and the operator gets the full panel, not another app.</li>' +
+        '<li><strong>Reports for the auditor</strong>: uptime, alert-response times, security events, bandwidth trends, on demand or scheduled.</li>' +
         '</ul>' +
         '<p>★ Shown at <strong>IT Expo 2025</strong>. <a href="nms-system.html">Read the full case study →</a></p>',
       chips: [
@@ -125,12 +125,12 @@
       id: 'proj-dcim',
       patterns: ['dcim', 'dcim case study', 'data center', 'data centre', 'data center monitoring', 'power flow', 'power chain', 'pue', 'ups status', 'cooling', 'ashrae', 'rack pdu', 'facility monitoring'],
       answer:
-        '<p><strong>DCIM — Data-Centre Infrastructure Monitoring</strong> (2025), built for Dhaka Bank. Their facility ran on <strong>five vendors\' boxes</strong> — transfer switches, the UPS wall, precision coolers, rack PDUs, environment sensors — each with its own console, its own login, and its own licence renewal (priced <strong>per monitored point</strong>, in dollars, yearly). DCIM folds them into one screen the bank owns outright.</p>' +
+        '<p><strong>DCIM: Data-Centre Infrastructure Monitoring</strong> (2025), built for Dhaka Bank. Their facility ran on <strong>five vendors\' boxes</strong>: transfer switches, the UPS wall, precision coolers, rack PDUs, environment sensors, each with its own console, its own login, and its own licence renewal (priced <strong>per monitored point</strong>, in dollars, yearly). DCIM folds them into one screen the bank owns outright.</p>' +
         '<ul>' +
-        '<li><strong>Facility verdict first</strong> — total power draw, active alarms, fleet uptime, PUE and cooling load across the top, then a real floor plan, then the fleet by device class.</li>' +
-        '<li><strong>Follow the power, end to end</strong> — an interactive chain (grid → ATS → UPS → PDU → rack, generator and coolers off it); inject a fault and watch the ATS transfer and the UPS carry the load.</li>' +
-        '<li><strong>The room that can\'t get hot</strong> — ASHRAE A1 banding, ΔT, dew point, hotspots, airflow balance, water-leak rope.</li>' +
-        '<li><strong>One page shape for five device classes</strong> — same three tabs (Overview · Alarms/Events/Log · Report &amp; Export) whatever you open. One alarm log for 638 units; a report library with a scheduler.</li>' +
+        '<li><strong>Facility verdict first</strong>: total power draw, active alarms, fleet uptime, PUE and cooling load across the top, then a real floor plan, then the fleet by device class.</li>' +
+        '<li><strong>Follow the power, end to end</strong>: an interactive chain (grid → ATS → UPS → PDU → rack, generator and coolers off it); inject a fault and watch the ATS transfer and the UPS carry the load.</li>' +
+        '<li><strong>The room that can\'t get hot</strong>: ASHRAE A1 banding, ΔT, dew point, hotspots, airflow balance, water-leak rope.</li>' +
+        '<li><strong>One page shape for five device classes</strong>: same three tabs (Overview · Alarms/Events/Log · Report &amp; Export) whatever you open. One alarm log for 638 units; a report library with a scheduler.</li>' +
         '</ul>' +
         '<p>★ Shown at <strong>IT Expo 2025</strong>. <a href="dcim-system.html">Read the full case study →</a></p>',
       chips: [
@@ -143,8 +143,8 @@
       id: 'video',
       patterns: ['video', 'intro video', 'your video', 'showreel', 'show reel', 'reel', 'walkthrough video', 'introduction video', 'do you have a video', 'do you have an intro video', 'watch you', 'see you talk'],
       answer:
-        '<p>Yes — there\'s a short <strong>intro video</strong> on the home page. The disc in the hero plays a muted preview on hover; click it and the full video opens with sound in a lightbox.</p>' +
-        '<p>It\'s a quick personal introduction — who I am and how I work. <a href="portfolio.html#top">Open the home page and hit play →</a> For a deeper walkthrough of any specific project, I\'m happy to screen-share — email <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>.</p>',
+        '<p>Yes, there\'s a short <strong>intro video</strong> on the home page. The disc in the hero plays a muted preview on hover; click it and the full video opens with sound in a lightbox.</p>' +
+        '<p>It\'s a quick personal introduction: who I am and how I work. <a href="portfolio.html#top">Open the home page and hit play →</a> For a deeper walkthrough of any specific project, I\'m happy to screen-share, email <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>.</p>',
       chips: [
         { label: 'Show me your work', q: 'show me your work' },
         { label: 'Your design approach', q: 'what is your approach' },
@@ -155,7 +155,7 @@
       id: 'dashboards',
       patterns: ['dashboard', 'dashboards', 'data viz', 'data visualization', 'data visualisation', 'charts', 'analytics ui', 'complex ui'],
       answer:
-        '<p>Yes — data-heavy dashboards are a strong area for me. <strong>NMS</strong> (network topology &amp; uptime) and <strong>DCIM</strong> (power-flow, PUE, capacity) are both complex real-time monitoring UIs, and both were shown at <strong>IT Expo 2025</strong>. I also shipped dashboards across CRM, ERP and POS platforms.</p>',
+        '<p>Yes, data-heavy dashboards are a strong area for me. <strong>NMS</strong> (network topology &amp; uptime) and <strong>DCIM</strong> (power-flow, PUE, capacity) are both complex real-time monitoring UIs, and both were shown at <strong>IT Expo 2025</strong>. I also shipped dashboards across CRM, ERP and POS platforms.</p>',
       chips: [
         { label: 'What is NMS?', q: 'what is NMS' },
         { label: 'What is DCIM?', q: 'what is DCIM' }
@@ -167,12 +167,12 @@
       id: 'approach',
       patterns: ['approach', 'process', 'philosophy', 'how do you work', 'how do you design', 'methodology', 'workflow', 'principles', 'design approach', 'design process'],
       answer:
-        '<p>Four principles guide every project — <a href="#approach">full section here</a>:</p>' +
+        '<p>Four principles guide every project (<a href="#approach">full section here</a>):</p>' +
         '<ul>' +
-        '<li><strong>Start with the problem, not the pixels</strong> — research and constraints first.</li>' +
-        '<li><strong>Design in systems, not screens</strong> — reusable components &amp; clear tokens.</li>' +
-        '<li><strong>Ship, measure, refine</strong> — a real v1 beats a perfect mockup.</li>' +
-        '<li><strong>Code is part of the design</strong> — I build the front-end so motion, spacing &amp; performance survive.</li>' +
+        '<li><strong>Start with the problem, not the pixels</strong>: research and constraints first.</li>' +
+        '<li><strong>Design in systems, not screens</strong>: reusable components &amp; clear tokens.</li>' +
+        '<li><strong>Ship, measure, refine</strong>: a real v1 beats a perfect mockup.</li>' +
+        '<li><strong>Code is part of the design</strong>: I build the front-end so motion, spacing &amp; performance survive.</li>' +
         '</ul>',
       chips: [
         { label: 'Design systems', q: 'tell me about design systems' },
@@ -186,7 +186,7 @@
       id: 'stack',
       patterns: ['stack', 'tools', 'technologies', 'toolkit', 'what tools', 'what tools do you use', 'tech stack', 'full toolkit', 'your tools', 'tools and tech', 'what software do you use', 'entire stack', 'whole stack'],
       answer:
-        '<p>The tools I actually reach for — <a href="#stack">full breakdown here</a>:</p>' +
+        '<p>The tools I actually reach for (<a href="#stack">full breakdown here</a>):</p>' +
         '<ul>' +
         '<li><strong>Design:</strong> Figma, Sketch, Adobe XD, Miro, Photoshop, Illustrator</li>' +
         '<li><strong>Build:</strong> HTML5, CSS3, Tailwind, Bootstrap, JavaScript, React, Spline, Blender</li>' +
@@ -207,8 +207,8 @@
       id: 'code',
       patterns: ['do you code', 'do you write code', 'can you code', 'front end', 'frontend', 'react', 'reactjs', 'html', 'css', 'tailwind', 'bootstrap', 'javascript', 'js', 'developer', 'development', 'design to code', 'coding', 'build the ui', 'responsive'],
       answer:
-        '<p>Yes — I\'m a UI/UX Engineer, not just a designer. I ship production front-end in <strong>HTML5, CSS3, Tailwind and React</strong>, and I\'m fluent at turning Figma / XD / Sketch files into responsive, pixel-perfect builds.</p>' +
-        '<p><strong>JavaScript</strong> for interactivity and animation, <strong>Bootstrap</strong> for fast admin/prototype work, and <strong>Spline / Blender</strong> when a project needs 3D. That\'s <em>&ldquo;code is part of the design&rdquo;</em> — <a href="#approach">see my approach</a>.</p>',
+        '<p>Yes, I\'m a UI/UX Engineer, not just a designer. I ship production front-end in <strong>HTML5, CSS3, Tailwind and React</strong>, and I\'m fluent at turning Figma / XD / Sketch files into responsive, pixel-perfect builds.</p>' +
+        '<p><strong>JavaScript</strong> for interactivity and animation, <strong>Bootstrap</strong> for fast admin/prototype work, and <strong>Spline / Blender</strong> when a project needs 3D. That\'s <em>&ldquo;code is part of the design&rdquo;</em> in practice (<a href="#approach">see my approach</a>).</p>',
       chips: [
         { label: 'Design-to-code project?', q: 'what did you do at se plus global' },
         { label: 'Full stack list', q: 'what tools do you use' }
@@ -220,8 +220,8 @@
       id: 'tool-figma',
       patterns: ['figma', 'sketch', 'adobe xd', 'xd', 'expert in figma', 'design tool', 'design tools', 'design software'],
       answer:
-        '<p><strong>Figma</strong> is my primary tool — UI design, components and variants, auto-layout, interactive prototypes, design tokens and developer handoff. It\'s in my &ldquo;could use with my eyes closed&rdquo; tier.</p>' +
-        '<p><strong>Sketch</strong> and <strong>Adobe XD</strong>: I move fluently between all three, mostly when a team or client already has files in them — I take XD/Sketch source and turn it into responsive React builds.</p>',
+        '<p><strong>Figma</strong> is my primary tool: UI design, components and variants, auto-layout, interactive prototypes, design tokens and developer handoff. It\'s in my &ldquo;could use with my eyes closed&rdquo; tier.</p>' +
+        '<p><strong>Sketch</strong> and <strong>Adobe XD</strong>: I move fluently between all three, mostly when a team or client already has files in them; I take XD/Sketch source and turn it into responsive React builds.</p>',
       chips: [
         { label: 'Design systems', q: 'tell me about design systems' },
         { label: 'Full toolkit', q: 'what tools do you use' }
@@ -241,7 +241,7 @@
       id: 'tool-adobe',
       patterns: ['photoshop', 'illustrator', 'adobe', 'vector', 'icons', 'icon set', 'retouch', 'illustration', 'illustrations', 'assets'],
       answer:
-        '<p><strong>Illustrator</strong> — vector icon sets, logos, spot illustrations and clean SVG assets for the build. <strong>Photoshop</strong> — image editing, mockup retouching, compositing and exporting production-ready raster assets.</p>',
+        '<p><strong>Illustrator</strong>: vector icon sets, logos, spot illustrations and clean SVG assets for the build. <strong>Photoshop</strong>: image editing, mockup retouching, compositing and exporting production-ready raster assets.</p>',
       chips: [
         { label: 'Full toolkit', q: 'what tools do you use' },
         { label: 'AI tools for visuals', q: 'what do you use midjourney for' }
@@ -251,7 +251,7 @@
       id: 'tool-3d',
       patterns: ['spline', 'blender', '3d', 'three d', '3d model', '3d scene', 'webgl'],
       answer:
-        '<p><strong>Spline</strong> — interactive 3D scenes for hero sections and landing pages, exported straight to the web. <strong>Blender</strong> — modeling and rendering product visuals, device mockups and marketing imagery when a flat asset isn\'t enough.</p>',
+        '<p><strong>Spline</strong>: interactive 3D scenes for hero sections and landing pages, exported straight to the web. <strong>Blender</strong>: modeling and rendering product visuals, device mockups and marketing imagery when a flat asset isn\'t enough.</p>',
       chips: [
         { label: 'Do you write code?', q: 'do you write code' },
         { label: 'Full toolkit', q: 'what tools do you use' }
@@ -261,7 +261,7 @@
       id: 'tool-cms',
       patterns: ['wordpress', 'shopify', 'cms', 'ecommerce', 'e commerce', 'storefront', 'woocommerce', 'theme'],
       answer:
-        '<p><strong>WordPress</strong> — CMS-driven marketing and content sites, theme customization and building editable layouts for clients. <strong>Shopify</strong> — e-commerce storefronts and theme customization, tuning the buying flow for conversion.</p>',
+        '<p><strong>WordPress</strong>: CMS-driven marketing and content sites, theme customization and building editable layouts for clients. <strong>Shopify</strong>: e-commerce storefronts and theme customization, tuning the buying flow for conversion.</p>',
       chips: [
         { label: 'Full toolkit', q: 'what tools do you use' },
         { label: 'Your experience', q: 'tell me about your experience' }
@@ -275,12 +275,12 @@
       answer:
         '<p>AI is part of my daily workflow:</p>' +
         '<ul>' +
-        '<li><strong>ChatGPT &amp; Claude</strong> — research, drafting UX copy, analyzing docs, code help</li>' +
-        '<li><strong>Perplexity</strong> — fast, sourced research and competitive analysis</li>' +
-        '<li><strong>Cursor &amp; Codex</strong> — AI-assisted coding, refactors, boilerplate</li>' +
-        '<li><strong>v0</strong> — scaffolding UI quickly from a prompt for rapid prototyping</li>' +
-        '<li><strong>Midjourney &amp; Adobe Firefly</strong> — concept imagery, moodboards, generative fills</li>' +
-        '<li><strong>Notion</strong> — where all the research and specs live</li>' +
+        '<li><strong>ChatGPT &amp; Claude</strong>: research, drafting UX copy, analyzing docs, code help</li>' +
+        '<li><strong>Perplexity</strong>: fast, sourced research and competitive analysis</li>' +
+        '<li><strong>Cursor &amp; Codex</strong>: AI-assisted coding, refactors, boilerplate</li>' +
+        '<li><strong>v0</strong>: scaffolding UI quickly from a prompt for rapid prototyping</li>' +
+        '<li><strong>Midjourney &amp; Adobe Firefly</strong>: concept imagery, moodboards, generative fills</li>' +
+        '<li><strong>Notion</strong>: where all the research and specs live</li>' +
         '</ul>',
       chips: [
         { label: 'What do you use Notion for?', q: 'what do you use notion for' },
@@ -291,7 +291,7 @@
       id: 'tool-notion',
       patterns: ['notion', 'documentation', 'docs', 'specs', 'notes', 'knowledge base', 'research repo'],
       answer:
-        '<p><strong>Notion</strong> is my second brain for projects: <strong>design specs, research notes and interview summaries, decision logs, component documentation</strong> and project trackers — a single source of truth the whole team can read.</p>',
+        '<p><strong>Notion</strong> is my second brain for projects: <strong>design specs, research notes and interview summaries, decision logs, component documentation</strong> and project trackers: a single source of truth the whole team can read.</p>',
       chips: [
         { label: 'AI tools', q: 'which ai tools do you use' },
         { label: 'UX research', q: 'how do you do ux research' }
@@ -301,7 +301,7 @@
       id: 'tool-midjourney',
       patterns: ['midjourney', 'firefly', 'image generation', 'generative image', 'moodboard', 'concept art'],
       answer:
-        '<p><strong>Midjourney</strong> — early concept imagery, moodboards and visual direction before committing to a style. <strong>Adobe Firefly</strong> — generative fill and asset creation inside the Adobe workflow, so results drop straight into Photoshop / Illustrator.</p>',
+        '<p><strong>Midjourney</strong>: early concept imagery, moodboards and visual direction before committing to a style. <strong>Adobe Firefly</strong>: generative fill and asset creation inside the Adobe workflow, so results drop straight into Photoshop / Illustrator.</p>',
       chips: [
         { label: 'AI tools', q: 'which ai tools do you use' },
         { label: 'Illustrator / Photoshop', q: 'what do you use photoshop for' }
@@ -313,12 +313,12 @@
       id: 'ux-research',
       patterns: ['ux research', 'user research', 'usability', 'usability testing', 'user testing', 'research method', 'research tools', 'testing tools', 'interview', 'interviews', 'research process', 'research'],
       answer:
-        '<p>I run research before pixels — user interviews, usability testing and behaviour analysis. The tools:</p>' +
+        '<p>I run research before pixels: user interviews, usability testing and behaviour analysis. The tools:</p>' +
         '<ul>' +
-        '<li><strong>Maze</strong> — unmoderated usability tests &amp; prototype testing</li>' +
-        '<li><strong>Dovetail</strong> — research repository &amp; insight synthesis</li>' +
-        '<li><strong>Hotjar</strong> — heatmaps, session recordings, on-site surveys</li>' +
-        '<li><strong>Zapier</strong> — automating the research ops around all of it</li>' +
+        '<li><strong>Maze</strong>: unmoderated usability tests &amp; prototype testing</li>' +
+        '<li><strong>Dovetail</strong>: research repository &amp; insight synthesis</li>' +
+        '<li><strong>Hotjar</strong>: heatmaps, session recordings, on-site surveys</li>' +
+        '<li><strong>Zapier</strong>: automating the research ops around all of it</li>' +
         '</ul>',
       chips: [
         { label: 'What do you use Maze for?', q: 'what do you use maze for' },
@@ -330,7 +330,7 @@
       id: 'tool-maze',
       patterns: ['maze', 'unmoderated', 'tree testing', 'prototype test', 'task success', 'first click'],
       answer:
-        '<p><strong>Maze</strong> — I run <strong>unmoderated usability tests</strong> on Figma prototypes: task-success and drop-off rates, time-on-task, misclick maps, first-click and tree tests for navigation, plus quick preference surveys. It turns &ldquo;I think this flow is clearer&rdquo; into numbers.</p>',
+        '<p><strong>Maze</strong>: I run <strong>unmoderated usability tests</strong> on Figma prototypes: task-success and drop-off rates, time-on-task, misclick maps, first-click and tree tests for navigation, plus quick preference surveys. It turns &ldquo;I think this flow is clearer&rdquo; into numbers.</p>',
       chips: [
         { label: 'What do you use Dovetail for?', q: 'what do you use dovetail for' },
         { label: 'Your approach', q: 'what is your approach' }
@@ -340,7 +340,7 @@
       id: 'tool-dovetail',
       patterns: ['dovetail', 'research repository', 'transcripts', 'tagging', 'synthesis', 'insights', 'affinity'],
       answer:
-        '<p><strong>Dovetail</strong> — my research repository. I store interview and test recordings, <strong>tag and code transcripts</strong>, cluster observations into themes, and publish shareable insight summaries so findings don\'t die in a doc nobody opens.</p>',
+        '<p><strong>Dovetail</strong>: my research repository. I store interview and test recordings, <strong>tag and code transcripts</strong>, cluster observations into themes, and publish shareable insight summaries so findings don\'t die in a doc nobody opens.</p>',
       chips: [
         { label: 'What do you use Maze for?', q: 'what do you use maze for' },
         { label: 'What do you use Notion for?', q: 'what do you use notion for' }
@@ -350,7 +350,7 @@
       id: 'tool-hotjar',
       patterns: ['hotjar', 'heatmap', 'heatmaps', 'session recording', 'session replay', 'scroll map', 'funnel', 'on site survey'],
       answer:
-        '<p><strong>Hotjar</strong> — behaviour on live products: <strong>click and scroll heatmaps</strong>, session recordings to see where people get stuck, <strong>funnel analysis</strong> for drop-off, and short on-site surveys to catch the &ldquo;why&rdquo; behind the numbers.</p>',
+        '<p><strong>Hotjar</strong>: behaviour on live products: <strong>click and scroll heatmaps</strong>, session recordings to see where people get stuck, <strong>funnel analysis</strong> for drop-off, and short on-site surveys to catch the &ldquo;why&rdquo; behind the numbers.</p>',
       chips: [
         { label: 'What do you use Maze for?', q: 'what do you use maze for' },
         { label: 'Your approach', q: 'what is your approach' }
@@ -360,7 +360,7 @@
       id: 'tool-zapier',
       patterns: ['zapier', 'automation', 'automate', 'no code', 'nocode', 'integration', 'integrations', 'workflow automation', 'webhook'],
       answer:
-        '<p><strong>Zapier</strong> — I automate the glue work around design and research: push <strong>form and survey responses into a research sheet or Notion</strong>, post <strong>new feedback and usability results into Slack</strong>, sync tasks between Jira / Azure DevOps and a design tracker, and trigger notifications when a test finishes — all no-code, so I don\'t babysit it.</p>',
+        '<p><strong>Zapier</strong>: I automate the glue work around design and research: push <strong>form and survey responses into a research sheet or Notion</strong>, post <strong>new feedback and usability results into Slack</strong>, sync tasks between Jira / Azure DevOps and a design tracker, and trigger notifications when a test finishes, all no-code, so I don\'t babysit it.</p>',
       chips: [
         { label: 'What do you use Hotjar for?', q: 'what do you use hotjar for' },
         { label: 'DevOps tools', q: 'what devops tools do you use' }
@@ -372,13 +372,13 @@
       id: 'devops-tools',
       patterns: ['devops', 'dev ops', 'ci cd', 'cicd', 'pipeline', 'pipelines', 'version control', 'ci', 'deployment', 'devops tools'],
       answer:
-        '<p>Where design meets deployment — <a href="#stack">full section here</a>:</p>' +
+        '<p>Where design meets deployment (<a href="#stack">full section here</a>):</p>' +
         '<ul>' +
-        '<li><strong>Azure DevOps</strong> — boards, backlog &amp; sprint planning, repos and pipelines</li>' +
-        '<li><strong>Jira</strong> — issue tracking, sprint boards, linking design tickets to dev work</li>' +
-        '<li><strong>GitHub / GitLab / Bitbucket</strong> — version control &amp; pull requests for front-end code</li>' +
-        '<li><strong>JMeter</strong> — load &amp; performance testing</li>' +
-        '<li><strong>Postman</strong> — testing and inspecting APIs during front-end integration</li>' +
+        '<li><strong>Azure DevOps</strong>: boards, backlog &amp; sprint planning, repos and pipelines</li>' +
+        '<li><strong>Jira</strong>: issue tracking, sprint boards, linking design tickets to dev work</li>' +
+        '<li><strong>GitHub / GitLab / Bitbucket</strong>: version control &amp; pull requests for front-end code</li>' +
+        '<li><strong>JMeter</strong>: load &amp; performance testing</li>' +
+        '<li><strong>Postman</strong>: testing and inspecting APIs during front-end integration</li>' +
         '</ul>',
       chips: [
         { label: 'What do you use Jira for?', q: 'what do you use jira for' },
@@ -390,7 +390,7 @@
       id: 'tool-jira',
       patterns: ['jira', 'sprint', 'backlog', 'issue tracking', 'tickets', 'agile', 'scrum', 'kanban', 'bug triage'],
       answer:
-        '<p><strong>Jira</strong> — I work the sprint from the design side: <strong>create and groom design tickets</strong>, link them to the dev stories they unblock, attach specs and prototypes, run <strong>bug triage</strong> on UI issues, and track a design QA column so nothing ships off-spec.</p>',
+        '<p><strong>Jira</strong>: I work the sprint from the design side: <strong>create and groom design tickets</strong>, link them to the dev stories they unblock, attach specs and prototypes, run <strong>bug triage</strong> on UI issues, and track a design QA column so nothing ships off-spec.</p>',
       chips: [
         { label: 'What do you use Azure DevOps for?', q: 'what do you use azure devops for' },
         { label: 'DevOps tools', q: 'what devops tools do you use' }
@@ -400,7 +400,7 @@
       id: 'tool-azure',
       patterns: ['azure devops', 'azure', 'ado', 'azure boards', 'azure pipelines', 'azure repos'],
       answer:
-        '<p><strong>Azure DevOps</strong> — for teams on the Microsoft stack I run the same design workflow through <strong>Boards</strong> (backlog, sprint planning, design tasks alongside dev), commit front-end code to <strong>Repos</strong>, and follow builds through <strong>Pipelines</strong> so I know when a change is live to test.</p>',
+        '<p><strong>Azure DevOps</strong>: for teams on the Microsoft stack I run the same design workflow through <strong>Boards</strong> (backlog, sprint planning, design tasks alongside dev), commit front-end code to <strong>Repos</strong>, and follow builds through <strong>Pipelines</strong> so I know when a change is live to test.</p>',
       chips: [
         { label: 'What do you use Jira for?', q: 'what do you use jira for' },
         { label: 'DevOps tools', q: 'what devops tools do you use' }
@@ -410,7 +410,7 @@
       id: 'tool-git',
       patterns: ['github', 'gitlab', 'bitbucket', 'git', 'pull request', 'pull requests', 'pr', 'repo', 'repository', 'branch', 'merge'],
       answer:
-        '<p><strong>GitHub, GitLab and Bitbucket</strong> — I version my own front-end code, work in feature branches, open <strong>pull requests</strong> and review UI changes, and keep design-token and component updates in sync with the codebase. Which one depends on the team\'s stack.</p>',
+        '<p><strong>GitHub, GitLab and Bitbucket</strong>: I version my own front-end code, work in feature branches, open <strong>pull requests</strong> and review UI changes, and keep design-token and component updates in sync with the codebase. Which one depends on the team\'s stack.</p>',
       chips: [
         { label: 'Do you write code?', q: 'do you write code' },
         { label: 'DevOps tools', q: 'what devops tools do you use' }
@@ -420,7 +420,7 @@
       id: 'tool-jmeter',
       patterns: ['jmeter', 'load testing', 'load test', 'performance testing', 'stress test', 'throughput', 'concurrency'],
       answer:
-        '<p><strong>JMeter</strong> — <strong>load and performance testing</strong>. I use it to see how a UI and its endpoints hold up under concurrent users — response times, throughput, where things degrade — so performance problems are caught before they reach real users, not after.</p>',
+        '<p><strong>JMeter</strong>: <strong>load and performance testing</strong>. I use it to see how a UI and its endpoints hold up under concurrent users: response times, throughput, where things degrade, so performance problems are caught before they reach real users, not after.</p>',
       chips: [
         { label: 'What do you use Postman for?', q: 'what do you use postman for' },
         { label: 'DevOps tools', q: 'what devops tools do you use' }
@@ -430,7 +430,7 @@
       id: 'tool-postman',
       patterns: ['postman', 'api', 'apis', 'endpoint', 'endpoints', 'rest', 'json', 'payload', 'api testing'],
       answer:
-        '<p><strong>Postman</strong> — during front-end integration I use it to <strong>hit endpoints, inspect JSON payloads, check status codes and edge cases</strong>, and confirm the API returns what the UI expects before wiring it in. It saves a lot of guesswork when a screen isn\'t rendering the right data.</p>',
+        '<p><strong>Postman</strong>: during front-end integration I use it to <strong>hit endpoints, inspect JSON payloads, check status codes and edge cases</strong>, and confirm the API returns what the UI expects before wiring it in. It saves a lot of guesswork when a screen isn\'t rendering the right data.</p>',
       chips: [
         { label: 'What do you use JMeter for?', q: 'what do you use jmeter for' },
         { label: 'Do you write code?', q: 'do you write code' }
@@ -442,16 +442,16 @@
       id: 'experience',
       patterns: ['experience', 'career', 'job', 'jobs', 'work history', 'companies', 'employment', 'how many years', 'years of experience', 'cv history', 'background', 'worked where', 'past roles'],
       answer:
-        '<p><strong>7+ years</strong>, <strong>20 flagship products</strong>, <strong>6 companies across 3 countries</strong> — <a href="#experience">full timeline here</a>.</p>' +
+        '<p><strong>7+ years</strong>, <strong>20 flagship products</strong>, <strong>6 companies across 3 countries</strong>: <a href="#experience">full timeline here</a>.</p>' +
         '<ul>' +
-        '<li><strong>ADN DigiNet Limited</strong> — UI/UX Engineer, Dhaka (Nov 2021 – Jul 2026)</li>' +
-        '<li><strong>SE Plus Global</strong> — UI/UX Engineer, part-time, Thailand-based remote (Oct 2024 – Dec 2025)</li>' +
-        '<li><strong>Streaming Plug</strong> — UI/UX Engineer, Florida USA remote (Jan 2021 – Jan 2022)</li>' +
-        '<li><strong>Sam Solutions</strong> — System Analyst, Dhaka (Feb 2020 – Jan 2021)</li>' +
-        '<li><strong>Future Track IT</strong> — Product Designer, Dhaka (Jan 2018 – Mar 2019)</li>' +
-        '<li><strong>Earlier</strong> — data &amp; CRM roles (2015 – 2017)</li>' +
+        '<li><strong>ADN DigiNet Limited</strong>: UI/UX Engineer, Dhaka (Nov 2021 – Jul 2026)</li>' +
+        '<li><strong>SE Plus Global</strong>: UI/UX Engineer, part-time, Thailand-based remote (Oct 2024 – Dec 2025)</li>' +
+        '<li><strong>Streaming Plug</strong>: UI/UX Engineer, Florida USA remote (Jan 2021 – Jan 2022)</li>' +
+        '<li><strong>Sam Solutions</strong>: System Analyst, Dhaka (Feb 2020 – Jan 2021)</li>' +
+        '<li><strong>Future Track IT</strong>: Product Designer, Dhaka (Jan 2018 – Mar 2019)</li>' +
+        '<li><strong>Earlier</strong>: data &amp; CRM roles (2015 – 2017)</li>' +
         '</ul>' +
-        '<p>Beyond employers, I\'ve designed and shipped work for <strong>international companies and clients across Canada, Australia, the USA, the UAE, Pakistan, Nigeria and Rwanda</strong> — all remote, from Dhaka.</p>' +
+        '<p>Beyond employers, I\'ve designed and shipped work for <strong>international companies and clients across Canada, Australia, the USA, the UAE, Pakistan, Nigeria and Rwanda</strong>: all remote, from Dhaka.</p>' +
         '<p>Ask about any one of them and I\'ll tell you what I did there.</p>',
       chips: [
         { label: 'What did you do at ADN?', q: 'what did you do at adn diginet' },
@@ -463,8 +463,8 @@
       id: 'exp-adn',
       patterns: ['adn', 'diginet', 'adn diginet', 'current job', 'current company', 'where do you work now', 'latest job'],
       answer:
-        '<p><strong>ADN DigiNet Limited</strong> — Mohakhali, Dhaka · <strong>UI/UX Engineer</strong> (Nov 2021 – Jul 2026).</p>' +
-        '<p>I own <strong>end-to-end product design for web and app products</strong>: discovery and requirements, wireframes and user flows, high-fidelity UI, and shared <strong>design systems</strong> — then I stay with engineering through implementation to keep the build on-spec. I also help set product direction across ERP, CRM, HRMS, POS, KDS/CDS, kiosk and FinTech products.</p>' +
+        '<p><strong>ADN DigiNet Limited</strong>: Mohakhali, Dhaka · <strong>UI/UX Engineer</strong> (Nov 2021 – Jul 2026).</p>' +
+        '<p>I own <strong>end-to-end product design for web and app products</strong>: discovery and requirements, wireframes and user flows, high-fidelity UI, and shared <strong>design systems</strong>: then I stay with engineering through implementation to keep the build on-spec. I also help set product direction across ERP, CRM, HRMS, POS, KDS/CDS, kiosk and FinTech products.</p>' +
         '<p>Focus: Product Strategy · Design Systems · Cross-functional Leadership.</p>',
       chips: [
         { label: 'Full timeline', q: 'tell me about your experience' },
@@ -475,8 +475,8 @@
       id: 'exp-seplus',
       patterns: ['se plus', 'seplus', 'se plus global', 'thailand', 'part time', 'part-time'],
       answer:
-        '<p><strong>SE Plus Global</strong> — remote, Thailand-based · <strong>UI/UX Engineer (part-time)</strong> (Oct 2024 – Dec 2025).</p>' +
-        '<p>I designed user-focused UI/UX for <strong>POS web and app products</strong>, then did the build myself — taking <strong>Figma, XD and Sketch</strong> files and turning them into responsive, <strong>pixel-perfect React</strong>. Classic design-to-code ownership.</p>',
+        '<p><strong>SE Plus Global</strong>: remote, Thailand-based · <strong>UI/UX Engineer (part-time)</strong> (Oct 2024 – Dec 2025).</p>' +
+        '<p>I designed user-focused UI/UX for <strong>POS web and app products</strong>, then did the build myself, taking <strong>Figma, XD and Sketch</strong> files and turning them into responsive, <strong>pixel-perfect React</strong>. Classic design-to-code ownership.</p>',
       chips: [
         { label: 'How good are you at React?', q: 'how good are you at react' },
         { label: 'Full timeline', q: 'tell me about your experience' }
@@ -486,8 +486,8 @@
       id: 'exp-streaming',
       patterns: ['streaming plug', 'streamingplug', 'florida', 'usa job', 'us company'],
       answer:
-        '<p><strong>Streaming Plug</strong> — remote, Florida, USA · <strong>UI/UX Engineer</strong> (Jan 2021 – Jan 2022).</p>' +
-        '<p>I created <strong>user-centered designs from research and feedback</strong> — wireframes, prototypes and mockups — and fixed a backlog of <strong>UX and responsiveness issues</strong> across the product.</p>',
+        '<p><strong>Streaming Plug</strong>: remote, Florida, USA · <strong>UI/UX Engineer</strong> (Jan 2021 – Jan 2022).</p>' +
+        '<p>I created <strong>user-centered designs from research and feedback</strong>: wireframes, prototypes and mockups, and fixed a backlog of <strong>UX and responsiveness issues</strong> across the product.</p>',
       chips: [
         { label: 'Full timeline', q: 'tell me about your experience' },
         { label: 'UX research', q: 'how do you do ux research' }
@@ -497,7 +497,7 @@
       id: 'exp-sam',
       patterns: ['sam solutions', 'system analyst', 'systems analyst', 'analyst role', 'linux', 'server admin'],
       answer:
-        '<p><strong>Sam Solutions</strong> — Mirpur DOHS, Dhaka · <strong>System Analyst</strong> (Feb 2020 – Jan 2021).</p>' +
+        '<p><strong>Sam Solutions</strong>: Mirpur DOHS, Dhaka · <strong>System Analyst</strong> (Feb 2020 – Jan 2021).</p>' +
         '<p>I <strong>gathered requirements and specifications</strong> for new systems, <strong>validated results through testing</strong>, and handled <strong>Linux server administration</strong>. It\'s where the engineering side of my thinking got sharper.</p>',
       chips: [
         { label: 'Full timeline', q: 'tell me about your experience' },
@@ -508,7 +508,7 @@
       id: 'exp-futuretrack',
       patterns: ['future track', 'futuretrack', 'future track it', 'product designer', 'first design job', 'earliest role'],
       answer:
-        '<p><strong>Future Track IT</strong> — Mirpur, Dhaka · <strong>Product Designer</strong> (Jan 2018 – Mar 2019).</p>' +
+        '<p><strong>Future Track IT</strong>: Mirpur, Dhaka · <strong>Product Designer</strong> (Jan 2018 – Mar 2019).</p>' +
         '<p>I built <strong>wireframes, user flows and high-fidelity UI from business requirements</strong>, and contributed to the team\'s shared <strong>design systems</strong>. This is where the UI/UX career really started.</p>',
       chips: [
         { label: 'Full timeline', q: 'tell me about your experience' },
@@ -519,7 +519,7 @@
       id: 'exp-early',
       patterns: ['dailytask24', 'daily task', 'mapquest', 'aspire', 'virtual assistant', 'data analyst', 'map data', 'web scraping', 'before design', '2015'],
       answer:
-        '<p><strong>2015 – 2017</strong> — before design: <strong>web scraping and CRM operations</strong> at DailyTask24, <strong>map data verification</strong> at MapQuest, and <strong>virtual assistance</strong> for The ASPIRE Group. Detail-heavy data work that still shows up in how carefully I handle edge cases.</p>',
+        '<p><strong>2015 – 2017</strong>: before design: <strong>web scraping and CRM operations</strong> at DailyTask24, <strong>map data verification</strong> at MapQuest, and <strong>virtual assistance</strong> for The ASPIRE Group. Detail-heavy data work that still shows up in how carefully I handle edge cases.</p>',
       chips: [
         { label: 'Full timeline', q: 'tell me about your experience' },
         { label: 'Your education', q: 'tell me about your education' }
@@ -530,8 +530,8 @@
       id: 'dom-erp',
       patterns: ['erp', 'enterprise resource planning', 'erp system', 'erp platform', 'resource planning'],
       answer:
-        '<p>Yes — <strong>ERP</strong> is one of my core domains. I\'ve designed and front-end-built <strong>enterprise resource planning</strong> modules end to end: inventory &amp; procurement, finance and invoicing, sales orders, manufacturing / BOM, reporting and role-based admin.</p>' +
-        '<p>The hard part of ERP is <strong>density without chaos</strong> — I lean on a strict design system, smart data tables (bulk actions, inline edit, saved views, column control), predictable form patterns, and permission-aware screens so each role only sees what it needs.</p>',
+        '<p>Yes, <strong>ERP</strong> is one of my core domains. I\'ve designed and front-end-built <strong>enterprise resource planning</strong> modules end to end: inventory &amp; procurement, finance and invoicing, sales orders, manufacturing / BOM, reporting and role-based admin.</p>' +
+        '<p>The hard part of ERP is <strong>density without chaos</strong>: I lean on a strict design system, smart data tables (bulk actions, inline edit, saved views, column control), predictable form patterns, and permission-aware screens so each role only sees what it needs.</p>',
       chips: [
         { label: 'CRM work?', q: 'have you worked on CRM' },
         { label: 'Complex enterprise UX', q: 'how do you design complex enterprise software' },
@@ -542,7 +542,7 @@
       id: 'dom-crm',
       patterns: ['crm', 'customer relationship management', 'crm system', 'crm platform', 'sales pipeline', 'lead management'],
       answer:
-        '<p><strong>CRM</strong> — a domain I\'ve shipped in repeatedly, and where my career actually started (CRM operations, 2015–2017). I\'ve designed <strong>contact and account management, sales pipelines &amp; deal stages, activity timelines, lead scoring, task / email workflows and analytics dashboards</strong>.</p>' +
+        '<p><strong>CRM</strong>: a domain I\'ve shipped in repeatedly, and where my career actually started (CRM operations, 2015–2017). I\'ve designed <strong>contact and account management, sales pipelines &amp; deal stages, activity timelines, lead scoring, task / email workflows and analytics dashboards</strong>.</p>' +
         '<p>Focus: a fast <strong>global search</strong>, drag-and-drop pipeline boards, quick-add everywhere, and dashboards that answer &ldquo;what needs my attention today&rdquo; instead of just showing charts.</p>',
       chips: [
         { label: 'ERP work?', q: 'have you worked on ERP' },
@@ -554,8 +554,8 @@
       id: 'dom-hrms',
       patterns: ['hrms', 'hris', 'hr system', 'human resource', 'human resources', 'payroll', 'attendance', 'leave management', 'employee management', 'onboarding'],
       answer:
-        '<p><strong>HRMS / HRIS</strong> — yes. I\'ve designed <strong>employee directories &amp; profiles, attendance and shift tracking, leave requests and approval flows, payroll views, onboarding checklists, performance reviews and org charts</strong>.</p>' +
-        '<p>HR software runs from a power admin to a first-day employee, so I design <strong>two experiences in one</strong>: a dense console for HR, and a simple self-service portal for staff — with approval flows that are obvious at a glance.</p>',
+        '<p><strong>HRMS / HRIS</strong>: yes. I\'ve designed <strong>employee directories &amp; profiles, attendance and shift tracking, leave requests and approval flows, payroll views, onboarding checklists, performance reviews and org charts</strong>.</p>' +
+        '<p>HR software runs from a power admin to a first-day employee, so I design <strong>two experiences in one</strong>: a dense console for HR, and a simple self-service portal for staff, with approval flows that are obvious at a glance.</p>',
       chips: [
         { label: 'CRM work?', q: 'have you worked on CRM' },
         { label: 'Enterprise UX', q: 'how do you design complex enterprise software' },
@@ -566,8 +566,8 @@
       id: 'dom-pos',
       patterns: ['pos', 'point of sale', 'point-of-sale', 'pos system', 'pos app', 'retail pos', 'restaurant pos', 'billing screen', 'checkout screen', 'cashier'],
       answer:
-        '<p><strong>POS</strong> is a strong area — I designed and front-end-built <strong>POS web and app products at SE Plus Global</strong>, plus more at ADN DigiNet.</p>' +
-        '<p>POS UX is about <strong>speed under pressure</strong>: large touch targets, a cart that never hides, one- or two-tap item entry, fast modifiers and combos, split / merge bills, offline-tolerant flows, and a checkout a new cashier can run on day one. Hardware counts too — receipt printers, cash drawers, scanners, card terminals.</p>',
+        '<p><strong>POS</strong> is a strong area: I designed and front-end-built <strong>POS web and app products at SE Plus Global</strong>, plus more at ADN DigiNet.</p>' +
+        '<p>POS UX is about <strong>speed under pressure</strong>: large touch targets, a cart that never hides, one- or two-tap item entry, fast modifiers and combos, split / merge bills, offline-tolerant flows, and a checkout a new cashier can run on day one. Hardware counts too: receipt printers, cash drawers, scanners, card terminals.</p>',
       chips: [
         { label: 'What is a KDS?', q: 'what is a KDS' },
         { label: 'What is a CDS?', q: 'what is a CDS' },
@@ -578,8 +578,8 @@
       id: 'dom-kds',
       patterns: ['kds', 'kitchen display', 'kitchen display system', 'kitchen screen', 'order display', 'expo screen', 'ticket rail', 'bump bar'],
       answer:
-        '<p><strong>KDS — Kitchen Display System.</strong> The kitchen screen that replaces paper tickets: orders route to the right station with <strong>prep timers, colour-coded urgency, course firing, bump / recall and all-day item counts</strong>.</p>' +
-        '<p>I design KDS to be readable from across a hot, busy kitchen — <strong>huge type, high contrast, no tiny controls</strong>, driven by a bump bar or a few big touch zones. It pairs with the POS and CDS as one connected system.</p>',
+        '<p><strong>KDS: Kitchen Display System.</strong> The kitchen screen that replaces paper tickets: orders route to the right station with <strong>prep timers, colour-coded urgency, course firing, bump / recall and all-day item counts</strong>.</p>' +
+        '<p>I design KDS to be readable from across a hot, busy kitchen: <strong>huge type, high contrast, no tiny controls</strong>, driven by a bump bar or a few big touch zones. It pairs with the POS and CDS as one connected system.</p>',
       chips: [
         { label: 'What is a CDS?', q: 'what is a CDS' },
         { label: 'POS work?', q: 'have you worked on POS' },
@@ -590,8 +590,8 @@
       id: 'dom-cds',
       patterns: ['cds', 'customer display', 'customer display system', 'customer facing display', 'second screen', 'pole display', 'order confirmation screen'],
       answer:
-        '<p><strong>CDS — Customer Display System.</strong> The customer-facing screen at the counter: it mirrors the cart live as the cashier rings items, showing <strong>line items, discounts, tax and totals</strong>, then payment status, loyalty prompts and a thank-you / feedback QR.</p>' +
-        '<p>I design CDS to <strong>build trust and cut disputes</strong> — the customer sees exactly what\'s being charged, in clean large type, with room for promos or branding between transactions.</p>',
+        '<p><strong>CDS: Customer Display System.</strong> The customer-facing screen at the counter: it mirrors the cart live as the cashier rings items, showing <strong>line items, discounts, tax and totals</strong>, then payment status, loyalty prompts and a thank-you / feedback QR.</p>' +
+        '<p>I design CDS to <strong>build trust and cut disputes</strong>: the customer sees exactly what\'s being charged, in clean large type, with room for promos or branding between transactions.</p>',
       chips: [
         { label: 'What is a KDS?', q: 'what is a KDS' },
         { label: 'POS work?', q: 'have you worked on POS' },
@@ -602,8 +602,8 @@
       id: 'dom-kiosk',
       patterns: ['kiosk', 'self service', 'self-service', 'self ordering', 'self-order', 'self checkout', 'self-checkout', 'ordering kiosk', 'touchscreen kiosk', 'unattended'],
       answer:
-        '<p><strong>Kiosk / self-service</strong> — yes, shipped as a flagship domain: self-order and self-checkout kiosks for retail and restaurants.</p>' +
-        '<p>Kiosks have their own rules — <strong>no keyboard, no help desk</strong>. Big obvious steps, a persistent progress and cart, forgiving touch targets, generous timeouts with an &ldquo;are you still there?&rdquo; reset, real accessibility (reachable height, screen-reader / high-contrast mode), attract-loop screens, and a flow a first-timer finishes without instructions.</p>',
+        '<p><strong>Kiosk / self-service</strong>: yes, shipped as a flagship domain: self-order and self-checkout kiosks for retail and restaurants.</p>' +
+        '<p>Kiosks have their own rules: <strong>no keyboard, no help desk</strong>. Big obvious steps, a persistent progress and cart, forgiving touch targets, generous timeouts with an &ldquo;are you still there?&rdquo; reset, real accessibility (reachable height, screen-reader / high-contrast mode), attract-loop screens, and a flow a first-timer finishes without instructions.</p>',
       chips: [
         { label: 'POS work?', q: 'have you worked on POS' },
         { label: 'What is a KDS?', q: 'what is a KDS' },
@@ -614,8 +614,8 @@
       id: 'dom-saas',
       patterns: ['saas', 'saas product', 'saas platform', 'b2b saas', 'subscription product', 'web app product', 'multi tenant', 'multi-tenant'],
       answer:
-        '<p><strong>SaaS products</strong> — a big part of my work: multi-tenant B2B web apps from first screen to scale.</p>' +
-        '<p>I cover the whole SaaS surface: <strong>onboarding and empty states, role &amp; permission models, billing and plan limits, settings, in-app notifications, dashboards and reporting</strong> — plus the design system that keeps it coherent as it grows. I design it <em>and</em> build the React front-end, so it ships as drawn.</p>',
+        '<p><strong>SaaS products</strong>: a big part of my work: multi-tenant B2B web apps from first screen to scale.</p>' +
+        '<p>I cover the whole SaaS surface: <strong>onboarding and empty states, role &amp; permission models, billing and plan limits, settings, in-app notifications, dashboards and reporting</strong>: plus the design system that keeps it coherent as it grows. I design it <em>and</em> build the React front-end, so it ships as drawn.</p>',
       chips: [
         { label: 'Design systems', q: 'tell me about design systems' },
         { label: 'How good are you at React?', q: 'how good are you at react' },
@@ -626,9 +626,9 @@
       id: 'dom-website',
       patterns: ['website', 'websites', 'web design', 'landing page', 'landing pages', 'marketing site', 'marketing website', 'company website', 'corporate website', 'web page', 'webpage', 'design a website', 'build a website', 'portfolio site'],
       answer:
-        '<p>Absolutely — <strong>website design and build</strong> is bread and butter: marketing and corporate sites, <strong>landing pages</strong>, product sites and portfolios.</p>' +
-        '<p>End to end: <strong>UX and IA, visual design, responsive layout, motion, SEO-friendly semantic markup, and the front-end build</strong> in HTML5 / CSS3 / Tailwind / React — or WordPress / Shopify when a CMS or store fits. This very site is a hand-built example: no template, custom motion, even the chat window.</p>' +
-        '<p>A <strong>landing page</strong> specifically: one goal, one message, a fast page tuned for conversion — hero, proof, objection-handling, one clear CTA, A/B-ready.</p>',
+        '<p>Absolutely, <strong>website design and build</strong> is bread and butter: marketing and corporate sites, <strong>landing pages</strong>, product sites and portfolios.</p>' +
+        '<p>End to end: <strong>UX and IA, visual design, responsive layout, motion, SEO-friendly semantic markup, and the front-end build</strong> in HTML5 / CSS3 / Tailwind / React, or WordPress / Shopify when a CMS or store fits. This very site is a hand-built example: no template, custom motion, even the chat window.</p>' +
+        '<p>A <strong>landing page</strong> specifically: one goal, one message, a fast page tuned for conversion: hero, proof, objection-handling, one clear CTA, A/B-ready.</p>',
       chips: [
         { label: 'eCommerce work?', q: 'have you done ecommerce' },
         { label: 'Do you write code?', q: 'do you write code' },
@@ -639,8 +639,8 @@
       id: 'dom-ecommerce',
       patterns: ['ecommerce', 'e commerce', 'e-commerce', 'online store', 'online shop', 'shopping site', 'storefront', 'checkout flow', 'cart', 'product page', 'pdp', 'plp', 'shopify store', 'woocommerce', 'have you done ecommerce'],
       answer:
-        '<p><strong>eCommerce</strong> — yes, shipped as a flagship domain: full online stores and storefronts.</p>' +
-        '<p>The whole buying surface: <strong>catalogue and search, product listing &amp; detail pages, filters, cart and mini-cart, a short checkout, account and order history, wishlist, and the CMS side for merchandising</strong>. Built custom in React or on <strong>Shopify / WooCommerce</strong> when a platform fits. Focus is always the same — cut friction between &ldquo;I want this&rdquo; and &ldquo;order placed&rdquo;, and make it fast on a mid-range phone.</p>',
+        '<p><strong>eCommerce</strong>: yes, shipped as a flagship domain: full online stores and storefronts.</p>' +
+        '<p>The whole buying surface: <strong>catalogue and search, product listing &amp; detail pages, filters, cart and mini-cart, a short checkout, account and order history, wishlist, and the CMS side for merchandising</strong>. Built custom in React or on <strong>Shopify / WooCommerce</strong> when a platform fits. Focus is always the same: cut friction between &ldquo;I want this&rdquo; and &ldquo;order placed&rdquo;, and make it fast on a mid-range phone.</p>',
       chips: [
         { label: 'Landing pages / websites', q: 'do you build websites' },
         { label: 'WordPress / Shopify?', q: 'do you use wordpress' },
@@ -651,14 +651,14 @@
       id: 'dom-sms-marketing',
       patterns: ['sms marketing', 'sms platform', 'sms solution', 'sms campaign', 'bulk sms', 'sms gateway', 'text marketing', 'sms blast', 'otp platform', 'sms full solution'],
       answer:
-        '<p>Yes — I designed and front-end-built a <strong>full SMS marketing solution</strong>: an end-to-end platform, not just a send box.</p>' +
+        '<p>Yes, I designed and front-end-built a <strong>full SMS marketing solution</strong>: an end-to-end platform, not just a send box.</p>' +
         '<ul>' +
-        '<li><strong>Campaign builder</strong> — compose, personalise with merge fields, character/segment counter, sender-ID management, schedule or drip.</li>' +
-        '<li><strong>Contacts &amp; segments</strong> — import, dedupe, opt-in / opt-out and DND handling, dynamic segments.</li>' +
-        '<li><strong>Delivery &amp; billing</strong> — gateway routing, delivery-report dashboards, per-message cost, wallet / credit top-up.</li>' +
+        '<li><strong>Campaign builder</strong>: compose, personalise with merge fields, character/segment counter, sender-ID management, schedule or drip.</li>' +
+        '<li><strong>Contacts &amp; segments</strong>: import, dedupe, opt-in / opt-out and DND handling, dynamic segments.</li>' +
+        '<li><strong>Delivery &amp; billing</strong>: gateway routing, delivery-report dashboards, per-message cost, wallet / credit top-up.</li>' +
         '<li><strong>Transactional + OTP APIs</strong>, templates and approval, plus reporting on delivery rate, cost and click-through.</li>' +
         '</ul>' +
-        '<p>The design challenge is density with a calm campaign flow — a marketer and an admin using the same product very differently.</p>',
+        '<p>The design challenge is density with a calm campaign flow: a marketer and an admin using the same product very differently.</p>',
       chips: [
         { label: 'Email marketing solution?', q: 'have you built an email marketing platform' },
         { label: 'SaaS work', q: 'have you designed saas products' },
@@ -669,12 +669,12 @@
       id: 'dom-email-marketing',
       patterns: ['email marketing', 'email platform', 'email campaign', 'newsletter tool', 'email automation', 'drip campaign', 'email builder', 'mailer', 'email full solution', 'email blast', 'email solution'],
       answer:
-        '<p>Yes — a <strong>full email marketing solution</strong>, designed and front-end-built end to end.</p>' +
+        '<p>Yes, a <strong>full email marketing solution</strong>, designed and front-end-built end to end.</p>' +
         '<ul>' +
-        '<li><strong>Drag-and-drop email builder</strong> — blocks, reusable templates, live desktop/mobile preview, merge tags, dark-mode check.</li>' +
-        '<li><strong>Automation / journeys</strong> — a visual flow canvas: triggers, waits, conditions, A/B splits.</li>' +
-        '<li><strong>Lists &amp; deliverability</strong> — signup forms, double opt-in, suppression &amp; bounce handling, sender authentication (SPF/DKIM), warm-up.</li>' +
-        '<li><strong>Analytics</strong> — opens, clicks, heat map, revenue attribution, per-campaign and per-contact.</li>' +
+        '<li><strong>Drag-and-drop email builder</strong>: blocks, reusable templates, live desktop/mobile preview, merge tags, dark-mode check.</li>' +
+        '<li><strong>Automation / journeys</strong>: a visual flow canvas: triggers, waits, conditions, A/B splits.</li>' +
+        '<li><strong>Lists &amp; deliverability</strong>: signup forms, double opt-in, suppression &amp; bounce handling, sender authentication (SPF/DKIM), warm-up.</li>' +
+        '<li><strong>Analytics</strong>: opens, clicks, heat map, revenue attribution, per-campaign and per-contact.</li>' +
         '</ul>' +
         '<p>It pairs with the SMS platform as one multi-channel campaign product.</p>',
       chips: [
@@ -687,11 +687,11 @@
       id: 'dom-edtech',
       patterns: ['edtech', 'ed tech', 'e learning', 'elearning', 'lms', 'learning management', 'online course', 'course platform', 'online class', 'student app', 'learning app', 'education technology', 'have you done edtech'],
       answer:
-        '<p><strong>EdTech / e-learning</strong> — a shipped flagship domain: course and learning platforms.</p>' +
+        '<p><strong>EdTech / e-learning</strong>: a shipped flagship domain: course and learning platforms.</p>' +
         '<ul>' +
-        '<li><strong>Learner side</strong> — course catalogue, lesson player (video + notes + resources), progress tracking, quizzes and assignments, certificates, discussion.</li>' +
-        '<li><strong>Instructor / admin side</strong> — course authoring, curriculum builder, cohort and batch management, grading, live-class scheduling.</li>' +
-        '<li><strong>Around it</strong> — enrolment and payments, coupons, a reporting dashboard, and mobile-first lesson consumption for low-end devices and patchy networks.</li>' +
+        '<li><strong>Learner side</strong>: course catalogue, lesson player (video + notes + resources), progress tracking, quizzes and assignments, certificates, discussion.</li>' +
+        '<li><strong>Instructor / admin side</strong>: course authoring, curriculum builder, cohort and batch management, grading, live-class scheduling.</li>' +
+        '<li><strong>Around it</strong>: enrolment and payments, coupons, a reporting dashboard, and mobile-first lesson consumption for low-end devices and patchy networks.</li>' +
         '</ul>',
       chips: [
         { label: 'Education portal?', q: 'have you built an education portal' },
@@ -703,11 +703,11 @@
       id: 'dom-job-portal',
       patterns: ['job portal', 'job board', 'recruitment platform', 'hiring platform', 'career site', 'job site', 'ats', 'applicant tracking', 'job listing', 'jobs website', 'have you built a job portal'],
       answer:
-        '<p><strong>Job portal</strong> — yes, designed and built as a flagship product. It\'s really three products sharing a database:</p>' +
+        '<p><strong>Job portal</strong>: yes, designed and built as a flagship product. It\'s really three products sharing a database:</p>' +
         '<ul>' +
-        '<li><strong>Job seeker</strong> — profile &amp; résumé builder, smart search &amp; filters, one-click apply, saved jobs, application status, job alerts.</li>' +
-        '<li><strong>Employer</strong> — company page, job posting with screening questions, candidate pipeline / ATS board, messaging, plan &amp; credit management.</li>' +
-        '<li><strong>Admin</strong> — moderation, category &amp; taxonomy control, featured-listing management, analytics.</li>' +
+        '<li><strong>Job seeker</strong>: profile &amp; résumé builder, smart search &amp; filters, one-click apply, saved jobs, application status, job alerts.</li>' +
+        '<li><strong>Employer</strong>: company page, job posting with screening questions, candidate pipeline / ATS board, messaging, plan &amp; credit management.</li>' +
+        '<li><strong>Admin</strong>: moderation, category &amp; taxonomy control, featured-listing management, analytics.</li>' +
         '</ul>' +
         '<p>The hard parts: matching relevance, a fast mobile apply flow, and keeping listing quality high.</p>',
       chips: [
@@ -720,12 +720,12 @@
       id: 'dom-edu-portal',
       patterns: ['edu portal', 'education portal', 'school portal', 'college portal', 'university portal', 'student portal', 'campus management', 'school management system', 'sis', 'academic portal', 'result portal', 'admission portal', 'have you built an education portal'],
       answer:
-        '<p><strong>Education / campus portal</strong> — yes. Distinct from EdTech: this is the <strong>institution\'s system of record</strong> for a school, college or university.</p>' +
+        '<p><strong>Education / campus portal</strong>: yes. Distinct from EdTech: this is the <strong>institution\'s system of record</strong> for a school, college or university.</p>' +
         '<ul>' +
-        '<li><strong>Admissions</strong> — application, document upload, merit lists, enrolment.</li>' +
-        '<li><strong>Academics</strong> — class routine, attendance, assignments, exam scheduling, grade entry, results &amp; transcripts.</li>' +
-        '<li><strong>Finance</strong> — fee structure, invoicing, online payment, dues tracking.</li>' +
-        '<li><strong>Portals per role</strong> — a dense admin/registrar console, a teacher portal, and simple parent/student self-service for results, fees and notices.</li>' +
+        '<li><strong>Admissions</strong>: application, document upload, merit lists, enrolment.</li>' +
+        '<li><strong>Academics</strong>: class routine, attendance, assignments, exam scheduling, grade entry, results &amp; transcripts.</li>' +
+        '<li><strong>Finance</strong>: fee structure, invoicing, online payment, dues tracking.</li>' +
+        '<li><strong>Portals per role</strong>: a dense admin/registrar console, a teacher portal, and simple parent/student self-service for results, fees and notices.</li>' +
         '</ul>',
       chips: [
         { label: 'EdTech / e-learning?', q: 'have you done edtech' },
@@ -737,14 +737,14 @@
       id: 'enterprise-ux',
       patterns: ['complex enterprise software', 'complex software', 'enterprise ux', 'enterprise software', 'data dense', 'data-dense', 'admin panel', 'admin panels', 'admin dashboard', 'back office', 'back-office', 'internal tools', 'internal tool', 'b2b', 'erp crm', 'erp crm hrms', 'crm hrms'],
       answer:
-        '<p>Designing <strong>dense, complex enterprise software</strong> is my sweet spot — ERP, CRM, HRMS, POS and monitoring tools like NMS and DCIM.</p>' +
+        '<p>Designing <strong>dense, complex enterprise software</strong> is my sweet spot: ERP, CRM, HRMS, POS and monitoring tools like NMS and DCIM.</p>' +
         '<p>How I keep complexity usable:</p>' +
         '<ul>' +
-        '<li><strong>Systemise everything</strong> — one component library, strict tokens, repeatable table &amp; form patterns</li>' +
-        '<li><strong>Progressive disclosure</strong> — defaults up front, power in drawers and advanced views</li>' +
-        '<li><strong>Role-aware UI</strong> — the screen adapts to permissions instead of greying half of it out</li>' +
-        '<li><strong>Real data early</strong> — design with worst-case volumes, long strings and empty states, not lorem ipsum</li>' +
-        '<li><strong>Keyboard &amp; bulk actions</strong> — people who live in this software all day need speed</li>' +
+        '<li><strong>Systemise everything</strong>: one component library, strict tokens, repeatable table &amp; form patterns</li>' +
+        '<li><strong>Progressive disclosure</strong>: defaults up front, power in drawers and advanced views</li>' +
+        '<li><strong>Role-aware UI</strong>: the screen adapts to permissions instead of greying half of it out</li>' +
+        '<li><strong>Real data early</strong>: design with worst-case volumes, long strings and empty states, not lorem ipsum</li>' +
+        '<li><strong>Keyboard &amp; bulk actions</strong>: people who live in this software all day need speed</li>' +
         '</ul>',
       chips: [
         { label: 'Design systems', q: 'tell me about design systems' },
@@ -758,7 +758,7 @@
       id: 'accessibility',
       patterns: ['accessibility', 'a11y', 'wcag', 'accessible', 'screen reader', 'screen readers', 'contrast ratio', 'aria', 'keyboard navigation', 'inclusive design'],
       answer:
-        '<p>Accessibility is built in, not bolted on. I work to <strong>WCAG 2.1 AA</strong>: semantic HTML, full <strong>keyboard operability</strong> with visible focus, correct <strong>ARIA</strong> only where needed, <strong>4.5:1</strong> text contrast, reduced-motion support, and real labels and error text on every form — tested with an actual screen reader.</p>' +
+        '<p>Accessibility is built in, not bolted on. I work to <strong>WCAG 2.1 AA</strong>: semantic HTML, full <strong>keyboard operability</strong> with visible focus, correct <strong>ARIA</strong> only where needed, <strong>4.5:1</strong> text contrast, reduced-motion support, and real labels and error text on every form, tested with an actual screen reader.</p>' +
         '<p>For kiosks I also handle reachable touch height plus high-contrast and text-scaling modes.</p>',
       chips: [
         { label: 'Responsive design', q: 'do you do responsive design' },
@@ -769,7 +769,7 @@
       id: 'responsive',
       patterns: ['responsive', 'responsive design', 'mobile first', 'mobile-first', 'breakpoints', 'adaptive', 'mobile web', 'cross device', 'cross-device', 'fluid layout'],
       answer:
-        '<p>Yes — every build is <strong>responsive and usually mobile-first</strong>: fluid grids and type, sensible breakpoints, touch-friendly targets, and layouts that <em>reflow</em> rather than just shrink. I test on real devices, not only the browser resizer — I cleared a whole backlog of responsiveness issues at Streaming Plug.</p>',
+        '<p>Yes, every build is <strong>responsive and usually mobile-first</strong>: fluid grids and type, sensible breakpoints, touch-friendly targets, and layouts that <em>reflow</em> rather than just shrink. I test on real devices, not only the browser resizer; I cleared a whole backlog of responsiveness issues at Streaming Plug.</p>',
       chips: [
         { label: 'Accessibility', q: 'do you do accessibility' },
         { label: 'Do you write code?', q: 'do you write code' }
@@ -779,7 +779,7 @@
       id: 'wireframing',
       patterns: ['wireframe', 'wireframes', 'wireframing', 'low fidelity', 'low-fidelity', 'lo fi', 'sketching', 'paper prototype', 'blueprint'],
       answer:
-        '<p><strong>Wireframing</strong> is where I lock structure and flow before visuals — low-fidelity layouts, content priority and navigation, reviewed fast and cheap so we change the plan on paper, not in production. I\'ve built wireframes from business requirements at Future Track IT, Streaming Plug and ADN DigiNet.</p>',
+        '<p><strong>Wireframing</strong> is where I lock structure and flow before visuals: low-fidelity layouts, content priority and navigation, reviewed fast and cheap so we change the plan on paper, not in production. I\'ve built wireframes from business requirements at Future Track IT, Streaming Plug and ADN DigiNet.</p>',
       chips: [
         { label: 'Prototyping', q: 'do you build prototypes' },
         { label: 'Information architecture', q: 'do you do information architecture' }
@@ -789,7 +789,7 @@
       id: 'prototyping',
       patterns: ['prototype', 'prototypes', 'prototyping', 'interactive prototype', 'clickable prototype', 'high fidelity', 'high-fidelity', 'figma prototype', 'proof of concept'],
       answer:
-        '<p>I build <strong>interactive prototypes</strong> in Figma — real flows, states and transitions — for stakeholder sign-off and for <strong>usability testing in Maze</strong> before a line of production code. When a concept needs to genuinely feel real, I prototype it in <strong>code</strong> instead.</p>',
+        '<p>I build <strong>interactive prototypes</strong> in Figma (real flows, states and transitions) for stakeholder sign-off and for <strong>usability testing in Maze</strong> before a line of production code. When a concept needs to genuinely feel real, I prototype it in <strong>code</strong> instead.</p>',
       chips: [
         { label: 'Usability testing', q: 'how do you do ux research' },
         { label: 'Wireframing', q: 'tell me about wireframing' }
@@ -799,7 +799,7 @@
       id: 'interaction-design',
       patterns: ['interaction design', 'motion design', 'micro interaction', 'micro-interaction', 'microinteractions', 'animation', 'animations', 'transitions', 'ux motion', 'ixd'],
       answer:
-        '<p><strong>Interaction &amp; motion design</strong> — I treat motion as feedback, not decoration: transitions that show where things came from, loading and skeleton states, meaningful micro-interactions, and easing that feels responsive. Because I build the front-end, that motion survives to production instead of dying in handoff — and it always respects reduced-motion preferences.</p>',
+        '<p><strong>Interaction &amp; motion design</strong>: I treat motion as feedback, not decoration: transitions that show where things came from, loading and skeleton states, meaningful micro-interactions, and easing that feels responsive. Because I build the front-end, that motion survives to production instead of dying in handoff, and it always respects reduced-motion preferences.</p>',
       chips: [
         { label: 'Do you write code?', q: 'do you write code' },
         { label: 'Design systems', q: 'tell me about design systems' }
@@ -809,7 +809,7 @@
       id: 'information-architecture',
       patterns: ['information architecture', 'ia', 'navigation design', 'site map', 'sitemap', 'card sorting', 'taxonomy', 'content structure', 'menu structure', 'findability'],
       answer:
-        '<p><strong>Information architecture</strong> — structuring content and navigation so people find things without thinking: card sorting and tree testing, clear taxonomy and labels, sitemaps and user flows mapped in Miro, and navigation patterns that scale. Critical in ERP / CRM where there are hundreds of screens.</p>',
+        '<p><strong>Information architecture</strong>: structuring content and navigation so people find things without thinking: card sorting and tree testing, clear taxonomy and labels, sitemaps and user flows mapped in Miro, and navigation patterns that scale. Critical in ERP / CRM where there are hundreds of screens.</p>',
       chips: [
         { label: 'Wireframing', q: 'tell me about wireframing' },
         { label: 'Enterprise UX', q: 'how do you design complex enterprise software' }
@@ -829,7 +829,7 @@
       id: 'usability-heuristics',
       patterns: ['heuristic', 'heuristics', 'heuristic evaluation', 'ux audit', 'ux review', 'nielsen', 'ux principles', 'design critique', 'usability review'],
       answer:
-        '<p>I run <strong>heuristic evaluations and UX audits</strong> against known principles — visibility of system status, match to the real world, user control and undo, consistency, error prevention, recognition over recall, and clear help / error messaging. A fast way to catch the obvious problems before spending research budget on them.</p>',
+        '<p>I run <strong>heuristic evaluations and UX audits</strong> against known principles: visibility of system status, match to the real world, user control and undo, consistency, error prevention, recognition over recall, and clear help / error messaging. A fast way to catch the obvious problems before spending research budget on them.</p>',
       chips: [
         { label: 'UX research', q: 'how do you do ux research' },
         { label: 'Accessibility', q: 'do you do accessibility' }
@@ -848,7 +848,7 @@
         '<li><strong>FinTech:</strong> digital banking &amp; branch-queue solutions (Prime Bank Digital Token)</li>' +
         '<li><strong>Infrastructure:</strong> network &amp; data-center monitoring (NMS, DCIM)</li>' +
         '</ul>' +
-        '<p>Ask about any one — e.g. &ldquo;have you worked on POS?&rdquo;, &ldquo;what is a KDS?&rdquo; or &ldquo;have you built an SMS marketing platform?&rdquo;</p>',
+        '<p>Ask about any one, e.g. &ldquo;have you worked on POS?&rdquo;, &ldquo;what is a KDS?&rdquo; or &ldquo;have you built an SMS marketing platform?&rdquo;</p>',
       chips: [
         { label: 'POS / KDS / CDS', q: 'have you worked on POS' },
         { label: 'ERP / CRM / HRMS', q: 'have you worked on ERP' },
@@ -875,8 +875,8 @@
       id: 'skills',
       patterns: ['skills', 'skillset', 'expertise', 'good at', 'specialize', 'specialise', 'strength', 'strengths', 'what can you do', 'services', 'speciality', 'specialty', 'what are you good at'],
       answer:
-        '<p>Core skills: <strong>UI design, UX research, information architecture, wireframing, prototyping, design systems, interaction &amp; motion design, usability testing and accessibility (WCAG AA)</strong> — plus <strong>front-end (HTML5, CSS3, Tailwind, React)</strong> and design-to-code handoff.</p>' +
-        '<p>Applied across <strong>ERP, CRM, HRMS, POS, KDS, CDS, Kiosk, SMS &amp; email marketing platforms, EdTech, Job Portal, Edu portal, SaaS, FinTech, eCommerce and websites / landing pages</strong> — mostly dense, complex software.</p>',
+        '<p>Core skills: <strong>UI design, UX research, information architecture, wireframing, prototyping, design systems, interaction &amp; motion design, usability testing and accessibility (WCAG AA)</strong>: plus <strong>front-end (HTML5, CSS3, Tailwind, React)</strong> and design-to-code handoff.</p>' +
+        '<p>Applied across <strong>ERP, CRM, HRMS, POS, KDS, CDS, Kiosk, SMS &amp; email marketing platforms, EdTech, Job Portal, Edu portal, SaaS, FinTech, eCommerce and websites / landing pages</strong>: mostly dense, complex software.</p>',
       chips: [
         { label: 'Which domains?', q: 'what domains have you worked in' },
         { label: 'Design systems', q: 'tell me about design systems' },
@@ -887,7 +887,7 @@
       id: 'design-systems',
       patterns: ['design system', 'design systems', 'component library', 'tokens', 'design tokens', 'style guide', 'pattern library'],
       answer:
-        '<p>Design systems are central to how I work — <em>&ldquo;design in systems, not screens.&rdquo;</em> Reusable components and clear tokens keep products consistent as they grow and make handoff to engineering painless. I\'ve built and owned shared systems at ADN DigiNet, Future Track IT and beyond.</p>',
+        '<p>Design systems are central to how I work: <em>&ldquo;design in systems, not screens.&rdquo;</em> Reusable components and clear tokens keep products consistent as they grow and make handoff to engineering painless. I\'ve built and owned shared systems at ADN DigiNet, Future Track IT and beyond.</p>',
       chips: [
         { label: 'Your approach', q: 'what is your approach' },
         { label: 'Figma', q: 'what do you use figma for' }
@@ -915,7 +915,7 @@
       id: 'hire',
       patterns: ['hire', 'available', 'availability', 'freelance', 'freelancer', 'open to work', 'looking for', 'full time', 'fulltime', 'contract', 'rate', 'rates', 'pricing', 'budget', 'cost', 'salary', 'compensation', 'pay expectation', 'expected salary', 'job offer', 'opportunity', 'collaborate', 'work together', 'work with you'],
       answer:
-        '<p>Yes — currently <strong>open to collaborate</strong>. Available for <strong>full-time UI/UX roles</strong> and a couple of <strong>freelance slots</strong> this quarter.</p>' +
+        '<p>Yes, currently <strong>open to collaborate</strong>. Available for <strong>full-time UI/UX roles</strong> and a couple of <strong>freelance slots</strong> this quarter.</p>' +
         '<p>Best next step: email me at <a href="mailto:' + EMAIL + '">' + EMAIL + '</a> or call <a href="tel:' + PHONE_RAW + '">' + PHONE_PRETTY + '</a> and tell me about the project.</p>',
       chips: [
         { label: 'Get your resume', q: 'can I get your resume' },
@@ -953,7 +953,7 @@
       id: 'location',
       patterns: ['location', 'where are you', 'where are you based', 'based', 'city', 'country', 'dhaka', 'bangladesh', 'remote', 'work remote', 'work remotely', 'remote work', 'remotely', 'timezone', 'time zone', 'relocate', 'onsite', 'on site'],
       answer:
-        '<p>Based in <strong>Dhaka, Bangladesh</strong>, and very comfortable working <strong>remote</strong> — I\'ve held roles with teams in Thailand and the USA, and shipped projects for <strong>international clients across Canada, Australia, the USA, the UAE, Pakistan, Nigeria and Rwanda</strong>. Cross–time-zone collaboration is normal for me.</p>',
+        '<p>Based in <strong>Dhaka, Bangladesh</strong>, and very comfortable working <strong>remote</strong>: I\'ve held roles with teams in Thailand and the USA, and shipped projects for <strong>international clients across Canada, Australia, the USA, the UAE, Pakistan, Nigeria and Rwanda</strong>. Cross–time-zone collaboration is normal for me.</p>',
       chips: [
         { label: 'Are you available for hire?', q: 'are you available for hire' },
         { label: 'International clients?', q: 'do you work with international companies' },
@@ -964,7 +964,7 @@
       id: 'international',
       patterns: ['international', 'international company', 'international companies', 'international client', 'international clients', 'international project', 'international projects', 'global client', 'global clients', 'work internationally', 'working internationally', 'overseas', 'abroad', 'foreign client', 'foreign clients', 'foreign company', 'which countries', 'what countries', 'countries worked', 'countries have you worked', 'clients worldwide', 'worldwide', 'who are your clients', 'your clients', 'canada', 'canadian', 'australia', 'australian', 'nigeria', 'nigerian', 'rwanda', 'rwandan', 'pakistan', 'pakistani', 'uae', 'dubai', 'emirates', 'abu dhabi'],
       answer:
-        '<p>Yes — a large part of my work is with <strong>international companies and clients</strong>. Working remotely from Dhaka, I\'ve designed and shipped products for teams and businesses across:</p>' +
+        '<p>Yes, a large part of my work is with <strong>international companies and clients</strong>. Working remotely from Dhaka, I\'ve designed and shipped products for teams and businesses across:</p>' +
         '<ul>' +
         '<li><strong>Canada</strong></li>' +
         '<li><strong>Australia</strong></li>' +
@@ -989,18 +989,18 @@
       /* Personal / off-topic questions — kept professional, steered back to work. */
       test: /\b(father|mother|dad|mom|mum|parents?|wife|husband|spouse|girlfriends?|boyfriends?|married|marriage|divorced?|dating|seeing someone|are you single|relationship status|your kids|have kids|children|kids|siblings?|your family|family name|religion|religious|caste|ethnicity|net worth|how old are you|your age|how much do you weigh|your weight|your height|date of birth|when were you born|birth ?place|hometown|home ?town|native place|your village|home address|where do you live|which area do you live|blood group|zodiac|horoscope|politics|political views?|nid number|passport number)\b/i,
       reply:
-        '<p>I keep things to Rejoanul\'s professional side — his design and engineering work, experience, tools, and how to collaborate. That one\'s a bit personal, so I\'ll leave it. 🙂</p>' +
+        '<p>I keep things to Rejoanul\'s professional side: his design and engineering work, experience, tools, and how to collaborate. That one\'s a bit personal, so I\'ll leave it. 🙂</p>' +
         '<p>For anything outside the portfolio, it\'s best to reach him directly at <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>.</p>',
       chips: defaultChips
     },
     {
       test: /\b(hi|hello|hey|yo|hiya|heya|hii+|helo|greetings|good morning|good evening|good afternoon)\b/i,
-      reply: '<p>Hey! 👋 Ask me anything about Rejoanul — his work, experience, the tools he uses, or how to get in touch.</p>',
+      reply: '<p>Hey! 👋 Ask me anything about Rejoanul: his work, experience, the tools he uses, or how to get in touch.</p>',
       chips: defaultChips
     },
     {
       test: /(how are you|how's it going|how is it going|what's up|whats up|sup|you good)\b/i,
-      reply: '<p>Doing great, thanks for asking — ready to tell you anything about Rejoanul\'s work. What would you like to know?</p>',
+      reply: '<p>Doing great, thanks for asking, ready to tell you anything about Rejoanul\'s work. What would you like to know?</p>',
       chips: defaultChips
     },
     {
@@ -1015,17 +1015,17 @@
     },
     {
       test: /(what can i ask|what should i ask|what do you know|what can you tell|show options|show menu|give me suggestions|list topics|help me)/i,
-      reply: '<p>You can ask me about:</p><ul><li>His <strong>case studies</strong> — SAFE, Prime Bank Digital Token, NMS, DCIM — and the <strong>intro video</strong></li><li><strong>Domains</strong> — ERP, CRM, HRMS, POS, KDS, CDS, Kiosk, SMS &amp; email marketing solutions, EdTech, Job Portal, Edu portal, SaaS, eCommerce, websites &amp; landing pages</li><li><strong>Experience</strong>, what he did at each company, and the <strong>international clients</strong> he\'s worked with (Canada, Australia, USA, UAE, Pakistan, Nigeria, Rwanda)</li><li>His <strong>design approach</strong>, and UI/UX craft — accessibility, responsive, wireframing, prototyping, design systems, IA, motion</li><li>Any <strong>tool</strong> in his stack — e.g. &ldquo;what do you use Zapier / Maze / Jira / JMeter for?&rdquo;</li><li><strong>Education</strong>, <strong>skills</strong>, <strong>hiring</strong>, email, phone and social links</li></ul>',
+      reply: '<p>You can ask me about:</p><ul><li>His <strong>case studies</strong>: SAFE, Prime Bank Digital Token, NMS, DCIM, and the <strong>intro video</strong></li><li><strong>Domains</strong>: ERP, CRM, HRMS, POS, KDS, CDS, Kiosk, SMS &amp; email marketing solutions, EdTech, Job Portal, Edu portal, SaaS, eCommerce, websites &amp; landing pages</li><li><strong>Experience</strong>, what he did at each company, and the <strong>international clients</strong> he\'s worked with (Canada, Australia, USA, UAE, Pakistan, Nigeria, Rwanda)</li><li>His <strong>design approach</strong>, and UI/UX craft: accessibility, responsive, wireframing, prototyping, design systems, IA, motion</li><li>Any <strong>tool</strong> in his stack, e.g. &ldquo;what do you use Zapier / Maze / Jira / JMeter for?&rdquo;</li><li><strong>Education</strong>, <strong>skills</strong>, <strong>hiring</strong>, email, phone and social links</li></ul>',
       chips: defaultChips
     },
     {
       test: /(are you (a )?(bot|robot|ai|real|human)|is this a bot|are you rejoanul)/i,
-      reply: '<p>I\'m a small assistant trained on Rejoanul\'s portfolio — think of me as his front desk. For the real conversation, email <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>.</p>',
+      reply: '<p>I\'m a small assistant trained on Rejoanul\'s portfolio, think of me as his front desk. For the real conversation, email <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>.</p>',
       chips: defaultChips
     },
     {
       test: /(joke|fun fact|something fun|make me laugh)/i,
-      reply: '<p>Fun fact: this whole site is hand-built — <em>no templates</em>. Even this chat window. That\'s the &ldquo;code is part of the design&rdquo; principle in action. 😄</p>',
+      reply: '<p>Fun fact: this whole site is hand-built, <em>no templates</em>. Even this chat window. That\'s the &ldquo;code is part of the design&rdquo; principle in action. 😄</p>',
       chips: defaultChips
     }
   ];
@@ -1115,7 +1115,7 @@
     root.innerHTML = [
       '<div class="rf-chat__nudge" id="rfNudge" role="status">',
       '  <button class="rf-chat__nudge-close" id="rfNudgeClose" aria-label="Dismiss">&times;</button>',
-      '  Hi, I’m <b>Rejoanul</b> — ask me anything about my work',
+      '  Hi, I’m <b>Rejoanul</b>, ask me anything about my work',
       '</div>',
       '<div class="rf-chat__panel" id="rfPanel" role="dialog" aria-label="Chat with Rejoanul" aria-modal="false">',
       '  <div class="rf-chat__header">',

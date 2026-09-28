@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (i >= PING_LINES.length) {
           pingStats.hidden = false;
           pingNext.disabled = false;
-          pingHint.textContent = 'Two of four replies — it’s flapping, not dead. Acknowledge and watch, don’t roll the truck.';
+          pingHint.textContent = 'Two of four replies; it’s flapping, not dead. Acknowledge and watch, don’t roll the truck.';
           return;
         }
         const line = document.createElement('span');
@@ -149,10 +149,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const DATA = [
       { name: 'Online', state: 'ok',
         trigger: 'Polling succeeds; nothing is out of range.',
-        you: 'Nothing — a green dot and a row in the healthy count.',
+        you: 'Nothing: a green dot and a row in the healthy count.',
         map: 'Solid green node, solid green links.' },
       { name: 'Warning', state: 'warn',
-        trigger: 'One metric crosses a soft threshold — latency 45ms, CPU 80%.',
+        trigger: 'One metric crosses a soft threshold: latency 45ms, CPU 80%.',
         you: 'An amber row in Active Alerts. No siren.',
         map: 'Node turns amber; the link to it turns amber.' },
       { name: 'Degraded', state: 'warn',
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         you: 'A Degraded badge on the device page; it leaves the “all operational” count.',
         map: 'Node amber with a heavier outline; still reachable.' },
       { name: 'Critical', state: 'crit',
-        trigger: 'A hard threshold breaks — ICMP timeout, uptime under 50%.',
+        trigger: 'A hard threshold breaks: ICMP timeout, uptime under 50%.',
         you: 'A red card at the top of the list: cause and device spelled out.',
         map: 'Node pulses red; the link to it dashes red.' },
       { name: 'Offline', state: 'off',
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
       d.lat.textContent = LAT[s]();
       d.up.textContent = UP[s];
       d.note.textContent = s === 'ok'
-        ? 'Healthy. Ping and SSH are one tap further — the same panel the operator works from.'
+        ? 'Healthy. Ping and SSH are one tap further, the same panel the operator works from.'
         : s === 'off'
           ? 'No response. Everything downstream of it greys out until it’s back.'
           : 'Flagged on the map and in the alert count. Tap through to the terminal to check it.';
@@ -296,9 +296,9 @@ document.addEventListener('DOMContentLoaded', () => {
       banner.hidden = false;
     };
     const FAULTS = {
-      latency: () => { state = { ...BASE, a3: 'warn', w4: 'warn', w5: 'warn' }; setBanner('ACC-SW-A3 — high latency detected (48ms) · 3 devices affected', false); },
-      critical: () => { state = { ...BASE, w4: 'crit' }; setBanner('PC-04 — 250ms latency, 45% uptime · CRITICAL', true); },
-      offline: () => { state = { ...BASE, rtr: 'off', sw: 'off', srv: 'off', a1: 'off', a2: 'off', a3: 'off', w1: 'off', w2: 'off', w3: 'off', w4: 'off', w5: 'off' }; setBanner('RTR MikroTik uplink lost — branch isolated, 11 devices unreachable', true); },
+      latency: () => { state = { ...BASE, a3: 'warn', w4: 'warn', w5: 'warn' }; setBanner('ACC-SW-A3: high latency detected (48ms) · 3 devices affected', false); },
+      critical: () => { state = { ...BASE, w4: 'crit' }; setBanner('PC-04: 250ms latency, 45% uptime · CRITICAL', true); },
+      offline: () => { state = { ...BASE, rtr: 'off', sw: 'off', srv: 'off', a1: 'off', a2: 'off', a3: 'off', w1: 'off', w2: 'off', w3: 'off', w4: 'off', w5: 'off' }; setBanner('RTR MikroTik uplink lost, branch isolated, 11 devices unreachable', true); },
       reset: () => { state = { ...BASE }; setBanner(null); },
     };
     btns.forEach((b) => {

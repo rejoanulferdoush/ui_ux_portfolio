@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const SAFE = '#34c77b', WARN = '#f0a63c', DANGER = '#ef4444';
     const bands = [
       { max: 100, name: 'Safe',   color: SAFE,
-        note: 'Normal gas level is 0–100 PPM. SAFE sits quiet — the sensor tile stays green and nothing is sent.' },
+        note: 'Normal gas level is 0–100 PPM. SAFE sits quiet, the sensor tile stays green and nothing is sent.' },
       { max: 500, name: 'Risky',  color: WARN,
         note: 'Above 100 PPM the room card flips to amber and the family is notified. Time to open a window and check the stove.' },
       { max: 9999, name: 'Danger', color: DANGER,

@@ -121,12 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
         setNode('ups', 'is-live', 'ON BATTERY');
         setLink('ats-ups', 'is-dead');
         readout.dataset.state = 'batt';
-        head.textContent = 'Grid lost — UPS carrying the load';
+        head.textContent = 'Grid lost, UPS carrying the load';
         R.source.textContent = 'Battery · discharging';
         R.ups.textContent = 'On battery · 100% → falling';
         R.xfer.textContent = 'GEN starting…';
         R.racks.textContent = 'Protected · zero drop';
-        note.textContent = '00:00 — utility gone. Racks never saw it: the UPS took the load in <2 ms. Generator is cranking.';
+        note.textContent = '00:00: utility gone. Racks never saw it: the UPS took the load in <2 ms. Generator is cranking.';
         /* phase 2 — generator online, ATS transfers */
         timers.push(setTimeout(() => {
           setNode('gen', 'is-gen', 'running · 400 V');
@@ -135,12 +135,12 @@ document.addEventListener('DOMContentLoaded', () => {
           setLink('ats-ups', 'is-hot');
           setNode('ups', 'is-ok', 'double-conv');
           readout.dataset.state = 'gen';
-          head.textContent = 'On generator — utility lost';
+          head.textContent = 'On generator, utility lost';
           R.source.textContent = 'Generator · 400 V';
           R.ups.textContent = 'Back to double conversion · 98% batt';
           R.xfer.textContent = 'ATS → GEN in 180 ms';
           R.racks.textContent = 'Protected · no drop';
-          note.textContent = '00:11 — generator up to speed, ATS transferred in 180 ms, UPS back to charging. The room never noticed.';
+          note.textContent = '00:11: generator up to speed, ATS transferred in 180 ms, UPS back to charging. The room never noticed.';
         }, reduceMotion ? 0 : 2100));
       },
 
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         R.ups.textContent = 'One module lost · N+1 → N';
         R.xfer.textContent = 'Static bypass armed';
         R.racks.textContent = 'Protected · redundancy reduced';
-        note.textContent = 'Load still clean, but the spare module is gone. Static bypass is armed as a fallback and the alarm is raised — not a drop, but a call to make tonight.';
+        note.textContent = 'Load still clean, but the spare module is gone. Static bypass is armed as a fallback and the alarm is raised, not a drop, but a call to make tonight.';
       },
 
       gen: () => {
@@ -170,16 +170,16 @@ document.addEventListener('DOMContentLoaded', () => {
         head.textContent = 'Running on UPS battery only';
         R.source.textContent = 'Battery · ~54 min';
         R.ups.textContent = 'Discharging · 92% → falling';
-        R.xfer.textContent = 'GEN start FAILED — retrying';
-        R.racks.textContent = 'Protected — 54 min to act';
-        note.textContent = 'The one that matters: grid down, generator won’t catch. DCIM puts the runtime clock front and centre — 54 minutes — and pages the on-call before the racks ever feel it.';
+        R.xfer.textContent = 'GEN start FAILED, retrying';
+        R.racks.textContent = 'Protected: 54 min to act';
+        note.textContent = 'The one that matters: grid down, generator won’t catch. DCIM puts the runtime clock front and centre (54 minutes) and pages the on-call before the racks ever feel it.';
         if (!reduceMotion) {
           let mins = 54;
           const tick = () => {
             mins -= 1;
             if (mins < 40) return;
             R.source.textContent = `Battery · ~${mins} min`;
-            R.racks.textContent = `Protected — ${mins} min to act`;
+            R.racks.textContent = `Protected: ${mins} min to act`;
             timers.push(setTimeout(tick, 1400));
           };
           timers.push(setTimeout(tick, 1400));
@@ -208,88 +208,88 @@ document.addEventListener('DOMContentLoaded', () => {
     const enc = (p) => p.replace(/&/g, '%26');
     const DATA = {
       ats: {
-        tag: 'Transfer switch', title: 'ATS — APC AP7724',
+        tag: 'Transfer switch', title: 'ATS: APC AP7724',
         thumb: 'projects/dcim_system/thumbs/ATS1_Detail_Screen.webp',
         full: 'projects/dcim_system/ATS1_Detail_Screen.webp',
-        cap: 'ATS-1 Overview — source status, transfer state, thresholds, electrical measurements, event log',
-        desc: 'Source A and source B, the selected feed, phase sync, redundancy health and the overload ladder — then the same Alarms and Report tabs every other device has.',
+        cap: 'ATS-1 Overview: source status, transfer state, thresholds, electrical measurements, event log',
+        desc: 'Source A and source B, the selected feed, phase sync, redundancy health and the overload ladder, then the same Alarms and Report tabs every other device has.',
         points: [
           'Two sources, one verdict: <b>Fully Redundant</b> or not.',
           'Transfer history in the event log, timestamped.',
           'Per-bank overload thresholds, reset to default in one tap.'
         ],
         strip: [
-          ['ATS1_Screen/Alarms_Screen', 'ATS-1 — Alarms / Events / Log, filtered by severity', 'Alarms'],
-          ['ATS1_Screen/Report&Export_Screen', 'ATS-1 — Report & Export, the same six report types', 'Report'],
-          ['ATS1_Overview_Screen_GRID', 'ATS fleet — grid view, every transfer switch', 'Fleet']
+          ['ATS1_Screen/Alarms_Screen', 'ATS-1: Alarms / Events / Log, filtered by severity', 'Alarms'],
+          ['ATS1_Screen/Report&Export_Screen', 'ATS-1: Report & Export, the same six report types', 'Report'],
+          ['ATS1_Overview_Screen_GRID', 'ATS fleet: grid view, every transfer switch', 'Fleet']
         ]
       },
       ups: {
-        tag: 'Uninterruptible power', title: 'UPS — APC Symmetra PX',
+        tag: 'Uninterruptible power', title: 'UPS: APC Symmetra PX',
         thumb: 'projects/dcim_system/thumbs/UPS1_Detail_Screen.webp',
         full: 'projects/dcim_system/UPS1_Detail_Screen.webp',
-        cap: 'UPS-01 Overview — load & headroom, battery health, live power-flow & operating mode, battery strings',
-        desc: 'Load against capacity, available headroom, battery state of charge and health, the live power path through rectifier and inverter, and every string broken out — on the same three tabs.',
+        cap: 'UPS-01 Overview: load & headroom, battery health, live power-flow & operating mode, battery strings',
+        desc: 'Load against capacity, available headroom, battery state of charge and health, the live power path through rectifier and inverter, and every string broken out, on the same three tabs.',
         points: [
           'Runtime remaining leads, in minutes, not a percentage.',
           'Each battery string flagged Good / Aging on its own.',
           'Self-test history and next scheduled test in view.'
         ],
         strip: [
-          ['UPS1_Detail_Screen/Alarms_Screen', 'UPS-01 — Alarms / Events / Log', 'Alarms'],
-          ['UPS1_Detail_Screen/Report&Export_Screen', 'UPS-01 — Report & Export', 'Report'],
-          ['UPS_Overview_Screen-GRID', 'UPS fleet — grid view', 'Fleet']
+          ['UPS1_Detail_Screen/Alarms_Screen', 'UPS-01: Alarms / Events / Log', 'Alarms'],
+          ['UPS1_Detail_Screen/Report&Export_Screen', 'UPS-01: Report & Export', 'Report'],
+          ['UPS_Overview_Screen-GRID', 'UPS fleet: grid view', 'Fleet']
         ]
       },
       pac: {
-        tag: 'Precision cooling', title: 'PAC — Uniflair AM LE',
+        tag: 'Precision cooling', title: 'PAC: Uniflair AM LE',
         thumb: 'projects/dcim_system/thumbs/PAC1_Detail_Screen.webp',
         full: 'projects/dcim_system/PAC1_Detail_Screen.webp',
-        cap: 'PAC-1 Overview — room temp/humidity, compressor status, operating modes, refrigeration circuit, runtime & service',
-        desc: 'Room temperature and humidity, per-compressor run hours, the operating-mode stack, the whole refrigeration circuit down to superheat and EXV steps, plus maintenance countdowns — three tabs, same order.',
+        cap: 'PAC-1 Overview: room temp/humidity, compressor status, operating modes, refrigeration circuit, runtime & service',
+        desc: 'Room temperature and humidity, per-compressor run hours, the operating-mode stack, the whole refrigeration circuit down to superheat and EXV steps, plus maintenance countdowns, three tabs, same order.',
         points: [
           'Setpoint and thresholds separated from live readings.',
           'Compressor run hours per unit, so wear is visible.',
           'Next-service date computed from work hours, not a guess.'
         ],
         strip: [
-          ['PAC1_Screen/Alarms_Screen', 'PAC-1 — Alarms / Events / Log', 'Alarms'],
-          ['PAC1_Screen/Report&Export_Screen', 'PAC-1 — Report & Export', 'Report'],
-          ['PAC_Overview_Screen-GRID', 'PAC fleet — grid view', 'Fleet']
+          ['PAC1_Screen/Alarms_Screen', 'PAC-1: Alarms / Events / Log', 'Alarms'],
+          ['PAC1_Screen/Report&Export_Screen', 'PAC-1: Report & Export', 'Report'],
+          ['PAC_Overview_Screen-GRID', 'PAC fleet: grid view', 'Fleet']
         ]
       },
       pdu: {
-        tag: 'Rack power distribution', title: 'Rack PDU — APC NMC',
+        tag: 'Rack power distribution', title: 'Rack PDU: APC NMC',
         thumb: 'projects/dcim_system/thumbs/RACKPDU_Detail_Screen.webp',
         full: 'projects/dcim_system/RACKPDU_Detail_Screen.webp',
-        cap: 'Rack PDU Fleet — load distribution by rack, top consumers first, per-unit load and power',
-        desc: '200 rack PDUs, the fleet donut, load distribution ranked by rack, and each unit as a card with load, power and position — then drill into one for the same Overview / Alarms / Report tabs.',
+        cap: 'Rack PDU Fleet: load distribution by rack, top consumers first, per-unit load and power',
+        desc: '200 rack PDUs, the fleet donut, load distribution ranked by rack, and each unit as a card with load, power and position, then drill into one for the same Overview / Alarms / Report tabs.',
         points: [
           'Top-loaded racks surface first, not alphabetically.',
           'Fleet average, highest and lowest called out.',
           'Per-outlet detail one tap from the unit card.'
         ],
         strip: [
-          ['RACKPDU/Alarms_Screen', 'Rack PDU — Alarms / Events / Log', 'Alarms'],
-          ['RACKPDU/Report&Export_Screen', 'Rack PDU — Report & Export', 'Report'],
-          ['RACKPDU_Overview_Screen-LIST', 'Rack PDU fleet — list view', 'Fleet']
+          ['RACKPDU/Alarms_Screen', 'Rack PDU: Alarms / Events / Log', 'Alarms'],
+          ['RACKPDU/Report&Export_Screen', 'Rack PDU: Report & Export', 'Report'],
+          ['RACKPDU_Overview_Screen-LIST', 'Rack PDU fleet: list view', 'Fleet']
         ]
       },
       netbotz: {
-        tag: 'Environment monitor', title: 'NetBotz — APC 450',
+        tag: 'Environment monitor', title: 'NetBotz: APC 450',
         thumb: 'projects/dcim_system/thumbs/NETBOTZ_Detail_Screen.webp',
         full: 'projects/dcim_system/NETBOTZ_Detail_Screen.webp',
-        cap: 'NetBotz-1 Overview — temp, humidity, dew point, smoke & leak sensors, thresholds, sensor ports, polling health',
-        desc: 'Temperature, humidity and dew point, the safety-sensor status board (leak rope, smoke, beacon), threshold and alert limits, sensor-port map and polling health — the same page shape as a UPS or a PDU.',
+        cap: 'NetBotz-1 Overview: temp, humidity, dew point, smoke & leak sensors, thresholds, sensor ports, polling health',
+        desc: 'Temperature, humidity and dew point, the safety-sensor status board (leak rope, smoke, beacon), threshold and alert limits, sensor-port map and polling health, the same page shape as a UPS or a PDU.',
         points: [
           'Safety sensors get their own status board, not a footnote.',
           'Every threshold editable, with a critical band above the warning.',
           'Poll success rate and data freshness shown as health.'
         ],
         strip: [
-          ['NETBOTZ/Alarms_Screen', 'NetBotz — Alarms / Events / Log', 'Alarms'],
-          ['NETBOTZ/Report&Export_Screen', 'NetBotz — Report & Export', 'Report'],
-          ['NETBOTZ_Overview_Screen-LIST', 'NetBotz fleet — list view', 'Fleet']
+          ['NETBOTZ/Alarms_Screen', 'NetBotz: Alarms / Events / Log', 'Alarms'],
+          ['NETBOTZ/Report&Export_Screen', 'NetBotz: Report & Export', 'Report'],
+          ['NETBOTZ_Overview_Screen-LIST', 'NetBotz fleet: list view', 'Fleet']
         ]
       }
     };
